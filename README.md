@@ -17,4 +17,4 @@ https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire
 
 De nombreuses communes semblent déjà utiliser ce système. Actuellement, les fichiers JSON sont récupérés via les outils de développement de Chrome, mais un scraping devrait permettre de l'automatiser malgré les protections utilisées par geosphere.fr pour les rendre quasi-inaccessibles programmationnellement.
 
-https://azzocorp.github.io/121-8/
+https://manipuliti.github.io/121-8/
