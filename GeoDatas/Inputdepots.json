@@ -1,6 +1,6 @@
 {
-    "recordsTotal": 89,
-    "recordsFiltered": 89,
+    "recordsTotal": 90,
+    "recordsFiltered": 90,
     "data": [
         [
             "02/11/2023",
@@ -891,6 +891,16 @@
             "2047 m²",
             "la construction d'une maison individuelle ",
             "- Surface plancher créée : 86 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "30/05/2024",
+            "PC 02A 247 15 R0118 M02",
+            "30/05/2024",
+            "SCCV LA VILLA ABITBOL",
+            " RUE JEAN JAURES 20137  (AE 492)",
+            "225 m²",
+            "la modification des hauteurs,de l'aspect extérieur, surface de plancher, nombre place stationnement",
+            "- Surface plancher créée : 692 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ]
     ]
 }

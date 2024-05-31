@@ -7635,6 +7635,72 @@
         },
         {
             "type": "Feature",
+            "id": "2A247000AE0492",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.276245,
+                            41.5894226
+                        ],
+                        [
+                            9.2762212,
+                            41.5894214
+                        ],
+                        [
+                            9.2761914,
+                            41.5893265
+                        ],
+                        [
+                            9.2763096,
+                            41.5893249
+                        ],
+                        [
+                            9.2764535,
+                            41.5893231
+                        ],
+                        [
+                            9.2764521,
+                            41.5894243
+                        ],
+                        [
+                            9.2762676,
+                            41.5894225
+                        ],
+                        [
+                            9.276245,
+                            41.5894226
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AE0492",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AE",
+                "numero": "492",
+                "contenance": 225,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2020-09-24",
+                "depots": [
+                    [
+                        "30/05/2024",
+                        "PC 02A 247 15 R0118 M02",
+                        "30/05/2024",
+                        "SCCV LA VILLA ABITBOL",
+                        " RUE JEAN JAURES 20137  (AE 492)",
+                        "225 m²",
+                        "la modification des hauteurs,de l'aspect extérieur, surface de plancher, nombre place stationnement",
+                        "- Surface plancher créée : 692 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A247000AE0493",
             "geometry": {
                 "type": "Polygon",
