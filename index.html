@@ -1,118 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- leaflet js link  -->
-	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-	<!-- geojson vt  -->
-	<script src="../libs/geojson-vt.js"></script>
-	<script src="../src/leaflet-geojson-vt.js"></script>
-	<!-- js data link  -->
-	<script src="./parcelles.js"></script>
-	<script src="./batiments.js"></script>
-	<script src="./favorables.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
-    <style>
-      body {margin: 0; padding: 0;}
-      #map {width: 100%; height: 100vh;}
-    </style>
-    <title>leaflet-geojson-vt demo</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Leaflet Example</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+  <script src="https://unpkg.com/leaflet.vectorgrid@1.3.0/dist/Leaflet.VectorGrid.min.js"></script>
+  <script src="./GeoDatas/parcelles.js"></script>
+  <script src="./GeoDatas/batiments.js"></script>
+  <script src="./GeoDatas/depots.js"></script>
+  <script src="./GeoDatas/favorables.js"></script>
+  <script src="./GeoDatas/continuites.js"></script>
+  <script src="./GeoDatas/commune.js"></script> <!-- Ajouter le fichier commune.js -->
+  <script src="./libs/geojson-vt.js"></script>
+  <script src="./src/leaflet-geojson-vt.js"></script>
+  <script>
+    // Initialiser la carte avec un centre et un zoom par défaut
+    var map = L.map('map').setView([42.13, 9.09], 5); // Centre de la Corse
+	var overlays = {
+		"Parcelles": null,
+		"Batiments": null,
+		"Depots": null,
+		"Favorables": null,
+		"Référence": null,
+		"Continuité": null,
+		"Commune": null,
+    };
+    // Ajouter le fond de carte OpenStreetMap
+    var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 20
+    }).addTo(map);
 
-  </head>
-  <body>
-    <div id="map"></div>
-  </body>
+    // Ajouter le fond de carte Satellite de Google Maps
+    var googleSat = L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}', {
+      maxZoom: 20,
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+    });
+
+    // Ajouter une option pour pas de fond de carte
+    var emptyLayer = L.tileLayer('');
+
+    var styleParcelles = {
+      fillColor: "#eb8334",
+      color: "#000",
+      weight: 0.5,
+      opacity: 1,
+      fillOpacity: 1,
+    };
+
+    var styleBatiments = {
+      fillColor: "#000000",
+      color: "#000000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 1,
+    };
+
+    var styleParcellesSatellite = {
+      fillColor: "#eb8334",
+      color: "#FFFFFF",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 1,
+    };
+
+    var styleBatimentsSatellite = {
+      fillColor: "#FFFFFF",
+      color: "#FFFFFF",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 1,
+    };
+
+    var optionsParcelles = {
+      maxZoom: 20,
+      tolerance: 3,
+      debug: 0,
+      style: styleParcelles
+    };
+
+    var optionsBatiments = {
+      maxZoom: 20,
+      tolerance: 3,
+      debug: 0,
+      style: styleBatiments
+    };
+	
+    var optionsDepots = {
+      maxZoom: 20,
+      tolerance: 3,
+      debug: 0,
+      style: {
+        fillColor: "#33cc33",
+        color: "#33cc33",
+        weight: 5,
+        opacity: 1,
+        fillOpacity: 1,
+      }
+    };
+
+    var optionsFavorables = {
+      maxZoom: 20,
+      tolerance: 3,
+      debug: 0,
+      style: {
+        fillColor: "#f54242",
+        color: "#f54242",
+        weight: 5,
+        opacity: 1,
+        fillOpacity: 1,
+      }
+    };
+
+    var optionsContinuites = {
+      maxZoom: 20,
+      tolerance: 3,
+      debug: 0,
+      style: {
+        fillColor: "#fccf03",
+        color: "#fccf03",
+        weight: 1,
+        opacity: 0.2,
+        fillOpacity: 0.3
+      }
+    };
+
+    var optionsCommune = {
+      maxZoom: 20,
+      tolerance: 3,
+      debug: 0,
+      style: {
+       
+      }
+    };
+
+    var depotsLayer = L.featureGroup();
+	var favorablesLayer = L.featureGroup();
+    var labelsLayer = L.layerGroup();
+    var continuiteLayer = L.layerGroup();
+	var ParcellesLayer = L.layerGroup();
+    var communeLayer = L.layerGroup();
+
+    // Utiliser un calque temporaire pour éviter les calques fantômes
+    var tempLayer = L.layerGroup();
+	
+    <!-- var depotsLayer = L.geoJSON(depots).addTo(map); -->
+    L.geoJSON(depots, {
+      style: optionsDepots.style,
+      onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.section && feature.properties.numero) {
+          var center = layer.getBounds().getCenter();
+          var tooltipContent = feature.properties.section + " " + feature.properties.numero;
+          var myIcon = L.divIcon({
+            className: 'my-labels',
+            html: tooltipContent
+          });
+          var marker = L.marker(center, { icon: myIcon });
+          labelsLayer.addLayer(marker);
+        }
+        depotsLayer.addLayer(layer);
+
+        // Ajouter un popup pour afficher les propriétés de l'entité
+        layer.on('click', function (e) {
+          var popupContent = "<b>Section:</b> " + feature.properties.section + "<br>" +
+                             "<b>Numéro:</b> " + feature.properties.numero + "<br>" +
+                             "<b>Commune:</b> " + feature.properties.commune + "<br>" +
+                             "<b>Contenance:</b> " + feature.properties.contenance + " m²<br>" +
+                             "<b>Décisions:</b><br>";
+
+          feature.properties.decisions.forEach(function(decision) {
+            popupContent += "<b>Date:</b> " + decision[0] + "<br>" +
+                            "<b>Référence:</b> " + decision[1] + "<br>" +
+                            "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
+                            "<b>Demandeur:</b> " + decision[3] + "<br>" +
+                            "<b>Adresse:</b> " + decision[4] + "<br>" +
+                            "<b>Surface:</b> " + decision[5] + "<br>" +
+                            "<b>Description:</b> " + decision[6] + "<br>" +
+                            "<b>Détails:</b> " + decision[7] + "<br>";
+
+          });
+
+          layer.bindPopup(popupContent).openPopup();
+        });
+      }
+    }).addTo(tempLayer); // Add to temporary layer	
+	
+	
+    L.geoJSON(favorables, {
+      style: optionsFavorables.style,
+      onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.section && feature.properties.numero) {
+          var center = layer.getBounds().getCenter();
+          var tooltipContent = feature.properties.section + " " + feature.properties.numero;
+          var myIcon = L.divIcon({
+            className: 'my-labels',
+            html: tooltipContent
+          });
+          var marker = L.marker(center, { icon: myIcon });
+          labelsLayer.addLayer(marker);
+        }
+        favorablesLayer.addLayer(layer);
+
+        // Ajouter un popup pour afficher les propriétés de l'entité
+        layer.on('click', function (e) {
+          var popupContent = "<b>Section:</b> " + feature.properties.section + "<br>" +
+                             "<b>Numéro:</b> " + feature.properties.numero + "<br>" +
+                             "<b>Commune:</b> " + feature.properties.commune + "<br>" +
+                             "<b>Contenance:</b> " + feature.properties.contenance + " m²<br>" +
+                             "<b>Décisions:</b><br>";
+
+          feature.properties.decisions.forEach(function(decision) {
+            popupContent += "<b>Date décision:</b> " + decision[0] + "<br>" +
+                            "<b>Référence:</b> " + decision[1] + "<br>" +
+                            "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
+                            "<b>Demandeur:</b> " + decision[3] + "<br>" +
+                            "<b>Adresse:</b> " + decision[4] + "<br>" +
+                            "<b>Surface:</b> " + decision[5] + "<br>" +
+                            "<b>Description:</b> " + decision[6] + "<br>" +
+                            "<b>Détails:</b> "+ "<br>"  + decision[7] + "<br>" +
+                            "<b>Statut:</b> " + decision[8] + "<br><br>";
+			  });
+
+			  layer.bindPopup(popupContent).openPopup();
+			});
+		  }
+		}).addTo(tempLayer); // Add to temporary layer
+
+    L.geoJSON(continuites, {
+      onEachFeature: function (feature, layer) {
+        var buffered = turf.buffer(feature, 0.09, { units: 'kilometers' });
+        L.geoJSON(buffered, {
+          style: optionsContinuites.style
+        }).addTo(continuiteLayer);
+      }
+    }).addTo(tempLayer); // Add to temporary layer
+
+    L.geoJSON(commune, {
+      style: optionsCommune.style,
+      onEachFeature: function (feature, layer) {
+        communeLayer.addLayer(layer);
+      }
+    }).addTo(tempLayer); // Add to temporary layer
+
+    var communeStyle = {
+      color: "#000", // Bordure noire
+      weight: 2,
+      fillColor: "transparent", // Fond transparent
+      fillOpacity: 0
+    };
+    var communeLayer = L.geoJSON(commune, { style: communeStyle }).addTo(map);
+
+    var parcellesLayer = L.vectorGrid.slicer(parcelles, {
+      rendererFactory: L.canvas.tile,
+      vectorTileLayerStyles: {
+        sliced: function(properties, zoom) {
+          return styleParcelles;
+        }
+      },
+      interactive: true,
+      getFeatureId: function(f) {
+        return f.properties.id;
+      },
+      maxZoom: 20,
+      minZoom: 0
+    }).addTo(tempLayer);
+
+    var batimentsLayer = L.vectorGrid.slicer(batiments, {
+      rendererFactory: L.canvas.tile,
+      vectorTileLayerStyles: {
+        sliced: function(properties, zoom) {
+          return styleBatiments;
+        }
+      },
+      interactive: true,
+      getFeatureId: function(f) {
+        return f.properties.id;
+      },
+      maxZoom: 20,
+      minZoom: 0
+    }).addTo(tempLayer);
+
+    var continuitesLayer = L.geoJSON(continuites, optionsContinuites).addTo(map);
+
+    var baseLayers = {
+      "Vectoriel": osmLayer,
+      "Satellite": googleSat,
+      "Sans fond": emptyLayer
+    };
+
+    var overlays = {
+      "Parcelles": parcellesLayer,
+      "Batiments": batimentsLayer,
+      "Dépots": depotsLayer,
+      "Favorables": favorablesLayer,
+      "Référence": labelsLayer,
+      "Continuité": continuiteLayer,
+      "Commune": communeLayer
+    };
+
+    // Ajouter les calques initiaux
+    favorablesLayer.addTo(map);
+    labelsLayer.addTo(map);
+    // Ajouter le calque de la zone tampon après tous les autres calques
+    continuiteLayer.addTo(map);
+
+
+    L.control.layers(baseLayers, overlays, { position: 'topright', collapsed: true }).addTo(map);
+
+    // Ajouter une échelle en bas à gauche sans l'affichage en pieds
+    L.control.scale({ position: 'bottomleft', imperial: false }).addTo(map);
+
+    // Assurer que le calque "Favorables" reste au-dessus après chaque changement de visibilité
+    map.on('overlayadd', function(eventLayer) {
+      if (eventLayer.name === 'Favorables') {
+        favorablesLayer.eachLayer(function(layer) {
+          layer.bringToFront();
+        });
+      } else if (eventLayer.name === 'Labels') {
+        labelsLayer.eachLayer(function(layer) {
+          layer.bringToFront();
+        });
+      } else if (eventLayer.name === 'Continuité') {
+        continuiteLayer.eachLayer(function(layer) {
+          layer.bringToFront();
+        });
+      }
+    });
+
+    
+
+    // Fonction pour mettre à jour les styles des calques
+    function updateLayerStyles(baseLayerName) {
+      if (baseLayerName === 'Satellite') {
+        parcellesLayer.options.vectorTileLayerStyles.sliced = function(Zoom, properties) {
+          return styleParcellesSatellite;
+        };
+        batimentsLayer.options.vectorTileLayerStyles.sliced = function(Zoom, properties) {
+          return styleBatimentsSatellite;
+        };
+      } else {
+        parcellesLayer.options.vectorTileLayerStyles.sliced = function(Zoom, properties) {
+          return styleParcelles;
+        };
+        batimentsLayer.options.vectorTileLayerStyles.sliced = function(Zoom, properties) {
+          return styleBatiments;
+        };
+      }
+      parcellesLayer.redraw();
+      batimentsLayer.redraw();
+    }
+
+    // Écouteur pour le changement de fond de carte
+    map.on('baselayerchange', function (e) {
+      updateLayerStyles(e.name);
+    });
+    map.fitBounds(communeLayer.getBounds());
+    setTimeout(function () {
+      map.setZoom(16, { animate: true, duration: 8 });
+      setTimeout(function () {
+        map.setZoom(13, { animate: true, duration: 3 });
+      }, 500);
+    }, 500);
+	
+	
+  </script>
+</body>
 </html>
-
-
-<script>
-  var map = L.map("map").setView([41.587523, 9.277182], 11);
-
-  var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  });
-
-  osm.addTo(map);
-
-  var geojsonStyleP = {
-    fillColor:"#eb8334",
-    color: "#000",
-    weight: 2,
-    opacity: 0.1,
-    fillOpacity: 0.01,
-  };
-var geojsonStyleB = {
-    fillColor:"#ffff00",
-    color: "#ffff00",
-    weight: 0.5,
-    fillOpacity: 0.01,
-  };
-  
-var geojsonStyleF = {
-    fillColor:"#f54242",
-    color: "#f54242",
-    weight: 5,
-    opacity: 1,
-    fillOpacity: 1,
-  };
-
-var optionsP = {
-    maxZoom: 20,
-    tolerance: 3,
-    debug: 0,
-    style: geojsonStyleP
-};
-
-var optionsB = {
-    maxZoom: 20,
-    tolerance: 3,
-    debug: 0,
-    style: geojsonStyleB
-};
-
-var optionsF = {
-    maxZoom: 20,
-    tolerance: 3,
-    debug: 0,
-    style: geojsonStyleF
-};
-var parcelles = L.geoJson.vt(parcelles, optionsP).addTo(map);
-var batiments = L.geoJson.vt(batiments, optionsB).addTo(map);
-var favorables = L.geoJson.vt(favorables, optionsF).addTo(map);
-
-const overlays = [
-    {name: 'parcelles', layer: parcelles},
-    {name: 'batiments', layer: batiments},
-	{name: 'favorables', layer: favorables},
-];
-
-const legend = L.multiControl(overlays, {position:'topright', label: 'Calques'}).addTo(map);
-
-
-</script>
-
-
-<!-- function getColor(d) {
-  return d > 0.73  ? '#800026' :
-         d > 0.55  ? '#BD0026' :
-         d > 0.5   ? '#E31A1C' :
-         d > 0.3   ? '#FC4E2A' :
-         d > 0.2   ? '#FD8D3C' :
-         d > 0.08  ? '#FEB24C' :
-         d > 0.01  ? '#FED976' :
-                    '#FFEDA0';
-}
-
-function style(feature) {
-  return {
-  fillColor: getColor(feature.properties.Shape_Area),
-  color: "#000",
-  weight: 1,
-  opacity: 1,
-  fillOpacity: 0.5,
-  }
-} -->
