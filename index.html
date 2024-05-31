@@ -96,8 +96,8 @@
 		  tolerance: 3,
 		  debug: 0,
 		  style: {
-			fillColor: "#33cc33",
-			color: "#33cc33",
+			fillColor: "#00ff2a",
+			color: "#00ff2a",
 			weight: 5,
 			opacity: 1,
 			fillOpacity: 1,
@@ -109,8 +109,8 @@
 		  tolerance: 3,
 		  debug: 0,
 		  style: {
-			fillColor: "#f54242",
-			color: "#f54242",
+			fillColor: "#00ecff",
+			color: "#00ecff",
 			weight: 5,
 			opacity: 1,
 			fillOpacity: 1,
@@ -173,15 +173,15 @@
 								 "<b>Contenance:</b> " + feature.properties.contenance + " m²<br>" +
 								 "<b>Décisions:</b><br>";
 
-			  feature.properties.decisions.forEach(function(decision) {
-				popupContent += "<b>Date:</b> " + decision[0] + "<br>" +
-								"<b>Référence:</b> " + decision[1] + "<br>" +
-								"<b>Date de dépôt:</b> " + decision[2] + "<br>" +
-								"<b>Demandeur:</b> " + decision[3] + "<br>" +
-								"<b>Adresse:</b> " + decision[4] + "<br>" +
-								"<b>Surface:</b> " + decision[5] + "<br>" +
-								"<b>Description:</b> " + decision[6] + "<br>" +
-								"<b>Détails:</b> " + decision[7] + "<br>";
+			  feature.properties.depots.forEach(function(depots) {
+				popupContent += "<b>Date:</b> " + depots[0] + "<br>" +
+								"<b>Référence:</b> " + depots[1] + "<br>" +
+								"<b>Date de dépôt:</b> " + depots[2] + "<br>" +
+								"<b>Demandeur:</b> " + depots[3] + "<br>" +
+								"<b>Adresse:</b> " + depots[4] + "<br>" +
+								"<b>Surface:</b> " + depots[5] + "<br>" +
+								"<b>Description:</b> " + depots[6] + "<br>" +
+								"<b>Détails:</b> " + depots[7] + "<br>";
 
 			  });
 
@@ -247,14 +247,16 @@
 		  }
 		}).addTo(tempLayer); // Add to temporary layer
 
+
 		var communeStyle = {
 		  color: "#000", // Bordure noire
-		  weight: 2,
+		  <!-- weight: 2, -->
 		  fillColor: "transparent", // Fond transparent
-		  fillOpacity: 0
+		  <!-- fillOpacity: 0 -->
 		};
 		var communeLayer = L.geoJSON(commune, { style: communeStyle }).addTo(map);
-
+		
+		
 		var parcellesLayer = L.vectorGrid.slicer(parcelles, {
 		  rendererFactory: L.canvas.tile,
 		  vectorTileLayerStyles: {
@@ -285,7 +287,7 @@
 		  minZoom: 0
 		}).addTo(tempLayer);
 
-		var continuitesLayer = L.geoJSON(continuites, optionsContinuites).addTo(map);
+		var continuitesLayer = L.geoJSON(continuites, optionsContinuites).addTo(tempLayer);
 
 		var baseLayers = {
 		  "Vectoriel": osmLayer,
@@ -305,12 +307,12 @@
 
 		// Ajouter les calques initiaux
 		favorablesLayer.addTo(map);
-		labelsLayer.addTo(map);
+		labelsLayer.addTo(tempLayer);
 		// Ajouter le calque de la zone tampon après tous les autres calques
 		continuiteLayer.addTo(map);
 
 
-		L.control.layers(baseLayers, overlays, { position: 'topright', collapsed: true }).addTo(map);
+		L.control.layers(baseLayers, overlays, { position: 'topright', collapsed: false }).addTo(map);
 
 		// Ajouter une échelle en bas à gauche sans l'affichage en pieds
 		L.control.scale({ position: 'bottomleft', imperial: false }).addTo(map);
@@ -325,10 +327,10 @@
 			labelsLayer.eachLayer(function(layer) {
 			  layer.bringToFront();
 			});
-		  } else if (eventLayer.name === 'Continuité') {
-			continuiteLayer.eachLayer(function(layer) {
-			  layer.bringToFront();
-			});
+		  <!-- } else if (eventLayer.name === 'Continuité') { -->
+			<!-- continuiteLayer.eachLayer(function(layer) { -->
+			  <!-- layer.bringToFront(); -->
+			<!-- }); -->
 		  }
 		});
 
