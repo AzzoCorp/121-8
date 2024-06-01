@@ -1,4 +1,4 @@
-export const favorables = {
+var favorables = {
     "type": "FeatureCollection",
     "features": [
         {
