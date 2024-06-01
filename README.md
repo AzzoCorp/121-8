@@ -20,5 +20,4 @@ De nombreuses communes semblent déjà utiliser ce système. Actuellement, les f
 2 systèmes d'affichages
 
 maptalks > https://manipuliti.github.io/121-8/index.html
-
-Leaflet > https://manipuliti.github.io/121-8/indexLaeflet.html
+Leaflet > https://manipuliti.github.io/121-8/indexLeaflet.html
