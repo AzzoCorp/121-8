@@ -1,4 +1,4 @@
-var depots = {
+export const  depots = {
     "type": "FeatureCollection",
     "features": [
         {

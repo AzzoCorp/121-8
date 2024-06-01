@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Map - Display a map</title>
   <style>
     html, body {margin: 0px; height: 100%; width: 100%; background: transparent;}
@@ -21,42 +22,64 @@
   </style>
   <link rel="stylesheet" href="https://unpkg.com/maptalks/dist/maptalks.css">
   <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-  <script src="./GeoDatas/depots.js"></script>
-  <script src="./GeoDatas/favorables.js"></script>
-  <body>
-    <div id="map" class="container"></div>
-    <script>
-      var map = new maptalks.Map('map', {
-        center: [9.27970, 41.59099], zoom: 10,
-        baseLayer: new maptalks.TileLayer('base', {
-          urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png', subdomains: ["a", "b", "c"]
-        }), layers: []
-      });
+</head>
+<body>
+  <div id="map" class="container"></div>
+  <script type="module">
+    var map = new maptalks.Map('map', {
+      center: [9.27970, 41.59099], zoom: 10,
+      baseLayer: new maptalks.TileLayer('base', {
+        urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png', subdomains: ["a", "b", "c"]
+      }), layers: []
+    });
 
-      function changeView() {
-        map.animateTo({ center: [9.27970, 41.59099], zoom: 5, pitch: 60, bearing: 20 }, {duration: 5000});
-        setTimeout(function() {
-          map.animateTo({ center: [9.27970, 41.59099], zoom: 17, pitch: 55, bearing: 90 }, {duration: 5000});
-        }, 5000);
-      }
+    function changeView() {
+      map.animateTo({ center: [9.27970, 41.59099], zoom: 5, pitch: 60, bearing: 20 }, {duration: 5000});
+      setTimeout(function() {
+        map.animateTo({ center: [9.27970, 41.59099], zoom: 17, pitch: 55, bearing: 90 }, {duration: 5000});
+      }, 5000);
+    }
 
-      function addGeoJSONLayer(geojson, className) {
-        var style = getComputedStyle(document.querySelector('.' + className));
-        var symbol = {
+    async function addGeoJSONLayer(type, className) {
+      try {
+        console.log(`Loading GeoJSON data for type: ${type}`);
+        
+        // Dynamically import the GeoJSON data based on the type
+        const module = await import(`./GeoDatas/${type}.js`);
+        console.log(`GeoJSON module loaded for type: ${type}`, module);
+
+        const geojson = module.default || module; // Adjust based on how the module exports the data
+        console.log(`GeoJSON data for type: ${type}`, geojson);
+
+        // Get the computed styles for the specified className
+        const style = getComputedStyle(document.querySelector(`.${className}`));
+        const symbol = {
           'lineColor': style.getPropertyValue('--line-color').trim(),
           'lineWidth': parseFloat(style.getPropertyValue('--line-width')),
           'polygonFill': style.getPropertyValue('--fill-color').trim(),
           'polygonOpacity': parseFloat(style.getPropertyValue('--fill-opacity'))
         };
-        var geometries = maptalks.GeoJSON.toGeometry(geojson);
-        var vectorLayer = new maptalks.VectorLayer().addTo(map);
-        vectorLayer.addGeometry(geometries);
-        geometries.forEach(function(geometry) { geometry.setSymbol(symbol); });
-      }
+        console.log(`Symbol for type: ${type}`, symbol);
 
-      changeView();
-      addGeoJSONLayer(depots, 'depotsS');
-      addGeoJSONLayer(favorables, 'favorablesS');
-    </script>
-  </body>
+        // Convert the GeoJSON data to geometries using maptalks
+        const geometries = maptalks.GeoJSON.toGeometry(geojson);
+        console.log(`Geometries for type: ${type}`, geometries);
+
+        const vectorLayer = new maptalks.VectorLayer().addTo(map);
+        console.log(`Vector layer created for type: ${type}`);
+
+        // Add the geometries to the vector layer and apply the styles
+        vectorLayer.addGeometry(geometries);
+        geometries.forEach(geometry => geometry.setSymbol(symbol));
+        console.log(`Geometries added to vector layer for type: ${type}`);
+      } catch (error) {
+        console.error('Error loading GeoJSON data:', error);
+      }
+    }
+
+    changeView();
+    addGeoJSONLayer('depots', 'depotsS');
+    addGeoJSONLayer('favorables', 'favorablesS');
+  </script>
+</body>
 </html>
