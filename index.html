@@ -52,7 +52,11 @@
         console.log(`GeoJSON data for type: ${type}`, geojson);
 
         // Get the computed styles for the specified className
-        const style = getComputedStyle(document.querySelector(`.${className}`));
+        const element = document.querySelector(`.${className}`);
+        if (!element) {
+          throw new Error(`Element with class name ${className} not found`);
+        }
+        const style = getComputedStyle(element);
         const symbol = {
           'lineColor': style.getPropertyValue('--line-color').trim(),
           'lineWidth': parseFloat(style.getPropertyValue('--line-width')),
