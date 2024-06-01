@@ -3,17 +3,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Map - Display a map</title>
-  <style type="text/css">
-    html, body {
-      margin: 0px;
-      height: 100%;
-      width: 100%;
-      background: transparent;
+  <style>
+    html, body {margin: 0px; height: 100%; width: 100%; background: transparent;}
+    .container {width: 100%; height: 100%; background: transparent;}
+    .depotsS {
+      --line-color: #ff00fe;
+      --line-width: 1;
+      --fill-color: #ff00fe;
+      --fill-opacity: 1;
     }
-    .container {
-      width: 100%;
-      height: 100%;
-      background: transparent;
+    .favorablesS {
+      --line-color: #009cff;
+      --line-width: 1;
+      --fill-color: #009cff;
+      --fill-opacity: 1;
     }
   </style>
   <link rel="stylesheet" href="https://unpkg.com/maptalks/dist/maptalks.css">
@@ -24,68 +27,36 @@
     <div id="map" class="container"></div>
     <script>
       var map = new maptalks.Map('map', {
-        center: [9.27970, 41.59099],
-        zoom: 10,
+        center: [9.27970, 41.59099], zoom: 10,
         baseLayer: new maptalks.TileLayer('base', {
-          urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-          subdomains: ["a", "b", "c"],
-        }),
-        layers: [
-          new maptalks.VectorLayer('v'),
-          new maptalks.VectorLayer('favorablesLayer')
-        ]
+          urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png', subdomains: ["a", "b", "c"]
+        }), layers: []
       });
 
-      changeView();
-
       function changeView() {
-        map.animateTo({
-          center: [9.27970, 41.59099],
-          zoom: 5,
-          pitch: 60,
-          bearing: 20
-        }, { duration: 5000 });
-        setTimeout(function () {
-          map.animateTo({
-            center: [9.27970, 41.59099],
-            zoom: 17,
-            pitch: 55,
-            bearing: 90
-          }, { duration: 5000 });
+        map.animateTo({ center: [9.27970, 41.59099], zoom: 5, pitch: 60, bearing: 20 }, {duration: 5000});
+        setTimeout(function() {
+          map.animateTo({ center: [9.27970, 41.59099], zoom: 17, pitch: 55, bearing: 90 }, {duration: 5000});
         }, 5000);
       }
 
-      // Add depots layer
-      var depotsJson = depots;
-      var depotsGeometries = maptalks.GeoJSON.toGeometry(depotsJson);
-      var depotsLayer = map.getLayer('v');
-      depotsLayer.addGeometry(depotsGeometries);
+      function addGeoJSONLayer(geojson, className) {
+        var style = getComputedStyle(document.querySelector('.' + className));
+        var symbol = {
+          'lineColor': style.getPropertyValue('--line-color').trim(),
+          'lineWidth': parseFloat(style.getPropertyValue('--line-width')),
+          'polygonFill': style.getPropertyValue('--fill-color').trim(),
+          'polygonOpacity': parseFloat(style.getPropertyValue('--fill-opacity'))
+        };
+        var geometries = maptalks.GeoJSON.toGeometry(geojson);
+        var vectorLayer = new maptalks.VectorLayer().addTo(map);
+        vectorLayer.addGeometry(geometries);
+        geometries.forEach(function(geometry) { geometry.setSymbol(symbol); });
+      }
 
-      // Apply style to the depots GeoJSON layer
-      depotsGeometries.forEach(function(geometry) {
-        geometry.setSymbol({
-          'lineColor' : '#ff00fe',
-          'lineWidth' : 1,
-          'polygonFill' : '#ff00fe',
-          'polygonOpacity' : 1
-        });
-      });
-
-      // Add favorables layer
-      var favorablesJson = favorables;
-      var favorablesGeometries = maptalks.GeoJSON.toGeometry(favorablesJson);
-      var favorablesLayer = map.getLayer('favorablesLayer');
-      favorablesLayer.addGeometry(favorablesGeometries);
-
-      // Apply style to the favorables GeoJSON layer
-      favorablesGeometries.forEach(function(geometry) {
-        geometry.setSymbol({
-          'lineColor' : '#009cff',
-          'lineWidth' : 1,
-          'polygonFill' : '#009cff',
-          'polygonOpacity' : 1
-        });
-      });
+      changeView();
+      addGeoJSONLayer(depots, 'depotsS');
+      addGeoJSONLayer(favorables, 'favorablesS');
     </script>
   </body>
 </html>
