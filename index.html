@@ -18,7 +18,8 @@
   </style>
   <link rel="stylesheet" href="https://unpkg.com/maptalks/dist/maptalks.css">
   <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-  <script src="./GeoDatas/commune.js"></script>
+  <script src="./GeoDatas/depots.js"></script>
+  <script src="./GeoDatas/favorables.js"></script>
   <body>
     <div id="map" class="container"></div>
     <script>
@@ -30,7 +31,8 @@
           subdomains: ["a", "b", "c"],
         }),
         layers: [
-          new maptalks.VectorLayer('v')
+          new maptalks.VectorLayer('v'),
+          new maptalks.VectorLayer('favorablesLayer')
         ]
       });
 
@@ -53,18 +55,35 @@
         }, 5000);
       }
 
-      var json = commune;
-      var geometries = maptalks.GeoJSON.toGeometry(json);
-      var vectorLayer = map.getLayer('v');
-      vectorLayer.addGeometry(geometries);
+      // Add depots layer
+      var depotsJson = depots;
+      var depotsGeometries = maptalks.GeoJSON.toGeometry(depotsJson);
+      var depotsLayer = map.getLayer('v');
+      depotsLayer.addGeometry(depotsGeometries);
 
-      // Apply style to the GeoJSON layer
-      geometries.forEach(function(geometry) {
+      // Apply style to the depots GeoJSON layer
+      depotsGeometries.forEach(function(geometry) {
         geometry.setSymbol({
-          'lineColor' : '#1bbc9b',
-          'lineWidth' : 2,
-          'polygonFill' : 'transparent',
-          'polygonOpacity' : 0
+          'lineColor' : '#ff00fe',
+          'lineWidth' : 1,
+          'polygonFill' : '#ff00fe',
+          'polygonOpacity' : 1
+        });
+      });
+
+      // Add favorables layer
+      var favorablesJson = favorables;
+      var favorablesGeometries = maptalks.GeoJSON.toGeometry(favorablesJson);
+      var favorablesLayer = map.getLayer('favorablesLayer');
+      favorablesLayer.addGeometry(favorablesGeometries);
+
+      // Apply style to the favorables GeoJSON layer
+      favorablesGeometries.forEach(function(geometry) {
+        geometry.setSymbol({
+          'lineColor' : '#009cff',
+          'lineWidth' : 1,
+          'polygonFill' : '#009cff',
+          'polygonOpacity' : 1
         });
       });
     </script>
