@@ -96,8 +96,8 @@
 		  tolerance: 3,
 		  debug: 0,
 		  style: {
-			fillColor: "#00ff2a",
-			color: "#00ff2a",
+			fillColor: "#ff00fe",
+			color: "#ff00fe",
 			weight: 5,
 			opacity: 1,
 			fillOpacity: 1,
@@ -109,8 +109,8 @@
 		  tolerance: 3,
 		  debug: 0,
 		  style: {
-			fillColor: "#00ecff",
-			color: "#00ecff",
+			fillColor: "#009cff",
+			color: "#009cff",
 			weight: 5,
 			opacity: 1,
 			fillOpacity: 1,
@@ -256,7 +256,6 @@
 		};
 		var communeLayer = L.geoJSON(commune, { style: communeStyle }).addTo(map);
 		
-		
 		var parcellesLayer = L.vectorGrid.slicer(parcelles, {
 		  rendererFactory: L.canvas.tile,
 		  vectorTileLayerStyles: {
@@ -288,7 +287,9 @@
 		}).addTo(tempLayer);
 
 		var continuitesLayer = L.geoJSON(continuites, optionsContinuites).addTo(tempLayer);
-
+		continuitesLayer.eachLayer(function(layer) {
+			  layer.bringToBack();
+			});
 		var baseLayers = {
 		  "Vectoriel": osmLayer,
 		  "Satellite": googleSat,
