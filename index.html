@@ -51,6 +51,11 @@
             'visible' : false,
             'urlTemplate': 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
             'subdomains'  : ['a','b','c','d']
+          }),
+		    new maptalks.TileLayer('Satelite',{
+            'visible' : false,
+            'urlTemplate': 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+			'subdomains':['mt0','mt1','mt2','mt3']
           })
         ])
 	});
@@ -88,6 +93,7 @@
           geometries.forEach(geometry => geometry.setSymbol(style));
           var vectorLayer = new maptalks.VectorLayer(layerName).addTo(map);
           vectorLayer.addGeometry(geometries);
+		  
 
 		  
 
