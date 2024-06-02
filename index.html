@@ -26,12 +26,42 @@
       var map = new maptalks.Map('map', {
         center: [9.27970, 41.59099],
         zoom: 10,
-        baseLayer: new maptalks.TileLayer('base', {
-          urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-          subdomains: ["a", "b", "c"],
-        }),
-        layers: []
-      });
+		layerSwitcherControl: {
+          'position'  : 'top-right',
+          // title of base layers
+          'baseTitle' : 'Base Layers',
+          // title of layers
+          'overlayTitle' : 'Layers',
+          // layers you don't want to manage with layer switcher
+          'excludeLayers' : [],
+          // css class of container element, maptalks-layer-switcher by default
+          'containerClass' : 'maptalks-layer-switcher'
+        },
+        baseLayer: new maptalks.GroupTileLayer('Base TileLayer', [
+          new maptalks.TileLayer('base', {
+			  urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
+			  subdomains: ["a", "b", "c"],
+		  }),
+		  new maptalks.TileLayer('Carto light',{
+		    'visible' : false,
+            'urlTemplate': 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+            'subdomains'  : ['a','b','c','d']
+          }),
+          new maptalks.TileLayer('Carto dark',{
+            'visible' : false,
+            'urlTemplate': 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+            'subdomains'  : ['a','b','c','d']
+          })
+        ])
+	});
+   
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 
       changeView();
 
@@ -52,15 +82,15 @@
         }, 5000);
       }
 
-      function addGeoJSONLayer(geojson, layerName, style) {
-        var geometries = maptalks.GeoJSON.toGeometry(geojson);
-        var vectorLayer = new maptalks.VectorLayer(layerName).addTo(map);
-        vectorLayer.addGeometry(geometries);
+      function addGeoJSONLayer(geojson, style, layerName) {
+        // Check if the layer already exists in the map
+          var geometries = maptalks.GeoJSON.toGeometry(geojson);
+          geometries.forEach(geometry => geometry.setSymbol(style));
+          var vectorLayer = new maptalks.VectorLayer(layerName).addTo(map);
+          vectorLayer.addGeometry(geometries);
 
-        // Apply style to the GeoJSON layer
-        geometries.forEach(function(geometry) {
-          geometry.setSymbol(style);
-        });
+		  
+
       }
 
       // Define styles
@@ -79,10 +109,10 @@
       };
 
       // Add depots layer
-      addGeoJSONLayer(depots, 'depotsLayer', depotsStyle);
+      addGeoJSONLayer(depots, depotsStyle, 'depotsLayer');
 
       // Add favorables layer
-      addGeoJSONLayer(favorables, 'favorablesLayer', favorablesStyle);
+      addGeoJSONLayer(favorables, favorablesStyle, 'favorablesLayer');
     </script>
   </body>
 </html>

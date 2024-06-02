@@ -1,4 +1,4 @@
-depots = {
+var depots = {
     "type": "FeatureCollection",
     "features": [
         {
