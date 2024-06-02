@@ -26,47 +26,36 @@
       var map = new maptalks.Map('map', {
         center: [9.27970, 41.59099],
         zoom: 10,
-		layerSwitcherControl: {
+        pitch: 45, // Add pitch to view the altitude effect
+        layerSwitcherControl: {
           'position'  : 'top-right',
-          // title of base layers
           'baseTitle' : 'Base Layers',
-          // title of layers
           'overlayTitle' : 'Layers',
-          // layers you don't want to manage with layer switcher
           'excludeLayers' : [],
-          // css class of container element, maptalks-layer-switcher by default
           'containerClass' : 'maptalks-layer-switcher'
         },
         baseLayer: new maptalks.GroupTileLayer('Base TileLayer', [
-          new maptalks.TileLayer('base', {
-			  urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-			  subdomains: ["a", "b", "c"],
-		  }),
-		  new maptalks.TileLayer('Carto light',{
-		    'visible' : false,
+          new maptalks.TileLayer('Vectorielle', {
+            urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
+            subdomains: ["a", "b", "c"],
+          }),
+          new maptalks.TileLayer('Claire',{
+            'visible' : false,
             'urlTemplate': 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
             'subdomains'  : ['a','b','c','d']
           }),
-          new maptalks.TileLayer('Carto dark',{
+          new maptalks.TileLayer('Foncée',{
             'visible' : false,
             'urlTemplate': 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
             'subdomains'  : ['a','b','c','d']
           }),
-		    new maptalks.TileLayer('Satelite',{
+          new maptalks.TileLayer('Satelite',{
             'visible' : false,
             'urlTemplate': 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-			'subdomains':['mt0','mt1','mt2','mt3']
+            'subdomains':['mt0','mt1','mt2','mt3']
           })
         ])
-	});
-   
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+      });
 
       changeView();
 
@@ -87,28 +76,102 @@
         }, 5000);
       }
 
+      function extractSquareMeters(text) {
+        if (!text) return 0;
+        var match = text.match(/Surface plancher créée\s*:\s*([\d,.]+)\s*m²/);
+        var squareMeters = match ? parseFloat(match[1].replace(',', '.')) : 0;
+        return squareMeters;
+      }
+
       function addGeoJSONLayer(geojson, style, layerName) {
-        // Check if the layer already exists in the map
-          var geometries = maptalks.GeoJSON.toGeometry(geojson);
-          geometries.forEach(geometry => geometry.setSymbol(style));
-          var vectorLayer = new maptalks.VectorLayer(layerName).addTo(map);
-          vectorLayer.addGeometry(geometries);
-		  
+        console.log('Adding GeoJSON Layer:', layerName);
+        var geometries = maptalks.GeoJSON.toGeometry(geojson);
+        var vectorLayer = new maptalks.VectorLayer(layerName, { enableAltitude: true }).addTo(map);
+        var labelLayer = new maptalks.VectorLayer(layerName + '_labels', {
+          collision: true // Enable collision detection for the label layer
+        }).addTo(map);
 
-		  
+        var shadowSymbol = {
+          lineColor: '#333332',
+          lineDasharray: [10, 5, 5],
+          lineWidth: 2,
+          polygonFill: '#333332',
+          polygonOpacity: 0.4
+        };
+        var shadows = [];
 
+        geometries.forEach(geometry => {
+          var properties = geometry.getProperties();
+          console.log('Geometry properties:', properties);
+          var depots = properties.depots && properties.depots[0]; // Check if depots and the first item exist
+          var areaText = depots ? depots[7] : ''; // Assuming the 8th item is at index 7
+          console.log('Area text:', areaText);
+          var altitude = extractSquareMeters(areaText) / 100; // Divide by 10 for a more realistic number
+          console.log('Calculated altitude:', altitude);
+
+          // Ensure properties include the altitude
+          properties.altitude = altitude;
+          geometry.setProperties(properties);
+
+          // Verify properties after setting altitude
+          console.log('Updated geometry properties:', geometry.getProperties());
+
+          // Set the symbol without altitude
+          geometry.setSymbol({
+            'lineColor': style.lineColor,
+            'lineWidth': style.lineWidth,
+            'polygonFill': style.polygonFill,
+            'polygonOpacity': style.polygonOpacity
+          });
+
+          vectorLayer.addGeometry(geometry);
+
+          // Create shadow geometry
+          var shadow = geometry.copy().setSymbol(shadowSymbol);
+          shadows.push(shadow);
+
+          var center = geometry.getCenter();
+          var label = new maptalks.Label(properties.numero + ' ' + properties.section, center, {
+            'textSymbol': {
+              'textFaceName': 'monospace',
+              'textFill': '#34495e',
+              'textHorizontalAlignment': 'center',
+              'textVerticalAlignment': 'middle',
+              'textWeight': 'bold' // Make the text bold
+            }
+          });
+          labelLayer.addGeometry(label);
+        });
+
+        // Add shadows to a new layer and bring it to back
+        new maptalks.VectorLayer(layerName + '_shadows', shadows).addTo(map).bringToBack();
+
+        // Add zoomend event listener to control label visibility
+        map.on('zoomend', function() {
+          var zoom = map.getZoom();
+          if (zoom >= 12) {
+            labelLayer.show();
+          } else {
+            labelLayer.hide();
+          }
+        });
+
+        // Initial visibility check
+        if (map.getZoom() < 12) {
+          labelLayer.hide();
+        }
       }
 
       // Define styles
       var depotsStyle = {
-        'lineColor' : '#ff00fe',
+        'lineColor' : '#030000',
         'lineWidth' : 1,
         'polygonFill' : '#ff00fe',
         'polygonOpacity' : 1
       };
 
       var favorablesStyle = {
-        'lineColor' : '#009cff',
+        'lineColor' : '#030000',
         'lineWidth' : 1,
         'polygonFill' : '#009cff',
         'polygonOpacity' : 1
