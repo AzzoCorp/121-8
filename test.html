@@ -1,164 +1,122 @@
-<!DOCTYPE html>
-<html>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Map - Display a map</title>
-  <style type="text/css">
-    html, body {
-      margin: 0px;
-      height: 100%;
-      width: 100%;
-      background: transparent;
+function addGeoJSONLayer(geojson, style, layerName) {
+  var geometries = maptalks.GeoJSON.toGeometry(geojson);
+  var vectorLayer = new maptalks.VectorLayer(layerName, { enableAltitude: true }).addTo(map);
+  var labelLayer = new maptalks.VectorLayer(layerName + '_labels', {
+    collision: true // Activer la détection de collision pour la couche de labels
+  }).addTo(map);
+
+  var shadowSymbol = {
+    lineColor: '#999999',
+    lineDasharray: [10, 5, 5],
+    lineWidth: 2,
+    polygonFill: '#999999',
+    polygonOpacity: 1,
+    shadowBlur: 30, // Ajouter un flou à l'ombre
+    shadowColor: 'rgba(0, 0, 0, 1)', // Couleur de l'ombre avec transparence
+    shadowOffsetX: 0, // Décalage horizontal de l'ombre
+    shadowOffsetY: 0  // Décalage vertical de l'ombre
+  };
+  var shadows = [];
+
+  geometries.forEach(geometry => {
+    var properties = geometry.getProperties();
+    var areaText = '';
+    if (layerName === 'depotsLayer') {
+      var depots = properties.depots && properties.depots[0]; // Vérifier si depots et le premier élément existent
+      areaText = depots ? depots[7] : ''; // Supposer que le 8ème élément est à l'index 7
+    } else if (layerName === 'favorablesLayer') {
+      var decisions = properties.decisions && properties.decisions[0]; // Vérifier si decisions et le premier élément existent
+      areaText = decisions ? decisions[7] : ''; // Supposer que le 8ème élément est à l'index 7
     }
-    .container {
-      width: 100%;
-      height: 100%;
-      background: transparent;
+
+    console.log('Texte de la surface pour ' + layerName + ':', areaText);
+    var altitude = extractSquareMeters(areaText) / 50; // Diviser par 50 pour un nombre plus réaliste
+    console.log('Altitude calculée pour ' + layerName + ':', altitude);
+
+    // S'assurer que les propriétés incluent l'altitude
+    properties.altitude = altitude;
+    geometry.setProperties(properties);
+
+    // Définir le symbole sans altitude
+    geometry.setSymbol({
+      'lineColor': style.lineColor,
+      'lineWidth': style.lineWidth,
+      'polygonFill': style.polygonFill,
+      'polygonOpacity': style.polygonOpacity
+    });
+
+    vectorLayer.addGeometry(geometry);
+
+    // Créer la géométrie d'ombre
+    var shadow = geometry.copy().setSymbol(shadowSymbol);
+    shadow.setProperties({ altitude: 0 }); // Définir l'altitude de l'ombre à 0
+    shadows.push(shadow);
+
+    var center = geometry.getCenter();
+    var label = new maptalks.Label(properties.numero + ' ' + properties.section, center, {
+      'textSymbol': {
+        'textFaceName': 'monospace',
+        'textFill': '#34495e',
+        'textHorizontalAlignment': 'center',
+        'textVerticalAlignment': 'middle',
+        'textWeight': 'bold' // Rendre le texte en gras
+      }
+    });
+    labelLayer.addGeometry(label);
+  });
+
+  // Ajouter les ombres à une nouvelle couche et les mettre en arrière-plan
+  new maptalks.VectorLayer(layerName + '_shadows', shadows, { enableAltitude: true }).addTo(map).bringToBack();
+
+  // Ajouter un écouteur d'événement zoomend pour contrôler la visibilité des labels
+  map.on('zoomend', function() {
+    var zoom = map.getZoom();
+    if (zoom >= 12) {
+      labelLayer.show();
+    } else {
+      labelLayer.hide();
     }
-  </style>
-  <link rel="stylesheet" href="https://unpkg.com/maptalks/dist/maptalks.css">
-  <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-  <script src="./GeoDatas/depots.js"></script>
-  <script src="./GeoDatas/favorables.js"></script>
-  <body>
-    <div id="map" class="container"></div>
-    <script>
-      var map = new maptalks.Map('map', {
-        center: [9.27970, 41.59099],
-        zoom: 10,
-        pitch: 45, // Add pitch to view the altitude effect
-        baseLayer: new maptalks.GroupTileLayer('Base TileLayer', [
-          new maptalks.TileLayer('Vectorielle', {
-            urlTemplate: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-            subdomains: ["a", "b", "c"],
-          }),
-          new maptalks.TileLayer('Claire',{
-            'visible' : false,
-            'urlTemplate': 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-            'subdomains'  : ['a','b','c','d']
-          }),
-          new maptalks.TileLayer('Foncée',{
-            'visible' : false,
-            'urlTemplate': 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-            'subdomains'  : ['a','b','c','d']
-          }),
-          new maptalks.TileLayer('Satelite',{
-            'visible' : false,
-            'urlTemplate': 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-            'subdomains':['mt0','mt1','mt2','mt3']
-          })
-        ])
-      });
+  });
 
-      changeView();
+  // Vérification initiale de la visibilité
+  if (map.getZoom() < 12) {
+    labelLayer.hide();
+  }
 
-      function changeView() {
-        map.animateTo({
-          center: [9.27970, 41.59099],
-          zoom: 5,
-          pitch: 60,
-          bearing: 20
-        }, { duration: 5000 });
-        setTimeout(function () {
-          map.animateTo({
-            center: [9.27970, 41.59099],
-            zoom: 17,
-            pitch: 55,
-            bearing: 90
-          }, { duration: 5000 });
-        }, 5000);
-      }
-
-      function extractSquareMeters(text) {
-        if (!text) return 0;
-        var match = text.match(/Surface plancher créée\s*:\s*([\d,.]+)\s*m²/);
-        var squareMeters = match ? parseFloat(match[1].replace(',', '.')) : 0;
-        return squareMeters;
-      }
-
-      function addGeoJSONLayer(geojson, style, layerName) {
-        console.log('Adding GeoJSON Layer:', layerName);
-        var geometries = maptalks.GeoJSON.toGeometry(geojson);
-        var vectorLayer = new maptalks.VectorLayer(layerName, { enableAltitude: true }).addTo(map);
-        var labelLayer = new maptalks.VectorLayer(layerName + '_labels', {
-          collision: true // Enable collision detection for the label layer
-        }).addTo(map);
-
-        geometries.forEach(geometry => {
-          var properties = geometry.getProperties();
-          console.log('Geometry properties:', properties);
-          var depots = properties.depots && properties.depots[0]; // Check if depots and the first item exist
-          var areaText = depots ? depots[7] : ''; // Assuming the 8th item is at index 7
-          console.log('Area text:', areaText);
-          var altitude = extractSquareMeters(areaText) / 10; // Divide by 10 for a more realistic number
-          console.log('Calculated altitude:', altitude);
-
-          // Ensure properties include the altitude
-          properties.altitude = altitude;
-          geometry.setProperties(properties);
-
-          // Verify properties after setting altitude
-          console.log('Updated geometry properties:', geometry.getProperties());
-
-          // Set the symbol without altitude
-          geometry.setSymbol({
-            'lineColor': style.lineColor,
-            'lineWidth': style.lineWidth,
-            'polygonFill': style.polygonFill,
-            'polygonOpacity': style.polygonOpacity
-          });
-
-          vectorLayer.addGeometry(geometry);
-
-          var center = geometry.getCenter();
-          var label = new maptalks.Label(properties.numero + ' ' + properties.section, center, {
-            'textSymbol': {
-              'textFaceName': 'monospace',
-              'textFill': '#34495e',
-              'textHorizontalAlignment': 'center',
-              'textVerticalAlignment': 'middle',
-              'textWeight': 'bold' // Make the text bold
-            }
-          });
-          labelLayer.addGeometry(label);
-        });
-
-        // Add zoomend event listener to control label visibility
-        map.on('zoomend', function() {
-          var zoom = map.getZoom();
-          if (zoom >= 12) {
-            labelLayer.show();
-          } else {
-            labelLayer.hide();
-          }
-        });
-
-        // Initial visibility check
-        if (map.getZoom() < 12) {
-          labelLayer.hide();
-        }
-      }
-
-      // Define styles
-      var depotsStyle = {
-        'lineColor' : '#ff00fe',
-        'lineWidth' : 1,
-        'polygonFill' : '#ff00fe',
-        'polygonOpacity' : 1
+  // Ajouter un effet de flou aux polygones du calque favorablesLayer
+  if (layerName === 'favorablesLayer') {
+    var blurLayer = new maptalks.VectorLayer(layerName + '_blur', { enableAltitude: true }).addTo(map);
+    geometries.forEach(geometry => {
+      var blurSymbol = {
+        'lineColor': 'rgba(0, 0, 0, 0)', // Pas de bordure
+        'polygonFill': 'rgba(0, 156, 255, 0.5)', // Couleur semi-transparente
+        'polygonOpacity': 0.5
       };
+      for (var i = 1; i <= 5; i++) { // Ajouter plusieurs copies pour simuler le flou
+        var blurGeometry = geometry.copy().translate(i, i).setSymbol(blurSymbol);
+        blurLayer.addGeometry(blurGeometry);
+      }
+    });
+  }
+}
 
-      var favorablesStyle = {
-        'lineColor' : '#009cff',
-        'lineWidth' : 1,
-        'polygonFill' : '#009cff',
-        'polygonOpacity' : 1
-      };
+// Définir les styles
+var depotsStyle = {
+  'lineColor' : '#030000',
+  'lineWidth' : 0.5,
+  'polygonFill' : '#ff00fe',
+  'polygonOpacity' : 1
+};
 
-      // Add depots layer
-      addGeoJSONLayer(depots, depotsStyle, 'depotsLayer');
+var favorablesStyle = {
+  'lineColor' : '#030000',
+  'lineWidth' : 0.5,
+  'polygonFill' : '#009cff',
+  'polygonOpacity' : 1
+};
 
-      // Add favorables layer
-      addGeoJSONLayer(favorables, favorablesStyle, 'favorablesLayer');
-    </script>
-  </body>
-</html>
+// Ajouter la couche des dépôts
+addGeoJSONLayer(depots, depotsStyle, 'depotsLayer');
+
+// Ajouter la couche des favorables
+addGeoJSONLayer(favorables, favorablesStyle, 'favorablesLayer');
