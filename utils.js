@@ -55,7 +55,7 @@ function addGeoJSONLayer(geojson, style, layerName) {
     shadows.push(shadow);
 
     var center = geometry.getCenter();
-    var label = new maptalks.Label(properties.numero + ' ' + properties.section, center, {
+    var label = new maptalks.Label(properties.section + ' ' + properties.numero, center, {
       'textSymbol': {
         'textFaceName': 'monospace',
         'textFill': '#34495e',
