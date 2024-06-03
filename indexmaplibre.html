@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map - Display a map</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" />
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    #map {
+      height: 100%;
+    }
+
+    .layer-switcher {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+  </style>
+  <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
+  <script src="./GeoDatas/depots.js"></script>
+  <script src="./GeoDatas/favorables.js"></script>
+  <script src="./GeoDatas/parcelles.js"></script>
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="layerSwitcher" class="layer-switcher"></div>
+
+  <script>
+    var map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+      center: [9.27970, 41.59099],
+      zoom: 10,
+      pitch: 45
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+
+    map.on('load', function () {
+      map.addSource('osm', {
+        type: 'raster',
+        tiles: ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        maxzoom: 19,
+        subdomains: ['a', 'b', 'c']
+      });
+
+      map.addLayer({
+        'id': 'osm-layer',
+        'type': 'raster',
+        'source': 'osm',
+        'layout': { 'visibility': 'visible' }
+      });
+
+      map.addSource('carto-light', {
+        type: 'raster',
+        tiles: ['https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        maxzoom: 19,
+        subdomains: ['a', 'b', 'c', 'd']
+      });
+
+      map.addLayer({
+        'id': 'carto-light-layer',
+        'type': 'raster',
+        'source': 'carto-light',
+        'layout': { 'visibility': 'none' }
+      });
+
+      map.addSource('carto-dark', {
+        type: 'raster',
+        tiles: ['https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        maxzoom: 19,
+        subdomains: ['a', 'b', 'c', 'd']
+      });
+
+      map.addLayer({
+        'id': 'carto-dark-layer',
+        'type': 'raster',
+        'source': 'carto-dark',
+        'layout': { 'visibility': 'none' }
+      });
+
+      map.addSource('satellite', {
+        type: 'raster',
+        tiles: ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'], // Replace with a similar accessible satellite tiles
+        tileSize: 256,
+        maxzoom: 19,
+        subdomains: ['a', 'b', 'c']
+      });
+
+      map.addLayer({
+        'id': 'satellite-layer',
+        'type': 'raster',
+        'source': 'satellite',
+        'layout': { 'visibility': 'none' }
+      });
+
+      // Create base layer switcher
+      createLayerSwitcher();
+
+      // Add GeoJSON layers
+      addGeoJSONLayer(depots, 'depotsLayer', {
+        'fill-color': '#ff00fe',
+        'fill-opacity': 0.5,
+        'line-color': '#030000',
+        'line-width': 1
+      });
+      addGeoJSONLayer(favorables, 'favorablesLayer', {
+        'fill-color': '#009cff',
+        'fill-opacity': 0.5,
+        'line-color': '#030000',
+        'line-width': 1
+      });
+
+      // Ensure popups work properly
+      map.on('click', 'depotsLayer', function (e) {
+        var coordinates = e.lngLat;
+        var properties = e.features[0].properties;
+        var popupContent = generatePopupContent(properties, 'depotsLayer');
+
+        new maplibregl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(popupContent)
+          .addTo(map);
+      });
+
+      map.on('click', 'favorablesLayer', function (e) {
+        var coordinates = e.lngLat;
+        var properties = e.features[0].properties;
+        var popupContent = generatePopupContent(properties, 'favorablesLayer');
+
+        new maplibregl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(popupContent)
+          .addTo(map);
+      });
+
+      map.on('mouseenter', 'depotsLayer', function () {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      map.on('mouseleave', 'depotsLayer', function () {
+        map.getCanvas().style.cursor = '';
+      });
+
+      map.on('mouseenter', 'favorablesLayer', function () {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      map.on('mouseleave', 'favorablesLayer', function () {
+        map.getCanvas().style.cursor = '';
+      });
+    });
+
+    function createLayerSwitcher() {
+      var layerSwitcher = document.getElementById('layerSwitcher');
+
+      var layers = {
+        'osm-layer': 'Vectorielle',
+        'carto-light-layer': 'Claire',
+        'carto-dark-layer': 'Foncée',
+        'satellite-layer': 'Satelite',
+        'depotsLayer': 'Depots',
+        'favorablesLayer': 'Favorables'
+      };
+
+      for (var layer in layers) {
+        var input = document.createElement('input');
+        input.type = layer === 'depotsLayer' || layer === 'favorablesLayer' ? 'checkbox' : 'radio';
+        input.name = layer === 'depotsLayer' || layer === 'favorablesLayer' ? 'overlay-layer' : 'base-layer';
+        input.id = layer;
+        input.value = layer;
+        input.onchange = function (e) {
+          if (e.target.type === 'checkbox') {
+            toggleOverlayLayer(e.target.id, e.target.checked);
+          } else {
+            setBaseLayer(e.target.value);
+          }
+        };
+
+        if (layer === 'osm-layer') {
+          input.checked = true;
+        }
+
+        var label = document.createElement('label');
+        label.htmlFor = layer;
+        label.innerText = layers[layer];
+
+        layerSwitcher.appendChild(input);
+        layerSwitcher.appendChild(label);
+        layerSwitcher.appendChild(document.createElement('br'));
+      }
+    }
+
+    function setBaseLayer(layerId) {
+      var baseLayers = ['osm-layer', 'carto-light-layer', 'carto-dark-layer', 'satellite-layer'];
+      baseLayers.forEach(function (layer) {
+        map.setLayoutProperty(layer, 'visibility', layer === layerId ? 'visible' : 'none');
+      });
+    }
+
+    function toggleOverlayLayer(layerId, isVisible) {
+      map.setLayoutProperty(layerId, 'visibility', isVisible ? 'visible' : 'none');
+      map.setLayoutProperty(layerId + '-lines', 'visibility', isVisible ? 'visible' : 'none');
+      map.setLayoutProperty(layerId + '-labels', 'visibility', isVisible ? 'visible' : 'none');
+    }
+
+    function animateView() {
+      map.flyTo({
+        center: [9.27970, 41.59099],
+        zoom: 5,
+        pitch: 60,
+        bearing: 20,
+        duration: 5000
+      });
+
+      setTimeout(function () {
+        map.flyTo({
+          center: [9.27970, 41.59099],
+          zoom: 17,
+          pitch: 55,
+          bearing: 90,
+          duration: 5000
+        });
+      }, 5000);
+    }
+
+    map.on('load', function () {
+      animateView();
+    });
+
+    function addGeoJSONLayer(geojson, layerName, style) {
+      map.addSource(layerName, {
+        type: 'geojson',
+        data: geojson
+      });
+
+      map.addLayer({
+        id: layerName,
+        type: 'fill',
+        source: layerName,
+        paint: {
+          'fill-color': style['fill-color'],
+          'fill-opacity': style['fill-opacity'],
+          'fill-outline-color': style['line-color']
+        },
+        layout: {
+          'visibility': 'none'
+        }
+      });
+
+      map.addLayer({
+        id: layerName + '-lines',
+        type: 'line',
+        source: layerName,
+        paint: {
+          'line-color': style['line-color'],
+          'line-width': style['line-width']
+        },
+        layout: {
+          'visibility': 'none'
+        }
+      });
+
+      map.addLayer({
+        id: layerName + '-labels',
+        type: 'symbol',
+        source: layerName,
+        layout: {
+          'text-field': ['concat', ['get', 'section'], ' ', ['get', 'numero']],
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          'text-size': 12,
+          'visibility': 'none'
+        },
+        paint: {
+          'text-color': '#34495e'
+        }
+      });
+    }
+
+    function generatePopupContent(properties, layerName) {
+      var popupContent = '';
+
+      if (layerName === 'depotsLayer') {
+        popupContent = "<h2>Demande de permis de construire</h2>" +
+          "<b>Section:</b> " + properties.section + "<br>" +
+          "<b>Numéro:</b> " + properties.numero + "<br>" +
+          "<b>Commune:</b> " + properties.commune + "<br>" +
+          "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
+
+        if (properties.depots) {
+          try {
+            JSON.parse(properties.depots).forEach(function (depots) {
+              popupContent += "<b>Date d'affichage:</b> " + depots[0] + "<br>" +
+                "<b>N° de permis:</b> " + depots[1] + "<br>" +
+                "<b>Demandeur:</b> " + depots[3] + "<br>" +
+                "<b>Adresse:</b> " + depots[4] + "<br>" +
+                "<b>Superficie totale:</b> " + depots[5] + "<br>" +
+                "<b>Description:</b> " + depots[6] + "<br>" +
+                "<b>Détails:</b> " + depots[7] + "<br>" +
+                "<b>Date de dépôt:</b> " + depots[2] + "<br>";
+            });
+          } catch (e) {
+            console.error("Failed to parse depots properties:", e);
+          }
+        }
+      } else if (layerName === 'favorablesLayer') {
+        popupContent = "<h2>Permis de construire favorable</h2>" +
+          "<b>Section:</b> " + properties.section + "<br>" +
+          "<b>Numéro:</b> " + properties.numero + "<br>" +
+          "<b>Commune:</b> " + properties.commune + "<br>" +
+          "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
+
+        if (properties.decisions) {
+          try {
+            JSON.parse(properties.decisions).forEach(function (decision) {
+              popupContent += "<b>Référence:</b> " + decision[1] + "<br>" +
+                "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
+                "<b>Demandeur:</b> " + decision[3] + "<br>" +
+                "<b>Adresse:</b> " + decision[4] + "<br>" +
+                "<b>Superficie totale:</b> " + decision[5] + "<br>" +
+                "<b>Description:</b> " + decision[6] + "<br>" +
+                "<b>Détails:</b> " + decision[7] + "<br>" +
+                "<b>Statut:</b> " + decision[8] + "<br><br>";
+            });
+          } catch (e) {
+            console.error("Failed to parse decisions properties:", e);
+          }
+        }
+      }
+
+      return popupContent;
+    }
+  </script>
+</body>
+
+</html>
