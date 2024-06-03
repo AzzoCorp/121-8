@@ -1,6 +1,6 @@
 {
-    "recordsTotal": 90,
-    "recordsFiltered": 90,
+    "recordsTotal": 91,
+    "recordsFiltered": 91,
     "data": [
         [
             "02/11/2023",
@@ -901,6 +901,16 @@
             "225 m²",
             "la modification des hauteurs,de l'aspect extérieur, surface de plancher, nombre place stationnement",
             "- Surface plancher créée : 692 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "03/06/2024",
+            "PC 02A 247 24 R0130",
+            "03/06/2024",
+            "SCI PUNTA",
+            " lotissement Punta d oro 2  20137 taglio di mezzo (CA 49, CA 50)",
+            "3895 m²",
+            "l'extension d'une maison avec un garage et un studio accolée à de l'existant",
+            "- Surface plancher créée : 34 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ]
     ]
 }
