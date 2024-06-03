@@ -4,8 +4,8 @@ var map = new maptalks.Map('map', {
   pitch: 45,
   layerSwitcherControl: {
     'position': 'top-right',
-    'baseTitle': 'Couches de base',
-    'overlayTitle': 'Couches',
+    'baseTitle': 'Calques de base',
+    'overlayTitle': 'Calques',
     'excludeLayers': [],
     'containerClass': 'maptalks-layer-switcher'
   },
@@ -64,10 +64,16 @@ var favorablesStyle = {
   'polygonFill': '#009cff',
   'polygonOpacity': 1
 };
-
+var parcellesStyle = {
+  'lineColor': '#000000',
+  'lineWidth': 0.5,
+  'polygonFill': '#009cff',
+  'polygonOpacity': 1
+};
 addGeoJSONLayer(depots, depotsStyle, 'depotsLayer');
 addGeoJSONLayer(favorables, favorablesStyle, 'favorablesLayer');
 
+addGeoJSONLayerS(parcelles, parcellesStyle, 'parcellesLayer');
 var currentPopup = null;
 
 function onGeometryClick(e) {

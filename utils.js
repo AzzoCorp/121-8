@@ -4,6 +4,18 @@ function extractSquareMeters(text) {
   var squareMeters = match ? parseFloat(match[1].replace(',', '.')) : 0;
   return squareMeters;
 }
+// function addGeoJSONLayerS(geojson, layerName, style) {
+  // var geometries = maptalks.GeoJSON.toGeometry(geojson);
+  // var vectorLayer = new maptalks.VectorLayer(layerName).addTo(map);
+  // vectorLayer.addGeometry(geometries);
+
+  // Apply style to the GeoJSON layer
+  // geometries.forEach(function(geometry) {
+    // Debugging: Log the style object and properties
+  
+ // geometry.setStyle(style);
+  // });
+// }
 
 function addGeoJSONLayer(geojson, style, layerName) {
   var geometries = maptalks.GeoJSON.toGeometry(geojson);
