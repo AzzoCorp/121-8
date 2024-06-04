@@ -2,37 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Map - Display a map</title>
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" />
-  <style>
-    body,
-    html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-    }
-
-    #map {
-      height: 100%;
-    }
-
-    .layer-switcher {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: white;
-      padding: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      z-index: 1;
-    }
-  </style>
-  <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
-  <script src="./GeoDatas/depots.js"></script>
-  <script src="./GeoDatas/favorables.js"></script>
-  <script src="./GeoDatas/parcelles.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Map - Display a map</title>
+<link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css' />
+<link rel='stylesheet' href='styleMaplibre.css' />
+<script src='https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.js'></script>
+<script src="./GeoDatas/depots.js"></script>
+<script src="./GeoDatas/favorables.js"></script>
+<script src="./GeoDatas/parcelles.js"></script>
 </head>
 
 <body>
@@ -66,66 +44,29 @@
         'layout': { 'visibility': 'visible' }
       });
 
-      map.addSource('carto-light', {
-        type: 'raster',
-        tiles: ['https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
-        tileSize: 256,
-        maxzoom: 19,
-        subdomains: ['a', 'b', 'c', 'd']
-      });
 
-      map.addLayer({
-        'id': 'carto-light-layer',
-        'type': 'raster',
-        'source': 'carto-light',
-        'layout': { 'visibility': 'none' }
-      });
 
-      map.addSource('carto-dark', {
-        type: 'raster',
-        tiles: ['https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'],
-        tileSize: 256,
-        maxzoom: 19,
-        subdomains: ['a', 'b', 'c', 'd']
-      });
 
-      map.addLayer({
-        'id': 'carto-dark-layer',
-        'type': 'raster',
-        'source': 'carto-dark',
-        'layout': { 'visibility': 'none' }
-      });
-
-      map.addSource('satellite', {
-        type: 'raster',
-        tiles: ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'], // Replace with a similar accessible satellite tiles
-        tileSize: 256,
-        maxzoom: 19,
-        subdomains: ['a', 'b', 'c']
-      });
-
-      map.addLayer({
-        'id': 'satellite-layer',
-        'type': 'raster',
-        'source': 'satellite',
-        'layout': { 'visibility': 'none' }
-      });
 
       // Create base layer switcher
       createLayerSwitcher();
 
-      // Add GeoJSON layers
+      // Add GeoJSON layers with extrusion
       addGeoJSONLayer(depots, 'depotsLayer', {
         'fill-color': '#ff00fe',
         'fill-opacity': 0.5,
         'line-color': '#030000',
-        'line-width': 1
+        'line-width': 1,
+        'fill-extrusion-height': 10,
+        'fill-extrusion-base': 0
       });
       addGeoJSONLayer(favorables, 'favorablesLayer', {
         'fill-color': '#009cff',
         'fill-opacity': 0.5,
         'line-color': '#030000',
-        'line-width': 1
+        'line-width': 1,
+        'fill-extrusion-height': 10,
+        'fill-extrusion-base': 0
       });
 
       // Ensure popups work properly
@@ -173,9 +114,7 @@
 
       var layers = {
         'osm-layer': 'Vectorielle',
-        'carto-light-layer': 'Claire',
-        'carto-dark-layer': 'Foncée',
-        'satellite-layer': 'Satelite',
+
         'depotsLayer': 'Depots',
         'favorablesLayer': 'Favorables'
       };
@@ -208,12 +147,6 @@
       }
     }
 
-    function setBaseLayer(layerId) {
-      var baseLayers = ['osm-layer', 'carto-light-layer', 'carto-dark-layer', 'satellite-layer'];
-      baseLayers.forEach(function (layer) {
-        map.setLayoutProperty(layer, 'visibility', layer === layerId ? 'visible' : 'none');
-      });
-    }
 
     function toggleOverlayLayer(layerId, isVisible) {
       map.setLayoutProperty(layerId, 'visibility', isVisible ? 'visible' : 'none');
@@ -245,25 +178,46 @@
       animateView();
     });
 
+
+
     function addGeoJSONLayer(geojson, layerName, style) {
       map.addSource(layerName, {
         type: 'geojson',
         data: geojson
       });
 
-      map.addLayer({
-        id: layerName,
-        type: 'fill',
-        source: layerName,
-        paint: {
-          'fill-color': style['fill-color'],
-          'fill-opacity': style['fill-opacity'],
-          'fill-outline-color': style['line-color']
-        },
-        layout: {
-          'visibility': 'visible'
-        }
-      });
+      if (layerName === 'depotsLayer' || layerName === 'favorablesLayer') {
+        // Add fill-extrusion layer
+        map.addLayer({
+          id: layerName,
+          type: 'fill-extrusion',
+          source: layerName,
+          paint: {
+            'fill-extrusion-color': style['fill-color'],
+            'fill-extrusion-opacity': style['fill-opacity'],
+            'fill-extrusion-height': style['fill-extrusion-height'],
+            'fill-extrusion-base': style['fill-extrusion-base']
+          },
+          layout: {
+            'visibility': 'visible'
+          }
+        });
+      } else {
+        // Add fill layer
+        map.addLayer({
+          id: layerName,
+          type: 'fill',
+          source: layerName,
+          paint: {
+            'fill-color': style['fill-color'],
+            'fill-opacity': style['fill-opacity'],
+            'fill-outline-color': style['line-color']
+          },
+          layout: {
+            'visibility': 'visible'
+          }
+        });
+      }
 
       map.addLayer({
         id: layerName + '-lines',
