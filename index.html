@@ -5,6 +5,7 @@
     <title>Change a map's style</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+
     <link rel='stylesheet' href='styleML.css' />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
@@ -16,14 +17,11 @@
 <body>
 <div id="map"></div>
 <div id="menu">
+	<button id="menuButton" >X</button>
+
+	<br>
     <input id="clx0x359w000f01qs8u62crxc" type="radio" name="rtoggle" value="satellite" checked>
     <label for="clx0x359w000f01qs8u62crxc">satellite</label>
-    <input id="clx0woi7p01nj01qr2bnb1rss" type="radio" name="rtoggle" value="light">
-    <label for="clx0woi7p01nj01qr2bnb1rss">Claire</label>
-    <input id="clx0crin200zk01poe2nl9f83" type="radio" name="rtoggle" value="dark">
-    <label for="clx0crin200zk01poe2nl9f83">Foncée</label>
-    <input id="clx09ar6k00z401po2ndb2316" type="radio" name="rtoggle" value="_vectorielle">
-    <label for="clx09ar6k00z401po2ndb2316">Vectorielle</label>
     <br>
     <input id="toggle-parcelles" type="checkbox" checked>
     <label for="toggle-parcelles">Parcelles</label>
@@ -43,7 +41,8 @@
     <br>
     <input type="text" id="search-parcel" placeholder="Rechercher une parcelle">
     <button id="search-button">Rechercher</button>
-</div>
+
+</div>	 <button id="toggleButton" style="display: none;">=</button>
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
     let map = new mapboxgl.Map({
@@ -52,11 +51,28 @@
         center: [-63.613927, 2.445929],
         zoom: 0
     });
+	
+	
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		const menu = document.getElementById('menu');
+		const menuButton = document.getElementById('menuButton');
+		const toggleButton = document.getElementById('toggleButton');
+
+		menuButton.addEventListener('click', () => {
+			menu.style.display = 'none';
+			toggleButton.style.display = 'block';
+		});
+
+		toggleButton.addEventListener('click', () => {
+			menu.style.display = 'block';
+			toggleButton.style.display = 'none';
+		});
+	});
+	
 
     let highlightedParcels = null;
 
     function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
-        console.log('Adding layer:', layerId); // Debugging
         if (!map.getSource(sourceId)) {
             map.addSource(sourceId, {
                 type: 'geojson',
@@ -75,6 +91,12 @@
         }
     }
 
+
+
+
+map.addControl(new mapboxgl.NavigationControl({ position: "top-left" }));
+
+map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
     function addParcellesLayer() {
         addLayer('parcelles', 'parcelles-layer', parcelles, 'line', {
             'line-color': '#FFFFFF',
@@ -128,7 +150,6 @@
     function toggleLayerVisibility(layerId, checkboxId) {
         document.getElementById(checkboxId).addEventListener('change', (event) => {
             const visibility = event.target.checked ? 'visible' : 'none';
-            console.log('Toggling visibility for layer:', layerId); // Debugging
             map.setLayoutProperty(layerId, 'visibility', visibility);
         });
     }
@@ -136,7 +157,6 @@
     function updateLineWidth(layerId, sliderId) {
         document.getElementById(sliderId).addEventListener('input', (event) => {
             const lineWidth = parseFloat(event.target.value);
-            console.log('Updating line width for layer:', layerId, 'to', lineWidth); // Debugging
             map.setPaintProperty(layerId, 'line-width', lineWidth);
         });
     }
@@ -144,7 +164,6 @@
     function updateLayerOpacity(layerId, sliderId) {
         document.getElementById(sliderId).addEventListener('input', (event) => {
             const opacity = parseFloat(event.target.value);
-            console.log('Updating opacity for layer:', layerId, 'to', opacity); // Debugging
             map.setPaintProperty(layerId, 'fill-opacity', opacity);
         });
     }
@@ -158,8 +177,6 @@
         while ((match = regex.exec(cleanedString)) !== null) {
             references.push(match[1] + match[2]);
         }
-
-        console.log('Parsed references:', references); // Debugging
         return references;
     }
 
@@ -173,7 +190,6 @@
             features.forEach(feature => {
                 const props = feature.properties;
                 const featureReference = (props.section + props.numero).toUpperCase();
-                console.log('Checking feature reference:', featureReference); // Debugging
 
                 if (reference === featureReference) {
                     parcelFeatures.push(feature);
@@ -185,21 +201,18 @@
         });
 
         if (parcelFeatures.length > 0) {
-            console.log('Found parcels:', parcelFeatures); // Debugging
             map.flyTo({
                 center: firstCenter,
                 zoom: 16
             });
             highlightParcels(parcelFeatures);
         } else {
-            console.log('No parcels found'); // Debugging
             alert('Parcelles non trouvées');
         }
     }
 
     function highlightParcels(parcelFeatures) {
         if (highlightedParcels) {
-            console.log('Removing previous highlighted parcels'); // Debugging
             map.removeLayer('highlighted-parcels-layer');
             map.removeSource('highlighted-parcels');
         }
@@ -209,7 +222,6 @@
             features: parcelFeatures
         };
 
-        console.log('Highlighting parcels:', highlightedParcels); // Debugging
         map.addSource('highlighted-parcels', {
             type: 'geojson',
             data: highlightedParcels
@@ -225,10 +237,11 @@
             }
         });
     }
+	
+
 
     document.getElementById('search-button').addEventListener('click', () => {
         const refString = document.getElementById('search-parcel').value;
-        console.log('Searching for parcels with reference:', refString); // Debugging
         searchParcels(refString);
     });
 
@@ -295,7 +308,6 @@
 
     function initializeMap() {
         if (!map.getSource('mapbox-dem')) {
-            console.log('Adding mapbox-dem source'); // Debugging
             map.addSource('mapbox-dem', {
                 type: 'raster-dem',
                 url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
@@ -324,7 +336,6 @@
         const urlParams = new URLSearchParams(window.location.search);
         const searchParam = urlParams.get('r');
         if (searchParam) {
-            console.log('Prefilling search field with:', searchParam); // Debugging
             document.getElementById('search-parcel').value = searchParam;
             searchParcels(searchParam);
         }
