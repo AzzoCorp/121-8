@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Change a map's style</title>
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
-<link rel='stylesheet' href='styleML.css' />
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
-<script src="./GeoDatas/parcelles.js"></script>
-<script src="./GeoDatas/commune.js"></script>
-<script src="./GeoDatas/favorables.js"></script>
-<script src="./GeoDatas/depots.js"></script>
+    <meta charset="utf-8">
+    <title>Change a map's style</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+    <link rel='stylesheet' href='styleML.css' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+    <script src="./GeoDatas/parcelles.js"></script>
+    <script src="./GeoDatas/commune.js"></script>
+    <script src="./GeoDatas/favorables.js"></script>
+    <script src="./GeoDatas/depots.js"></script>
 </head>
 <body>
 <div id="map"></div>
@@ -52,25 +52,26 @@
         center: [-63.613927, 2.445929],
         zoom: 0
     });
-    
+
     let highlightedParcels = null;
 
     function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
+        console.log('Adding layer:', layerId); // Debugging
         if (!map.getSource(sourceId)) {
             map.addSource(sourceId, {
-                'type': 'geojson',
-                'data': sourceData
+                type: 'geojson',
+                data: sourceData
             });
         }
 
         if (!map.getLayer(layerId)) {
             map.addLayer({
-                'id': layerId,
-                'type': layerType,
-                'source': sourceId,
-                'layout': {},
-                'paint': paintProps
-            });
+                id: layerId,
+                type: layerType,
+                source: sourceId,
+                layout: {},
+                paint: paintProps
+            }, 'waterway-label');
         }
     }
 
@@ -127,6 +128,7 @@
     function toggleLayerVisibility(layerId, checkboxId) {
         document.getElementById(checkboxId).addEventListener('change', (event) => {
             const visibility = event.target.checked ? 'visible' : 'none';
+            console.log('Toggling visibility for layer:', layerId); // Debugging
             map.setLayoutProperty(layerId, 'visibility', visibility);
         });
     }
@@ -134,6 +136,7 @@
     function updateLineWidth(layerId, sliderId) {
         document.getElementById(sliderId).addEventListener('input', (event) => {
             const lineWidth = parseFloat(event.target.value);
+            console.log('Updating line width for layer:', layerId, 'to', lineWidth); // Debugging
             map.setPaintProperty(layerId, 'line-width', lineWidth);
         });
     }
@@ -141,6 +144,7 @@
     function updateLayerOpacity(layerId, sliderId) {
         document.getElementById(sliderId).addEventListener('input', (event) => {
             const opacity = parseFloat(event.target.value);
+            console.log('Updating opacity for layer:', layerId, 'to', opacity); // Debugging
             map.setPaintProperty(layerId, 'fill-opacity', opacity);
         });
     }
@@ -155,6 +159,7 @@
             references.push(match[1] + match[2]);
         }
 
+        console.log('Parsed references:', references); // Debugging
         return references;
     }
 
@@ -168,6 +173,7 @@
             features.forEach(feature => {
                 const props = feature.properties;
                 const featureReference = (props.section + props.numero).toUpperCase();
+                console.log('Checking feature reference:', featureReference); // Debugging
 
                 if (reference === featureReference) {
                     parcelFeatures.push(feature);
@@ -179,28 +185,31 @@
         });
 
         if (parcelFeatures.length > 0) {
+            console.log('Found parcels:', parcelFeatures); // Debugging
             map.flyTo({
                 center: firstCenter,
                 zoom: 16
             });
             highlightParcels(parcelFeatures);
         } else {
+            console.log('No parcels found'); // Debugging
             alert('Parcelles non trouvées');
         }
     }
 
-    // Ajout de la fonction pour surligner les parcelles avec une bordure rouge
     function highlightParcels(parcelFeatures) {
         if (highlightedParcels) {
+            console.log('Removing previous highlighted parcels'); // Debugging
             map.removeLayer('highlighted-parcels-layer');
             map.removeSource('highlighted-parcels');
         }
-       
+
         highlightedParcels = {
             type: 'FeatureCollection',
             features: parcelFeatures
         };
 
+        console.log('Highlighting parcels:', highlightedParcels); // Debugging
         map.addSource('highlighted-parcels', {
             type: 'geojson',
             data: highlightedParcels
@@ -219,6 +228,7 @@
 
     document.getElementById('search-button').addEventListener('click', () => {
         const refString = document.getElementById('search-parcel').value;
+        console.log('Searching for parcels with reference:', refString); // Debugging
         searchParcels(refString);
     });
 
@@ -266,28 +276,33 @@
         }, 1000);
     });
 
-    map.on('mousemove', function (e) {
-        const features = map.queryRenderedFeatures(e.point, {
-            layers: ['parcelles-interactive-layer']
-        });
+    function addMouseMoveListener() {
+        map.on('mousemove', function (e) {
+            if (map.getLayer('parcelles-interactive-layer')) {
+                const features = map.queryRenderedFeatures(e.point, {
+                    layers: ['parcelles-interactive-layer']
+                });
 
-        if (!features.length) {
-            if (parcelMarker) {
-                parcelMarker.remove();
-                parcelMarker = null;
+                if (!features.length) {
+                    if (parcelMarker) {
+                        parcelMarker.remove();
+                        parcelMarker = null;
+                    }
+                }
             }
-        }
-    });
+        });
+    }
 
     function initializeMap() {
-       if (!map.getSource('mapbox-dem')) {
+        if (!map.getSource('mapbox-dem')) {
+            console.log('Adding mapbox-dem source'); // Debugging
             map.addSource('mapbox-dem', {
-                'type': 'raster-dem',
-                'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-                'tileSize': 512,
-                'maxzoom': 14
+                type: 'raster-dem',
+                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                tileSize: 512,
+                maxzoom: 14
             });
-            map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+            map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
         }
         animateView();
         addParcellesLayer();
@@ -309,9 +324,55 @@
         const urlParams = new URLSearchParams(window.location.search);
         const searchParam = urlParams.get('r');
         if (searchParam) {
+            console.log('Prefilling search field with:', searchParam); // Debugging
             document.getElementById('search-parcel').value = searchParam;
             searchParcels(searchParam);
         }
+
+        // Ajout des gestionnaires d'événements pour les popups sur les couches "favorables" et "depots"
+        map.on('click', 'favorables-layer', function (e) {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            
+            // Extrait les coordonnées central du polygone en cas de multipolygone
+            if (Array.isArray(coordinates[0][0])) {
+                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
+                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
+                
+                new mapboxgl.Popup()
+                    .setLngLat([lng, lat])
+                    .setHTML(description)
+                    .addTo(map);
+            } else {
+                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            }
+        });
+
+        map.on('click', 'depots-layer', function (e) {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+
+            // Extrait les coordonnées central du polygone en cas de multipolygone
+            if (Array.isArray(coordinates[0][0])) {
+                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
+                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
+
+                new mapboxgl.Popup()
+                    .setLngLat([lng, lat])
+                    .setHTML(description)
+                    .addTo(map);
+            } else {
+                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            }
+        });
+
+        addMouseMoveListener();
     }
 
     map.on('load', function () {
@@ -353,7 +414,7 @@
                     JSON.parse(properties.decisions).forEach(function (decision) {
                         popupContent += "<b>Référence:</b> " + decision[1] + "<br>" +
                             "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
-                            "<b>Demandeur:</b> " + decision[3] + "<br>" +
+                                                        "<b>Demandeur:</b> " + decision[3] + "<br>" +
                             "<b>Adresse:</b> " + decision[4] + "<br>" +
                             "<b>Superficie totale:</b> " + decision[5] + "<br>" +
                             "<b>Description:</b> " + decision[6] + "<br>" +
