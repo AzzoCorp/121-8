@@ -876,6 +876,156 @@ var favorables = {
         },
         {
             "type": "Feature",
+            "id": "2A2470000B0356",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2504078,
+                            41.6263081
+                        ],
+                        [
+                            9.2504494,
+                            41.6261838
+                        ],
+                        [
+                            9.2504586,
+                            41.6261671
+                        ],
+                        [
+                            9.2505976,
+                            41.6261781
+                        ],
+                        [
+                            9.2506622,
+                            41.6261936
+                        ],
+                        [
+                            9.250737,
+                            41.6262257
+                        ],
+                        [
+                            9.2507482,
+                            41.6262333
+                        ],
+                        [
+                            9.2505733,
+                            41.6263337
+                        ],
+                        [
+                            9.2504013,
+                            41.6263518
+                        ],
+                        [
+                            9.2504078,
+                            41.6263081
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000B0356",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "B",
+                "numero": "356",
+                "contenance": 410,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "04/06/2024",
+                        "PC 02A 247 24 R0095",
+                        "24/04/2024",
+                        "M BRANCA Marc",
+                        " Route de Palavese 20137 Palavese (B 356, B 1439)",
+                        "1935 m²",
+                        "la rénovation de l'habitation existante et surélévation de la toiture",
+                        "- Surface plancher créée : 18 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 04/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000B1439",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2505733,
+                            41.6263337
+                        ],
+                        [
+                            9.2507482,
+                            41.6262333
+                        ],
+                        [
+                            9.2507611,
+                            41.6262424
+                        ],
+                        [
+                            9.2508524,
+                            41.6263758
+                        ],
+                        [
+                            9.2509404,
+                            41.6265268
+                        ],
+                        [
+                            9.2505807,
+                            41.6267474
+                        ],
+                        [
+                            9.2505798,
+                            41.6267457
+                        ],
+                        [
+                            9.2503416,
+                            41.6263743
+                        ],
+                        [
+                            9.2504013,
+                            41.6263518
+                        ],
+                        [
+                            9.2505733,
+                            41.6263337
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000B1439",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "B",
+                "numero": "1439",
+                "contenance": 1525,
+                "arpente": false,
+                "created": "2007-09-28",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "04/06/2024",
+                        "PC 02A 247 24 R0095",
+                        "24/04/2024",
+                        "M BRANCA Marc",
+                        " Route de Palavese 20137 Palavese (B 356, B 1439)",
+                        "1935 m²",
+                        "la rénovation de l'habitation existante et surélévation de la toiture",
+                        "- Surface plancher créée : 18 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 04/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A2470000C0323",
             "geometry": {
                 "type": "Polygon",
@@ -2645,6 +2795,168 @@ var favorables = {
         },
         {
             "type": "Feature",
+            "id": "2A2470000D1761",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2594125,
+                            41.5783235
+                        ],
+                        [
+                            9.2596447,
+                            41.578522
+                        ],
+                        [
+                            9.2596174,
+                            41.578542
+                        ],
+                        [
+                            9.2596003,
+                            41.5785541
+                        ],
+                        [
+                            9.2592881,
+                            41.5786375
+                        ],
+                        [
+                            9.2592617,
+                            41.5786227
+                        ],
+                        [
+                            9.259279,
+                            41.5786069
+                        ],
+                        [
+                            9.2592891,
+                            41.5785808
+                        ],
+                        [
+                            9.2592982,
+                            41.5785615
+                        ],
+                        [
+                            9.259297,
+                            41.5785276
+                        ],
+                        [
+                            9.2592981,
+                            41.57851
+                        ],
+                        [
+                            9.2592997,
+                            41.5784865
+                        ],
+                        [
+                            9.2593181,
+                            41.578451
+                        ],
+                        [
+                            9.2593269,
+                            41.5784311
+                        ],
+                        [
+                            9.2593498,
+                            41.5783947
+                        ],
+                        [
+                            9.259398,
+                            41.5783373
+                        ],
+                        [
+                            9.2594125,
+                            41.5783235
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000D1761",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "D",
+                "numero": "1761",
+                "contenance": 584,
+                "arpente": true,
+                "created": "2009-04-15",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 24 R0021",
+                        "02/02/2024",
+                        "MME AMALVY Cathy",
+                        " ROUTE D'ARCA 20137 SAGGHIMU (D 1761, D 1767)",
+                        "1004 m²",
+                        "la construction d'un pool-house et d'un mur de clôture",
+                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000D1767",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2594125,
+                            41.5783235
+                        ],
+                        [
+                            9.2594364,
+                            41.5783004
+                        ],
+                        [
+                            9.2595064,
+                            41.5782431
+                        ],
+                        [
+                            9.2597874,
+                            41.5784218
+                        ],
+                        [
+                            9.2596447,
+                            41.578522
+                        ],
+                        [
+                            9.2594125,
+                            41.5783235
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000D1767",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "D",
+                "numero": "1767",
+                "contenance": 420,
+                "arpente": true,
+                "created": "2009-04-15",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 24 R0021",
+                        "02/02/2024",
+                        "MME AMALVY Cathy",
+                        " ROUTE D'ARCA 20137 SAGGHIMU (D 1761, D 1767)",
+                        "1004 m²",
+                        "la construction d'un pool-house et d'un mur de clôture",
+                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A2470000D1589",
             "geometry": {
                 "type": "Polygon",
@@ -3245,6 +3557,164 @@ var favorables = {
         },
         {
             "type": "Feature",
+            "id": "2A2470000F1236",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2838707,
+                            41.5614037
+                        ],
+                        [
+                            9.2839076,
+                            41.5615472
+                        ],
+                        [
+                            9.2837878,
+                            41.562105
+                        ],
+                        [
+                            9.2837231,
+                            41.5622729
+                        ],
+                        [
+                            9.2835827,
+                            41.5623404
+                        ],
+                        [
+                            9.2833261,
+                            41.5624193
+                        ],
+                        [
+                            9.282926,
+                            41.5620369
+                        ],
+                        [
+                            9.2828966,
+                            41.5620014
+                        ],
+                        [
+                            9.2833941,
+                            41.5616946
+                        ],
+                        [
+                            9.2838707,
+                            41.5614037
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000F1236",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "F",
+                "numero": "1236",
+                "contenance": 5000,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 21 R0110 T01",
+                        "29/03/2024",
+                        "SCI LM IMMOBILIER",
+                        " Lieu-dit Mortone 20137  (F 1236, BY 48)",
+                        "9891 m²",
+                        "le tranfert d'un hangar de stockage",
+                        "- Surface plancher créée : 232,68 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000G1410",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2756786,
+                            41.5638389
+                        ],
+                        [
+                            9.2758049,
+                            41.5637924
+                        ],
+                        [
+                            9.2757908,
+                            41.5638767
+                        ],
+                        [
+                            9.2760124,
+                            41.5640778
+                        ],
+                        [
+                            9.2760554,
+                            41.5641489
+                        ],
+                        [
+                            9.2761069,
+                            41.5642338
+                        ],
+                        [
+                            9.2763046,
+                            41.5643911
+                        ],
+                        [
+                            9.2762825,
+                            41.5644725
+                        ],
+                        [
+                            9.2762518,
+                            41.5645378
+                        ],
+                        [
+                            9.2761937,
+                            41.5645612
+                        ],
+                        [
+                            9.2759471,
+                            41.5646483
+                        ],
+                        [
+                            9.2756786,
+                            41.5638389
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000G1410",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "G",
+                "numero": "1410",
+                "contenance": 2074,
+                "arpente": false,
+                "created": "2010-06-04",
+                "updated": "2019-02-21",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 24 R0030",
+                        "13/02/2024",
+                        "MME PINNA Frédérique",
+                        " Route de PORAPO 20137 ARATAGGIO (G 1410)",
+                        "2074 m²",
+                        "la construction d'une maison individuelle",
+                        "- Surface plancher créée : 85 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A2470000G0467",
             "geometry": {
                 "type": "Polygon",
@@ -3302,6 +3772,109 @@ var favorables = {
                         "la construction de 3 logements comprenant une piscine",
                         "- Surface plancher créée : 146 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
                         "Favorable le 07/05/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000G1329",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2562835,
+                            41.5393646
+                        ],
+                        [
+                            9.2567905,
+                            41.5388745
+                        ],
+                        [
+                            9.2569298,
+                            41.5389188
+                        ],
+                        [
+                            9.2571007,
+                            41.5389396
+                        ],
+                        [
+                            9.2573355,
+                            41.5389356
+                        ],
+                        [
+                            9.2573591,
+                            41.5389352
+                        ],
+                        [
+                            9.2577396,
+                            41.5388436
+                        ],
+                        [
+                            9.258014,
+                            41.5387741
+                        ],
+                        [
+                            9.258381,
+                            41.5386749
+                        ],
+                        [
+                            9.258881,
+                            41.5388413
+                        ],
+                        [
+                            9.2588901,
+                            41.5389022
+                        ],
+                        [
+                            9.2585432,
+                            41.5390998
+                        ],
+                        [
+                            9.2584205,
+                            41.5390831
+                        ],
+                        [
+                            9.2583029,
+                            41.539067
+                        ],
+                        [
+                            9.2580458,
+                            41.5390319
+                        ],
+                        [
+                            9.2572025,
+                            41.5394778
+                        ],
+                        [
+                            9.2562835,
+                            41.5393646
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000G1329",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "G",
+                "numero": "1329",
+                "contenance": 8566,
+                "arpente": true,
+                "created": "2011-02-28",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 21 R0144 M01",
+                        "02/04/2024",
+                        "M MME CIABRINI et CASTELLANI Caroline et Jonathan",
+                        " Canniccia 20137  (G 682, G 1644, G 1639, G 1329)",
+                        "15032 m²",
+                        "la réduction des surfaces, suppression de la piscine, de la terrasse et la modification des façades",
+                        "- Surface plancher créée : 143,64 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
                     ]
                 ]
             }
@@ -3413,6 +3986,73 @@ var favorables = {
                         "permis de construire valant division parcellaire : création de 3 lots et construction de 2 caseddi",
                         "- Surface plancher créée : 199,6 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
                         "Favorable le 07/05/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000G0682",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2576962,
+                            41.5395813
+                        ],
+                        [
+                            9.2573408,
+                            41.5395009
+                        ],
+                        [
+                            9.2572025,
+                            41.5394778
+                        ],
+                        [
+                            9.2580458,
+                            41.5390319
+                        ],
+                        [
+                            9.2583029,
+                            41.539067
+                        ],
+                        [
+                            9.2584205,
+                            41.5390831
+                        ],
+                        [
+                            9.2585432,
+                            41.5390998
+                        ],
+                        [
+                            9.2576962,
+                            41.5395813
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000G0682",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "G",
+                "numero": "682",
+                "contenance": 3000,
+                "arpente": false,
+                "created": "2006-02-16",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 21 R0144 M01",
+                        "02/04/2024",
+                        "M MME CIABRINI et CASTELLANI Caroline et Jonathan",
+                        " Canniccia 20137  (G 682, G 1644, G 1639, G 1329)",
+                        "15032 m²",
+                        "la réduction des surfaces, suppression de la piscine, de la terrasse et la modification des façades",
+                        "- Surface plancher créée : 143,64 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
                     ]
                 ]
             }
@@ -4468,6 +5108,176 @@ var favorables = {
                         "la pose de panneaux photovoltaïques",
                         "",
                         "Favorable le 25/04/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AD0504",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2798638,
+                            41.5960946
+                        ],
+                        [
+                            9.280103,
+                            41.596125
+                        ],
+                        [
+                            9.2805937,
+                            41.596218
+                        ],
+                        [
+                            9.2810486,
+                            41.5963677
+                        ],
+                        [
+                            9.2809214,
+                            41.5964322
+                        ],
+                        [
+                            9.281041,
+                            41.5965608
+                        ],
+                        [
+                            9.2810197,
+                            41.5966651
+                        ],
+                        [
+                            9.2808948,
+                            41.5966717
+                        ],
+                        [
+                            9.2807411,
+                            41.5966624
+                        ],
+                        [
+                            9.2804955,
+                            41.596625
+                        ],
+                        [
+                            9.2804797,
+                            41.5966101
+                        ],
+                        [
+                            9.2804277,
+                            41.5965535
+                        ],
+                        [
+                            9.2803353,
+                            41.5964842
+                        ],
+                        [
+                            9.280294,
+                            41.5964594
+                        ],
+                        [
+                            9.2801862,
+                            41.5964103
+                        ],
+                        [
+                            9.2799919,
+                            41.596272
+                        ],
+                        [
+                            9.2799302,
+                            41.5962132
+                        ],
+                        [
+                            9.2798468,
+                            41.5961479
+                        ],
+                        [
+                            9.2798134,
+                            41.5961406
+                        ],
+                        [
+                            9.2798638,
+                            41.5960946
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AD0504",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AD",
+                "numero": "504",
+                "contenance": 3233,
+                "arpente": true,
+                "created": "2016-06-30",
+                "updated": "2019-02-21",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 22 R0082 T01",
+                        "26/04/2024",
+                        "SASU FELICESCA",
+                        "5504 F Chemin De Covasina 20137  (AD 504, AD 506)",
+                        "3373 m²",
+                        "Construction de locaux commerciaux , locaux tertiaires et logements, division parcellaire, démolitio",
+                        "- Surface plancher créée : 1070 m²\r\n<br>- Surface plancher démolie : 170 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AD0506",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2810486,
+                            41.5963677
+                        ],
+                        [
+                            9.2810788,
+                            41.5963777
+                        ],
+                        [
+                            9.281041,
+                            41.5965608
+                        ],
+                        [
+                            9.2809214,
+                            41.5964322
+                        ],
+                        [
+                            9.2810486,
+                            41.5963677
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AD0506",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AD",
+                "numero": "506",
+                "contenance": 140,
+                "arpente": true,
+                "created": "2016-06-30",
+                "updated": "2019-02-21",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 22 R0082 T01",
+                        "26/04/2024",
+                        "SASU FELICESCA",
+                        "5504 F Chemin De Covasina 20137  (AD 504, AD 506)",
+                        "3373 m²",
+                        "Construction de locaux commerciaux , locaux tertiaires et logements, division parcellaire, démolitio",
+                        "- Surface plancher créée : 1070 m²\r\n<br>- Surface plancher démolie : 170 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
                     ]
                 ]
             }
@@ -5751,6 +6561,65 @@ var favorables = {
         },
         {
             "type": "Feature",
+            "id": "2A247000AO0327",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2918635,
+                            41.628007
+                        ],
+                        [
+                            9.2921084,
+                            41.6278735
+                        ],
+                        [
+                            9.2921103,
+                            41.6278768
+                        ],
+                        [
+                            9.2922687,
+                            41.628141
+                        ],
+                        [
+                            9.2918733,
+                            41.6280103
+                        ],
+                        [
+                            9.2918635,
+                            41.628007
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AO0327",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AO",
+                "numero": "327",
+                "contenance": 356,
+                "arpente": true,
+                "created": "2014-12-23",
+                "updated": "2019-02-21",
+                "decisions": [
+                    [
+                        "04/06/2024",
+                        "PC 02A 247 24 R0003",
+                        "10/01/2024",
+                        "SAS VETTA",
+                        " La Vetta 20137 VETTA (AO 327, AP 392)",
+                        "3607 m²",
+                        "la construction de 2 bâtiments de 36 logements collectifs",
+                        "- Surface plancher créée : 2397 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 04/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A247000AP0207",
             "geometry": {
                 "type": "Polygon",
@@ -5856,6 +6725,232 @@ var favorables = {
                         "l'aménagement du garage en chambre, l'agrandissement du sejour et la création d'une piscine",
                         "- Surface plancher créée : 27,8 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
                         "Favorable le 11/04/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AP0392",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2931896,
+                            41.627739
+                        ],
+                        [
+                            9.2928576,
+                            41.6279171
+                        ],
+                        [
+                            9.2928231,
+                            41.6279433
+                        ],
+                        [
+                            9.2927904,
+                            41.6279659
+                        ],
+                        [
+                            9.2927321,
+                            41.628001
+                        ],
+                        [
+                            9.2926869,
+                            41.6280268
+                        ],
+                        [
+                            9.2925929,
+                            41.6280742
+                        ],
+                        [
+                            9.2925056,
+                            41.6281049
+                        ],
+                        [
+                            9.2924502,
+                            41.6281188
+                        ],
+                        [
+                            9.2924182,
+                            41.6281254
+                        ],
+                        [
+                            9.2923779,
+                            41.6281323
+                        ],
+                        [
+                            9.2923497,
+                            41.628136
+                        ],
+                        [
+                            9.2922909,
+                            41.628144
+                        ],
+                        [
+                            9.2922491,
+                            41.6281442
+                        ],
+                        [
+                            9.2921958,
+                            41.6281357
+                        ],
+                        [
+                            9.2921335,
+                            41.6281252
+                        ],
+                        [
+                            9.2920737,
+                            41.6281096
+                        ],
+                        [
+                            9.2920199,
+                            41.6280915
+                        ],
+                        [
+                            9.2919639,
+                            41.6280695
+                        ],
+                        [
+                            9.2919177,
+                            41.6280502
+                        ],
+                        [
+                            9.2918502,
+                            41.6280233
+                        ],
+                        [
+                            9.2918733,
+                            41.6280103
+                        ],
+                        [
+                            9.2922687,
+                            41.628141
+                        ],
+                        [
+                            9.2921103,
+                            41.6278768
+                        ],
+                        [
+                            9.2923272,
+                            41.6277547
+                        ],
+                        [
+                            9.292896,
+                            41.6274343
+                        ],
+                        [
+                            9.2929148,
+                            41.6274538
+                        ],
+                        [
+                            9.2931194,
+                            41.6276662
+                        ],
+                        [
+                            9.2931896,
+                            41.627739
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AP0392",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AP",
+                "numero": "392",
+                "contenance": 3251,
+                "arpente": true,
+                "created": "2014-12-23",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "04/06/2024",
+                        "PC 02A 247 24 R0003",
+                        "10/01/2024",
+                        "SAS VETTA",
+                        " La Vetta 20137 VETTA (AO 327, AP 392)",
+                        "3607 m²",
+                        "la construction de 2 bâtiments de 36 logements collectifs",
+                        "- Surface plancher créée : 2397 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 04/06/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AT1097",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2633641,
+                            41.5468608
+                        ],
+                        [
+                            9.2633645,
+                            41.5468207
+                        ],
+                        [
+                            9.2633666,
+                            41.5465754
+                        ],
+                        [
+                            9.2640824,
+                            41.5465803
+                        ],
+                        [
+                            9.2640989,
+                            41.5465804
+                        ],
+                        [
+                            9.2641548,
+                            41.546806
+                        ],
+                        [
+                            9.2641661,
+                            41.5468514
+                        ],
+                        [
+                            9.2640247,
+                            41.5468657
+                        ],
+                        [
+                            9.2634063,
+                            41.5468612
+                        ],
+                        [
+                            9.2633641,
+                            41.5468608
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AT1097",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AT",
+                "numero": "1097",
+                "contenance": 1610,
+                "arpente": false,
+                "created": "2014-08-01",
+                "updated": "2019-02-21",
+                "decisions": [
+                    [
+                        "04/06/2024",
+                        "PC 02A 247 24 R0097",
+                        "27/04/2024",
+                        "M DABIREAU Didier",
+                        "6432 CAPPARONU 20137 PRECOJO (AT 1097)",
+                        "1610 m²",
+                        "l'extension d'une maison existante",
+                        "- Surface plancher créée : 32,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 04/06/2024"
                     ]
                 ]
             }
@@ -8240,6 +9335,153 @@ var favorables = {
                         "la construction d'une piscine",
                         "",
                         "Favorable le 15/05/2024"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BP0020",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3008599,
+                            41.5886876
+                        ],
+                        [
+                            9.3011033,
+                            41.5885565
+                        ],
+                        [
+                            9.3013429,
+                            41.5884275
+                        ],
+                        [
+                            9.3014381,
+                            41.5883762
+                        ],
+                        [
+                            9.3022164,
+                            41.5879573
+                        ],
+                        [
+                            9.3024113,
+                            41.5878523
+                        ],
+                        [
+                            9.3025707,
+                            41.5880187
+                        ],
+                        [
+                            9.3027553,
+                            41.5882065
+                        ],
+                        [
+                            9.3027919,
+                            41.5882437
+                        ],
+                        [
+                            9.3027156,
+                            41.5882848
+                        ],
+                        [
+                            9.3022789,
+                            41.5885198
+                        ],
+                        [
+                            9.3019374,
+                            41.5887012
+                        ],
+                        [
+                            9.3018466,
+                            41.5887493
+                        ],
+                        [
+                            9.3016303,
+                            41.5888647
+                        ],
+                        [
+                            9.3013234,
+                            41.5890307
+                        ],
+                        [
+                            9.3013088,
+                            41.5890387
+                        ],
+                        [
+                            9.3012567,
+                            41.5890127
+                        ],
+                        [
+                            9.3012353,
+                            41.5889993
+                        ],
+                        [
+                            9.3011957,
+                            41.5889763
+                        ],
+                        [
+                            9.3011543,
+                            41.5889636
+                        ],
+                        [
+                            9.3011071,
+                            41.5889537
+                        ],
+                        [
+                            9.3010566,
+                            41.5889381
+                        ],
+                        [
+                            9.3009948,
+                            41.5889119
+                        ],
+                        [
+                            9.3009661,
+                            41.5888817
+                        ],
+                        [
+                            9.300938,
+                            41.5888268
+                        ],
+                        [
+                            9.3009036,
+                            41.5887718
+                        ],
+                        [
+                            9.3008848,
+                            41.58872
+                        ],
+                        [
+                            9.3008599,
+                            41.5886876
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BP0020",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BP",
+                "numero": "20",
+                "contenance": 8578,
+                "arpente": false,
+                "created": "2015-11-30",
+                "updated": "2020-09-24",
+                "decisions": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 24 R0098",
+                        "29/04/2024",
+                        "CAL'AZZURRA",
+                        " Route de Piccovaggia 20137 AJA FORNO (BP 20)",
+                        "8578 m²",
+                        "l'extension d'une maison existante",
+                        "- Surface plancher créée : 44,4 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+                        "Favorable le 05/06/2024"
                     ]
                 ]
             }

@@ -1,15 +1,40 @@
-/* styles.css */
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
 #menu {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	<!-- background: white; -->
-	padding: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	z-index: 1;
-	background: #efefef;
-	padding: 10px;
-	font-family: 'Open Sans', sans-serif;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #efefef;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#menu.hidden {
+    display: none;
+}
+
+#menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #efefef;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    font-size: 22px;
 }
