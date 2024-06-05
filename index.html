@@ -52,6 +52,8 @@
         center: [-63.613927, 2.445929],
         zoom: 0
     });
+    
+    let highlightedParcels = null;
 
     function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
         if (!map.getSource(sourceId)) {
@@ -143,65 +145,8 @@
         });
     }
 
-    function initializeMap() {
-        if (!map.getSource('mapbox-dem')) {
-            map.addSource('mapbox-dem', {
-                'type': 'raster-dem',
-                'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-                'tileSize': 512,
-                'maxzoom': 14
-            });
-            map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
-        }
-		animateView();
-        addParcellesLayer();
-        addCommuneLayer();
-        addFavorablesLayer();
-        addDepotsLayer();
-
-        toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
-        toggleLayerVisibility('commune-layer', 'toggle-commune');
-        toggleLayerVisibility('favorables-layer', 'toggle-favorables');
-        toggleLayerVisibility('depots-layer', 'toggle-depots');
-
-        updateLineWidth('parcelles-layer', 'parcelles-width');
-        updateLineWidth('commune-layer', 'commune-width');
-        updateLayerOpacity('favorables-layer', 'favorables-opacity');
-        updateLayerOpacity('depots-layer', 'depots-opacity');
-    }
-
-    let highlightedParcelSourceId = 'highlighted-parcel-source';
-
-    function highlightParcels(parcelFeatures) {
-        if (map.getLayer('highlighted-parcels')) {
-            map.removeLayer('highlighted-parcels');
-        }
-        if (map.getSource(highlightedParcelSourceId)) {
-            map.removeSource(highlightedParcelSourceId);
-        }
-
-        map.addSource(highlightedParcelSourceId, {
-            'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': parcelFeatures
-            }
-        });
-
-        map.addLayer({
-            'id': 'highlighted-parcels',
-            'type': 'line',
-            'source': highlightedParcelSourceId,
-            'layout': {},
-            'paint': {
-                'line-color': '#FF0000',
-                'line-width': 4
-            }
-        });
-    }
-
     function parseReferences(refString) {
-        const cleanedString = refString.replace(/[,;_\-\/|]+/g, ' ').replace(/\s+/g, '').toUpperCase();
+        const cleanedString = refString.replace(/[,_\-\/|]+/g, ' ').replace(/\s+/g, '').toUpperCase();
         const regex = /([A-Z]+)(\d+)/g;
         const references = [];
         let match;
@@ -242,6 +187,34 @@
         } else {
             alert('Parcelles non trouvées');
         }
+    }
+
+    // Ajout de la fonction pour surligner les parcelles avec une bordure rouge
+    function highlightParcels(parcelFeatures) {
+        if (highlightedParcels) {
+            map.removeLayer('highlighted-parcels-layer');
+            map.removeSource('highlighted-parcels');
+        }
+       
+        highlightedParcels = {
+            type: 'FeatureCollection',
+            features: parcelFeatures
+        };
+
+        map.addSource('highlighted-parcels', {
+            type: 'geojson',
+            data: highlightedParcels
+        });
+
+        map.addLayer({
+            id: 'highlighted-parcels-layer',
+            type: 'line',
+            source: 'highlighted-parcels',
+            paint: {
+                'line-color': '#ff0000',
+                'line-width': 3
+            }
+        });
     }
 
     document.getElementById('search-button').addEventListener('click', () => {
@@ -306,44 +279,43 @@
         }
     });
 
+    function initializeMap() {
+       if (!map.getSource('mapbox-dem')) {
+            map.addSource('mapbox-dem', {
+                'type': 'raster-dem',
+                'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                'tileSize': 512,
+                'maxzoom': 14
+            });
+            map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+        }
+        animateView();
+        addParcellesLayer();
+        addCommuneLayer();
+        addFavorablesLayer();
+        addDepotsLayer();
+
+        toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
+        toggleLayerVisibility('commune-layer', 'toggle-commune');
+        toggleLayerVisibility('favorables-layer', 'toggle-favorables');
+        toggleLayerVisibility('depots-layer', 'toggle-depots');
+
+        updateLineWidth('parcelles-layer', 'parcelles-width');
+        updateLineWidth('commune-layer', 'commune-width');
+        updateLayerOpacity('favorables-layer', 'favorables-opacity');
+        updateLayerOpacity('depots-layer', 'depots-opacity');
+
+        // Préremplissage du champ de recherche à partir de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchParam = urlParams.get('r');
+        if (searchParam) {
+            document.getElementById('search-parcel').value = searchParam;
+            searchParcels(searchParam);
+        }
+    }
+
     map.on('load', function () {
         initializeMap();
-    });
-
-    map.on('click', 'depots-layer', function (e) {
-        var coordinates = e.lngLat;
-        var properties = e.features[0].properties;
-        var popupContent = generatePopupContent(properties, 'depots-layer');
-        new mapboxgl.Popup()
-            .setLngLat(coordinates)
-            .setHTML(popupContent)
-            .addTo(map);
-    });
-
-    map.on('click', 'favorables-layer', function (e) {
-        var coordinates = e.lngLat;
-        var properties = e.features[0].properties;
-        var popupContent = generatePopupContent(properties, 'favorables-layer');
-        new mapboxgl.Popup()
-            .setLngLat(coordinates)
-            .setHTML(popupContent)
-            .addTo(map);
-    });
-
-    map.on('mouseenter', 'depots-layer', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    map.on('mouseleave', 'depots-layer', function () {
-        map.getCanvas().style.cursor = '';
-    });
-
-    map.on('mouseenter', 'favorables-layer', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    map.on('mouseleave', 'favorables-layer', function () {
-        map.getCanvas().style.cursor = '';
     });
 
     function generatePopupContent(properties, layerName) {
