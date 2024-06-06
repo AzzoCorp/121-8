@@ -1,77 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Toggle</title>
-	   <link
-      href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <style>    #menu {
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		<!-- background: white; -->
-		padding: 10px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-		z-index: 1;
-		background: #efefef;
-		padding: 10px;
-		font-family: 'Open Sans', sans-serif;
-    }
-        #toggleButton {
-        	margin-top : 20px;
-			        	margin-left : 13px;
-   
+    <meta charset="utf-8">
+    <title>Change a map's style</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
 
+    <link rel='stylesheet' href='styleML.css' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        html, body, #map { height: 100%; }
+        #menu {
+            position: absolute; /* Corrected typo */
+            top: 50px;
+            left: 10px;
+            /* background: white; */
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            background: #efefef;
+            font-family: 'Open Sans', sans-serif;
+        }
+        #toggleButton {
+            margin-top: 20px;
+            margin-left: 13px;
+        }
+        .tabs {
+			position: relative;
+            font-family: 'Lucida Sans', sans-serif;
+            font-size: 15px;
+			z-index:10000;
+			padding : 20px;
+        }
+        .tabs .tab-registers {
+            display: flex;
+            background-color: RGB(255, 255, 255);
+        }
+        .tabs button {
+            padding: 0.5em;
+            background-color: RGB(255, 255, 255);
+            border: none;
+            font: inherit;
+        }
+        .tabs .tab-registers button:hover {
+            cursor: pointer;
+        }
+        .tabs .tab-bodies {
+    
+            background-color: RGB(235, 235, 235);
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .tabs button.active-tab {
+            background-color: rgb(235, 235, 235);
         }
     </style>
 </head>
 <body>
-    <div id="menu">
-        <button id="menuButton">X</button>
-        	<br>
-    <input id="clx0x359w000f01qs8u62crxc" type="radio" name="rtoggle" value="satellite" checked>
-    <label for="clx0x359w000f01qs8u62crxc">satellite</label>
-    <br>
-    <input id="toggle-parcelles" type="checkbox" checked>
-    <label for="toggle-parcelles">Parcelles</label>
-    <input id="parcelles-width" type="range" min="0.1" max="5" step="0.1" value="0.5">
-    <br>
-    <input id="toggle-commune" type="checkbox" checked>
-    <label for="toggle-commune">Commune</label>
-    <input id="commune-width" type="range" min="1" max="10" step="0.5" value="3">
-    <br>
-    <input id="toggle-favorables" type="checkbox" checked>
-    <label for="toggle-favorables">Favorables</label>
-    <input id="favorables-opacity" type="range" min="0" max="1" step="0.1" value="1">
-    <br>
-    <input id="toggle-depots" type="checkbox" checked>
-    <label for="toggle-depots">Demandes</label>
-    <input id="depots-opacity" type="range" min="0" max="1" step="0.1" value="1">
-    <br>
-    <input type="text" id="search-parcel" placeholder="Rechercher une parcelle">
-    <button id="search-button">Rechercher</button>
+<div class="tabs">
+    <div class="tab-registers">
+        <button class="active-tab"  id="menuButton">X</button>
+        <button>Menu</button>
+        <button>i</button>
     </div>
-    <button id="toggleButton" style="display: none;">=</button>
+    <div class="tab-bodies">
+        <div style="display:block;">
+		</div>
+        <div style="display:none;">
+            <div id="menu">
+              
+                <br>
+                <input id="clx0x359w000f01qs8u62crxc" type="radio" name="rtoggle" value="satellite" checked>
+                <label for="clx0x359w000f01qs8u62crxc">satellite</label>
+                <br>
+                <input id="toggle-parcelles" type="checkbox" checked>
+                <label for="toggle-parcelles">Parcelles</label>
+                <input id="parcelles-width" type="range" min="0.1" max="5" step="0.1" value="0.5">
+                <br>
+                <input id="toggle-commune" type="checkbox" checked>
+                <label for="toggle-commune">Commune</label>
+                <input id="commune-width" type="range" min="1" max="10" step="0.5" value="3">
+                <br>
+                <input id="toggle-favorables" type="checkbox" checked>
+                <label for="toggle-favorables">Favorables</label>
+                <input id="favorables-opacity" type="range" min="0" max="1" step="0.1" value="1">
+                <br>
+                <input id="toggle-depots" type="checkbox" checked>
+                <label for="toggle-depots">Demandes</label>
+                <input id="depots-opacity" type="range" min="0" max="1" step="0.1" value="1">
+                <br>
+                <input type="text" id="search-parcel" placeholder="Rechercher une parcelle">
+                <button id="search-button">Rechercher</button>
+            </div>
+        </div>
+        <div style="display:none;">
+            <div>infos</div>
+        </div>
+    </div>
+</div>
+<div id="map"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const menu = document.getElementById('menu');
-            const menuButton = document.getElementById('menuButton');
-            const toggleButton = document.getElementById('toggleButton');
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
+    let map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/azzocorp/clx0x359w000f01qs8u62crxc',
+        center: [-63.613927, 2.445929],
+        zoom: 0
+    });
 
-            menuButton.addEventListener('click', () => {
-                menu.style.display = 'none';
-                toggleButton.style.display = 'block';
+    document.addEventListener('DOMContentLoaded', (event) => {
+		Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
+            const registers = tab_container.querySelector('.tab-registers');
+            const bodies = tab_container.querySelector('.tab-bodies');
+
+            let activeRegister = registers.querySelector('.active-tab');
+            activeRegister = activeRegister ? activeRegister : registers.children[0];
+            activeRegister.classList.add('active-tab');
+
+            Array.from(registers.children).forEach((el, i) => {
+                el.setAttribute('aria-controls', `${TabID}_${i}`);
+                bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
+
+                el.addEventListener('click', (ev) => {
+                    let activeRegister = registers.querySelector('.active-tab');
+                    activeRegister.classList.remove('active-tab');
+                    activeRegister = el;
+                    activeRegister.classList.add('active-tab');
+                    changeBody(registers, bodies, activeRegister); // Pass parameters
+                });
             });
 
-            toggleButton.addEventListener('click', () => {
-                menu.style.display = 'block';
-                toggleButton.style.display = 'none';
-            });
+            function changeBody(registers, bodies, activeRegister) { // Accept parameters
+                Array.from(registers.children).forEach((el, i) => {
+                    if (bodies.children[i]) {
+                        bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
+                    }
+                    el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
+                });
+            }
+
+            changeBody(registers, bodies, activeRegister); // Initial call to set the correct tab
         });
-    </script>
+    });
+</script>
 </body>
 </html>

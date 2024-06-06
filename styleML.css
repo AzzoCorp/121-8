@@ -1,8 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-
 #map {
     position: absolute;
     top: 0;
@@ -10,36 +5,45 @@ body {
     width: 100%;
 }
 
+body { margin: 0; padding: 0; }
+html, body, #map { height: 100%; }
 #menu {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #efefef;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1;
-    font-family: 'Open Sans', sans-serif;
-}
+	position: absolute; /* Corrected typo */
+	top: 32px;
 
-#menu.hidden {
-    display: none;
+	/* background: white; */
+	padding: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	z-index: 1;
+	background: #efefef;
+	font-family: 'Open Sans', sans-serif;
 }
+.tabs {
+	position: relative;
+	font-family: 'Lucida Sans', sans-serif;
+	font-size: 15px;
+width : 294px;
+	z-index:100;
+}
+.tabs .tab-registers {
+	display: flex;
+	background-color: RGB(255, 255, 255);
+}
+.tabs button {
+	padding: 0.5em;
+	background-color: RGB(255, 255, 255);
+	border: none;
+	font: inherit;
+}
+.tabs .tab-registers button:hover {
+	cursor: pointer;
+}
+.tabs .tab-bodies {
 
-#menu-toggle {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #efefef;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1;
-    font-family: 'Open Sans', sans-serif;
-    cursor: pointer;
-    border: none;
-    font-size: 22px;
+	background-color: RGB(235, 235, 235);
+	flex-grow: 1;
+	overflow-y: auto;
 }
-#toggleButton {
-    position: absolute;  
-	margin-top : 20px;
-	margin-left : 20px;
+.tabs button.active-tab {
+	background-color: rgb(235, 235, 235);
 }
