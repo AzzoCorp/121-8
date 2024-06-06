@@ -8,23 +8,27 @@
 
     <link rel='stylesheet' href='style.css' />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.3/commonmark.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
     <script src="./GeoDatas/parcelles.js"></script>
     <script src="./GeoDatas/commune.js"></script>
     <script src="./GeoDatas/favorables.js"></script>
     <script src="./GeoDatas/depots.js"></script>
+    <script src="./GeoDatas/Urbanisation40.js"></script>
+    <script src="./GeoDatas/Urbanisation80.js"></script>
 </head>
 <body>
 <body>
 <div class="tabs">
     <div class="tab-registers">
-        <button class="active-tab"  id="menuButton">X</button>
-        <button>Menu</button>
+        <button class="active-tab" id="menuButton">X</button>
+        <button>Outils</button>
+        <button>Lisezmoi</button>
         <button>i</button>
     </div>
     <div class="tab-bodies">
         <div style="display:block;">
-		</div>
+        </div>
         <div style="display:none;">
             <div id="menu">
               
@@ -48,23 +52,44 @@
                 <label for="toggle-depots">Demandes</label>
                 <input id="depots-opacity" type="range" min="0" max="1" step="0.1" value="1">
                 <br>
+                <input id="toggle-urbanisation40" type="checkbox" checked>
+                <label for="toggle-urbanisation40">Urbanisation 40</label>
+                <input id="urbanisation40-opacity" type="range" min="0" max="1" step="0.1" value="0.5">
+                <br>
+                <input id="toggle-urbanisation80" type="checkbox" checked>
+                <label for="toggle-urbanisation80">Urbanisation 80</label>
+                <input id="urbanisation80-opacity" type="range" min="0" max="1" step="0.1" value="0.5">
+                <br>
                 <input type="text" id="search-parcel" placeholder="Rechercher une parcelle">
                 <button id="search-button">Rechercher</button>
             </div>
         </div>
         <div style="display:none;">
-            <div id="menu"><article class="markdown-body entry-content container-lg" itemprop="text"><p dir="auto">121-8</p>
-<p dir="auto">Application de l'article 121.8 du code de l'urbanisme dans les communes littorales françaises.</p>
-<p dir="auto"><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037667305" rel="nofollow">Article_121.8_Sur_Légifrance</a></p>
-<p dir="auto">En particulier, "L'extension de l'urbanisation se réalise en continuité avec les agglomérations et villages existants." sachant que la jurisprudence fixe cette continuité à environ 100 mètres, le PADDUC de la Corse établissant une limite de 80 mètres.</p>
-<p dir="auto">Nous codons cette loi afin de situer les centres urbains et de vérifier de manière automatique et mathématique la "continuité" (art. 121-8) des décisions des communes, des préfectures et des juridictrions administratives.
-En Corse, le sport principal des associations de malfaiteurs consiste à réaliser des braquages urbanistiques, c'est-à-dire, à obtenir un permis de construire sur un terrain qui ne sera jamais en continuité avec le centre urbain d'une commune littorale. Une alchimie qui ferait pâlir n'importe quel braqueur de banque.</p>
-<p dir="auto">Pour commencer, nous nous concentrons sur la commune de Porto-Vecchio (code 2A247), qui semble être l'un des pires élèves de France à ce sujet.</p>
-<p dir="auto">Les sources GeoJSON que nous utilisons sont :</p>
-<p dir="auto"><a href="https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire" rel="nofollow">https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire</a></p>
-<p dir="auto">De nombreuses communes semblent déjà utiliser ce système. Actuellement, les fichiers JSON sont récupérés via les outils de développement de Chrome, mais un scrapping devrait permettre de l'automatiser malgré les protections utilisées par geosphere.fr pour les rendre quasi-inaccessibles programmationnellement.</p>
-<p dir="auto"><a href="https://manipuliti.github.io/121-8/index.html" rel="nofollow">https://manipuliti.github.io/121-8/index.html</a></p>
-</article></div>
+            <div id="menu"> <div id="content"></div> </div>
+        </div>
+        <div style="display:none;">
+            <div id="menu"> <div id="content">informations </div>
+            <script>
+            async function loadReadme() {
+                try {
+                    const response = await fetch('README.md');
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    const markdown = await response.text();
+                    const reader = new commonmark.Parser();
+                    const writer = new commonmark.HtmlRenderer();
+                    const parsed = reader.parse(markdown);
+                    const result = writer.render(parsed);
+                    document.getElementById('content').innerHTML = result;
+                } catch (error) {
+                    console.error('There has been a problem with your fetch operation:', error);
+                }
+            }
+
+            window.onload = loadReadme;
+            </script>
+        </div>
         </div>
     </div>
 </div>
@@ -77,16 +102,11 @@ En Corse, le sport principal des associations de malfaiteurs consiste à réalis
         center: [-63.613927, 2.445929],
         zoom: 0
     });
-	
-	 document.addEventListener('DOMContentLoaded', (event) => {
 
-    });
-	
-	
-	  document.addEventListener('DOMContentLoaded', (event) => {
-		const menu = document.getElementById('menu');
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const menu = document.getElementById('menu');
 
-		Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
+        Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
             const registers = tab_container.querySelector('.tab-registers');
             const bodies = tab_container.querySelector('.tab-bodies');
 
@@ -118,8 +138,7 @@ En Corse, le sport principal des associations de malfaiteurs consiste à réalis
 
             changeBody(registers, bodies, activeRegister); // Initial call to set the correct tab
         });
-	});
-	
+    });
 
     let highlightedParcels = null;
 
@@ -142,12 +161,9 @@ En Corse, le sport principal des associations de malfaiteurs consiste à réalis
         }
     }
 
-
-
-
-map.addControl(new mapboxgl.NavigationControl({ position: "top-left" }));
-
-map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
+    map.addControl(new mapboxgl.NavigationControl({ position: "top-left" }));
+    map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
+    
     function addParcellesLayer() {
         addLayer('parcelles', 'parcelles-layer', parcelles, 'line', {
             'line-color': '#FFFFFF',
@@ -182,7 +198,7 @@ map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
         });
     }
 
-    function addFavorablesLayer() {
+     function addFavorablesLayer() {
         addLayer('favorables', 'favorables-layer', favorables, 'fill', {
             'fill-color': '#009cff',
             'fill-opacity': 1,
@@ -288,8 +304,6 @@ map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
             }
         });
     }
-	
-
 
     document.getElementById('search-button').addEventListener('click', () => {
         const refString = document.getElementById('search-parcel').value;
@@ -372,16 +386,22 @@ map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
         addCommuneLayer();
         addFavorablesLayer();
         addDepotsLayer();
+        addUrbanisation40Layer(); // Ajout du calque urbanisation40
+        addUrbanisation80Layer(); // Ajout du calque urbanisation80
 
         toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
         toggleLayerVisibility('commune-layer', 'toggle-commune');
         toggleLayerVisibility('favorables-layer', 'toggle-favorables');
         toggleLayerVisibility('depots-layer', 'toggle-depots');
+        toggleLayerVisibility('urbanisation40-layer', 'toggle-urbanisation40'); // Contrôle de visibilité pour urbanisation40
+        toggleLayerVisibility('urbanisation80-layer', 'toggle-urbanisation80'); // Contrôle de visibilité pour urbanisation80
 
         updateLineWidth('parcelles-layer', 'parcelles-width');
         updateLineWidth('commune-layer', 'commune-width');
         updateLayerOpacity('favorables-layer', 'favorables-opacity');
         updateLayerOpacity('depots-layer', 'depots-opacity');
+        updateLayerOpacity('urbanisation40-layer', 'urbanisation40-opacity'); // Contrôle d'opacité pour urbanisation40
+        updateLayerOpacity('urbanisation80-layer', 'urbanisation80-opacity'); // Contrôle d'opacité pour urbanisation80
 
         // Préremplissage du champ de recherche à partir de l'URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -476,7 +496,163 @@ map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
                     JSON.parse(properties.decisions).forEach(function (decision) {
                         popupContent += "<b>Référence:</b> " + decision[1] + "<br>" +
                             "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
-                                                        "<b>Demandeur:</b> " + decision[3] + "<br>" +
+                            "<b>Demandeur:</b> " + decision[3] + "<br>" +
+                            "<b>Adresse:</b> " + decision[4] + "<br>" +
+                            "<b>Superficie totale:</b> " + decision[5] + "<br>" +
+                            "<b>Description:</b> " + decision[6] + "<br>" +
+                            "<b>Détails:</b> " + decision[7] + "<br>" +
+                            "<b>Statut:</b> " + decision[8] + "<br><br>";
+                    });
+                } catch (e) {
+                    console.error("Failed to parse decisions properties:", e);
+                }
+            }
+        }
+        return popupContent;
+    }
+
+    function addUrbanisation40Layer() {
+        addLayer('urbanisation40', 'urbanisation40-layer', urbanisation40, 'fill', {
+            'fill-color': '#ff0000', // Couleur de remplissage
+            'fill-opacity': 0.5, // Opacité de remplissage
+            'fill-outline-color': '#000000' // Couleur du contour
+        });
+    }
+
+    function addUrbanisation80Layer() {
+        addLayer('urbanisation80', 'urbanisation80-layer', urbanisation80, 'fill', {
+            'fill-color': '#00ff00', // Couleur de remplissage
+            'fill-opacity': 0.5, // Opacité de remplissage
+            'fill-outline-color': '#000000' // Couleur du contour
+        });
+    }
+
+    function initializeMap() {
+        if (!map.getSource('mapbox-dem')) {
+            map.addSource('mapbox-dem', {
+                type: 'raster-dem',
+                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                tileSize: 512,
+                maxzoom: 14
+            });
+            map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
+        }
+        animateView();
+        addParcellesLayer();
+        addCommuneLayer();
+        addFavorablesLayer();
+        addDepotsLayer();
+        addUrbanisation40Layer(); // Ajout du calque urbanisation40
+        addUrbanisation80Layer(); // Ajout du calque urbanisation80
+
+        toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
+        toggleLayerVisibility('commune-layer', 'toggle-commune');
+        toggleLayerVisibility('favorables-layer', 'toggle-favorables');
+        toggleLayerVisibility('depots-layer', 'toggle-depots');
+        toggleLayerVisibility('urbanisation40-layer', 'toggle-urbanisation40'); // Contrôle de visibilité pour urbanisation40
+        toggleLayerVisibility('urbanisation80-layer', 'toggle-urbanisation80'); // Contrôle de visibilité pour urbanisation80
+
+        updateLineWidth('parcelles-layer', 'parcelles-width');
+        updateLineWidth('commune-layer', 'commune-width');
+        updateLayerOpacity('favorables-layer', 'favorables-opacity');
+        updateLayerOpacity('depots-layer', 'depots-opacity');
+        updateLayerOpacity('urbanisation40-layer', 'urbanisation40-opacity'); // Contrôle d'opacité pour urbanisation40
+        updateLayerOpacity('urbanisation80-layer', 'urbanisation80-opacity'); // Contrôle d'opacité pour urbanisation80
+
+        // Préremplissage du champ de recherche à partir de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchParam = urlParams.get('r');
+        if (searchParam) {
+            document.getElementById('search-parcel').value = searchParam;
+            searchParcels(searchParam);
+        }
+
+        // Ajout des gestionnaires d'événements pour les popups sur les couches "favorables" et "depots"
+        map.on('click', 'favorables-layer', function (e) {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            
+            // Extrait les coordonnées central du polygone en cas de multipolygone
+            if (Array.isArray(coordinates[0][0])) {
+                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
+                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
+                
+                new mapboxgl.Popup()
+                    .setLngLat([lng, lat])
+                    .setHTML(description)
+                    .addTo(map);
+            } else {
+                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            }
+        });
+
+        map.on('click', 'depots-layer', function (e) {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+
+            // Extrait les coordonnées central du polygone en cas de multipolygone
+            if (Array.isArray(coordinates[0][0])) {
+                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
+                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
+
+                new mapboxgl.Popup()
+                    .setLngLat([lng, lat])
+                    .setHTML(description)
+                    .addTo(map);
+            } else {
+                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            }
+        });
+
+        addMouseMoveListener();
+    }
+
+    map.on('load', function () {
+        initializeMap();
+    });
+
+    function generatePopupContent(properties, layerName) {
+        var popupContent = "";
+        if (layerName === 'depots-layer') {
+            popupContent = "<h2>Demande de permis de construire</h2>" +
+                "<b>Section:</b> " + properties.section + "<br>" +
+                "<b>Numéro:</b> " + properties.numero + "<br>" +
+                "<b>Commune:</b> " + properties.commune + "<br>" +
+                "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
+            if (properties.depots) {
+                try {
+                    JSON.parse(properties.depots).forEach(function (depots) {
+                        popupContent += "<b>Date d'affichage:</b> " + depots[0] + "<br>" +
+                            "<b>N° de permis:</b> " + depots[1] + "<br>" +
+                            "<b>Demandeur:</b> " + depots[3] + "<br>" +
+                            "<b>Adresse:</b> " + depots[4] + "<br>" +
+                            "<b>Superficie totale:</b> " + depots[5] + "<br>" +
+                            "<b>Description:</b> " + depots[6] + "<br>" +
+                            "<b>Détails:</b> " + depots[7] + "<br>" +
+                            "<b>Date de dépôt:</b> " + depots[2] + "<br>";
+                    });
+                } catch (e) {
+                    console.error("Failed to parse depots properties:", e);
+                }
+            }
+        } else if (layerName === 'favorables-layer') {
+            popupContent = "<h2>Permis de construire favorable</h2>" +
+                "<b>Section:</b> " + properties.section + "<br>" +
+                "<b>Numéro:</b> " + properties.numero + "<br>" +
+                "<b>Commune:</b> " + properties.commune + "<br>" +
+                "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
+            if (properties.decisions) {
+                try {
+                    JSON.parse(properties.decisions).forEach(function (decision) {
+                        popupContent += "<b>Référence:</b> " + decision[1] + "<br>" +
+                            "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
+                            "<b>Demandeur:</b> " + decision[3] + "<br>" +
                             "<b>Adresse:</b> " + decision[4] + "<br>" +
                             "<b>Superficie totale:</b> " + decision[5] + "<br>" +
                             "<b>Description:</b> " + decision[6] + "<br>" +
@@ -505,3 +681,4 @@ map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
 </script>
 </body>
 </html>
+
