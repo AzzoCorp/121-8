@@ -27,7 +27,7 @@ width : 294px;
 }
 .tabs .tab-registers {
 	display: flex;
-	background-color: RGB(255, 255, 255);
+
 }
 .tabs button {
 	padding: 0.5em;
