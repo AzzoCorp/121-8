@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Change a map's style</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+    #menu {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		<!-- background: white; -->
+		padding: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		z-index: 1;
+		background: #efefef;
+		padding: 10px;
+		font-family: 'Open Sans', sans-serif;
+    }
+</style>
+    <!-- See a list of Mapbox-hosted public styles at -->
+    <!-- https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
+<div id="map"></div>
+
+<div id="menu">
+    <input id="clx0x359w000f01qs8u62crxc" type="radio" name="rtoggle" value="satellite" checked="checked">
+	<label for="satellite-streets-v12">satellite</label>
+    <input id="clx0woi7p01nj01qr2bnb1rss" type="radio" name="rtoggle" value="light">
+    <label for="light-v11">Claire</label>
+    <input id="clx0crin200zk01poe2nl9f83" type="radio" name="rtoggle" value="dark">
+    <label for="dark-v11">Foncée</label>
+	<input id="clx09ar6k00z401po2ndb2316" type="radio" name="rtoggle" value="outdoors">
+    <label for="outdoors-v12">Vectorielle</label>
+</div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/azzocorp/clx06uofp00yv01po3cv008tt', // style URL
+        center: [9.27970, 41.59099], // starting position [lng, lat]
+        zoom: 0 // starting zoom
+    });
+
+    const layerList = document.getElementById('menu');
+    const inputs = layerList.getElementsByTagName('input');
+
+    for (const input of inputs) {
+        input.onclick = (layer) => {
+            const layerId = layer.target.id;
+            map.setStyle('mapbox://styles/azzocorp/' + layerId);
+        };
+    }
+	
+	   function animateView() {
+
+
+      setTimeout(function () {
+        map.flyTo({
+          center: [9.27970, 41.59099],
+          zoom: 15.5,
+          pitch: 55,
+          bearing: 90,
+          duration: 10000
+        });
+      }, 50);
+    }
+
+    map.on('load', function () {
+      animateView();
+    });
+</script>
+
+</body>

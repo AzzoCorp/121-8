@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Change a map's style</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+<link rel='stylesheet' href='styleML.css' />
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+<script src="./GeoDatas/parcelles.js"></script>
+<script src="./GeoDatas/commune.js"></script>
+<script src="./GeoDatas/favorables.js"></script>
+<script src="./GeoDatas/depots.js"></script>
+</head>
+<body>
+	<div id="map"></div>
+	<div id="menu">
+		<input id="clx0x359w000f01qs8u62crxc" type="radio" name="rtoggle" value="satellite" checked>
+		<label for="satellite-streets-v12">satellite</label>
+		<input id="clx0woi7p01nj01qr2bnb1rss" type="radio" name="rtoggle" value="light">
+		<label for="light-v11">Claire</label>
+		<input id="clx0crin200zk01poe2nl9f83" type="radio" name="rtoggle" value="dark">
+		<label for="dark-v11">Foncée</label>
+		<input id="clx09ar6k00z401po2ndb2316" type="radio" name="rtoggle" value="Vectorielle">
+		<label for="outdoors-v12">Vectorielle</label>
+		<br>
+		<input id="toggle-parcelles" type="checkbox" checked>
+		<label for="toggle-parcelles">Show Parcelles</label>
+		<input id="parcelles-width" type="range" min="0.1" max="5" step="0.1" value="0.5">
+		<br>
+		<input id="toggle-commune" type="checkbox" checked>
+		<label for="toggle-commune">Show Commune</label>
+		<input id="commune-width" type="range" min="1" max="10" step="0.5" value="3">
+		<br>
+		<input id="toggle-favorables" type="checkbox" checked>
+		<label for="toggle-favorables">Show Favorables</label>
+		<input id="favorables-opacity" type="range" min="0" max="1" step="0.1" value="1">
+		<br>
+		<input id="toggle-depots" type="checkbox" checked>
+		<label for="toggle-depots">Show Depots</label>
+		<input id="depots-opacity" type="range" min="0" max="1" step="0.1" value="1">
+	</div>
+	<script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
+		let map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/azzocorp/clx0x359w000f01qs8u62crxc',
+			center: [9.27970, 41.59099],
+			zoom: 0
+		});
+
+		function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
+			if (!map.getSource(sourceId)) {
+				map.addSource(sourceId, {
+					'type': 'geojson',
+					'data': sourceData
+				});
+			}
+
+			if (!map.getLayer(layerId)) {
+				map.addLayer({
+					'id': layerId,
+					'type': layerType,
+					'source': sourceId,
+					'layout': {},
+					'paint': paintProps
+				});
+			}
+		}
+
+		function addParcellesLayer() {
+			addLayer('parcelles', 'parcelles-layer', parcelles, 'line', {
+				'line-color': '#FFFFFF',
+				'line-width': 0.5,
+				'line-opacity': [
+					'interpolate',
+					['linear'],
+					['zoom'],
+					13, 0,
+					19, 1
+				]
+			});
+		}
+
+		function addCommuneLayer() {
+			addLayer('commune', 'commune-layer', commune, 'line', {
+				'line-color': '#FFFFFF',
+				'line-width': 3,
+				'line-opacity': [
+					'interpolate',
+					['linear'],
+					['zoom'],
+					10, 0,
+					13, 1
+				]
+			});
+		}
+
+		function addFavorablesLayer() {
+			addLayer('favorables', 'favorables-layer', favorables, 'fill', {
+				'fill-color': '#009cff',
+				'fill-opacity': 1,
+				'fill-outline-color': '#000000'
+			});
+		}
+
+		function addDepotsLayer() {
+			addLayer('depots', 'depots-layer', depots, 'fill', {
+				'fill-color': '#ff00fe',
+				'fill-opacity': 1,
+				'fill-outline-color': '#000000'
+			});
+		}
+
+		function toggleLayerVisibility(layerId, checkboxId) {
+			document.getElementById(checkboxId).addEventListener('change', (event) => {
+				const visibility = event.target.checked ? 'visible' : 'none';
+				map.setLayoutProperty(layerId, 'visibility', visibility);
+			});
+		}
+
+		function updateLineWidth(layerId, sliderId) {
+			document.getElementById(sliderId).addEventListener('input', (event) => {
+				const lineWidth = parseFloat(event.target.value);
+				map.setPaintProperty(layerId, 'line-width', lineWidth);
+			});
+		}
+
+		function updateLayerOpacity(layerId, sliderId) {
+			document.getElementById(sliderId).addEventListener('input', (event) => {
+				const opacity = parseFloat(event.target.value);
+				map.setPaintProperty(layerId, 'fill-opacity', opacity);
+			});
+		}
+
+		function initializeMap() {
+			if (!map.getSource('mapbox-dem')) {
+				map.addSource('mapbox-dem', {
+					'type': 'raster-dem',
+					'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+					'tileSize': 512,
+					'maxzoom': 14
+				});
+				map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+			}
+
+			addParcellesLayer();
+			addCommuneLayer();
+			addFavorablesLayer();
+			addDepotsLayer();
+
+			toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
+			toggleLayerVisibility('commune-layer', 'toggle-commune');
+			toggleLayerVisibility('favorables-layer', 'toggle-favorables');
+			toggleLayerVisibility('depots-layer', 'toggle-depots');
+
+			updateLineWidth('parcelles-layer', 'parcelles-width');
+			updateLineWidth('commune-layer', 'commune-width');
+			updateLayerOpacity('favorables-layer', 'favorables-opacity');
+			updateLayerOpacity('depots-layer', 'depots-opacity');
+
+			animateView();
+		}
+
+		function animateView() {
+			setTimeout(() => {
+				map.flyTo({
+				  center: [9.27970, 41.59099],
+				  zoom: 15.5,
+				  pitch: 55,
+				  bearing: 90,
+				  duration: 10000
+				});
+			}, 50);
+		}
+
+		map.on('load', initializeMap);
+
+		const layerList = document.getElementById('menu');
+		const inputs = layerList.querySelectorAll('input[type="radio"]');
+
+		for (const input of inputs) {
+			input.onclick = (layer) => {
+				const layerId = layer.target.id;
+				map.setStyle('mapbox://styles/azzocorp/' + layerId);
+				map.on('style.load', initializeMap);
+			};
+		}
+	</script>
+</body>
+</html>
