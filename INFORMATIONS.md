@@ -1,25 +1,37 @@
-121-8
+Ici la liste des communes littorales françaises :
 
-Application de l'article 121.8 du code de l'urbanisme dans les communes littorales françaises.
+https://fr.wikipedia.org/wiki/Liste_des_communes_littorales_de_France
+---
 
-https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037667305
 
-En particulier, "L'extension de l'urbanisation se réalise en continuité avec les agglomérations et villages existants." sachant que la jurisprudence fixe cette continuité à environ 100 mètres, le PADDUC de la Corse établissant une limite de 80 mètres.
+Les données cadastrales datent du 01/02/2021 et proviennent de ce lien :
 
-Nous codons cette loi afin de situer les centres urbains et de vérifier de manière automatique et mathématique la "continuité" (art. 121-8) des décisions des communes, des préfectures et des juridictrions administratives.
-En Corse, le sport principal des associations de malfaiteurs consiste à réaliser des braquages urbanistiques, c'est-à-dire, à obtenir un permis de construire sur un terrain qui ne sera jamais en continuité avec le centre urbain d'une commune littorale. Une alchimie qui ferait pâlir n'importe quel braqueur de banque.
+https://files.data.gouv.fr/cadastre/etalab-cadastre/2021-02-01/geojson/communes/2A/2A247/
 
-Pour commencer, nous nous concentrons sur la commune de Porto-Vecchio (code 2A247), qui semble être l'un des pires élèves de France à ce sujet.
+Catte date est importante car cela implique que les données concerants les batiments qui nous servent à differencier les zones urbaines des centres urbains datent de cet instant et ne prennent donc pas les construction réalisées après ou qui n'étaient pas présente au moment de leur enregistrement.
+---
 
-Les sources GeoJSON que nous utilisons sont :
+
+Quelques communes utilisants déjà le système geosphere.fr :
 
 https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire
 
-De nombreuses communes semblent déjà utiliser ce système. Actuellement, les fichiers JSON sont récupérés via les outils de développement de Chrome, mais un scrapping devrait permettre de l'automatiser malgré les protections utilisées par geosphere.fr pour les rendre quasi-inaccessibles programmationnellement.
+https://guichetunique.geosphere.fr/sanary-sur-mer/Login/AffichageReglementaire
 
-mapbox version > https://manipuliti.github.io/121-8/index.html
+https://guichetunique.geosphere.fr/toulon/Login/AffichageReglementaire
 
-beta version > https://manipuliti.github.io/121-8/indexBeta01.html
+https://cc-paysdepontchateau.geosphere.fr/guichet-unique/Login/AffichageReglementaire
 
+https://demarchesurbanisme.orleans-metropole.fr/guichet-unique/Login/AffichageReglementaire
 
-Github du projet : https://github.com/manipuliti/121-8/
+https://urbanisme.gmvagglo.bzh/guichetunique/Login/AffichageReglementaire
+
+https://urbanisme.bordeaux-metropole.fr/guichet/login/affichagereglementaire
+
+https://gu.entre-bievreetrhone.fr/guichet-unique/Login/AffichageReglementaire
+
+https://geosphere.applis.toulouse-metropole.fr/guichet-unique/Login/AffichageReglementaire
+
+https://urbanisme.gmvagglo.bzh/guichetunique/Login/AffichageReglementaire
+
+---

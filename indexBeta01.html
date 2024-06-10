@@ -29,38 +29,19 @@
 			<div class="tab-bodies">
 				<div style="display:block;"></div>
 				<div style="display:none;">
-					<div id="menu">
-						<br>
-
-					</div>
+					<div id="menu"></div>
 				</div>
 				<div style="display:none;">
 					<div id="menu">
-						<div id="content"></div>
+						<div id="lisezmoi"></div>
 					</div>
 				</div>
 				<div style="display:none;">
-					<div id="menu">
-						<div id="content">informations </div>
+					<div id="menu">	
+						<div id="informations"></div>
+						
 						<script>
-							async function loadReadme() {
-							    try {
-							        const response = await fetch('README.md');
-							        if (!response.ok) {
-							            throw new Error('Network response was not ok ' + response.statusText);
-							        }
-							        const markdown = await response.text();
-							        const reader = new commonmark.Parser();
-							        const writer = new commonmark.HtmlRenderer();
-							        const parsed = reader.parse(markdown);
-							        const result = writer.render(parsed);
-							        document.getElementById('content').innerHTML = result+"<br><p>Depuis le fichier readme.dm du github du projet.</p>";
-							    } catch (error) {
-							        console.error('There has been a problem with your fetch operation:', error);
-							    }
-							}
-							
-							window.onload = loadReadme;
+						
 						</script>
 					</div>
 				</div>
@@ -68,6 +49,46 @@
 		</div>
 		<div id="map"></div>
 		<script>
+		
+			async function loadinfo() {
+				try {
+					const response = await fetch('INFORMATIONS.md');
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					const markdown = await response.text();
+					const reader = new commonmark.Parser();
+					const writer = new commonmark.HtmlRenderer();
+					const parsed = reader.parse(markdown);
+					const result = writer.render(parsed);
+					document.getElementById('informations').innerHTML = result+"<br><p>Depuis le fichier INFORMATIONS.dm du github du projet.</p>";
+				} catch (error) {
+					console.error('There has been a problem with your fetch operation:', error);
+				}
+			}
+			
+
+			async function loadReadme() {
+				try {
+					const response = await fetch('README.md');
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					const markdown = await response.text();
+					const reader = new commonmark.Parser();
+					const writer = new commonmark.HtmlRenderer();
+					const parsed = reader.parse(markdown);
+					const result = writer.render(parsed);
+					document.getElementById('lisezmoi').innerHTML = result+"<br><p>Depuis le fichier readme.dm du github du projet.</p>";
+				} catch (error) {
+					console.error('There has been a problem with your fetch operation:', error);
+				}
+			}
+			
+
+		window.onload = function() { loadReadme(); loadinfo(); };
+
+		
 			mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
 			let map = new mapboxgl.Map({
 			    container: 'map',
