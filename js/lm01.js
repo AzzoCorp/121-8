@@ -1,107 +1,159 @@
 // Define global variables
 let layerDefinitions = {};
 let layerCounter = 0;
-
-document.querySelector('.add-layer').draggable = false;
-document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const geojsonData = JSON.parse(e.target.result);
-            const uniqueId = Date.now(); // Utiliser un horodatage pour générer une chaîne unique
-            const layerId = file.name.replace('.geojson', '') + '-' + uniqueId;
-            const layerName = file.name;
-            addGeoJSON(geojsonData, layerId, layerName);
-					console.log(file);
-        };
-        reader.readAsText(file);
-		console.log(file);
-    }
+let parcelMarker;
+let parcelTimeout;
+let highlightedParcels = null;
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
+let map = new mapboxgl.Map({
+	container: 'map',
+	style: 'mapbox://styles/azzocorp/clx0x359w000f01qs8u62crxc',
+	center: [-63.613927, 2.445929],
+	zoom: 0
 });
-		
+
 async function loadinfo() {
-    try {
-        const response = await fetch('INFORMATIONS.md');
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        const markdown = await response.text();
-        const reader = new commonmark.Parser();
-        const writer = new commonmark.HtmlRenderer();
-        const parsed = reader.parse(markdown);
-        const result = writer.render(parsed);
-        document.getElementById('informations').innerHTML = result+"<br><p>Depuis le fichier INFORMATIONS.dm du github du projet.</p>";
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-    }
+	try {
+		const response = await fetch('INFORMATIONS.md');
+		if (!response.ok) {
+			throw new Error('Network response was not ok ' + response.statusText);
+		}
+		const markdown = await response.text();
+		const reader = new commonmark.Parser();
+		const writer = new commonmark.HtmlRenderer();
+		const parsed = reader.parse(markdown);
+		const result = writer.render(parsed);
+		document.getElementById('informations').innerHTML = result + "<br><p>Depuis le fichier INFORMATIONS.dm du github du projet.</p>";
+	} catch (error) {
+		console.error('There has been a problem with your fetch operation:', error);
+	}
 }
 
 async function loadReadme() {
-    try {
-        const response = await fetch('README.md');
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        const markdown = await response.text();
-        const reader = new commonmark.Parser();
-        const writer = new commonmark.HtmlRenderer();
-        const parsed = reader.parse(markdown);
-        const result = writer.render(parsed);
-        document.getElementById('lisezmoi').innerHTML = result+"<br><p>Depuis le fichier readme.dm du github du projet.</p>";
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-    }
+	try {
+		const response = await fetch('README.md');
+		if (!response.ok) {
+			throw new Error('Network response was not ok ' + response.statusText);
+		}
+		const markdown = await response.text();
+		const reader = new commonmark.Parser();
+		const writer = new commonmark.HtmlRenderer();
+		const parsed = reader.parse(markdown);
+		const result = writer.render(parsed);
+		document.getElementById('lisezmoi').innerHTML = result + "<br><p>Depuis le fichier readme.dm du github du projet.</p>";
+	} catch (error) {
+		console.error('There has been a problem with your fetch operation:', error);
+	}
 }
 
 window.onload = function() { loadReadme(); loadinfo(); };
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
-let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/azzocorp/clx0x359w000f01qs8u62crxc',
-    center: [-63.613927, 2.445929],
-    zoom: 0
-});
-
 document.addEventListener('DOMContentLoaded', (event) => {
-    const menu = document.getElementById('menu');
+		const menu = document.getElementById('menu');
 
-    Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
-        const registers = tab_container.querySelector('.tab-registers');
-        const bodies = tab_container.querySelector('.tab-bodies');
+		Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
+			const registers = tab_container.querySelector('.tab-registers');
+			const bodies = tab_container.querySelector('.tab-bodies');
 
-        let activeRegister = registers.querySelector('.active-tab');
-        activeRegister = activeRegister ? activeRegister : registers.children[0];
-        activeRegister.classList.add('active-tab');
+			let activeRegister = registers.querySelector('.active-tab');
+			activeRegister = activeRegister ? activeRegister : registers.children[0];
+			activeRegister.classList.add('active-tab');
 
-        Array.from(registers.children).forEach((el, i) => {
-            el.setAttribute('aria-controls', `${TabID}_${i}`);
-            bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
+			Array.from(registers.children).forEach((el, i) => {
+				el.setAttribute('aria-controls', `${TabID}_${i}`);
+				bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
 
-            el.addEventListener('click', (ev) => {
-                let activeRegister = registers.querySelector('.active-tab');
-                activeRegister.classList.remove('active-tab');
-                activeRegister = el;
-                activeRegister.classList.add('active-tab');
-                changeBody(registers, bodies, activeRegister);
-            });
-        });
+				el.addEventListener('click', (ev) => {
+					let activeRegister = registers.querySelector('.active-tab');
+					activeRegister.classList.remove('active-tab');
+					activeRegister = el;
+					activeRegister.classList.add('active-tab');
+					changeBody(registers, bodies, activeRegister);
+				});
+			});
 
-        function changeBody(registers, bodies, activeRegister) {
-            Array.from(registers.children).forEach((el, i) => {
-                if (bodies.children[i]) {
-                    bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
-                }
-                el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
-            });
-        }
+			function changeBody(registers, bodies, activeRegister) {
+				Array.from(registers.children).forEach((el, i) => {
+					if (bodies.children[i]) {
+						bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
+					}
+					el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
+				});
+			}
 
-        changeBody(registers, bodies, activeRegister);
-    });
-});
+			changeBody(registers, bodies, activeRegister);
+		});
+	}
+);
 
-let highlightedParcels = null;
+document.addEventListener('DOMContentLoaded', () => {
+		map.on('style.load', () => {
+			const layers = getMapLayer();
+			const layersList = document.getElementById('layers-list');
+
+			layers.forEach(layer => {
+				const layerItem = document.createElement('div');
+				layerItem.className = 'layer-item';
+
+				const dragIcon = document.createElement('img');
+				dragIcon.src = 'css/images/drag.png';
+				dragIcon.className = 'icon';
+				dragIcon.alt = 'Drag';
+
+				const visibilityIcon = document.createElement('img');
+				visibilityIcon.src = 'css/images/eye.svg';
+				visibilityIcon.className = 'icon';
+				visibilityIcon.alt = 'Visibility';
+
+				const indexText = document.createElement('span');
+				indexText.textContent = layer.index;
+				indexText.style.marginRight = '10px';
+
+				const idText = document.createElement('span');
+				idText.textContent = layer.id;
+				idText.style.marginRight = '10px';
+
+				const colorBox = document.createElement('div');
+				colorBox.className = 'color-box';
+				colorBox.style.backgroundColor = getColorForLayer(layer);
+
+				const opacitySlider = document.createElement('input');
+				opacitySlider.type = 'range';
+				opacitySlider.min = 0;
+				opacitySlider.max = 1;
+				opacitySlider.step = 0.01;
+				opacitySlider.className = 'slider';
+
+				const typeToggleIcon = document.createElement('img');
+				typeToggleIcon.src = 'css/images/fill.png';
+				typeToggleIcon.className = 'icon';
+				typeToggleIcon.alt = 'Toggle Type';
+
+				const deleteIcon = document.createElement('span');
+				deleteIcon.textContent = 'X';
+				deleteIcon.className = 'icon';
+				deleteIcon.style.cursor = 'pointer';
+				deleteIcon.onclick = () => {
+					layersList.removeChild(layerItem);
+				};
+
+				layerItem.appendChild(dragIcon);
+				layerItem.appendChild(visibilityIcon);
+				layerItem.appendChild(indexText);
+				layerItem.appendChild(idText);
+				layerItem.appendChild(colorBox);
+				layerItem.appendChild(opacitySlider);
+				layerItem.appendChild(typeToggleIcon);
+				layerItem.appendChild(deleteIcon);
+
+				layersList.appendChild(layerItem);
+			});
+		});
+	}
+);
+
+initializeMap();
+addMouseMoveListener();
 
 function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
     if (!map.getSource(sourceId)) {
@@ -121,9 +173,6 @@ function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
         }, 'waterway-label');
     }
 }
-
-map.addControl(new mapboxgl.NavigationControl({ position: "top-left" }));
-map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
 
 function addParcellesLayer() {
     addLayer('parcelles', 'parcelles-layer', parcelles, 'line', {
@@ -212,13 +261,6 @@ function addZonesUrbainesLayer() {
     });
 }
 
-function toggleLayerVisibility(layerId, checkboxId) {
-    document.getElementById(checkboxId).addEventListener('change', (event) => {
-        const visibility = event.target.checked ? 'visible' : 'none';
-        map.setLayoutProperty(layerId, 'visibility', visibility);
-    });
-}
-
 function updateLineWidth(layerId, sliderId) {
     document.getElementById(sliderId).addEventListener('input', (event) => {
         const lineWidth = parseFloat(event.target.value);
@@ -302,14 +344,6 @@ function highlightParcels(parcelFeatures) {
         }
     });
 }
-
-document.getElementById('search-button').addEventListener('click', () => {
-    const refString = document.getElementById('search-parcel').value;
-    searchParcels(refString);
-});
-
-let parcelMarker;
-let parcelTimeout;
 
 function createParcelMarker(ref, center) {
     const markerDiv = document.createElement('div');
@@ -420,7 +454,7 @@ function initializeMap() {
         toggleLayerVisibility('urbanisation40-layer', 'toggle-urbanisation40');
         toggleLayerVisibility('urbanisation80-layer', 'toggle-urbanisation80');
         toggleLayerVisibility('centressurbains-layer', 'toggle-centressurbains');
-                    toggleLayerVisibility('zonesurbaines-layer', 'toggle-zonesurbaines');
+        toggleLayerVisibility('zonesurbaines-layer', 'toggle-zonesurbaines');
 
         updateLineWidth('parcelles-layer', 'parcelles-width');
         updateLineWidth('commune-layer', 'commune-width');
@@ -447,6 +481,7 @@ function initializeMap() {
         });
     });
 }
+
 function animateView() {
     setTimeout(() => {
         map.flyTo({
@@ -457,16 +492,6 @@ function animateView() {
             duration: 10000
         });
     }, 50);
-}
-initializeMap();
-addMouseMoveListener();
-
-
-function updateLayerAttributes(layerId, key, value) {
-    if (layerDefinitions[layerId]) {
-        layerDefinitions[layerId][key] = value;
-		console.log(value);
-    }
 }
 
 function saveLayers() {
@@ -479,46 +504,6 @@ function saveLayers() {
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
-}
-
-function loadLayers() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '.json';
-    input.onchange = function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const loadedConfig = JSON.parse(e.target.result);
-
-                document.querySelectorAll('.layer-item').forEach(item => item.remove());
-                map.getStyle().layers.slice().forEach(layer => {
-                    if (layer.id.startsWith('geojson-layer-')) {
-                        removeGeoJSON(layer.id);
-                    }
-                });
-
-                layerDefinitions = {};
-
-                loadedConfig.sort((a, b) => a.order - b.order).forEach(config => {
-                    const { layerId, layerName, color, opacity, order, type } = config;
-                    layerDefinitions[layerId] = config;
-                    const geojsonFilePath = `/GeoDatas/${config.fileName}`;
-                    loadGeoJSONFromURL(geojsonFilePath, (geojsonData) => {
-                        addGeoJSON(geojsonData, layerId, layerName, color, parseFloat(opacity), type);
-                        addLayerToList(layerId, layerName, geojsonData, color, parseFloat(opacity), order, type);
-                    });
-                });
-
-                setTimeout(() => {
-                    reorderLayers();
-                }, 1000);
-            };
-            reader.readAsText(file);
-        }
-    };
-    input.click();
 }
 
 function updateIconColors(layerItem, color) {
@@ -581,42 +566,6 @@ function reorderLayers() {
             layerDefinitions[layerId].order = index;
         }
     });
-}
-
-function loadGeoJSONFromURL(url, callback) {
-    fetch(url)
-        .then(response => response.json())
-        .then(data => callback(data))
-        .catch(error => console.error('Erreur lors du chargement du GeoJSON:', error));
-}
-
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-function updateGeoJSONStyle(layerId, color, opacity, type, lineWidth = 2) {
-    if (map.getLayer(layerId)) {
-        const currentType = map.getLayer(layerId).type;
-        if (currentType !== type) {
-            changeLayerType(layerId, type);
-        }
-        if (type === 'fill') {
-            map.setPaintProperty(layerId, 'fill-color', color);
-            map.setPaintProperty(layerId, 'fill-opacity', parseFloat(opacity));
-        } else if (type === 'line') {
-            map.setPaintProperty(layerId, 'line-color', color);
-            map.setPaintProperty(layerId, 'line-opacity', parseFloat(opacity));
-            map.setPaintProperty(layerId, 'line-width', parseFloat(lineWidth));
-        } else if (type === 'background') {
-            map.setPaintProperty(layerId, 'background-color', color);
-            map.setPaintProperty(layerId, 'background-opacity', parseFloat(opacity));
-        }
-    }
 }
 
 function getMapLayer() {
@@ -728,17 +677,33 @@ function removeLayerFromList(layerId) {
     }
 }
 
-// Function to get layers from the map and sort them by index
-function getMapLayersSorted() {
-    const layers = map.getStyle().layers;
-    return layers.map((layer, index) => ({
-        id: layer.id,
-        type: layer.type,
-        index: index
-    })).sort((a, b) => a.index - b.index); // Sort by index in ascending order
+map.on('load', function() {
+    const mapLayers = getMapLayersSorted();
+    mapLayers.forEach(layer => {
+        addLayerToList(layer.id, layer.id, null, '#FFFFFF', 1, layer.index, layer.type);
+    });
+});
+
+map.on('load', function() {
+    const mapLayers = getMapLayersSorted();
+    mapLayers.sort((a, b) => b.index - a.index); // Sort layers by index in descending order
+    mapLayers.forEach(layer => {
+        addLayerToList(layer.id, layer.id, null, '#FFFFFF', 1, layer.index, layer.type);
+    });
+});
+
+async function loadGeoJSONFromURL(url, layerId) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return addLayerFromGeoJSON(data, layerId);
 }
 
-// Function to add a layer to the list
+function getColorForLayer(layer) {
+    // Cette fonction doit retourner la couleur du calque en fonction de ses propriétés.
+    // Pour simplifier, nous retournons une couleur aléatoire ici.
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
 function addLayerToList(layerId, layerName, geojsonData, color = '#FFFFFF', opacity = 1, order = layerCounter++, type = 'fill', lineWidth = 2) {
     const layerList = document.getElementById('layerList');
     const existingItem = document.querySelector(`#layer-item-${layerId}`);
@@ -856,11 +821,11 @@ function addLayerToList(layerId, layerName, geojsonData, color = '#FFFFFF', opac
     layerItem.appendChild(removeButton);
 
     const items = Array.from(layerList.querySelectorAll('.layer-item'));
-    const insertBeforeItem = items.find(item => parseInt(item.getAttribute('data-order')) < order);
+        const insertBeforeItem = items.find(item => parseInt(item.getAttribute('data-order')) > order);
     if (insertBeforeItem) {
         layerList.insertBefore(layerItem, insertBeforeItem);
     } else {
-        layerList.insertBefore(layerItem, layerList.querySelector('.add-layer').nextSibling);
+        layerList.appendChild(layerItem);
     }
 
     new Sortable(layerList, {
@@ -885,22 +850,6 @@ function addLayerToList(layerId, layerName, geojsonData, color = '#FFFFFF', opac
     reorderLayers();
 }
 
-// Reorder layers function
-function reorderLayers() {
-    const layerList = document.getElementById('layerList');
-    const layers = Array.from(layerList.querySelectorAll('.layer-item'));
-
-    layers.sort((a, b) => {
-        return parseInt(a.getAttribute('data-order')) - parseInt(b.getAttribute('data-order'));
-    });
-
-    layers.forEach((layer, index) => {
-        layer.querySelector('label').textContent = `${index} - ${layer.getAttribute('data-layer-id')}`;
-        layer.setAttribute('data-order', index);
-    });
-}
-
-// Map load event
 map.on('load', function() {
     const mapLayers = getMapLayersSorted();
     mapLayers.forEach(layer => {
@@ -916,15 +865,6 @@ map.on('load', function() {
     });
 });
 
-
-// Fonction pour charger les données GeoJSON à partir d'une URL
-async function loadGeoJSONFromURL(url, layerId) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return addLayerFromGeoJSON(data, layerId);
-}
-
-// Fonction pour ajouter une couche à partir des données GeoJSON
 function addLayerFromGeoJSON(data, layerId) {
     if (map.getSource(layerId)) {
         map.getSource(layerId).setData(data);
@@ -947,29 +887,158 @@ function addLayerFromGeoJSON(data, layerId) {
     return layerId;
 }
 
-// Réorganisation des couches basées sur l'ordre spécifié
-function reorderLayers() {
-    const layerItems = Array.from(document.querySelectorAll('.layer-item')).filter(item => !item.classList.contains('add-layer'));
-    layerItems.sort((a, b) => parseInt(a.getAttribute('data-order')) - parseInt(b.getAttribute('data-order')));
-
-    layerItems.forEach((item, index) => {
-        const layerId = item.getAttribute('data-layer-id');
-
-        if (map.getLayer(layerId)) {
-            const nextLayerId = layerItems[index + 1] ? layerItems[index + 1].getAttribute('data-layer-id') : undefined;
-            map.moveLayer(layerId, nextLayerId);
-        }
-
-        item.setAttribute('data-order', index);
-        const label = item.querySelector('label');
-        if (label) {
-            label.textContent = `${index} - ${layerDefinitions[layerId].layerName.replace('.geojson', '')}`;
-        }
-
-        if (layerDefinitions[layerId]) {
-            layerDefinitions[layerId].order = index;
-        }
-    });
-
-    console.log('Layers reordered:', layerItems.map(item => item.getAttribute('data-layer-id')));
+function getMapLayersSorted() {
+    const layers = map.getStyle().layers;
+    return layers.map((layer, index) => ({
+        id: layer.id,
+        type: layer.type,
+        index: index
+    })).sort((a, b) => a.index - b.index); // Sort by index in ascending order
 }
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function updateLayerAttributes(layerId, key, value) {
+    if (layerDefinitions[layerId]) {
+        layerDefinitions[layerId][key] = value;
+    }
+}
+
+function loadLayers() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const loadedConfig = JSON.parse(e.target.result);
+
+                document.querySelectorAll('.layer-item').forEach(item => item.remove());
+                map.getStyle().layers.slice().forEach(layer => {
+                    if (layer.id.startsWith('geojson-layer-')) {
+                        removeGeoJSON(layer.id);
+                    }
+                });
+
+                layerDefinitions = {};
+
+                                loadedConfig.sort((a, b) => a.order - b.order).forEach(config => {
+                    const { layerId, layerName, color, opacity, order, type } = config;
+                    layerDefinitions[layerId] = config;
+                    const geojsonFilePath = `/GeoDatas/${config.fileName}`;
+                    loadGeoJSONFromURL(geojsonFilePath, (geojsonData) => {
+                        addGeoJSON(geojsonData, layerId, layerName, color, parseFloat(opacity), type);
+                        addLayerToList(layerId, layerName, geojsonData, color, parseFloat(opacity), order, type);
+                    });
+                });
+
+                setTimeout(() => {
+                    reorderLayers();
+                }, 1000);
+            };
+            reader.readAsText(file);
+        }
+    };
+    input.click();
+}
+
+function updateGeoJSONStyle(layerId, color, opacity, type, lineWidth = 2) {
+    if (map.getLayer(layerId)) {
+        const currentType = map.getLayer(layerId).type;
+        if (currentType !== type) {
+            changeLayerType(layerId, type);
+        }
+        if (type === 'fill') {
+            map.setPaintProperty(layerId, 'fill-color', color);
+            map.setPaintProperty(layerId, 'fill-opacity', parseFloat(opacity));
+        } else if (type === 'line') {
+            map.setPaintProperty(layerId, 'line-color', color);
+            map.setPaintProperty(layerId, 'line-opacity', parseFloat(opacity));
+            map.setPaintProperty(layerId, 'line-width', parseFloat(lineWidth));
+        } else if (type === 'background') {
+            map.setPaintProperty(layerId, 'background-color', color);
+            map.setPaintProperty(layerId, 'background-opacity', parseFloat(opacity));
+        }
+    }
+}
+
+function getColorForLayer(layer) {
+    // Cette fonction doit retourner la couleur du calque en fonction de ses propriétés.
+    // Pour simplifier, nous retournons une couleur aléatoire ici.
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    map.on('style.load', () => {
+        const layers = getMapLayer();
+        const layersList = document.getElementById('layers-list');
+
+        layers.forEach(layer => {
+            const layerItem = document.createElement('div');
+            layerItem.className = 'layer-item';
+
+            const dragIcon = document.createElement('img');
+            dragIcon.src = 'css/images/drag.png';
+            dragIcon.className = 'icon';
+            dragIcon.alt = 'Drag';
+
+            const visibilityIcon = document.createElement('img');
+            visibilityIcon.src = 'css/images/eye.svg';
+            visibilityIcon.className = 'icon';
+            visibilityIcon.alt = 'Visibility';
+
+            const indexText = document.createElement('span');
+            indexText.textContent = layer.index;
+            indexText.style.marginRight = '10px';
+
+            const idText = document.createElement('span');
+            idText.textContent = layer.id;
+            idText.style.marginRight = '10px';
+
+            const colorBox = document.createElement('div');
+            colorBox.className = 'color-box';
+            colorBox.style.backgroundColor = getColorForLayer(layer);
+
+            const opacitySlider = document.createElement('input');
+            opacitySlider.type = 'range';
+            opacitySlider.min = 0;
+            opacitySlider.max = 1;
+            opacitySlider.step = 0.01;
+            opacitySlider.className = 'slider';
+
+            const typeToggleIcon = document.createElement('img');
+            typeToggleIcon.src = 'css/images/fill.png';
+            typeToggleIcon.className = 'icon';
+            typeToggleIcon.alt = 'Toggle Type';
+
+            const deleteIcon = document.createElement('span');
+            deleteIcon.textContent = 'X';
+            deleteIcon.className = 'icon';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.onclick = () => {
+                layersList.removeChild(layerItem);
+            };
+
+            layerItem.appendChild(dragIcon);
+            layerItem.appendChild(visibilityIcon);
+            layerItem.appendChild(indexText);
+            layerItem.appendChild(idText);
+            layerItem.appendChild(colorBox);
+            layerItem.appendChild(opacitySlider);
+            layerItem.appendChild(typeToggleIcon);
+            layerItem.appendChild(deleteIcon);
+
+            layersList.appendChild(layerItem);
+        });
+    });
+});
+
