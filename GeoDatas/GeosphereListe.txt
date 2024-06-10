@@ -1,4 +1,5 @@
 https://fr.wikipedia.org/wiki/Liste_des_communes_littorales_de_France
+2021-02-01  https://files.data.gouv.fr/cadastre/etalab-cadastre/2021-02-01/geojson/communes/2A/2A247/
 
 https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire
 https://guichetunique.geosphere.fr/sanary-sur-mer/Login/AffichageReglementaire
