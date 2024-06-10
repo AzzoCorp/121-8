@@ -1,6 +1,7 @@
 Ici la liste des communes littorales françaises :
 
 https://fr.wikipedia.org/wiki/Liste_des_communes_littorales_de_France
+---
 
 
 Les données cadastrales dates du 01/02/2021 et proveinnent de ce lien :
@@ -8,6 +9,7 @@ Les données cadastrales dates du 01/02/2021 et proveinnent de ce lien :
 https://files.data.gouv.fr/cadastre/etalab-cadastre/2021-02-01/geojson/communes/2A/2A247/
 
 Catte date est importante car cela implique que les données concerants les batiments qui nous servent à differencier les zones urbaines des centres urbains datent de cet instant et ne prennent donc pas les construction réalisées après ou qui n'étaient pas présente au moment de leur enregistrement.
+---
 
 
 Quelques communes utilisants déjà le système geosphere.fr :
@@ -31,3 +33,4 @@ https://gu.entre-bievreetrhone.fr/guichet-unique/Login/AffichageReglementaire
 https://geosphere.applis.toulouse-metropole.fr/guichet-unique/Login/AffichageReglementaire
 
 https://urbanisme.gmvagglo.bzh/guichetunique/Login/AffichageReglementaire
+---
