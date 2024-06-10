@@ -1,690 +1,513 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Change a map's style</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
-
-    <link rel='stylesheet' href='style.css' />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.3/commonmark.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
-    <script src="./GeoDatas/parcelles.js"></script>
-    <script src="./GeoDatas/commune.js"></script>
-    <script src="./GeoDatas/favorables.js"></script>
-    <script src="./GeoDatas/depots.js"></script>
-    <script src="./GeoDatas/Urbanisation40.js"></script>
-    <script src="./GeoDatas/Urbanisation80.js"></script>
-</head>
-<body>
-<body>
-<div class="tabs">
-    <div class="tab-registers">
-        <button class="active-tab" id="menuButton">X</button>
-        <button>Outils</button>
-        <button>Lisezmoi</button>
-        <button>i</button>
-    </div>
-    <div class="tab-bodies">
-        <div style="display:block;">
-        </div>
-        <div style="display:none;">
-            <div id="menu">
-              
-                <br>
-                <input id="clx0x359w000f01qs8u62crxc" type="radio" name="rtoggle" value="satellite" checked>
-                <label for="clx0x359w000f01qs8u62crxc">satellite</label>
-                <br>
-                <input id="toggle-parcelles" type="checkbox" checked>
-                <label for="toggle-parcelles">Parcelles</label>
-                <input id="parcelles-width" type="range" min="0.1" max="5" step="0.1" value="0.5">
-                <br>
-                <input id="toggle-commune" type="checkbox" checked>
-                <label for="toggle-commune">Commune</label>
-                <input id="commune-width" type="range" min="1" max="10" step="0.5" value="3">
-                <br>
-                <input id="toggle-favorables" type="checkbox" checked>
-                <label for="toggle-favorables">Favorables</label>
-                <input id="favorables-opacity" type="range" min="0" max="1" step="0.1" value="1">
-                <br>
-                <input id="toggle-depots" type="checkbox" checked>
-                <label for="toggle-depots">Demandes</label>
-                <input id="depots-opacity" type="range" min="0" max="1" step="0.1" value="1">
-                <br>
-                <input id="toggle-urbanisation40" type="checkbox" checked>
-                <label for="toggle-urbanisation40">Urbanisation 40</label>
-                <input id="urbanisation40-opacity" type="range" min="0" max="1" step="0.1" value="0.5">
-                <br>
-                <input id="toggle-urbanisation80" type="checkbox" checked>
-                <label for="toggle-urbanisation80">Urbanisation 80</label>
-                 <input id="urbanisation80-width" type="range" min="1" max="10" step="0.5" value="3">
-                <br>
-                <input type="text" id="search-parcel" placeholder="Rechercher une parcelle">
-                <button id="search-button">Rechercher</button>
-            </div>
-        </div>
-        <div style="display:none;">
-            <div id="menu"> <div id="content"></div> </div>
-        </div>
-        <div style="display:none;">
-            <div id="menu"> <div id="content">informations </div>
-            <script>
-            async function loadReadme() {
-                try {
-                    const response = await fetch('README.md');
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    const markdown = await response.text();
-                    const reader = new commonmark.Parser();
-                    const writer = new commonmark.HtmlRenderer();
-                    const parsed = reader.parse(markdown);
-                    const result = writer.render(parsed);
-                    document.getElementById('content').innerHTML = result;
-                } catch (error) {
-                    console.error('There has been a problem with your fetch operation:', error);
-                }
-            }
-
-            window.onload = loadReadme;
-            </script>
-        </div>
-        </div>
-    </div>
-</div>
-<div id="map"></div>
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
-    let map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/azzocorp/clx0x359w000f01qs8u62crxc',
-        center: [-63.613927, 2.445929],
-        zoom: 0
-    });
-
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const menu = document.getElementById('menu');
-
-        Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
-            const registers = tab_container.querySelector('.tab-registers');
-            const bodies = tab_container.querySelector('.tab-bodies');
-
-            let activeRegister = registers.querySelector('.active-tab');
-            activeRegister = activeRegister ? activeRegister : registers.children[0];
-            activeRegister.classList.add('active-tab');
-
-            Array.from(registers.children).forEach((el, i) => {
-                el.setAttribute('aria-controls', `${TabID}_${i}`);
-                bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
-
-                el.addEventListener('click', (ev) => {
-                    let activeRegister = registers.querySelector('.active-tab');
-                    activeRegister.classList.remove('active-tab');
-                    activeRegister = el;
-                    activeRegister.classList.add('active-tab');
-                    changeBody(registers, bodies, activeRegister); // Pass parameters
-                });
-            });
-
-            function changeBody(registers, bodies, activeRegister) { // Accept parameters
-                Array.from(registers.children).forEach((el, i) => {
-                    if (bodies.children[i]) {
-                        bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
-                    }
-                    el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
-                });
-            }
-
-            changeBody(registers, bodies, activeRegister); // Initial call to set the correct tab
-        });
-    });
-
-    let highlightedParcels = null;
-
-    function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
-        if (!map.getSource(sourceId)) {
-            map.addSource(sourceId, {
-                type: 'geojson',
-                data: sourceData
-            });
-        }
-
-        if (!map.getLayer(layerId)) {
-            map.addLayer({
-                id: layerId,
-                type: layerType,
-                source: sourceId,
-                layout: {},
-                paint: paintProps
-            }, 'waterway-label');
-        }
-    }
-
-    map.addControl(new mapboxgl.NavigationControl({ position: "top-left" }));
-    map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
-    
-    function addParcellesLayer() {
-        addLayer('parcelles', 'parcelles-layer', parcelles, 'line', {
-            'line-color': '#FFFFFF',
-            'line-width': 0.5,
-            'line-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                13, 0,
-                19, 1
-            ]
-        });
-
-        addLayer('parcelles-interactive', 'parcelles-interactive-layer', parcelles, 'fill', {
-            'fill-color': '#FFFFFF',
-            'fill-opacity': 0,
-            'fill-outline-color': '#FFFFFF'
-        });
-    }
-
-    function addCommuneLayer() {
-        addLayer('commune', 'commune-layer', commune, 'line', {
-            'line-color': '#FFFFFF',
-            'line-width': 3,
-            'line-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                10, 0,
-                13, 1
-            ]
-        });
-    }
-
-     function addFavorablesLayer() {
-        addLayer('favorables', 'favorables-layer', favorables, 'fill', {
-            'fill-color': '#009cff',
-            'fill-opacity': 1,
-            'fill-outline-color': '#000000'
-        });
-    }
-
-    function addDepotsLayer() {
-        addLayer('depots', 'depots-layer', depots, 'fill', {
-            'fill-color': '#ff00fe',
-            'fill-opacity': 1,
-            'fill-outline-color': '#000000'
-        });
-    }
-
-    function toggleLayerVisibility(layerId, checkboxId) {
-        document.getElementById(checkboxId).addEventListener('change', (event) => {
-            const visibility = event.target.checked ? 'visible' : 'none';
-            map.setLayoutProperty(layerId, 'visibility', visibility);
-        });
-    }
-
-    function updateLineWidth(layerId, sliderId) {
-        document.getElementById(sliderId).addEventListener('input', (event) => {
-            const lineWidth = parseFloat(event.target.value);
-            map.setPaintProperty(layerId, 'line-width', lineWidth);
-        });
-    }
-
-    function updateLayerOpacity(layerId, sliderId) {
-        document.getElementById(sliderId).addEventListener('input', (event) => {
-            const opacity = parseFloat(event.target.value);
-            map.setPaintProperty(layerId, 'fill-opacity', opacity);
-        });
-    }
-
-    function parseReferences(refString) {
-        const cleanedString = refString.replace(/[,_\-\/|]+/g, ' ').replace(/\s+/g, '').toUpperCase();
-        const regex = /([A-Z]+)(\d+)/g;
-        const references = [];
-        let match;
-
-        while ((match = regex.exec(cleanedString)) !== null) {
-            references.push(match[1] + match[2]);
-        }
-        return references;
-    }
-
-    function searchParcels(refString) {
-        const references = parseReferences(refString);
-        const features = parcelles.features;
-        let parcelFeatures = [];
-        let firstCenter = null;
-
-        references.forEach(reference => {
-            features.forEach(feature => {
-                const props = feature.properties;
-                const featureReference = (props.section + props.numero).toUpperCase();
-
-                if (reference === featureReference) {
-                    parcelFeatures.push(feature);
-                    if (!firstCenter) {
-                        firstCenter = turf.centerOfMass(feature).geometry.coordinates;
-                    }
-                }
-            });
-        });
-
-        if (parcelFeatures.length > 0) {
-            map.flyTo({
-                center: firstCenter,
-                zoom: 16
-            });
-            highlightParcels(parcelFeatures);
-        } else {
-            alert('Parcelles non trouvées');
-        }
-    }
-
-    function highlightParcels(parcelFeatures) {
-        if (highlightedParcels) {
-            map.removeLayer('highlighted-parcels-layer');
-            map.removeSource('highlighted-parcels');
-        }
-
-        highlightedParcels = {
-            type: 'FeatureCollection',
-            features: parcelFeatures
-        };
-
-        map.addSource('highlighted-parcels', {
-            type: 'geojson',
-            data: highlightedParcels
-        });
-
-        map.addLayer({
-            id: 'highlighted-parcels-layer',
-            type: 'line',
-            source: 'highlighted-parcels',
-            paint: {
-                'line-color': '#ff0000',
-                'line-width': 3
-            }
-        });
-    }
-
-    document.getElementById('search-button').addEventListener('click', () => {
-        const refString = document.getElementById('search-parcel').value;
-        searchParcels(refString);
-    });
-
-    let parcelMarker;
-    let parcelTimeout;
-
-    function createParcelMarker(ref, center) {
-        const markerDiv = document.createElement('div');
-        markerDiv.className = 'parcel-marker';
-        markerDiv.innerHTML = ref;
-        markerDiv.style.backgroundColor = 'white';
-        markerDiv.style.padding = '2px';
-        markerDiv.style.borderRadius = '3px';
-        markerDiv.style.border = '1px solid black';
-
-        parcelMarker = new mapboxgl.Marker(markerDiv)
-            .setLngLat(center)
-            .addTo(map);
-    }
-
-    map.on('mouseenter', 'parcelles-interactive-layer', function () {
-        map.getCanvas().style.cursor = 'pointer';
-        clearTimeout(parcelTimeout);
-    });
-
-    map.on('mousemove', 'parcelles-interactive-layer', function (e) {
-        if (parcelMarker) {
-            parcelMarker.remove();
-        }
-
-        const center = turf.centerOfMass(e.features[0]).geometry.coordinates;
-        const properties = e.features[0].properties;
-        const parcelReference = properties.section + " " + properties.numero;
-
-        createParcelMarker(parcelReference, center);
-    });
-
-    map.on('mouseleave', 'parcelles-interactive-layer', function () {
-        map.getCanvas().style.cursor = '';
-        parcelTimeout = setTimeout(() => {
-            if (parcelMarker) {
-                parcelMarker.remove();
-                parcelMarker = null;
-            }
-        }, 1000);
-    });
-
-    function addMouseMoveListener() {
-        map.on('mousemove', function (e) {
-            if (map.getLayer('parcelles-interactive-layer')) {
-                const features = map.queryRenderedFeatures(e.point, {
-                    layers: ['parcelles-interactive-layer']
-                });
-
-                if (!features.length) {
-                    if (parcelMarker) {
-                        parcelMarker.remove();
-                        parcelMarker = null;
-                    }
-                }
-            }
-        });
-    }
-
-    function initializeMap() {
-        if (!map.getSource('mapbox-dem')) {
-            map.addSource('mapbox-dem', {
-                type: 'raster-dem',
-                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-                tileSize: 512,
-                maxzoom: 14
-            });
-            map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
-        }
-        animateView();
-        addParcellesLayer();
-        addCommuneLayer();
-        addFavorablesLayer();
-        addDepotsLayer();
-        addUrbanisation40Layer(); // Ajout du calque urbanisation40
-        addUrbanisation80Layer(); // Ajout du calque urbanisation80
-
-        toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
-        toggleLayerVisibility('commune-layer', 'toggle-commune');
-        toggleLayerVisibility('favorables-layer', 'toggle-favorables');
-        toggleLayerVisibility('depots-layer', 'toggle-depots');
-        toggleLayerVisibility('urbanisation40-layer', 'toggle-urbanisation40'); // Contrôle de visibilité pour urbanisation40
-        toggleLayerVisibility('urbanisation80-layer', 'toggle-urbanisation80'); // Contrôle de visibilité pour urbanisation80
-
-        updateLineWidth('parcelles-layer', 'parcelles-width');
-        updateLineWidth('commune-layer', 'commune-width');
-        updateLayerOpacity('favorables-layer', 'favorables-opacity');
-        updateLayerOpacity('depots-layer', 'depots-opacity');
-        updateLayerOpacity('urbanisation40-layer', 'urbanisation40-opacity'); // Contrôle d'opacité pour urbanisation40
-        updateLineWidth('urbanisation80-layer', 'urbanisation80-width'); 
-
-        // Préremplissage du champ de recherche à partir de l'URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchParam = urlParams.get('r');
-        if (searchParam) {
-            document.getElementById('search-parcel').value = searchParam;
-            searchParcels(searchParam);
-        }
-
-        // Ajout des gestionnaires d'événements pour les popups sur les couches "favorables" et "depots"
-        map.on('click', 'favorables-layer', function (e) {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            
-            // Extrait les coordonnées central du polygone en cas de multipolygone
-            if (Array.isArray(coordinates[0][0])) {
-                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
-                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
-                
-                new mapboxgl.Popup()
-                    .setLngLat([lng, lat])
-                    .setHTML(description)
-                    .addTo(map);
-            } else {
-                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(description)
-                    .addTo(map);
-            }
-        });
-
-        map.on('click', 'depots-layer', function (e) {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-
-            // Extrait les coordonnées central du polygone en cas de multipolygone
-            if (Array.isArray(coordinates[0][0])) {
-                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
-                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
-
-                new mapboxgl.Popup()
-                    .setLngLat([lng, lat])
-                    .setHTML(description)
-                    .addTo(map);
-            } else {
-                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(description)
-                    .addTo(map);
-            }
-        });
-
-        addMouseMoveListener();
-    }
-
-    map.on('load', function () {
-        initializeMap();
-    });
-
-    function generatePopupContent(properties, layerName) {
-        var popupContent = "";
-        if (layerName === 'depots-layer') {
-            popupContent = "<h2>Demande de permis de construire</h2>" +
-                "<b>Section:</b> " + properties.section + "<br>" +
-                "<b>Numéro:</b> " + properties.numero + "<br>" +
-                "<b>Commune:</b> " + properties.commune + "<br>" +
-                "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
-            if (properties.depots) {
-                try {
-                    JSON.parse(properties.depots).forEach(function (depots) {
-                        popupContent += "<b>Date d'affichage:</b> " + depots[0] + "<br>" +
-                            "<b>N° de permis:</b> " + depots[1] + "<br>" +
-                            "<b>Demandeur:</b> " + depots[3] + "<br>" +
-                            "<b>Adresse:</b> " + depots[4] + "<br>" +
-                            "<b>Superficie totale:</b> " + depots[5] + "<br>" +
-                            "<b>Description:</b> " + depots[6] + "<br>" +
-                            "<b>Détails:</b> " + depots[7] + "<br>" +
-                            "<b>Date de dépôt:</b> " + depots[2] + "<br>";
-                    });
-                } catch (e) {
-                    console.error("Failed to parse depots properties:", e);
-                }
-            }
-        } else if (layerName === 'favorables-layer') {
-            popupContent = "<h2>Permis de construire favorable</h2>" +
-                "<b>Section:</b> " + properties.section + "<br>" +
-                "<b>Numéro:</b> " + properties.numero + "<br>" +
-                "<b>Commune:</b> " + properties.commune + "<br>" +
-                "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
-            if (properties.decisions) {
-                try {
-                    JSON.parse(properties.decisions).forEach(function (decision) {
-                        popupContent += "<b>Référence:</b> " + decision[1] + "<br>" +
-                            "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
-                            "<b>Demandeur:</b> " + decision[3] + "<br>" +
-                            "<b>Adresse:</b> " + decision[4] + "<br>" +
-                            "<b>Superficie totale:</b> " + decision[5] + "<br>" +
-                            "<b>Description:</b> " + decision[6] + "<br>" +
-                            "<b>Détails:</b> " + decision[7] + "<br>" +
-                            "<b>Statut:</b> " + decision[8] + "<br><br>";
-                    });
-                } catch (e) {
-                    console.error("Failed to parse decisions properties:", e);
-                }
-            }
-        }
-        return popupContent;
-    }
-
-    function addUrbanisation40Layer() {
-        addLayer('urbanisation40', 'urbanisation40-layer', urbanisation40, 'fill', {
-            'fill-color': '#ff0000', // Couleur de remplissage
-            'fill-opacity': 0.5, // Opacité de remplissage
-            'fill-outline-color': '#000000' // Couleur du contour
-        });
-    }
-
-    function addUrbanisation80Layer() {
-        addLayer('urbanisation80', 'urbanisation80-layer', urbanisation80, 'line', {
-             'line-color': '#FFFFFF',
-            'line-width': 3,
-            'line-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                10, 0,
-                13, 1
-            ]
-        });
-	}
-
-    function initializeMap() {
-        if (!map.getSource('mapbox-dem')) {
-            map.addSource('mapbox-dem', {
-                type: 'raster-dem',
-                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-                tileSize: 512,
-                maxzoom: 14
-            });
-            map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
-        }
-        animateView();
-        addParcellesLayer();
-        addCommuneLayer();
-        addFavorablesLayer();
-        addDepotsLayer();
-        addUrbanisation40Layer(); // Ajout du calque urbanisation40
-        addUrbanisation80Layer(); // Ajout du calque urbanisation80
-
-        toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
-        toggleLayerVisibility('commune-layer', 'toggle-commune');
-        toggleLayerVisibility('favorables-layer', 'toggle-favorables');
-        toggleLayerVisibility('depots-layer', 'toggle-depots');
-        toggleLayerVisibility('urbanisation40-layer', 'toggle-urbanisation40'); // Contrôle de visibilité pour urbanisation40
-        toggleLayerVisibility('urbanisation80-layer', 'toggle-urbanisation80'); // Contrôle de visibilité pour urbanisation80
-
-        updateLineWidth('parcelles-layer', 'parcelles-width');
-        updateLineWidth('commune-layer', 'commune-width');
-        updateLayerOpacity('favorables-layer', 'favorables-opacity');
-        updateLayerOpacity('depots-layer', 'depots-opacity');
-        updateLayerOpacity('urbanisation40-layer', 'urbanisation40-opacity'); // Contrôle d'opacité pour urbanisation40
-        updateLineWidth('urbanisation80-layer', 'urbanisation80-width'); // Contrôle d'opacité pour urbanisation80
-
-        // Préremplissage du champ de recherche à partir de l'URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchParam = urlParams.get('r');
-        if (searchParam) {
-            document.getElementById('search-parcel').value = searchParam;
-            searchParcels(searchParam);
-        }
-
-        // Ajout des gestionnaires d'événements pour les popups sur les couches "favorables" et "depots"
-        map.on('click', 'favorables-layer', function (e) {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            
-            // Extrait les coordonnées central du polygone en cas de multipolygone
-            if (Array.isArray(coordinates[0][0])) {
-                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
-                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
-                
-                new mapboxgl.Popup()
-                    .setLngLat([lng, lat])
-                    .setHTML(description)
-                    .addTo(map);
-            } else {
-                const description = generatePopupContent(e.features[0].properties, 'favorables-layer');
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(description)
-                    .addTo(map);
-            }
-        });
-
-        map.on('click', 'depots-layer', function (e) {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-
-            // Extrait les coordonnées central du polygone en cas de multipolygone
-            if (Array.isArray(coordinates[0][0])) {
-                const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
-                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
-
-                new mapboxgl.Popup()
-                    .setLngLat([lng, lat])
-                    .setHTML(description)
-                    .addTo(map);
-            } else {
-                const description = generatePopupContent(e.features[0].properties, 'depots-layer');
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(description)
-                    .addTo(map);
-            }
-        });
-
-        addMouseMoveListener();
-    }
-
-    map.on('load', function () {
-        initializeMap();
-    });
-
-    function generatePopupContent(properties, layerName) {
-        var popupContent = "";
-        if (layerName === 'depots-layer') {
-            popupContent = "<h2>Demande de permis de construire</h2>" +
-                "<b>Section:</b> " + properties.section + "<br>" +
-                "<b>Numéro:</b> " + properties.numero + "<br>" +
-                "<b>Commune:</b> " + properties.commune + "<br>" +
-                "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
-            if (properties.depots) {
-                try {
-                    JSON.parse(properties.depots).forEach(function (depots) {
-                        popupContent += "<b>Date d'affichage:</b> " + depots[0] + "<br>" +
-                            "<b>N° de permis:</b> " + depots[1] + "<br>" +
-                            "<b>Demandeur:</b> " + depots[3] + "<br>" +
-                            "<b>Adresse:</b> " + depots[4] + "<br>" +
-                            "<b>Superficie totale:</b> " + depots[5] + "<br>" +
-                            "<b>Description:</b> " + depots[6] + "<br>" +
-                            "<b>Détails:</b> " + depots[7] + "<br>" +
-                            "<b>Date de dépôt:</b> " + depots[2] + "<br>";
-                    });
-                } catch (e) {
-                    console.error("Failed to parse depots properties:", e);
-                }
-            }
-        } else if (layerName === 'favorables-layer') {
-            popupContent = "<h2>Permis de construire favorable</h2>" +
-                "<b>Section:</b> " + properties.section + "<br>" +
-                "<b>Numéro:</b> " + properties.numero + "<br>" +
-                "<b>Commune:</b> " + properties.commune + "<br>" +
-                "<b>Superficie parcelle:</b> " + properties.contenance + " m²<br>";
-            if (properties.decisions) {
-                try {
-                    JSON.parse(properties.decisions).forEach(function (decision) {
-                        popupContent += "<b>Référence:</b> " + decision[1] + "<br>" +
-                            "<b>Date de dépôt:</b> " + decision[2] + "<br>" +
-                            "<b>Demandeur:</b> " + decision[3] + "<br>" +
-                            "<b>Adresse:</b> " + decision[4] + "<br>" +
-                            "<b>Superficie totale:</b> " + decision[5] + "<br>" +
-                            "<b>Description:</b> " + decision[6] + "<br>" +
-                            "<b>Détails:</b> " + decision[7] + "<br>" +
-                            "<b>Statut:</b> " + decision[8] + "<br><br>";
-                    });
-                } catch (e) {
-                    console.error("Failed to parse decisions properties:", e);
-                }
-            }
-        }
-        return popupContent;
-    }
-
-    function animateView() {
-        setTimeout(() => {
-            map.flyTo({
-                center: [9.27970, 41.59099],
-                zoom: 15.5,
-                pitch: 55,
-                bearing: 90,
-                duration: 10000
-            });
-        }, 50);
-    }
-</script>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>Change a map's style</title>
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+		<link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+		<link rel='stylesheet' href='style.css' />
+		<script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.3/commonmark.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+		<script src="./GeoDatas/parcelles.js"></script>
+		<script src="./GeoDatas/commune.js"></script>
+		<script src="./GeoDatas/favorables.js"></script>
+		<script src="./GeoDatas/depots.js"></script>
+		<script src="./GeoDatas/Urbanisation40.js"></script>
+		<script src="./GeoDatas/Urbanisation80.js"></script>
+		<script src="./GeoDatas/centressurbains.js"></script>
+		<script src="./GeoDatas/zonesurbaines.js"></script>
+	</head>
+	<body>
+		<div class="tabs">
+			<div class="tab-registers">
+				<button class="active-tab" id="menuButton">X</button>
+				<button>Outils</button>
+				<button>Lisezmoi</button>
+				<button>i</button>
+			</div>
+			<div class="tab-bodies">
+				<div style="display:block;"></div>
+				<div style="display:none;">
+					<div id="menu">
+						<br>
+						<input id="clx0x359w000f01qs8u62crxc" type="radio" name="rtoggle" value="satellite" checked>
+						<label for="clx0x359w000f01qs8u62crxc">satellite</label>
+						<br>
+						<input id="toggle-parcelles" type="checkbox" checked>
+						<label for="toggle-parcelles">Parcelles</label>
+						<input id="parcelles-width" type="range" min="0.1" max="5" step="0.1" value="0.5">
+						<br>
+						<input id="toggle-commune" type="checkbox" checked>
+						<label for="toggle-commune">Commune</label>
+						<input id="commune-width" type="range" min="1" max="10" step="0.5" value="3">
+						<br>
+						<input id="toggle-favorables" type="checkbox" checked>
+						<label for="toggle-favorables">Favorables</label>
+						<input id="favorables-opacity" type="range" min="0" max="1" step="0.1" value="1">
+						<br>
+						<input id="toggle-depots" type="checkbox" checked>
+						<label for="toggle-depots">Demandes</label>
+						<input id="depots-opacity" type="range" min="0" max="1" step="0.1" value="1">
+						<br>
+						<input id="toggle-urbanisation40" type="checkbox" checked>
+						<label for="toggle-urbanisation40">Urbanisation 40</label>
+						<input id="urbanisation40-opacity" type="range" min="0" max="1" step="0.1" value="0.5">
+						<br>
+						<input id="toggle-urbanisation80" type="checkbox" checked>
+						<label for="toggle-urbanisation80">Urbanisation 80</label>
+						<input id="urbanisation80-width" type="range" min="1" max="10" step="0.5" value="3">
+						<br>
+						<input id="toggle-centressurbains" type="checkbox">
+						<label for="toggle-centressurbains">Centres Urbains</label>
+						<input id="centressurbains-width" type="range" min="1" max="10" step="0.5" value="2">
+						<br>
+						<input id="toggle-zonesurbaines" type="checkbox">
+						<label for="toggle-zonesurbaines">Zones Urbaines</label>
+						<input id="zonesurbaines-opacity" type="range" min="0" max="1" step="0.1" value="0.5">
+						<br>
+						<input type="text" id="search-parcel" placeholder="Rechercher une parcelle">
+						<button id="search-button">Rechercher</button>
+					</div>
+				</div>
+				<div style="display:none;">
+					<div id="menu">
+						<div id="content"></div>
+					</div>
+				</div>
+				<div style="display:none;">
+					<div id="menu">
+						<div id="content">informations </div>
+						<script>
+							async function loadReadme() {
+							    try {
+							        const response = await fetch('README.md');
+							        if (!response.ok) {
+							            throw new Error('Network response was not ok ' + response.statusText);
+							        }
+							        const markdown = await response.text();
+							        const reader = new commonmark.Parser();
+							        const writer = new commonmark.HtmlRenderer();
+							        const parsed = reader.parse(markdown);
+							        const result = writer.render(parsed);
+							        document.getElementById('content').innerHTML = result+"<br><p>Depuis le fichier readme.dm du github du projet.</p>";
+							    } catch (error) {
+							        console.error('There has been a problem with your fetch operation:', error);
+							    }
+							}
+							
+							window.onload = loadReadme;
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="map"></div>
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
+			let map = new mapboxgl.Map({
+			    container: 'map',
+			    style: 'mapbox://styles/azzocorp/clx0x359w000f01qs8u62crxc',
+			    center: [-63.613927, 2.445929],
+			    zoom: 0
+			});
+			
+			document.addEventListener('DOMContentLoaded', (event) => {
+			    const menu = document.getElementById('menu');
+			
+			    Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
+			        const registers = tab_container.querySelector('.tab-registers');
+			        const bodies = tab_container.querySelector('.tab-bodies');
+			
+			        let activeRegister = registers.querySelector('.active-tab');
+			        activeRegister = activeRegister ? activeRegister : registers.children[0];
+			        activeRegister.classList.add('active-tab');
+			
+			        Array.from(registers.children).forEach((el, i) => {
+			            el.setAttribute('aria-controls', `${TabID}_${i}`);
+			            bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
+			
+			            el.addEventListener('click', (ev) => {
+			                let activeRegister = registers.querySelector('.active-tab');
+			                activeRegister.classList.remove('active-tab');
+			                activeRegister = el;
+			                activeRegister.classList.add('active-tab');
+			                changeBody(registers, bodies, activeRegister);
+			            });
+			        });
+			
+			        function changeBody(registers, bodies, activeRegister) {
+			            Array.from(registers.children).forEach((el, i) => {
+			                if (bodies.children[i]) {
+			                    bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
+			                }
+			                el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
+			            });
+			        }
+			
+			        changeBody(registers, bodies, activeRegister);
+			    });
+			});
+			
+			let highlightedParcels = null;
+			
+			function addLayer(sourceId, layerId, sourceData, layerType, paintProps) {
+			    if (!map.getSource(sourceId)) {
+			        map.addSource(sourceId, {
+			            type: 'geojson',
+			            data: sourceData
+			        });
+			    }
+			
+			    if (!map.getLayer(layerId)) {
+			        map.addLayer({
+			            id: layerId,
+			            type: layerType,
+			            source: sourceId,
+			            layout: {},
+			            paint: paintProps
+			        }, 'waterway-label');
+			    }
+			}
+			
+			map.addControl(new mapboxgl.NavigationControl({ position: "top-left" }));
+			map.addControl(new mapboxgl.ScaleControl({ position: "bottom-right" }));
+			
+			function addParcellesLayer() {
+			    addLayer('parcelles', 'parcelles-layer', parcelles, 'line', {
+			        'line-color': '#FFFFFF',
+			        'line-width': 0.5,
+			        'line-opacity': [
+			            'interpolate',
+			            ['linear'],
+			            ['zoom'],
+			            13, 0,
+			            19, 1
+			        ]
+			    });
+			
+			    addLayer('parcelles-interactive', 'parcelles-interactive-layer', parcelles, 'fill', {
+			        'fill-color': '#FFFFFF',
+			        'fill-opacity': 0,
+			        'fill-outline-color': '#FFFFFF'
+			    });
+			}
+			
+			function addCommuneLayer() {
+			    addLayer('commune', 'commune-layer', commune, 'line', {
+			        'line-color': '#FFFFFF',
+			        'line-width': 3,
+			        'line-opacity': [
+			            'interpolate',
+			            ['linear'],
+			            ['zoom'],
+			            10, 0,
+			            13, 1
+			        ]
+			    });
+			}
+			
+			function addFavorablesLayer() {
+			    addLayer('favorables', 'favorables-layer', favorables, 'fill', {
+			        'fill-color': '#009cff',
+			        'fill-opacity': 1,
+			        'fill-outline-color': '#000000'
+			    });
+			}
+			
+			function addDepotsLayer() {
+			    addLayer('depots', 'depots-layer', depots, 'fill', {
+			        'fill-color': '#ff00fe',
+			        'fill-opacity': 1,
+			        'fill-outline-color': '#000000'
+			    });
+			}
+			
+			function addUrbanisation40Layer() {
+			    addLayer('urbanisation40', 'urbanisation40-layer', urbanisation40, 'fill', {
+			        'fill-color': '#ff0000',
+			        'fill-opacity': 0.5,
+			        'fill-outline-color': '#000000'
+			    });
+			}
+			
+			function addUrbanisation80Layer() {
+			    addLayer('urbanisation80', 'urbanisation80-layer', urbanisation80, 'line', {
+			        'line-color': '#ff0000',
+			        'line-width': 2,
+			        'line-opacity': [
+			            'interpolate',
+			            ['linear'],
+			            ['zoom'],
+			            10, 0,
+			            13, 1
+			        ]
+			    });
+			}
+			
+			function addCentresUrbainsLayer() {
+			    addLayer('centressurbains', 'centressurbains-layer', centressurbains, 'line', {
+			        'line-color': '#ff0000',
+			        'line-width': 2
+			    });
+			}
+			
+			function addZonesUrbainesLayer() {
+			    addLayer('zonesurbaines', 'zonesurbaines-layer', zonesurbaines, 'fill', {
+			        'fill-color': '#f2ff06',
+			        'fill-opacity': 0.5,
+			        'fill-outline-color': '#000000'
+			    });
+			}
+			
+			function toggleLayerVisibility(layerId, checkboxId) {
+			    document.getElementById(checkboxId).addEventListener('change', (event) => {
+			        const visibility = event.target.checked ? 'visible' : 'none';
+			        map.setLayoutProperty(layerId, 'visibility', visibility);
+			    });
+			}
+			
+			function updateLineWidth(layerId, sliderId) {
+			    document.getElementById(sliderId).addEventListener('input', (event) => {
+			        const lineWidth = parseFloat(event.target.value);
+			        map.setPaintProperty(layerId, 'line-width', lineWidth);
+			    });
+			}
+			
+			function updateLayerOpacity(layerId, sliderId) {
+			    document.getElementById(sliderId).addEventListener('input', (event) => {
+			        const opacity = parseFloat(event.target.value);
+			        map.setPaintProperty(layerId, 'fill-opacity', opacity);
+			    });
+			}
+			
+			function parseReferences(refString) {
+			    const cleanedString = refString.replace(/[,_\-\/|]+/g, ' ').replace(/\s+/g, '').toUpperCase();
+			    const regex = /([A-Z]+)(\d+)/g;
+			    const references = [];
+			    let match;
+			
+			    while ((match = regex.exec(cleanedString)) !== null) {
+			        references.push(match[1] + match[2]);
+			    }
+			    return references;
+			}
+			
+			function searchParcels(refString) {
+			    const references = parseReferences(refString);
+			    const features = parcelles.features;
+			    let parcelFeatures = [];
+			    let firstCenter = null;
+			
+			    references.forEach(reference => {
+			        features.forEach(feature => {
+			            const props = feature.properties;
+			            const featureReference = (props.section + props.numero).toUpperCase();
+			
+			            if (reference === featureReference) {
+			                parcelFeatures.push(feature);
+			                if (!firstCenter) {
+			                    firstCenter = turf.centerOfMass(feature).geometry.coordinates;
+			                }
+			            }
+			        });
+			    });
+			
+			    if (parcelFeatures.length > 0) {
+			        map.flyTo({
+			            center: firstCenter,
+			            zoom: 16
+			        });
+			        highlightParcels(parcelFeatures);
+			    } else {
+			        alert('Parcelles non trouvées');
+			    }
+			}
+			
+			function highlightParcels(parcelFeatures) {
+			    if (highlightedParcels) {
+			        map.removeLayer('highlighted-parcels-layer');
+			        map.removeSource('highlighted-parcels');
+			    }
+			
+			    highlightedParcels = {
+			        type: 'FeatureCollection',
+			        features: parcelFeatures
+			    };
+			
+			    map.addSource('highlighted-parcels', {
+			        type: 'geojson',
+			        data: highlightedParcels
+			    });
+			
+			    map.addLayer({
+			        id: 'highlighted-parcels-layer',
+			        type: 'line',
+			        source: 'highlighted-parcels',
+			        paint: {
+			            'line-color': '#ff0000',
+			            'line-width': 3
+			        }
+			    });
+			}
+			
+			document.getElementById('search-button').addEventListener('click', () => {
+			    const refString = document.getElementById('search-parcel').value;
+			    searchParcels(refString);
+			});
+			
+			let parcelMarker;
+			let parcelTimeout;
+			
+			function createParcelMarker(ref, center) {
+			    const markerDiv = document.createElement('div');
+			    markerDiv.className = 'parcel-marker';
+			    markerDiv.innerHTML = ref;
+			    markerDiv.style.backgroundColor = 'white';
+			    markerDiv.style.padding = '2px';
+			    markerDiv.style.borderRadius = '3px';
+			    markerDiv.style.border = '1px solid black';
+			
+			    parcelMarker = new mapboxgl.Marker(markerDiv)
+			        .setLngLat(center)
+			        .addTo(map);
+			}
+			
+			map.on('mouseenter', 'parcelles-interactive-layer', function () {
+			    map.getCanvas().style.cursor = 'pointer';
+			    clearTimeout(parcelTimeout);
+			});
+			
+			map.on('mousemove', 'parcelles-interactive-layer', function (e) {
+			    if (parcelMarker) {
+			        parcelMarker.remove();
+			    }
+			
+			    const center = turf.centerOfMass(e.features[0]).geometry.coordinates;
+			    const properties = e.features[0].properties;
+			    const parcelReference = properties.section + " " + properties.numero;
+			
+			    createParcelMarker(parcelReference, center);
+			});
+			
+			map.on('mouseleave', 'parcelles-interactive-layer', function () {
+			    map.getCanvas().style.cursor = '';
+			    parcelTimeout = setTimeout(() => {
+			        if (parcelMarker) {
+			            parcelMarker.remove();
+			            parcelMarker = null;
+			        }
+			    }, 1000);
+			});
+			
+			function addMouseMoveListener() {
+			    map.on('mousemove', function (e) {
+			        if (map.getLayer('parcelles-interactive-layer')) {
+			            const features = map.queryRenderedFeatures(e.point, {
+			                layers: ['parcelles-interactive-layer']
+			            });
+			
+			            if (!features.length) {
+			                if (parcelMarker) {
+			                    parcelMarker.remove();
+			                    parcelMarker = null;
+			                }
+			            }
+			        }
+			    });
+			}
+			
+			function showPopup(e, layerName) {
+			    const coordinates = e.features[0].geometry.coordinates.slice();
+			    const description = generatePopupContent(e.features[0].properties, layerName);
+			
+			    if (Array.isArray(coordinates[0][0])) {
+			        const [lng, lat] = turf.centroid(e.features[0]).geometry.coordinates;
+			        new mapboxgl.Popup()
+			            .setLngLat([lng, lat])
+			            .setHTML(description)
+			            .addTo(map);
+			    } else {
+			        new mapboxgl.Popup()
+			            .setLngLat(coordinates)
+			            .setHTML(description)
+			            .addTo(map);
+			    }
+			}
+			
+			function generatePopupContent(properties, layer) {
+			    const content = Object.keys(properties).map(key => `<strong>${key}:</strong> ${properties[key]}`).join('<br>');
+			    return `<strong>${layer} Properties</strong><br>${content}`;
+			}
+			
+			function initializeMap() {
+			    map.on('load', () => {
+			        if (!map.getSource('mapbox-dem')) {
+			            map.addSource('mapbox-dem', {
+			                type: 'raster-dem',
+			                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+			                tileSize: 512,
+			                maxzoom: 14
+			            });
+			            map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
+			        }
+			        animateView();
+			        addParcellesLayer();
+			        addCommuneLayer();
+			        addFavorablesLayer();
+			        addDepotsLayer();
+			        addUrbanisation40Layer();
+			        addUrbanisation80Layer();
+			        addCentresUrbainsLayer();
+			        addZonesUrbainesLayer();
+			
+			        toggleLayerVisibility('parcelles-layer', 'toggle-parcelles');
+			        toggleLayerVisibility('commune-layer', 'toggle-commune');
+			        toggleLayerVisibility('favorables-layer', 'toggle-favorables');
+			        toggleLayerVisibility('depots-layer', 'toggle-depots');
+			        toggleLayerVisibility('urbanisation40-layer', 'toggle-urbanisation40');
+			        toggleLayerVisibility('urbanisation80-layer', 'toggle-urbanisation80');
+			        toggleLayerVisibility('centressurbains-layer', 'toggle-centressurbains');
+			                    toggleLayerVisibility('zonesurbaines-layer', 'toggle-zonesurbaines');
+			
+			        updateLineWidth('parcelles-layer', 'parcelles-width');
+			        updateLineWidth('commune-layer', 'commune-width');
+			        updateLayerOpacity('favorables-layer', 'favorables-opacity');
+			        updateLayerOpacity('depots-layer', 'depots-opacity');
+			        updateLayerOpacity('urbanisation40-layer', 'urbanisation40-opacity');
+			        updateLineWidth('urbanisation80-layer', 'urbanisation80-width');
+			        updateLineWidth('centressurbains-layer', 'centressurbains-width');
+			        updateLayerOpacity('zonesurbaines-layer', 'zonesurbaines-opacity');
+			
+			        const urlParams = new URLSearchParams(window.location.search);
+			        const searchParam = urlParams.get('r');
+			        if (searchParam) {
+			            document.getElementById('search-parcel').value = searchParam;
+			            searchParcels(searchParam);
+			        }
+			
+			        map.on('click', 'favorables-layer', function (e) {
+			            showPopup(e, 'favorables-layer');
+			        });
+			
+			        map.on('click', 'depots-layer', function (e) {
+			            showPopup(e, 'depots-layer');
+			        });
+			    });
+			}
+			function animateView() {
+			    setTimeout(() => {
+			        map.flyTo({
+			            center: [9.27970, 41.59099],
+			            zoom: 15.5,
+			            pitch: 55,
+			            bearing: 90,
+			            duration: 10000
+			        });
+			    }, 50);
+			}
+			initializeMap();
+			addMouseMoveListener();
+		</script>
+	</body>
 </html>
-

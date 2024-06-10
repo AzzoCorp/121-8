@@ -1,0 +1,120 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif; /* Use a sans-serif font */
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#layerList {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    max-height: 90%;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.layer-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #f9f9f9;
+}
+
+.layer-item label {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.layer-item .color-square {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.layer-item input[type="color"] {
+    display: none;
+}
+
+.layer-item input[type="range"] {
+    margin-right: 5px;
+}
+
+.layer-item .remove-button {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.layer-selector {
+    cursor: move;
+    margin-right: 10px;
+}
+
+.add-layer {
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #e0e0e0;
+}
+
+.save-load-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.save-load-buttons button {
+    margin-right: 10px;
+}
+
+.color-square {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.remove-button {
+    margin-left: auto;
+    cursor: pointer;
+    color: red;
+}
+
+.add-layer {
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #e0e0e0;
+}
+.visibility-button
+ {
+    
+cursor
+: pointer;
+    
+margin-right
+: 
+10px
+;
+}
