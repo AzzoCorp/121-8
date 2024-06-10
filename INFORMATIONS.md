@@ -1,6 +1,7 @@
 Ici la liste des communes littorales françaises :
 
 https://fr.wikipedia.org/wiki/Liste_des_communes_littorales_de_France
+
 ---
 
 
