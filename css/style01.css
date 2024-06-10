@@ -15,7 +15,6 @@ html, body, #map {
 }
 
 #menu {
-    /* position: absolute; */
     top: 32px;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -33,45 +32,50 @@ html, body, #map {
     flex-direction: column;
     font-family: 'Lucida Sans', sans-serif;
     font-size: 15px;
-    width: 100%; /* Prendre toute la largeur disponible */
-    max-width: 50%; /* Limiter la largeur maximale */
+    width: 100%; /* Take full available width */
+    max-width: 50%; /* Limit maximum width */
     z-index: 100;
-    overflow: hidden; /* Masquer le débordement */
-    max-height: calc(100vh - 42px); /* Assurer que la hauteur est dans les limites de la fenêtre */
+    overflow: hidden; /* Hide overflow */
+    max-height: calc(100vh - 42px); /* Ensure height is within window limits */
 }
 
 .tab-registers {
     display: flex;
-    /* overflow-x: auto; /* Ajouter le défilement horizontal pour les onglets */
-    flex-wrap: nowrap; /* Empêcher les boutons de se mettre sur plusieurs lignes */
+    flex-wrap: nowrap; /* Prevent buttons from wrapping to multiple lines */
 }
 
 .tab-registers button {
     padding: 0.5em;
-    background-color: RGB(255, 255, 255);
+    background-color: #fff;
     border: none;
     font: inherit;
-    flex: 0 0 auto; /* Empêcher les boutons de s'étirer pour prendre toute la largeur */
+    flex: 0 0 auto; /* Prevent buttons from stretching to take full width */
+    transition: background-color 0.3s ease;
 }
 
 .tab-registers button:hover {
     cursor: pointer;
+    background-color: #ddd; /* Add hover effect */
+}
+
+.tab-registers button:focus {
+    outline: 2px solid #000; /* Add focus outline for accessibility */
 }
 
 .tab-bodies {
-    background-color: RGB(235, 235, 235);
+    background-color: #ebebeb;
     flex-grow: 1;
-    overflow-y: auto; /* Ajouter le défilement vertical */
-    overflow-x: auto; /* Ajouter le défilement horizontal */
-    max-height: calc(100vh - 64px); /* Limiter la hauteur du contenu des onglets */
+    overflow-y: auto; /* Add vertical scrolling */
+    overflow-x: auto; /* Add horizontal scrolling */
+    max-height: calc(100vh - 64px); /* Limit height of tab content */
 }
 
 .tab-bodies > div {
-    overflow: auto; /* Assurer que chaque contenu de tab peut défiler */
+    overflow: auto; /* Ensure each tab content can scroll */
 }
 
 .tab-registers button.active-tab {
-    background-color: rgb(235, 235, 235);
+    background-color: #ebebeb;
 }
 
 .layer-item {
@@ -81,8 +85,8 @@ html, body, #map {
 }
 
 .icon {
-    width: 15px; /* Contraindre la largeur à 15 pixels */
-    height: 15px; /* Contraindre la hauteur à 15 pixels */
+    width: 15px; /* Constrain width to 15 pixels */
+    height: 15px; /* Constrain height to 15 pixels */
     margin-right: 10px;
     cursor: pointer;
 }
