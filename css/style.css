@@ -1,9 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
 #map {
     position: absolute;
     top: 0;
@@ -11,85 +5,45 @@ body {
     width: 100%;
 }
 
-
-#layerList {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.layer-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-.layer-selector {
-    cursor: move;
-    margin-right: 5px;
-}
-
-.visibility-button {
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-.color-square {
-    width: 12px;
-    height:12px;
-    display: inline-block;
-	margin: 0 5px;x;
-	cursor: pointer;
-	border-radius: 4px;
-}
-
-.remove-button {
-    cursor: pointer;
-    color: red;
-    margin-left: 5px;
-}
-
-.save-load-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.add-layer {
-    cursor: pointer;
-    background: #007bff;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px;
-}
-.fill-icon, .line-icon {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.fill-icon {
-    background-image: url('images/fill.png');
-    background-size: cover;
-}
-
-.line-icon {
-    background-image: url('images/line.png');
-    background-size: cover;
-}
-
+body { margin: 0; padding: 0; }
+html, body, #map { height: 100%; }
 #menu {
-    width: 25%;
-    height:25%;
+	position: absolute; /* Corrected typo */
+	top: 32px;
+
+	/* background: white; */
+	padding: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	z-index: 1;
+	background: #efefef;
+	font-family: 'Open Sans', sans-serif;
 }
+.tabs {
+	position: relative;
+	font-family: 'Lucida Sans', sans-serif;
+	font-size: 15px;
+width : 294px;
+	z-index:100;
+}
+.tabs .tab-registers {
+	display: flex;
 
+}
+.tabs button {
+	padding: 0.5em;
+	background-color: RGB(255, 255, 255);
+	border: none;
+	font: inherit;
+}
+.tabs .tab-registers button:hover {
+	cursor: pointer;
+}
+.tabs .tab-bodies {
 
-
+	background-color: RGB(235, 235, 235);
+	flex-grow: 1;
+	overflow-y: auto;
+}
+.tabs button.active-tab {
+	background-color: rgb(235, 235, 235);
+}

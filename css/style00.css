@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+#layerList {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.layer-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.layer-selector {
+    cursor: move;
+    margin-right: 5px;
+}
+
+.visibility-button {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.color-square {
+    width: 12px;
+    height:12px;
+    display: inline-block;
+	margin: 0 5px;x;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.remove-button {
+    cursor: pointer;
+    color: red;
+    margin-left: 5px;
+}
+
+.save-load-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.add-layer {
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+.fill-icon, .line-icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.fill-icon {
+    background-image: url('images/fill.png');
+    background-size: cover;
+}
+
+.line-icon {
+    background-image: url('images/line.png');
+    background-size: cover;
+}
+
+#menu {
+    width: 25%;
+    height:25%;
+}
+
+
+
