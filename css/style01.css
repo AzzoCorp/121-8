@@ -90,7 +90,7 @@ html, body, #map {
     align-items: center;
     margin-bottom: 10px;
     color: #e0e0e0; /* Light text color */
-    cursor: move; /* Change cursor to indicate draggable item */
+    cursor: default; /* Default cursor for the entire layer item */
 }
 
 .layer-item.dragging {
@@ -104,7 +104,6 @@ html, body, #map {
     cursor: pointer;
 }
 
-/* New additions for icon styling */
 .layer-item img {
     width: 20px; /* Set width for icons */
     height: 20px; /* Set height for icons */
@@ -122,11 +121,6 @@ html, body, #map {
     margin-right: 10px;
 }
 
-
-.layer-item {
-    cursor: default; /* Default cursor for the entire layer item */
-}
-
 .layer-item .drag-handle {
     cursor: grab; /* Grab cursor for the drag handle */
 }
@@ -134,7 +128,6 @@ html, body, #map {
 .layer-item .drag-handle:active {
     cursor: grabbing; /* Grabbing cursor when the handle is active */
 }
-
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
