@@ -9,25 +9,25 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.3/commonmark.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
-    <script src="./GeoDatas/parcelles.js"></script>
-    <script src="./GeoDatas/commune.js"></script>
-    <script src="./GeoDatas/favorables.js"></script>
-    <script src="./GeoDatas/depots.js"></script>
-    <script src="./GeoDatas/Urbanisation40.js"></script>
-    <script src="./GeoDatas/Urbanisation80.js"></script>
-    <script src="./GeoDatas/centressurbains.js"></script>
-    <script src="./GeoDatas/zonesurbaines.js"></script>
+    <!-- <script src="./GeoDatas/parcelles.js"></script> -->
+    <!-- <script src="./GeoDatas/commune.js"></script> -->
+    <!-- <script src="./GeoDatas/favorables.js"></script> -->
+    <!-- <script src="./GeoDatas/depots.js"></script> -->
+    <!-- <script src="./GeoDatas/Urbanisation40.js"></script> -->
+    <!-- <script src="./GeoDatas/Urbanisation80.js"></script> -->
+    <!-- <script src="./GeoDatas/centressurbains.js"></script> -->
+    <!-- <script src="./GeoDatas/zonesurbaines.js"></script> -->
 </head>
 <body>
-    <div class="tabs">
+    <div class="tabs" style="transition: height 0.3s;">
         <div class="tab-registers">
-            <button class="tab-button active-tab" data-tab="tab1">X</button>
+            <button class="tab-button" data-tab="tab1">X</button>
             <button class="tab-button" data-tab="tab2">Outils</button>
             <button class="tab-button" data-tab="tab3">Lisezmoi</button>
             <button class="tab-button" data-tab="tab4">i</button>
         </div>
-        <div class="tab-bodies">
-            <div id="tab1" class="tab-content" style="display:block;"></div>
+        <div class="tab-bodies" style="display:none;">
+            <div id="tab1" class="tab-content" style="display:none;"></div>
             <div id="tab2" class="tab-content" style="display:none;">
                 <div id="menu">
                     <div id="layers-list"></div>
@@ -46,39 +46,8 @@
         </div>
     </div>
     <div id="map"></div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-            const tabBodies = document.querySelector('.tab-bodies');
-            let clickCount = 0;
-            const maxClicks = 3; // Change this value to the desired number of clicks
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const tabId = button.getAttribute('data-tab');
-                    if (tabId === 'tab1') {
-                        clickCount++;
-                        if (clickCount <= maxClicks) {
-                            tabContents.forEach(content => content.style.display = 'none');
-                            tabBodies.style.display = 'none'; // Hide the tab-bodies container
-                        }
-                    } else {
-                        tabContents.forEach(content => content.style.display = 'none');
-                        const targetTab = document.getElementById(tabId);
-                        if (targetTab) {
-                            targetTab.style.display = 'block';
-                        }
-                        tabBodies.style.display = 'block'; // Show the tab-bodies container
-                    }
-
-                    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
-                    button.classList.add('active-tab');
-                });
-            });
-        });
-    </script>
-    <script src="js/lm01.js"></script>
-	<script src="js/initmap.js"></script>
+    <script src="js/initmap.js"></script>
+    <script src="js/functions.js"></script>
 </body>
 </html>
+ç 

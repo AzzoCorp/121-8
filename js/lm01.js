@@ -330,18 +330,7 @@ function updateIconColors(layerItem, color) {
     lineIcon.style.color = color;
 }
 
-function toggleLayerVisibility(layerId, visibilityButton) {
-    const visibility = map.getLayoutProperty(layerId, 'visibility');
-    if (visibility === 'visible') {
-        map.setLayoutProperty(layerId, 'visibility', 'none');
-        visibilityButton.innerHTML = '🚫';
-        visibilityButton.style.color = 'red';
-    } else {
-        map.setLayoutProperty(layerId, 'visibility', 'visible');
-        visibilityButton.innerHTML = '👁️';
-        visibilityButton.style.color = 'black';
-    }
-}
+
 
 function resetLayers() {
     document.querySelectorAll('.layer-item').forEach(item => item.remove());
