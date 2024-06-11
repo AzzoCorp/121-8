@@ -5,23 +5,6 @@ let parcelMarker;
 let parcelTimeout;
 let highlightedParcels = null;
 
-function addMouseMoveListener() {
-    map.on('mousemove', function (e) {
-        if (map.getLayer('parcelles-interactive-layer')) {
-            const features = map.queryRenderedFeatures(e.point, {
-                layers: ['parcelles-interactive-layer']
-            });
-
-            if (!features.length) {
-                if (parcelMarker) {
-                    parcelMarker.remove();
-                    parcelMarker = null;
-                }
-            }
-        }
-    });
-}
-
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
 
 let map = new mapboxgl.Map({
@@ -30,10 +13,6 @@ let map = new mapboxgl.Map({
     center: [-63.613927, 2.445929],
     zoom: 0
 });
-
-
-
-
 
 async function loadinfo() {
     try {
@@ -70,148 +49,280 @@ async function loadReadme() {
 }
 
 window.onload = function() { loadReadme(); loadinfo(); };
-
 document.addEventListener('DOMContentLoaded', () => {
-	const tabButtons = document.querySelectorAll('.tab-button');
-	const tabBodies = document.querySelector('.tab-bodies');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabBodies = document.querySelector('.tab-bodies');
 
-	// Set initial state
-	hideTabs();
+    // Set initial state
+    hideTabs();
 
-	tabButtons.forEach(button => {
-		button.addEventListener('click', (event) => {
-			event.stopPropagation(); // Prevent map click event from firing
-			const tabId = button.getAttribute('data-tab');
-			handleTabClick(tabId);
-		});
-	});
-	// Add click event listener to the document to detect clicks outside tab-bodies
-	document.addEventListener('click', (event) => {
-		if (!tabBodies.contains(event.target) && event.target.closest('.tab-button') === null) {
-			hideTabs();
-		}
-	});
-	const tabMenus = document.querySelectorAll('.tab-menu');
-	const tabs = document.querySelectorAll('.tab');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent map click event from firing
+            const tabId = button.getAttribute('data-tab');
+            handleTabClick(tabId);
+        });
+    });
 
-	map.on('style.load', () => {
-		const layers = getMapLayer();
-		const layersList = document.getElementById('layers-list');
+    // Add click event listener to the document to detect clicks outside tab-bodies
+    document.addEventListener('click', (event) => {
+        if (!tabBodies.contains(event.target) && event.target.closest('.tab-button') === null) {
+            hideTabs();
+        }
+    });
 
-		layers.forEach(layer => {
-			const layerItem = document.createElement('div');
-			layerItem.className = 'layer-item';
+    map.on('style.load', () => {
+        const layers = getMapLayer();
+        const layersList = document.getElementById('layers-list');
 
-			const dragIcon = document.createElement('img');
-			dragIcon.src = 'css/images/drag.png';
-			dragIcon.className = 'icon';
-			dragIcon.alt = 'Drag';
+        layers.forEach(layer => {
+            const layerItem = createLayerItem(layer);
+            layersList.appendChild(layerItem);
+        });
 
-			const visibilityIcon = document.createElement('img');
-			visibilityIcon.className = 'icon';
-			visibilityIcon.alt = 'Visibility';
-			const initialVisibility = map.getLayoutProperty(layer.id, 'visibility');
+        // Initialize Sortable.js on the layers list
+        new Sortable(layersList, {
+            animation: 150,
+            handle: '.drag-handle', // Specify the handle for dragging
+            onEnd: function (evt) {
+                const itemEl = evt.item; // dragged HTMLElement
+                const newIndex = evt.newIndex; // the new index of the dragged element
+                const oldIndex = evt.oldIndex; // the old index of the dragged element
 
-			// Étant donné que toutes les couches sont initialement visibles, nous définissons l'icône "œil" par défaut
-			// Cette partie initialise la source basée sur la visibilité récupérée ou assume 'visible' si aucune propriété n'est trouvée
-			visibilityIcon.src = initialVisibility === 'none' ? 'css/images/eyeshow.png' : 'css/images/eye.png';
-
-			visibilityIcon.onclick = () => {
-    const currentVisibility = map.getLayoutProperty(layer.id, 'visibility');
-
-    if (currentVisibility === 'visible') {
-        map.setLayoutProperty(layer.id, 'visibility', 'none');
-        visibilityIcon.src = 'css/images/eyeshow.png';  // Icône pour l'état invisible
-    } else {
-        map.setLayoutProperty(layer.id, 'visibility', 'visible');
-        visibilityIcon.src = 'css/images/eye.png';  // Icône pour l'état visible
-    }
-};
-			const indexText = document.createElement('span');
-			indexText.textContent = layer.index;
-			indexText.style.marginRight = '10px';
-
-			const idText = document.createElement('span');
-			idText.textContent = layer.id;
-			idText.style.marginRight = '10px';
-
-			const colorBox = document.createElement('div');
-			colorBox.className = 'color-box';
-			colorBox.style.backgroundColor = getColorForLayer(layer);
-
-			const opacitySlider = document.createElement('input');
-			opacitySlider.type = 'range';
-			opacitySlider.min = 0;
-			opacitySlider.max = 1;
-			opacitySlider.step = 0.01;
-			opacitySlider.className = 'slider';
-
-			const typeToggleIcon = document.createElement('img');
-			typeToggleIcon.src = 'css/images/fill.png';
-			typeToggleIcon.className = 'icon';
-			typeToggleIcon.alt = 'Toggle Type';
-
-			const deleteIcon = document.createElement('span');
-			deleteIcon.textContent = 'X';
-			deleteIcon.className = 'icon';
-			deleteIcon.style.cursor = 'pointer';
-			deleteIcon.onclick = () => {
-				layersList.removeChild(layerItem);
-			};
-
-			layerItem.appendChild(dragIcon);
-			layerItem.appendChild(visibilityIcon);
-			layerItem.appendChild(indexText);
-			layerItem.appendChild(idText);
-			layerItem.appendChild(colorBox);
-			layerItem.appendChild(opacitySlider);
-			layerItem.appendChild(typeToggleIcon);
-			layerItem.appendChild(deleteIcon);
-
-			layersList.appendChild(layerItem);
-		});
-	});
-	
-	
+                // Update the layer order in the map
+                moveLayerByIndex(oldIndex, newIndex);
+            }
+        });
+    });
 });
 
+function moveLayerByIndex(oldIndex, newIndex) {
+    const layers = map.getStyle().layers;
+    const layer = layers[oldIndex];
+    layers.splice(oldIndex, 1);
+    layers.splice(newIndex, 0, layer);
+
+    map.setStyle(map.getStyle()); // Re-apply the style to update the layer order
+    updateLayerList(); // Update the layer list in the UI
+}
+
+function updateLayerList() {
+    const layers = getMapLayer();
+    const layersList = document.getElementById('layers-list');
+    layersList.innerHTML = '';
+
+    layers.forEach(layer => {
+        const layerItem = createLayerItem(layer);
+        layersList.appendChild(layerItem);
+    });
+}
+
+function createLayerItem(layer) {
+    const layerItem = document.createElement('div');
+    layerItem.className = 'layer-item';
+    layerItem.dataset.layerId = layer.id;
+
+    const dragIcon = document.createElement('img');
+    dragIcon.src = 'css/images/drag.png';
+    dragIcon.className = 'icon drag-handle'; // Add class for handle
+
+    const visibilityIcon = document.createElement('img');
+    visibilityIcon.className = 'icon';
+    visibilityIcon.alt = 'Visibility';
+    const initialVisibility = map.getLayoutProperty(layer.id, 'visibility');
+    visibilityIcon.src = initialVisibility === 'none' ? 'css/images/eyeshow.png' : 'css/images/eye.png';
+
+    visibilityIcon.onclick = () => {
+        const currentVisibility = map.getLayoutProperty(layer.id, 'visibility');
+        if (currentVisibility === 'visible') {
+            map.setLayoutProperty(layer.id, 'visibility', 'none');
+            visibilityIcon.src = 'css/images/eyeshow.png';
+        } else {
+            map.setLayoutProperty(layer.id, 'visibility', 'visible');
+            visibilityIcon.src = 'css/images/eye.png';
+        }
+    };
+
+    const indexText = document.createElement('span');
+    indexText.textContent = layer.index;
+    indexText.style.marginRight = '10px';
+
+    const idText = document.createElement('span');
+    idText.textContent = layer.id;
+    idText.style.marginRight = '10px';
+
+    const colorBox = document.createElement('div');
+    colorBox.className = 'color-box';
+    colorBox.style.backgroundColor = getColorForLayer(layer);
+
+    const opacitySlider = document.createElement('input');
+    opacitySlider.type = 'range';
+    opacitySlider.min = 0;
+    opacitySlider.max = 1;
+    opacitySlider.step = 0.01;
+    opacitySlider.className = 'slider';
+
+    const typeToggleIcon = document.createElement('img');
+    typeToggleIcon.src = 'css/images/fill.png';
+    typeToggleIcon.className = 'icon';
+    typeToggleIcon.alt = 'Toggle Type';
+
+    const deleteIcon = document.createElement('span');
+    deleteIcon.textContent = 'X';
+    deleteIcon.className = 'icon';
+    deleteIcon.style.cursor = 'pointer';
+    deleteIcon.onclick = () => {
+        document.getElementById('layers-list').removeChild(layerItem);
+    };
+
+    layerItem.appendChild(dragIcon);
+    layerItem.appendChild(visibilityIcon);
+    layerItem.appendChild(indexText);
+    layerItem.appendChild(idText);
+    layerItem.appendChild(colorBox);
+    layerItem.appendChild(opacitySlider);
+    layerItem.appendChild(typeToggleIcon);
+    layerItem.appendChild(deleteIcon);
+
+    return layerItem;
+}
+
+function moveLayerByIndex(oldIndex, newIndex) {
+    const layers = map.getStyle().layers;
+    const layer = layers[oldIndex];
+    layers.splice(oldIndex, 1);
+    layers.splice(newIndex, 0, layer);
+
+    // Re-apply the style to update the layer order
+    const newStyle = { ...map.getStyle(), layers };
+    map.setStyle(newStyle);
+
+    map.once('style.load', () => {
+        layers.forEach((layer) => {
+            map.addLayer(layer);
+        });
+    });
+
+    updateLayerList(); // Update the layer list in the UI
+}
+
+function updateLayerList() {
+    const layers = getMapLayer();
+    const layersList = document.getElementById('layers-list');
+    layersList.innerHTML = '';
+
+    layers.forEach(layer => {
+        const layerItem = createLayerItem(layer);
+        layersList.appendChild(layerItem);
+    });
+}
+
+function createLayerItem(layer) {
+    const layerItem = document.createElement('div');
+    layerItem.className = 'layer-item';
+    layerItem.dataset.layerId = layer.id;
+
+    const dragIcon = document.createElement('img');
+    dragIcon.src = 'css/images/drag.png';
+    dragIcon.className = 'icon';
+
+    const visibilityIcon = document.createElement('img');
+    visibilityIcon.className = 'icon';
+    visibilityIcon.alt = 'Visibility';
+    const initialVisibility = map.getLayoutProperty(layer.id, 'visibility');
+    visibilityIcon.src = initialVisibility === 'none' ? 'css/images/eyeshow.png' : 'css/images/eye.png';
+
+    visibilityIcon.onclick = () => {
+        const currentVisibility = map.getLayoutProperty(layer.id, 'visibility');
+        if (currentVisibility === 'visible') {
+            map.setLayoutProperty(layer.id, 'visibility', 'none');
+            visibilityIcon.src = 'css/images/eyeshow.png';
+        } else {
+            map.setLayoutProperty(layer.id, 'visibility', 'visible');
+            visibilityIcon.src = 'css/images/eye.png';
+        }
+    };
+
+    const indexText = document.createElement('span');
+    indexText.textContent = layer.index;
+    indexText.style.marginRight = '10px';
+
+    const idText = document.createElement('span');
+    idText.textContent = layer.id;
+    idText.style.marginRight = '10px';
+
+    const colorBox = document.createElement('div');
+    colorBox.className = 'color-box';
+    colorBox.style.backgroundColor = getColorForLayer(layer);
+
+    const opacitySlider = document.createElement('input');
+    opacitySlider.type = 'range';
+    opacitySlider.min = 0;
+    opacitySlider.max = 1;
+    opacitySlider.step = 0.01;
+    opacitySlider.className = 'slider';
+
+    const typeToggleIcon = document.createElement('img');
+    typeToggleIcon.src = 'css/images/fill.png';
+    typeToggleIcon.className = 'icon';
+    typeToggleIcon.alt = 'Toggle Type';
+
+    const deleteIcon = document.createElement('span');
+    deleteIcon.textContent = 'X';
+    deleteIcon.className = 'icon';
+    deleteIcon.style.cursor = 'pointer';
+    deleteIcon.onclick = () => {
+        document.getElementById('layers-list').removeChild(layerItem);
+    };
+
+    layerItem.appendChild(dragIcon);
+    layerItem.appendChild(visibilityIcon);
+    layerItem.appendChild(indexText);
+    layerItem.appendChild(idText);
+    layerItem.appendChild(colorBox);
+    layerItem.appendChild(opacitySlider);
+    layerItem.appendChild(typeToggleIcon);
+    layerItem.appendChild(deleteIcon);
+
+    return layerItem;
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
-		const menu = document.getElementById('menu');
+    const menu = document.getElementById('menu');
 
-		Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
-			const registers = tab_container.querySelector('.tab-registers');
-			const bodies = tab_container.querySelector('.tab-bodies');
+    Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
+        const registers = tab_container.querySelector('.tab-registers');
+        const bodies = tab_container.querySelector('.tab-bodies');
 
-			let activeRegister = registers.querySelector('.active-tab');
-			activeRegister = activeRegister ? activeRegister : registers.children[0];
-			activeRegister.classList.add('active-tab');
+        let activeRegister = registers.querySelector('.active-tab');
+        activeRegister = activeRegister ? activeRegister : registers.children[0];
+        activeRegister.classList.add('active-tab');
 
-			Array.from(registers.children).forEach((el, i) => {
-				el.setAttribute('aria-controls', `${TabID}_${i}`);
-				bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
+        Array.from(registers.children).forEach((el, i) => {
+            el.setAttribute('aria-controls', `${TabID}_${i}`);
+            bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
 
-				el.addEventListener('click', (ev) => {
-					let activeRegister = registers.querySelector('.active-tab');
-					activeRegister.classList.remove('active-tab');
-					activeRegister = el;
-					activeRegister.classList.add('active-tab');
-					changeBody(registers, bodies, activeRegister);
-				});
-			});
+            el.addEventListener('click', (ev) => {
+                let activeRegister = registers.querySelector('.active-tab');
+                activeRegister.classList.remove('active-tab');
+                activeRegister = el;
+                activeRegister.classList.add('active-tab');
+                changeBody(registers, bodies, activeRegister);
+            });
+        });
 
-			function changeBody(registers, bodies, activeRegister) {
-				Array.from(registers.children).forEach((el, i) => {
-					if (bodies.children[i]) {
-						bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
-					}
-					el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
-				});
-			}
+        function changeBody(registers, bodies, activeRegister) {
+            Array.from(registers.children).forEach((el, i) => {
+                if (bodies.children[i]) {
+                    bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
+                }
+                el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
+            });
+        }
 
-			changeBody(registers, bodies, activeRegister);
-		});
-	}
-);
+        changeBody(registers, bodies, activeRegister);
+    });
+});
 
 map.on('mouseenter', 'parcelles-interactive-layer', function () {
     map.getCanvas().style.cursor = 'pointer';
@@ -239,32 +350,71 @@ map.on('mouseleave', 'parcelles-interactive-layer', function () {
         }
     }, 1000);
 });
-function initializeMap() {
-	
-	map.on('load', () => {
-		const layers = getMapLayer();
-		const layersList = document.getElementById('layers-list');
-		layers.forEach(layer => {
-			map.setLayoutProperty(layer.id, 'visibility', 'visible');
-		});
-		if (!map.getSource('mapbox-dem')) {
-			map.addSource('mapbox-dem', {
-				type: 'raster-dem',
-				url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-				tileSize: 512,
-				maxzoom: 14
-			});
-			map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
-		}
-		 console.log('Map is loaded, waiting for style load');
 
-		animateView();
-	});
-	 
+// Helper function to create parcel marker
+function createParcelMarker(parcelReference, center) {
+    parcelMarker = new mapboxgl.Marker()
+        .setLngLat(center)
+        .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(parcelReference))
+        .addTo(map);
 }
-initializeMap();
-addMouseMoveListener();
 
+// Function to get map layers
+function getMapLayer() {
+    const layers = map.getStyle().layers;
+    return layers.map((layer, index) => ({
+        id: layer.id,
+        type: layer.type,
+        index: index,
+        visibility: map.getLayoutProperty(layer.id, 'visibility') || 'none'
+    }));
+}
 
+// Function to get color for layer
+function getColorForLayer(layer) {
+    // This function should return the color of the layer based on its properties.
+    // For simplicity, we return a random color here.
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
 
+// Function to hide tabs
+function hideTabs() {
+    handleTabClick('tab1');
+}
 
+// Function to handle tab clicks
+function handleTabClick(tabId) {
+    const tabContents = document.querySelectorAll('.tab-content');
+    const tabBodies = document.querySelector('.tab-bodies');
+    const mapElement = document.getElementById('map');
+    const tabsContainer = document.querySelector('.tabs');
+
+    if (tabId === 'tab1') {
+        tabContents.forEach(content => content.style.display = 'none');
+        tabBodies.style.display = 'none'; // Hide the tab-bodies container
+        tabBodies.style.visibility = 'hidden'; // Hide the tab-bodies container
+        tabsContainer.style.height = '30px'; // Reduce the height of the tabs container
+        mapElement.style.pointerEvents = 'auto'; // Enable map interactions
+    } else {
+        tabContents.forEach(content => content.style.display = 'none');
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) {
+            targetTab.style.display = 'block';
+        }
+        tabBodies.style.display = 'block'; // Show the tab-bodies container
+        tabBodies.style.visibility = 'visible'; // Show the tab-bodies container
+        tabsContainer.style.height = 'auto'; // Restore the height of the tabs container
+        mapElement.style.pointerEvents = 'none'; // Disable map interactions
+    }
+
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
+    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
+
+    // Load content for Lisezmoi and Informations tabs
+    if (tabId === 'tab3') {
+        loadReadme();
+    } else if (tabId === 'tab4') {
+        loadinfo();
+    }
+}
