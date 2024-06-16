@@ -11,7 +11,7 @@ print("CRS actuel :", batiments.crs)
 # Reprojeter les géométries dans un CRS projeté (par exemple, Lambert 93 pour la France)
 batiments = batiments.to_crs(epsg=2154)
 
-# Créer un buffer de 80 mètres autour de chaque polygone
+# Créer un buffer de 40 mètres autour de chaque polygone
 batiments['buffered'] = batiments.geometry.buffer(40)
 
 # Fusionner les polygones qui se chevauchent
@@ -29,5 +29,5 @@ result = gpd.GeoDataFrame(geometry=merged_polygons, crs=batiments.crs)
 # Reprojeter les géométries dans le CRS d'origine (EPSG:4326)
 result = result.to_crs(epsg=4326)
 
-# Sauvegarder le résultat en GeoJSON
+# Sauvegarder le résultat en GeoJSON.
 result.to_file('GeoDatas/Centres_UrbainsP40m.geojson', driver='GeoJSON')
