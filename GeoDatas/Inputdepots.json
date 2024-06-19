@@ -1,6 +1,6 @@
 {
-    "recordsTotal": 137,
-    "recordsFiltered": 137,
+    "recordsTotal": 139,
+    "recordsFiltered": 139,
     "data": [
         [
             "27/10/2023",
@@ -53,16 +53,6 @@
             "- Surface plancher créée : 3337 m²\r\n<br>- Surface plancher démolie : 200 m²\r\n<br>- Lotissement : 4 lot (s)\r\n<br>"
         ],
         [
-            "28/12/2023",
-            "PC 02A 247 23 R0215",
-            "28/12/2023",
-            "M COLONNA-CESARI Paul",
-            " Dornitojo 20137 MELA (H 1622)",
-            "19249 m²",
-            "la construction d'une maison individuelle avec garage et deux locaux professionnels",
-            "- Surface plancher créée : 169,04 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
             "12/01/2024",
             "DP 02A 247 23 R0211",
             "13/12/2023",
@@ -71,16 +61,6 @@
             "2300 m²",
             "",
             ""
-        ],
-        [
-            "29/01/2024",
-            "PC 02A 247 24 R0017",
-            "29/01/2024",
-            "MME DELPECH-POLI Sylvie",
-            " Résidence Hôtelière \"Domaine de la Punta\" 20137 Padule d'Asciajo (AZ 84)",
-            "5192 m²",
-            "la construction d'un espace d'attente et de locaux de rangement",
-            "- Surface plancher créée : 29 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
             "07/02/2024",
@@ -141,16 +121,6 @@
             "922 m²",
             "la pose d'une nouvelle enseigne avec peinture de la façade",
             ""
-        ],
-        [
-            "23/02/2024",
-            "PC 02A 247 24 R0039",
-            "23/02/2024",
-            "SCI DANIEL PIERRE",
-            " ROUTE D'ARCA 20137  (D 801, D 802, D 803, D 804, D 1550)",
-            "24322 m²",
-            "la construction de 3 suites de l'hôtel existant",
-            "- Surface plancher créée : 168,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
             "28/02/2024",
@@ -221,16 +191,6 @@
             "4404 m²",
             "la construction d'une maison individuelle",
             "- Surface plancher créée : 161,5 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
-            "20/03/2024",
-            "PC 02A 247 24 R0045",
-            "29/02/2024",
-            "SCI ATIPIK",
-            " CHEMIN DE LA CHIAPPA 20137 U LINARI PICOVAGGIA (F 151)",
-            "1542 m²",
-            "la réalisation d'une piscine et d'un abri de jardin type \"Caseddu\"",
-            "- Surface plancher créée : 22 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
             "22/03/2024",
@@ -371,16 +331,6 @@
             "5523 m²",
             "la réfection d'une terrasse couverte et des aménagements divers",
             "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
-            "18/04/2024",
-            "PC 02A 247 24 R0084",
-            "18/04/2024",
-            "MME FANCELLU Virginie",
-            " Ortibarzo 20137  (C 1673)",
-            "2000 m²",
-            "la construction d'une maison individuelle avec garage",
-            "- Surface plancher créée : 150 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
             "22/04/2024",
@@ -714,16 +664,6 @@
         ],
         [
             "15/05/2024",
-            "PC 02A 247 24 R0116",
-            "15/05/2024",
-            "M MARCHETTI Joel",
-            " TRINITE 20137 GRANIOLI (AM 366, AM 368)",
-            "4943 m²",
-            "la démolition totale de bâtiments vétustes et la construction d'un hangar",
-            "- Surface plancher créée : 750 m²\r\n<br>- Surface plancher démolie : 570 m²\r\n<br>"
-        ],
-        [
-            "15/05/2024",
             "PC 02A 247 24 R0117",
             "15/05/2024",
             "M BOTELLA Bernard",
@@ -956,7 +896,7 @@
             "27/05/2024",
             "DP 02A 247 24 R0127",
             "27/05/2024",
-            "M FERRACCI Jose",
+            "M FERRACCI JOSE",
             " Route d’Arca 20137  (H 1031)",
             "1800 m²",
             "la pose de panneaux solaires",
@@ -1371,6 +1311,86 @@
             "1997 m²",
             "la rénovation et l'extension d'une maison existante",
             "- Surface plancher créée : 136,03 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "16/06/2024",
+            "PC 02A 247 24 R0140",
+            "16/06/2024",
+            "M COLONNA-CESARI PAUL",
+            " - 20137 MELA (H 1622)",
+            "19249 m²",
+            "la construction d'une maison individuelle avec garage",
+            "- Surface plancher créée : 149,32 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "17/06/2024",
+            "DP 02A 247 24 R0146",
+            "17/06/2024",
+            "MME BACCI Marie-Jeanne",
+            "5 Avenue Marechal Leclerc 20137  (AD 440)",
+            "265 m²",
+            "la division d'un local commercial et modification de façade",
+            "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "17/06/2024",
+            "DP 02A 247 24 R0147",
+            "17/06/2024",
+            "M ALONSO Laurent",
+            " Renajolo de Muratello 20137  (I 2632)",
+            "499 m²",
+            "la pose de panneaux photovoltaïques",
+            ""
+        ],
+        [
+            "17/06/2024",
+            "PC 02A 247 24 R0141",
+            "17/06/2024",
+            "M BARONE Nicolas",
+            "5000 Durabile 20137  (G 1311)",
+            "2000 m²",
+            "la construction d'une maison individuelle ",
+            "- Surface plancher créée : 103,36 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "17/06/2024",
+            "PC 02A 247 24 R0142",
+            "17/06/2024",
+            "SCI RICHARDS FAMILY",
+            "8 Rue General Paulin Colanna d’Istria 20137  (AE 517)",
+            "677 m²",
+            "la surélévation d'une maison existante",
+            "- Surface plancher créée : 68,14 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "17/06/2024",
+            "PC 02A 247 24 R0143",
+            "17/06/2024",
+            "M IBARRECHE CONRAD",
+            " ROUTE DE PORRA 20137  (BL 114, BL 130)",
+            "4905 m²",
+            "l'extension d'une maison et diverses modifications",
+            "- Surface plancher créée : 18,71 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "18/06/2024",
+            "DP 02A 247 24 R0148",
+            "18/06/2024",
+            "M ALONSO Laurent",
+            " Renajolo de Muratello 20137  (I 2627)",
+            "729 m²",
+            "la pose de panneaux solaires",
+            ""
+        ],
+        [
+            "18/06/2024",
+            "PC 02A 247 24 R0144",
+            "18/06/2024",
+            "MME HIAM Catherine",
+            " route de sotta 20137  (BO 39)",
+            "8750 m²",
+            "",
+            "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ]
     ]
 }

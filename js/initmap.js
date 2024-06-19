@@ -654,6 +654,49 @@ async function populateDepotsList() {
     }
 }
 
+function handleTabClick(tabId) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    const tabContents = document.querySelectorAll('.tab-content');
+    const tabBodies = document.querySelector('.tab-bodies');
+    const mapElement = document.getElementById('map');
+    const tabsContainer = document.querySelector('.tabs');
+
+    // Hide all tab contents and reset styles
+    tabContents.forEach(content => content.style.display = 'none');
+    tabBodies.style.display = 'none';
+    tabBodies.style.visibility = 'hidden';
+    tabsContainer.style.height = '30px';
+    mapElement.style.pointerEvents = 'auto';
+
+    // Show the selected tab content
+    if (tabId !== 'tab1') {
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) {
+            targetTab.style.display = 'block';
+        }
+        tabBodies.style.display = 'block';
+        tabBodies.style.visibility = 'visible';
+        tabsContainer.style.height = 'auto';
+        // Remove this line to keep map interactions enabled
+        // mapElement.style.pointerEvents = 'none'; // Disable map interactions when a tab is open
+    }
+
+    // Highlight the active tab button
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
+    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
+
+    // Load specific content based on the tab
+    if (tabId === 'tab6') {
+        loadReadme();
+    } else if (tabId === 'tab7') {
+        loadinfo();
+    } else if (tabId === 'tab5') {
+        populateFavorablesList();
+    } else if (tabId === 'tab4') {
+        populateDepotsList();
+    }
+}
 
 
 function getParcelInfo(groupItems, features) {
@@ -1095,49 +1138,6 @@ function parseAndReformatParcelRefs(parcelRefs) {
         .toUpperCase(); // Convert to uppercase
 
     return formattedParcelRefs;
-}
-
-function handleTabClick(tabId) {
-    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
-    const tabContents = document.querySelectorAll('.tab-content');
-    const tabBodies = document.querySelector('.tab-bodies');
-    const mapElement = document.getElementById('map');
-    const tabsContainer = document.querySelector('.tabs');
-
-    // Hide all tab contents and reset styles
-    tabContents.forEach(content => content.style.display = 'none');
-    tabBodies.style.display = 'none';
-    tabBodies.style.visibility = 'hidden';
-    tabsContainer.style.height = '30px';
-    mapElement.style.pointerEvents = 'auto';
-
-    // Show the selected tab content
-    if (tabId !== 'tab1') {
-        const targetTab = document.getElementById(tabId);
-        if (targetTab) {
-            targetTab.style.display = 'block';
-        }
-        tabBodies.style.display = 'block';
-        tabBodies.style.visibility = 'visible';
-        tabsContainer.style.height = 'auto';
-        mapElement.style.pointerEvents = 'none'; // Disable map interactions when a tab is open
-    }
-
-    // Highlight the active tab button
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
-    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
-
-    // Load specific content based on the tab
-    if (tabId === 'tab6') {
-        loadReadme();
-    } else if (tabId === 'tab7') {
-        loadinfo();
-    } else if (tabId === 'tab5') {
-        populateFavorablesList();
-    } else if (tabId === 'tab4') {
-        populateDepotsList();
-    }
 }
 
 function loadinfo() {

@@ -1,29 +1,7 @@
 {
-    "recordsTotal": 79,
-    "recordsFiltered": 79,
+    "recordsTotal": 80,
+    "recordsFiltered": 80,
     "data": [
-        [
-            "15/04/2024",
-            "DP 02A 247 24 R0067",
-            "17/03/2024",
-            "MME Vincenti Aurélie",
-            " les Hameaux de Turriccioli 20137  (C 851)",
-            "14480 m²",
-            "la construction d'un garage",
-            "- Surface plancher créée : 2,5 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-            "Favorable le 15/04/2024"
-        ],
-        [
-            "15/04/2024",
-            "DP 02A 247 24 R0073",
-            "21/03/2024",
-            "M FANTONI Stéphane",
-            " Ldt Saparaccucia 20137  (AH 136)",
-            "879 m²",
-            "la fermeture d'une coursive de 13 m²",
-            "- Surface plancher créée : 13 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-            "Favorable le 15/04/2024"
-        ],
         [
             "19/04/2024",
             "PC 02A 247 24 R0026",
@@ -870,6 +848,39 @@
             "la construction d'une maison individuelle rez-de-chaussée",
             "- Surface plancher créée : 112 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
             "Favorable le 14/06/2024"
+        ],
+        [
+            "17/06/2024",
+            "PC 02A 247 24 R0017",
+            "29/01/2024",
+            "MME DELPECH-POLI Sylvie",
+            " Résidence Hôtelière \"Domaine de la Punta\" 20137 Padule d'Asciajo (AZ 84)",
+            "5192 m²",
+            "la construction d'un espace d'attente et de locaux de rangement",
+            "- Surface plancher créée : 29 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+            "Favorable le 17/06/2024"
+        ],
+        [
+            "17/06/2024",
+            "PC 02A 247 24 R0039",
+            "23/02/2024",
+            "SCI DANIEL PIERRE",
+            " ROUTE D'ARCA 20137  (D 801, D 802, D 803, D 804, D 1550)",
+            "24322 m²",
+            "la construction de 3 suites de l'hôtel existant",
+            "- Surface plancher créée : 168,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+            "Favorable le 17/06/2024"
+        ],
+        [
+            "17/06/2024",
+            "PC 02A 247 24 R0045",
+            "29/02/2024",
+            "SCI ATIPIK",
+            " CHEMIN DE LA CHIAPPA 20137 U LINARI PICOVAGGIA (F 151)",
+            "1542 m²",
+            "la réalisation d'une piscine et d'un abri de jardin type \"Caseddu\"",
+            "- Surface plancher créée : 22 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
+            "Favorable le 17/06/2024"
         ]
     ]
 }
