@@ -1,0 +1,90 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.279256, 41.590903]
+      },
+      "properties": {
+        "nom": "Église saint Jean-Baptiste",
+        "hameaux": "Porto-vecchio",
+        "icon": "egliseO.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.341663, 41.582270]
+      },
+      "properties": {
+        "nom": "Chapelle de Piccovaggia",
+        "hameaux": "Piccovaggia",
+        "icon": "egliseO.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.291122, 41.626622]
+      },
+      "properties": {
+        "nom": "Chapelle de trinité",
+        "hameaux": "Trinité de Porto-vecchio",
+        "icon": "egliseO.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.207984, 41.590025]
+      },
+      "properties": {
+        "nom": "Eglise Saint Joseph",
+        "hameaux": "Muratello",
+        "icon": "egliseO.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.233851, 41.510498]
+      },
+      "properties": {
+        "nom": "Chapelle de Petralonga Salvini",
+        "hameaux": "Petralonga Salvini",
+        "icon": "egliseO.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.240633, 41.561905]
+      },
+      "properties": {
+        "nom": "Eglise de Ceccia",
+        "hameaux": "Ceccia",
+        "icon": "egliseO.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.194524, 41.650670]
+      },
+      "properties": {
+        "nom": "Chapelle de L'Ospedale",
+        "hameaux": "Ospedale",
+        "icon": "egliseO.png"
+      }
+    }
+  ]
+}
+
