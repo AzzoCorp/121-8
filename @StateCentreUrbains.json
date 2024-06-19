@@ -1,0 +1,68 @@
+[
+  {
+    "id": "centresurbains",
+    "level": 0,
+    "fileName": "centresurbains.geojson",
+    "color": "#00f5c4",
+    "opacity": 1,
+    "type": "line",
+    "weight": 1.8
+  },
+  {
+    "id": "centresurbains",
+    "level": 1,
+    "fileName": "centresurbains.geojson",
+    "color": "#47eaff",
+    "opacity": 0.26,
+    "type": "fill",
+    "weight": 1
+  },
+  {
+    "id": "ZonesUrbaines",
+    "level": 2,
+    "fileName": "ZonesUrbaines.geojson",
+    "color": "#e7eb00",
+    "opacity": 1,
+    "type": "line",
+    "weight": 1.4
+  },
+  {
+    "id": "batiments",
+    "level": 3,
+    "fileName": "batiments.geojson",
+    "color": "#ffffff",
+    "opacity": 1,
+    "type": "line",
+    "weight": 1.9,
+    "source": "batiments-source"
+  },
+  {
+    "id": "commune",
+    "level": 4,
+    "fileName": "commune.geojson",
+    "color": "#ffffff",
+    "opacity": 0.3,
+    "type": "line",
+    "weight": 4.7,
+    "source": "commune-source"
+  },
+  {
+    "id": "ZonesUrbaines",
+    "level": 5,
+    "fileName": "ZonesUrbaines.geojson",
+    "color": "#ebe300",
+    "opacity": 0.26,
+    "type": "fill",
+    "weight": 1,
+    "source": "ZonesUrbaines-source"
+  },
+  {
+    "id": "batiments",
+    "level": 6,
+    "fileName": "batiments.geojson",
+    "color": "#000000",
+    "opacity": 1,
+    "type": "fill",
+    "weight": 1
+  }
+]
