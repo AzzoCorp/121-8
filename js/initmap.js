@@ -3,22 +3,268 @@ let layerCounter = 0;
 let parcelMarker;
 let parcelTimeout;
 let systemLayers = [];
+let isDataLoaded = false;
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXp6b2NvcnAiLCJhIjoiY2x4MDVtdnowMGlncjJqcmFhbjhjaDhidiJ9.iNiKldcG83Nr02956JPbTA';
 const customMarkerIcon = 'css/images/egliseO.png';
+
 let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/azzocorp/clxfnkj8a005j01qr2fjue7bj',
-	//clx0x359w000f01qs8u62crxc clxbhzw0s024m01pc7mighlww  clxfj5xec006001pfa13o6q87 mapbox://styles/azzocorp/clxfmmf63006901pcbo09597x clxfjw3m8005e01qm10gdc10k mapbox://styles/azzocorp/clxfmzlo4005k01pd7usb2696 mapbox://styles/azzocorp/clxfnkj8a005j01qr2fjue7bj
     center: [-63.613927, 2.445929],
     zoom: 0
 });
-window.onload = function() {
-    loadMarkdownFile('README.md', 'lisezmoi', "<br><p>Depuis le fichier readme.dm du github du projet.</p>");
-    loadMarkdownFile('INFORMATIONS.md', 'informations', "<br><p>Depuis le fichier INFORMATIONS.dm du github du projet.</p>");
-};
 
 
+map.on('load', function () {
+    console.log('Loading GeoJSON data for cadastre-parcelles...');
+    fetch('GeoDatas/cadastre-2A247-parcelles.json')
+        .then(response => response.json())
+        .then(data => {
+            data.features.forEach((feature, index) => {
+                feature.id = index;
+            });
 
+            map.addSource('cadastre-parcelles', {
+                type: 'geojson',
+                data: data
+            });
+
+            map.addLayer({
+                id: 'cadastre-parcelles-layer',
+                type: 'line',
+                source: 'cadastre-parcelles',
+                minzoom: 14,
+                maxzoom: 22,
+                paint: {
+                    'line-color': '#ffffff',
+                    'line-width': 0.01
+                }
+            });
+
+            map.addLayer({
+                id: 'cadastre-parcelles-hover',
+                type: 'fill',
+                source: 'cadastre-parcelles',
+                minzoom: 12,
+                maxzoom: 22,
+                paint: {
+                    'fill-color': '#ffffff',
+                    'fill-opacity': [
+                        'case',
+                        ['boolean', ['feature-state', 'hover'], false],
+                        0.5,
+                        0
+                    ]
+                }
+            });
+
+            map.addLayer({
+                id: 'cadastre-parcelles-labels',
+                type: 'symbol',
+                source: 'cadastre-parcelles',
+                minzoom: 12,
+                maxzoom: 22,
+                layout: {
+                    'text-field': [
+                        'concat',
+                        ['get', 'section'], ' ', ['get', 'numero'], '\n',
+                        ['get', 'contenance'], ' m²'
+                    ],
+                    'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+                    'text-size': 12,
+                    'text-offset': [0, 0.6],
+                    'text-anchor': 'top',
+                    'visibility': 'none'
+                },
+                paint: {
+                    'text-color': '#ffffff',
+                    'text-halo-color': '#000000',
+                    'text-halo-width': 1
+                }
+            });
+
+            map.addLayer({
+                id: 'highlighted-parcel',
+                type: 'line',
+                source: 'cadastre-parcelles',
+                layout: {},
+                paint: {
+                    'line-color': '#ff0000',
+                    'line-width': 4
+                },
+                'filter': ['==', 'id', '']
+            });
+
+            let hoveredStateId = null;
+
+            map.on('mousemove', 'cadastre-parcelles-hover', function(e) {
+                if (e.features.length > 0) {
+                    if (hoveredStateId !== null && hoveredStateId !== e.features[0].id) {
+                        map.setFeatureState(
+                            { source: 'cadastre-parcelles', id: hoveredStateId },
+                            { hover: false }
+                        );
+                    }
+                    hoveredStateId = e.features[0].id;
+                    map.setFeatureState(
+                        { source: 'cadastre-parcelles', id: hoveredStateId },
+                        { hover: true }
+                    );
+
+                    map.setFilter('cadastre-parcelles-labels', ['==', ['id'], hoveredStateId]);
+                    map.setLayoutProperty('cadastre-parcelles-labels', 'visibility', 'visible');
+                }
+            });
+
+            map.on('mouseleave', 'cadastre-parcelles-hover', function() {
+                if (hoveredStateId !== null) {
+                    map.setFeatureState(
+                        { source: 'cadastre-parcelles', id: hoveredStateId },
+                        { hover: false }
+                    );
+                }
+                hoveredStateId = null;
+
+                map.setLayoutProperty('cadastre-parcelles-labels', 'visibility', 'none');
+            });
+
+            const parcelRefs = getUrlParameter('r');
+            if (parcelRefs) {
+                const formattedParcelRefs = parseAndReformatParcelRefs(parcelRefs);
+                const parcels = parseSearchInput(formattedParcelRefs);
+                if (parcels.length > 0) {
+                    document.getElementById('search-input').value = formattedParcelRefs;
+                    animateView(() => highlightParcels(parcels));
+                } else {
+                    console.error('Invalid URL parameter. Please enter valid parcel references.');
+                }
+            }
+
+            // Set the data loaded flag to true and log
+            isDataLoaded = true;
+            console.log('Data for cadastre-parcelles fully loaded');
+
+            // Populate the "Demandes" tab
+            populateDepotsList();
+        })
+        .catch(error => {
+            console.error('Error loading GeoJSON data:', error);
+        });
+
+    // Add the commune polygon source and layer
+    if (!map.getSource('commune-polygon')) {
+        fetch('GeoDatas/commune.geojson')
+            .then(response => response.json())
+            .then(data => {
+                map.addSource('commune-polygon', {
+                    type: 'geojson',
+                    data: data
+                });
+
+                map.addLayer({
+                    id: 'commune-polygon-layer',
+                    type: 'line',
+                    source: 'commune-polygon',
+                    paint: {
+                        'line-color': '#FFFFFF', // Blue color
+                        'line-width': 5,
+                        'line-opacity': 0.35
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading commune polygon GeoJSON:', error);
+            });
+    }
+
+    // Adding the second GeoJSON source
+    const depotsSource = 'depots-parcelles';
+    if (!map.getSource(depotsSource)) {
+        map.addSource(depotsSource, {
+            type: 'geojson',
+            data: 'GeoDatas/outputdepots.geojson',
+        });
+
+        map.addLayer({
+            id: 'depots-layer',
+            type: 'fill',
+            source: depotsSource,
+            layout: {},
+            paint: {
+                'fill-color': '#FF00FF', // Flashy magenta color
+                'fill-opacity': 1,
+            },
+        });
+
+        // Popup for the second layer
+        map.on('click', 'depots-layer', function(e) {
+            const properties = e.features[0].properties;
+
+            // Create a content string for the popup
+            let content = '<h3>Property Details</h3>';
+            content += `<strong>ID:</strong> ${properties.id}<br>`;
+            content += `<strong>Commune:</strong> ${properties.commune}<br>`;
+            content += `<strong>Prefix:</strong> ${properties.prefixe}<br>`;
+            content += `<strong>Section:</strong> ${properties.section}<br>`;
+            content += `<strong>Number:</strong> ${properties.numero}<br>`;
+            content += `<strong>Contenance:</strong> ${properties.contenance} m²<br>`;
+            content += `<strong>Arpente:</strong> ${properties.arpente}<br>`;
+            content += `<strong>Created:</strong> ${properties.created}<br>`;
+            content += `<strong>Updated:</strong> ${properties.updated}<br>`;
+
+            // Check if depots is a string and parse it
+            let depots = properties.depots;
+            if (typeof depots === 'string') {
+                try {
+                    depots = JSON.parse(depots);
+                } catch (error) {
+                    console.error('Failed to parse depots:', depots, error);
+                }
+            }
+
+            // Check if depots is now an array
+            if (Array.isArray(depots)) {
+                content += '<h3>Depots:</h3><ul>';
+                depots.forEach(depot => {
+                    if (Array.isArray(depot)) {
+                        content += '<li>';
+                        content += `<strong>Date Received:</strong> ${depot[0]}<br>`;
+                        content += `<strong>Permit Number:</strong> ${depot[1]}<br>`;
+                        content += `<strong>Date Issued:</strong> ${depot[2]}<br>`;
+                        content += `<strong>Owner:</strong> ${depot[3]}<br>`;
+                        content += `<strong>Address:</strong> ${depot[4]}<br>`;
+                        content += `<strong>Area:</strong> ${depot[5]}<br>`;
+                        content += `<strong>Description:</strong> ${depot[6]}<br>`;
+                        content += `<strong>Additional Info:</strong> ${depot[7].replace(/\\r\\n/g, '<br>')}<br>`;
+                        content += '</li>';
+                    } else {
+                        console.error('Depot entry is not an array:', depot);
+                    }
+                });
+                                content += '</ul>';
+            } else {
+                console.error('Properties depots is not an array:', depots);
+            }
+
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(content)
+                .addTo(map);
+        });
+
+        // Change the cursor to pointer when hovering over the second layer
+        map.on('mouseenter', 'depots-layer', function() {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to default when no longer hovering over the second layer
+        map.on('mouseleave', 'depots-layer', function() {
+            map.getCanvas().style.cursor = '';
+        });
+    }
+});
+						
 map.on('load', async function() {
     // Adding the second GeoJSON source
     const depotsSource = 'depots-parcelles';
@@ -196,331 +442,51 @@ map.on('load', async function() {
     }
 });
 
-
-
-
-map.on('load', function() {
-    // Check if the source already exists
-    if (!map.getSource('cadastre-parcelles')) {
-        // Load the GeoJSON file
-        fetch('GeoDatas/cadastre-2A247-parcelles.json')
-            .then(response => response.json())
-            .then(data => {
-                // Ensure each feature has a unique id
-                data.features.forEach((feature, index) => {
-                    feature.id = index; // Assign a unique id to each feature
-                });
-
-                // Add the GeoJSON as a source
-                map.addSource('cadastre-parcelles', {
-                    type: 'geojson',
-                    data: data
-                });
-
-                // Add the layer with a thin white line
-                map.addLayer({
-                    id: 'cadastre-parcelles-layer',
-                    type: 'line',
-                    source: 'cadastre-parcelles',
-                    minzoom: 14, // Layer will appear at zoom level 14 and above
-                    maxzoom: 22, // Layer will disappear after zoom level 22
-                    paint: {
-                        'line-color': '#ffffff',
-                        'line-width': 0.05
-                    }
-                });
-
-                // Add a fill layer for hover effect
-                map.addLayer({
-                    id: 'cadastre-parcelles-hover',
-                    type: 'fill',
-                    source: 'cadastre-parcelles',
-                    minzoom: 14, // Layer will appear at zoom level 14 and above
-                    maxzoom: 22, // Layer will disappear after zoom level 22
-                    paint: {
-                        'fill-color': '#ffffff',
-                        'fill-opacity': [
-                            'case',
-                            ['boolean', ['feature-state', 'hover'], false],
-                            0.5,
-                            0
-                        ]
-                    }
-                });
-
-                // Add a symbol layer for labels
-                map.addLayer({
-                    id: 'cadastre-parcelles-labels',
-                    type: 'symbol',
-                    source: 'cadastre-parcelles',
-                    minzoom: 15, // Labels will appear at zoom level 15 and above
-                    maxzoom: 22, // Labels will disappear after zoom level 22
-                    layout: {
-                        'text-field': [
-                            'concat',
-                            ['get', 'section'], ' ', ['get', 'numero'], '\n',
-                            ['get', 'contenance'], ' m²'
-                        ],
-                        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-                        'text-size': 12,
-                        'text-offset': [0, 0.6],
-                        'text-anchor': 'top',
-                        'visibility': 'none' // Initially hidden
-                    },
-                    paint: {
-                        'text-color': '#ffffff',
-                        'text-halo-color': '#000000',
-                        'text-halo-width': 1
-                    }
-                });
-
-                // Add layer for highlighted parcel
-                map.addLayer({
-                    id: 'highlighted-parcel',
-                    type: 'line',
-                    source: 'cadastre-parcelles',
-                    layout: {},
-                    paint: {
-                        'line-color': '#ff0000',
-                        'line-width': 4
-                    },
-                    'filter': ['==', 'id', '']
-                });
-
-                let hoveredStateId = null;
-
-                // Mouse move event on the fill layer
-                map.on('mousemove', 'cadastre-parcelles-hover', function(e) {
-                    if (e.features.length > 0) {
-                        if (hoveredStateId !== null && hoveredStateId !== e.features[0].id) {
-                            // Reset the previous hovered feature
-                            map.setFeatureState(
-                                { source: 'cadastre-parcelles', id: hoveredStateId },
-                                { hover: false }
-                            );
-                        }
-                        hoveredStateId = e.features[0].id;
-                        map.setFeatureState(
-                            { source: 'cadastre-parcelles', id: hoveredStateId },
-                            { hover: true }
-                        );
-
-                        // Show only the label of the hovered parcel
-                        map.setFilter('cadastre-parcelles-labels', ['==', ['id'], hoveredStateId]);
-                        map.setLayoutProperty('cadastre-parcelles-labels', 'visibility', 'visible');
-                    }
-                });
-
-                // Mouse leave event on the fill layer
-                map.on('mouseleave', 'cadastre-parcelles-hover', function() {
-                    if (hoveredStateId !== null) {
-                        // Reset the hovered feature
-                        map.setFeatureState(
-                            { source: 'cadastre-parcelles', id: hoveredStateId },
-                            { hover: false }
-                        );
-                    }
-                    hoveredStateId = null;
-
-                    // Hide labels when not hovering
-                    map.setLayoutProperty('cadastre-parcelles-labels', 'visibility', 'none');
-                });
-
-                // Check for parcel references in the URL
-                const parcelRefs = getUrlParameter('r');
-                if (parcelRefs) {
-                    const formattedParcelRefs = parseAndReformatParcelRefs(parcelRefs);
-                    const parcels = parseSearchInput(formattedParcelRefs);
-                    if (parcels.length > 0) {
-                        // Populate the search input field with the formatted parcel references
-                        document.getElementById('search-input').value = formattedParcelRefs;
-                        // Perform the animation after animateView()
-                        animateView(() => highlightParcels(parcels));
-                    } else {
-                        console.error('Invalid URL parameter. Please enter valid parcel references.');
-                    }
-                }
-            });
-    }
+map.on('load', () => {
+    map.loadImage('css/images/egliseO.png', (error, image) => {
+        if (error) throw error;
+        map.addImage('marker-15', image);
+    });
 });
 
 
-
-
-// Event listener for search button
 document.getElementById('search-btn').addEventListener('click', function() {
-    var searchInput = document.getElementById('search-input').value.trim();
-    var parcels = parseSearchInput(searchInput);
-    if (parcels.length > 0) {
-        highlightParcels(parcels);
-    } else {
-        console.error('Invalid search input. Please enter valid parcel references.');
+    if (!isDataLoaded) {
+        console.error('Data is not fully loaded. Please wait and try again.');
+        return;
     }
-});
-
-
-
-
-
-
-
-
-
-
-// Function to parse URL parameters
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
-
-// Function to parse the search input into individual parcel references
-function parseSearchInput(input) {
-    const regex = /([A-Za-z]+)\s*(\d+)/g;
-    let match;
-    const parcels = [];
-    while ((match = regex.exec(input)) !== null) {
-        parcels.push(`${match[1].toUpperCase()} ${match[2]}`);
-    }
-    return parcels;
-}
-
-// Function to get a random number within a range
-function getRandomInRange(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-// Function to parse and reformat the parcel references from the URL parameter
-function parseAndReformatParcelRefs(parcelRefs) {
-    const formattedParcelRefs = parcelRefs
-        .replace(/[^A-Za-z0-9]/g, ' ') // Replace non-alphanumeric characters with space
-        .replace(/([A-Za-z])\s*(\d+)/g, '$1$2') // Ensure no space between letters and numbers
-        .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
-        .trim() // Trim leading/trailing spaces
-        .toUpperCase(); // Convert to uppercase
-
-    return formattedParcelRefs;
-}
-
-// Event listener for search button
-document.getElementById('search-btn').addEventListener('click', function() {
     var searchInput = document.getElementById('search-input').value.trim();
     var formattedSearchInput = parseAndReformatParcelRefs(searchInput); // Reformat the input
+    console.log('Formatted search input:', formattedSearchInput);
     document.getElementById('search-input').value = formattedSearchInput; // Update the input box with formatted value
     var parcels = parseSearchInput(formattedSearchInput);
+    console.log('Parsed parcels:', parcels);
     if (parcels.length > 0) {
-        highlightParcels(parcels);
+        zoomOutToCenterCommune(() => {
+            highlightParcels(parcels);
+        });
     } else {
         console.error('Invalid search input. Please enter valid parcel references.');
     }
 });
 
-function highlightParcels(parcels) {
-    if (map.getLayer('highlighted-parcel')) {
-        const filters = ['any'];
-        let bounds = new mapboxgl.LngLatBounds();
-        const notFoundParcels = [];
-
-        parcels.forEach(parcel => {
-            const [section, numero] = parcel.trim().split(/\s+/);
-            filters.push(['all', ['==', ['get', 'section'], section], ['==', ['get', 'numero'], numero]]);
-        });
-
-        map.setFilter('highlighted-parcel', filters);
-
-        // Find the coordinates of the parcels to zoom to
-        const features = map.querySourceFeatures('cadastre-parcelles', {
-            filter: filters
-        });
-
-        if (features.length > 0) {
-            features.forEach(feature => {
-                feature.geometry.coordinates[0].forEach(coord => {
-                    bounds.extend(coord);
-                });
-            });
-
-            // Identify not found parcels
-            parcels.forEach(parcel => {
-                const [section, numero] = parcel.trim().split(/\s+/);
-                const found = features.some(feature => feature.properties.section === section && feature.properties.numero === numero);
-                if (!found) {
-                    notFoundParcels.push(parcel);
-                }
-            });
-
-            const randomPitch = getRandomInRange(0, 180); // Random pitch between 0 and 180 degrees
-            const randomBearing = getRandomInRange(-180, 180); // Random bearing between -180 and 180 degrees
-            const randomZoomOut = getRandomInRange(9, 15); // Random zoom-out between 9 and 15 levels
-            const randomTime = getRandomInRange(1500, 3500); // Random duration between 1500 and 3500 ms
-
-            // Perform a bounce out animation before zooming in
-            console.log('randomPitch :' + randomPitch);
-            console.log('randomBearing :' + randomBearing);
-            console.log('randomZoomOut :' + randomZoomOut);
-            console.log('randomTime :' + randomTime);
-
-            map.flyTo({
-                center: map.getCenter(),
-                zoom: map.getZoom() - randomZoomOut, // Zoom out
-                pitch: randomPitch, // Add random pitch
-                bearing: randomBearing, // Add random bearing
-                duration: randomTime,
-                essential: true // This animation is considered essential with respect to prefers-reduced-motion
-            });
-
-            const randomPitch1 = getRandomInRange(0, 110); // Random pitch between 0 and 110 degrees
-            const randomBearing1 = getRandomInRange(-180, 180); // Random bearing between -180 and 180 degrees
-            const randomZoomOut1 = getRandomInRange(9, 15); // Random zoom-out between 9 and 15 levels
-            const randomTime1 = getRandomInRange(1500, 3500); // Random duration between 1500 and 3500 ms
-
-            console.log('randomPitch1 :' + randomPitch1);
-            console.log('randomBearing1 :' + randomBearing1);
-            console.log('randomZoomOut1 :' + randomZoomOut1);
-            console.log('randomTime1 :' + randomTime1);
-
-            setTimeout(() => {
-                map.fitBounds(bounds, {
-                    padding: 20,
-                    maxZoom: 17 - randomZoomOut1 / 20,
-                    pitch: randomPitch1, // Reset pitch
-                    bearing: randomBearing1, // Reset bearing
-                    duration: randomTime1 * 2
-                });
-
-                // Add red fill background with 0.5 opacity to the highlighted parcels
-                if (!map.getLayer('highlighted-parcel-fill')) {
-                    map.addLayer({
-                        id: 'highlighted-parcel-fill',
-                        type: 'fill',
-                        source: 'cadastre-parcelles',
-                        layout: {},
-                        paint: {
-                            'fill-color': '#ff0000',
-                            'fill-opacity': 0.5
-                        },
-                        filter: filters
-                    });
-                } else {
-                    map.setFilter('highlighted-parcel-fill', filters);
-                }
-
-                // Log the user about missing parcels
-                if (notFoundParcels.length > 0) {
-                    console.log(`The following parcel references were not found: ${notFoundParcels.join(', ')}`);
-                }
-            }, 600); // Wait for any previous animations to complete before zooming in
-        } else {
-            console.log(`No features found for the given parcels: ${parcels.join(', ')}`);
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('locate-btn')||event.target.classList.contains('locate-btnF')) {
+        if (!isDataLoaded) {
+            console.error('Data is not fully loaded. Please wait and try again.');
+            return;
         }
-    } else {
-        console.error('The layer "highlighted-parcel" does not exist in the map\'s style.');
+        const section = event.target.getAttribute('data-section');
+        const numero = event.target.getAttribute('data-numero');
+        const searchInput = `${section}${numero}`;
+
+        document.getElementById('search-input').value = searchInput;
+       
+		zoomOutToCenterCommune(() => {
+			document.getElementById('search-btn').click();
+		}); 
     }
-}
-
-
-
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -568,52 +534,621 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(fileInput);
 });
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    const menu = document.getElementById('menu');
 
-    Array.from(document.querySelectorAll('.tabs')).forEach((tab_container, TabID) => {
-        const registers = tab_container.querySelector('.tab-registers');
-        const bodies = tab_container.querySelector('.tab-bodies');
+async function populateDepotsList() {
+    if (OnOff()) {
+        console.log('>>>> ' + arguments.callee.name + '() <= function used');
+    }
+    const depotsContainer = document.getElementById('Demandes');
+    if (!depotsContainer) {
+        console.error('Element with ID "Demandes" not found.');
+        return;
+    }
+    depotsContainer.innerHTML = ''; // Clear existing content
 
-        let activeRegister = registers.querySelector('.active-tab');
-        activeRegister = activeRegister ? activeRegister : registers.children[0];
-        activeRegister.classList.add('active-tab');
+    const depotsSource = map.getSource('depots-parcelles');
+    if (depotsSource) {
+        try {
+            const depotsData = await fetch('GeoDatas/outputdepots.geojson').then(response => response.json());
+            const features = depotsData.features;
 
-        Array.from(registers.children).forEach((el, i) => {
-            el.setAttribute('aria-controls', `${TabID}_${i}`);
-            bodies.children[i]?.setAttribute('id', `${TabID}_${i}`);
+            const groupedItems = {};
+            const headParcels = new Set();
+            const childParcels = new Set();
 
-            el.addEventListener('click', (ev) => {
-                let activeRegister = registers.querySelector('.active-tab');
-                activeRegister.classList.remove('active-tab');
-                activeRegister = el;
-                activeRegister.classList.add('active-tab');
-                changeBody(registers, bodies, activeRegister);
-            });
-        });
+            features.forEach(feature => {
+                const properties = feature.properties;
 
-        function changeBody(registers, bodies, activeRegister) {
-            Array.from(registers.children).forEach((el, i) => {
-                if (bodies.children[i]) {
-                    bodies.children[i].style.display = el == activeRegister ? 'block' : 'none';
+                if (typeof properties.depots === 'string') {
+                    try {
+                        properties.depots = JSON.parse(properties.depots);
+                    } catch (error) {
+                        console.error('Failed to parse depots:', properties.depots, error);
+                    }
                 }
-                el.setAttribute('aria-expanded', el == activeRegister ? 'true' : 'false');
+
+                if (Array.isArray(properties.depots) && properties.depots.length > 0) {
+                    properties.depots.forEach(depot => {
+                        if (Array.isArray(depot)) {
+                            const squareMeters = extractSquareMeters(depot[7]);
+                            const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
+                            const recu = depot[0];
+                            const groupItems = extractGroupItems(depot[4]);
+                            const headParcel = groupItems[0];
+
+                            if (!(difference === '0.00' && squareMeters[0] === 0 && squareMeters[1] === 0)) {
+                                const parcelInfo = getParcelInfo(groupItems, features);
+                                const listItem = `
+                                    <div class="depot-data">
+                                        <strong>${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]}</strong><br>
+                                        <button class="locate-btn" data-section="${properties.section}" data-numero="${properties.numero}">Trouver</button><div class="nomdeposant">${depot[3]}</div>
+                                        <strong>${depot[1]}</strong><i> reçue le </i><strong>${recu}</strong><br>
+                                        ${parcelInfo}
+                                        <br><strong>Adresse </strong>${depot[4]}<br>
+                                        <div class="desc"><strong>DESCRIPTION</strong></div>${depot[6]}<br>
+                                        ${depot[7]}
+                                    </div>
+                                    <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
+                                    <br>arpenté <strong>${properties.arpente}</strong>
+                                    créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
+                                `;
+
+                                headParcels.add(headParcel);
+                                groupItems.forEach(item => {
+                                    if (item !== headParcel) {
+                                        childParcels.add(item);
+                                    }
+                                });
+
+                                if (!groupedItems[headParcel]) {
+                                    groupedItems[headParcel] = {
+                                        groupItems: groupItems,
+                                        depots: []
+                                    };
+                                }
+                                groupedItems[headParcel].depots.push({ difference: parseFloat(difference), html: listItem });
+                            }
+                        }
+                    });
+                }
             });
+
+            const finalGroupItems = new Set([...headParcels].filter(item => !childParcels.has(item)));
+
+            const listItems = [];
+            for (const headParcel of finalGroupItems) {
+                if (groupedItems.hasOwnProperty(headParcel)) {
+                    const group = groupedItems[headParcel];
+                    const mergedDepots = group.depots[0].html; // Only take the first depot which is the head
+                    const totalDifference = group.depots[0].difference; // Only take the first depot's difference
+
+                    const listItem = `
+                        <div class="depot-group">
+                            ${mergedDepots}
+                        </div>
+                    `;
+                    listItems.push({ difference: totalDifference, html: listItem });
+                }
+            }
+
+            // Sort by difference in descending order
+            listItems.sort((a, b) => b.difference - a.difference);
+
+            listItems.forEach(item => {
+                const listItemElement = document.createElement('div');
+                listItemElement.className = 'list-item';
+                listItemElement.innerHTML = item.html;
+                depotsContainer.appendChild(listItemElement);
+            });
+
+            const itemCountElement = document.createElement('div');
+            itemCountElement.innerHTML = `
+                <strong>Demandes totales :</strong> ${finalGroupItems.size}<br><br>
+            `;
+            depotsContainer.insertBefore(itemCountElement, depotsContainer.firstChild);
+        } catch (error) {
+            console.error('Error loading depot data:', error);
         }
+    } else {
+        console.error('Depots source not found.');
+    }
+}
 
-        changeBody(registers, bodies, activeRegister);
-    });
-});
 
-map.on('load', () => {
-    map.loadImage('css/images/egliseO.png', (error, image) => {
-        if (error) throw error;
-        map.addImage('marker-15', image);
+
+function getParcelInfo(groupItems, features) {
+    const parcelData = {};
+
+    // Collect the contenance for each parcel in the group
+    features.forEach(feature => {
+        const properties = feature.properties;
+        const parcelId = `${properties.section} ${properties.numero}`;
+        parcelData[parcelId] = properties.contenance || 0;
     });
-});
+
+    let totalArea = 0;
+    const headParcel = groupItems[0];
+    const headParcelArea = parcelData[headParcel] || 0;
+    totalArea += headParcelArea;
+
+    const parcelDescriptions = groupItems.filter(parcel => parcel !== headParcel).map(parcel => {
+        const area = parcelData[parcel] || 0;
+        totalArea += area;
+        return `${parcel} (${area} m²)`;
+    });
+
+    const aussiSur = parcelDescriptions.length > 0 ? ` + ${parcelDescriptions.join(' + ')}` : '';
+    
+    // Conditionally append total area information only if there are child parcels
+    const totalAreaInfo = parcelDescriptions.length > 0 ? ` = ${totalArea} m²` : '';
+
+    return `Parcelle ${headParcel} (${headParcelArea} m²)${aussiSur}${totalAreaInfo}`;
+}
+
+async function populateFavorablesList() {
+    if (OnOff()) {
+        console.log('>>>> ' + arguments.callee.name + '() <= function used');
+    }
+    const favorablesContainer = document.getElementById('Décisions');
+    if (!favorablesContainer) {
+        console.error('Element with ID "Décisions" not found.');
+        return;
+    }
+    favorablesContainer.innerHTML = ''; // Clear existing content
+
+    const favorablesSource = map.getSource('favorables-parcelles');
+    if (favorablesSource) {
+        try {
+            const favorablesData = await fetch('GeoDatas/outputfavorables.geojson').then(response => response.json());
+            const features = favorablesData.features;
+
+            const groupedItems = {};
+            const headParcels = new Set();
+            const childParcels = new Set();
+
+            features.forEach(feature => {
+                const properties = feature.properties;
+
+                if (typeof properties.decisions === 'string') {
+                    try {
+                        properties.decisions = JSON.parse(properties.decisions);
+                    } catch (error) {
+                        console.error('Failed to parse decisions:', properties.decisions, error);
+                    }
+                }
+
+                if (Array.isArray(properties.decisions) && properties.decisions.length > 0) {
+                    properties.decisions.forEach(decision => {
+                        if (Array.isArray(decision)) {
+                            const squareMeters = extractSquareMeters(decision[7]);
+                            const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
+                            const decisionDate = decision[0];
+                            const groupItems = extractGroupItems(decision[4]);
+                            const headParcel = groupItems[0];
+
+                            if (!(difference === '0.00' && squareMeters[0] === 0 && squareMeters[1] === 0)) {
+                                const parcelInfo = getParcelInfo(groupItems, features);
+                                const listItem = `
+                                    <div class="decision-data">
+                                        <strong>${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
+                                        <button class="locate-btnF" data-section="${properties.section}" data-numero="${properties.numero}">Trouver</button><div class="nomdeposantF">${decision[3]}</div>
+                                        <strong>${decision[1]}</strong><i> reçue le </i><strong>${decisionDate}</strong><br>
+                                        ${parcelInfo}
+                                        <br><strong>Adresse </strong>${decision[4]}<br>
+                                        <div class="desc"><strong>DESCRIPTION</strong></div>${decision[6]}<br>
+                                        ${decision[7]}
+                                    </div>
+                                    <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
+                                    <br>arpenté <strong>${properties.arpente}</strong>
+                                    créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
+                                `;
+
+                                headParcels.add(headParcel);
+                                groupItems.forEach(item => {
+                                    if (item !== headParcel) {
+                                        childParcels.add(item);
+                                    }
+                                });
+
+                                if (!groupedItems[headParcel]) {
+                                    groupedItems[headParcel] = {
+                                        groupItems: groupItems,
+                                        decisions: []
+                                    };
+                                }
+                                groupedItems[headParcel].decisions.push({ difference: parseFloat(difference), html: listItem });
+                            }
+                        }
+                    });
+                }
+            });
+
+            const finalGroupItems = new Set([...headParcels].filter(item => !childParcels.has(item)));
+
+            const listItems = [];
+            for (const headParcel of finalGroupItems) {
+                if (groupedItems.hasOwnProperty(headParcel)) {
+                    const group = groupedItems[headParcel];
+                    const mergedDecisions = group.decisions[0].html; // Only take the first decision which is the head
+                    const totalDifference = group.decisions[0].difference; // Only take the first decision's difference
+
+                    const listItem = `
+                        <div class="decision-group">
+                            ${mergedDecisions}
+                        </div>
+                    `;
+                    listItems.push({ difference: totalDifference, html: listItem });
+                }
+            }
+
+            // Sort by difference in descending order
+            listItems.sort((a, b) => b.difference - a.difference);
+
+            listItems.forEach(item => {
+                const listItemElement = document.createElement('div');
+                listItemElement.className = 'list-item';
+                listItemElement.innerHTML = item.html;
+                favorablesContainer.appendChild(listItemElement);
+            });
+
+            const itemCountElement = document.createElement('div');
+            itemCountElement.innerHTML = `
+                <strong>Décisions totales :</strong> ${finalGroupItems.size}<br><br>
+            `;
+            favorablesContainer.insertBefore(itemCountElement, favorablesContainer.firstChild);
+        } catch (error) {
+            console.error('Error loading favorable data:', error);
+        }
+    } else {
+        console.error('Favorables source not found.');
+    }
+}
+
+function extractSquareMeters(data) {
+    const regex = /(\d+,\d+|\d+)\s*m²/g;
+    const matches = data.match(regex);
+    if (matches && matches.length >= 2) {
+        return matches.slice(0, 2).map(match => parseFloat(match.replace(',', '.')));
+    }
+    return [0, 0];
+}
+
+function extractGroupItems(address) {
+    const firstMatch = address.match(/\((.*)/);
+    if (firstMatch) {
+        const afterFirstParenthesis = firstMatch[1];
+        const secondMatch = afterFirstParenthesis.match(/(.*?)\)/);
+        if (secondMatch) {
+            const groupItemsString = secondMatch[1];
+            const groupItems = groupItemsString.split(',').map(item => item.trim());
+            return groupItems;
+        }
+    }
+    return [];
+}
+
+function extractSquareMeters(data) {
+    const regex = /(\d+,\d+|\d+)\s*m²/g;
+    const matches = data.match(regex);
+    if (matches && matches.length >= 2) {
+        return matches.slice(0, 2).map(match => parseFloat(match.replace(',', '.')));
+    }
+    return [0, 0];
+}
+
+function zoomOutToCenterCommune(callback) {
+    const communeSource = map.getSource('commune-polygon');
+    if (communeSource) {
+        const communePolygon = communeSource._data;
+        if (communePolygon) {
+            // Calculate the centroid of the commune polygon using Turf.js
+            const centroid = turf.centroid(communePolygon);
+            const centroidCoordinates = centroid.geometry.coordinates;
+
+            console.log('Centroid coordinates:', centroidCoordinates);
+
+            // Center the map on the centroid
+            map.flyTo({
+                center: centroidCoordinates,
+                zoom: 11,
+                pitch: 0,
+                bearing: 0,
+                duration: 2000,
+                essential: true
+            });
+
+            map.once('moveend', () => {
+                if (callback) {
+                    callback();
+                }
+            });
+        } else {
+            console.error('The data for "commune-polygon" is not available.');
+        }
+    } else {
+        console.error('The source "commune-polygon" is not loaded.');
+    }
+}
+
+function createFilters(parcels) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    const filters = ['any'];
+    parcels.forEach(parcel => {
+        const [section, numero] = parcel.trim().split(/\s+/);
+        filters.push(['all', ['==', ['get', 'section'], section], ['==', ['get', 'numero'], numero]]);
+    });
+    return filters;
+}
+
+function extendBounds(features, bounds) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    features.forEach(feature => {
+        feature.geometry.coordinates[0].forEach(coord => {
+            bounds.extend(coord);
+        });
+    });
+    console.log('Extended bounds:', bounds);
+}
+
+function identifyNotFoundParcels(parcels, features, notFoundParcels) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    parcels.forEach(parcel => {
+        const [section, numero] = parcel.trim().split(/\s+/);
+        const found = features.some(feature => feature.properties.section === section && feature.properties.numero === numero);
+        if (!found) {
+            notFoundParcels.push(parcel);
+        }
+    });
+    console.log('Identified not found parcels:', notFoundParcels);
+}
+
+function addHighlightLayers(filters) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    if (!map.getLayer('highlighted-parcel-fill')) {
+        map.addLayer({
+            id: 'highlighted-parcel-fill',
+            type: 'fill',
+            source: 'cadastre-parcelles',
+            layout: {},
+            paint: {
+                'fill-color': '#ff0000',
+                'fill-opacity': 0.5
+            },
+            filter: filters
+        });
+    } else {
+        map.setFilter('highlighted-parcel-fill', filters);
+    }
+
+    if (!map.getLayer('highlighted-parcel-line')) {
+        map.addLayer({
+            id: 'highlighted-parcel-line',
+            type: 'line',
+            source: 'cadastre-parcelles',
+            layout: {},
+            paint: {
+                'line-color': '#FFA500',
+                'line-width': 4
+            },
+            filter: filters
+        });
+    } else {
+        map.setFilter('highlighted-parcel-line', filters);
+    }
+    console.log('Highlight layers added/updated with filters:', filters);
+}
+
+function highlightParcels(parcels) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    if (map.getLayer('highlighted-parcel')) {
+        const filters = createFilters(parcels);
+        const bounds = new mapboxgl.LngLatBounds();
+        const notFoundParcels = [];
+
+        console.log('Applying filters:', filters);
+        map.setFilter('highlighted-parcel', filters);
+
+        const features = map.querySourceFeatures('cadastre-parcelles', { filter: filters });
+        console.log('Queried features:', features);
+
+        if (features.length > 0) {
+            extendBounds(features, bounds);
+            identifyNotFoundParcels(parcels, features, notFoundParcels);
+
+            console.log('Features found:', features);
+            console.log('Not found parcels:', notFoundParcels);
+
+            // Log the coordinates of the features
+            features.forEach(feature => {
+                console.log('Feature coordinates:', feature.geometry.coordinates);
+            });
+
+            zoomOutToCenterCommune(() => {
+                zoomToSelectedParcels(bounds, filters, notFoundParcels);
+            });
+        } else {
+            console.log(`111 No features found for the given parcels: ${parcels.join(', ')}`);
+            zoomOutAndRetry(filters, parcels, bounds, notFoundParcels);
+        }
+    } else {
+        console.error('The layer "highlighted-parcel" does not exist in the map\'s style.');
+    }
+}
+
+function zoomToSelectedParcels(bounds, filters, notFoundParcels) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    console.log('Zooming to selected parcels with bounds:', bounds);
+    console.log('Filters:', JSON.stringify(filters));
+    console.log('Not found parcels:', notFoundParcels);
+
+    // Ensure bounds are valid before calling fitBounds
+    if (bounds.isEmpty()) {
+        console.error('Bounds are empty, cannot zoom to selected parcels.');
+        return;
+    }
+
+    // Log the actual coordinates of the bounds
+    console.log('Bounds south-west:', bounds.getSouthWest());
+    console.log('Bounds north-east:', bounds.getNorthEast());
+
+    try {
+        map.fitBounds(bounds, {
+            padding: 20,
+            maxZoom: 17,
+            pitch: 0,
+            bearing: 0,
+            duration: 2000
+        });
+    } catch (error) {
+        console.error('Error in fitBounds:', error);
+    }
+
+    addHighlightLayers(filters);
+
+    if (notFoundParcels.length > 0) {
+        console.log(`The following parcel references were not found: ${notFoundParcels.join(', ')}`);
+    }
+}
+
+function zoomOutAndRetry(filters, parcels, bounds) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    const communeSource = map.getSource('commune-polygon');
+    if (communeSource) {
+        const communePolygon = communeSource._data;
+        if (communePolygon) {
+            // Calculate the centroid of the commune polygon using Turf.js
+            const centroid = turf.centroid(communePolygon);
+            const centroidCoordinates = centroid.geometry.coordinates;
+
+            console.log('Centroid coordinates:', centroidCoordinates);
+
+            // Center the map on the centroid
+            map.flyTo({
+                center: centroidCoordinates,
+                zoom: 11,
+                pitch: 0,
+                bearing: 0,
+                duration: 2000,
+                essential: true
+            });
+
+            console.log('---1 First bounce');
+            map.once('moveend', () => {
+                const features = map.querySourceFeatures('cadastre-parcelles', { filter: filters });
+                console.log('Queried features after zooming out:', features);
+
+                if (features.length > 0) {
+                    extendBounds(features, bounds);
+                    identifyNotFoundParcels(parcels, features, []);
+
+                    console.log('Features found after zooming out:', features);
+
+                    // Log the coordinates of the features
+                    features.forEach(feature => {
+                        console.log('Feature coordinates after zooming out:', feature.geometry.coordinates);
+                    });
+
+                    console.log('||||||||||||  zoomToSelectedParcels(' + bounds + ',' + JSON.stringify(filters) + ', []);');
+                    zoomToSelectedParcels(bounds, filters, []);
+                } else {
+                    console.log(`222 No features found for the given parcels even after zooming out: ${parcels.join(', ')}`);
+                }
+            });
+        } else {
+            console.error('The data for "commune-polygon" is not available.');
+        }
+    } else {
+        console.error('The source "commune-polygon" is not loaded.');
+    }
+}
+
+function getUrlParameter(name) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+function parseSearchInput(input) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    const regex = /([A-Za-z]+)\s*(\d+)/g;
+    let match;
+    const parcels = [];
+    while ((match = regex.exec(input)) !== null) {
+        parcels.push(`${match[1]} ${match[2]}`); // Ensure space between section and number
+    }
+    return parcels;
+}
+
+function getRandomInRange(min, max) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    return Math.random() * (max - min) + min;
+}
+
+function parseAndReformatParcelRefs(parcelRefs) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    const formattedParcelRefs = parcelRefs
+        .replace(/[^A-Za-z0-9\s]/g, ' ') // Replace non-alphanumeric characters with space
+        .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
+        .trim() // Trim leading/trailing spaces
+        .toUpperCase(); // Convert to uppercase
+
+    return formattedParcelRefs;
+}
+
+function handleTabClick(tabId) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    const tabContents = document.querySelectorAll('.tab-content');
+    const tabBodies = document.querySelector('.tab-bodies');
+    const mapElement = document.getElementById('map');
+    const tabsContainer = document.querySelector('.tabs');
+
+    // Hide all tab contents and reset styles
+    tabContents.forEach(content => content.style.display = 'none');
+    tabBodies.style.display = 'none';
+    tabBodies.style.visibility = 'hidden';
+    tabsContainer.style.height = '30px';
+    mapElement.style.pointerEvents = 'auto';
+
+    // Show the selected tab content
+    if (tabId !== 'tab1') {
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) {
+            targetTab.style.display = 'block';
+        }
+        tabBodies.style.display = 'block';
+        tabBodies.style.visibility = 'visible';
+        tabsContainer.style.height = 'auto';
+        mapElement.style.pointerEvents = 'none'; // Disable map interactions when a tab is open
+    }
+
+    // Highlight the active tab button
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
+    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
+
+    // Load specific content based on the tab
+    if (tabId === 'tab6') {
+        loadReadme();
+    } else if (tabId === 'tab7') {
+        loadinfo();
+    } else if (tabId === 'tab5') {
+        populateFavorablesList();
+    } else if (tabId === 'tab4') {
+        populateDepotsList();
+    }
+}
+
+function loadinfo() {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    console.log('loadinfo function called');
+    populateDepotsList(); // Call the function to populate the depots list
+}
 
 function saveLayers() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const layersState = map.getStyle().layers
         .filter(layer => layerDefinitions[layer.id]) // Only include layers that are in layerDefinitions
         .map((layer, index) => {
@@ -643,7 +1178,7 @@ function saveLayers() {
 }
 
 function loadLayers(event) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const file = event.target.files[0];
     if (!file) return;
 
@@ -678,6 +1213,7 @@ function loadLayers(event) {
 }
 
 function resetLayers() {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
     Object.values(layerDefinitions).forEach(layer => {
         if (layer.type !== 'marker') {
             map.removeLayer(layer.id);
@@ -692,6 +1228,7 @@ function resetLayers() {
 }
 
 function addMarkerToLayerDefinitions(marker, layerId) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
     if (!layerDefinitions[layerId]) {
         layerDefinitions[layerId] = {
             id: layerId,
@@ -703,6 +1240,7 @@ function addMarkerToLayerDefinitions(marker, layerId) {
 }
 
 function createLayerItem(layer, index) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
     const layerItem = document.createElement('div');
     layerItem.className = 'layer-item';
     layerItem.dataset.layerId = layer.id;
@@ -846,6 +1384,7 @@ function createLayerItem(layer, index) {
 }
 
 async function loadMarkdownFile(filePath, elementId, additionalContent) {
+	if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
@@ -863,6 +1402,7 @@ async function loadMarkdownFile(filePath, elementId, additionalContent) {
 }
 
 function toggleLayerType(layerId) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
     const layer = layerDefinitions[layerId];
     if (!layer) return;
 
@@ -913,6 +1453,7 @@ function toggleLayerType(layerId) {
 }
 
 function updateLayerProperties(layerId, properties) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
     if (layerDefinitions[layerId]) {
         const layer = layerDefinitions[layerId];
 
@@ -945,45 +1486,10 @@ function updateLayerProperties(layerId, properties) {
     }
 }
 
-function handleTabClick(tabId) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
-    const tabContents = document.querySelectorAll('.tab-content');
-    const tabBodies = document.querySelector('.tab-bodies');
-    const mapElement = document.getElementById('map');
-    const tabsContainer = document.querySelector('.tabs');
-
-    if (tabId === 'tab1') {
-        tabContents.forEach(content => content.style.display = 'none');
-        tabBodies.style.display = 'none';
-        tabBodies.style.visibility = 'hidden';
-        tabsContainer.style.height = '30px';
-        mapElement.style.pointerEvents = 'auto';
-    } else {
-        tabContents.forEach(content => content.style.display = 'none');
-        const targetTab = document.getElementById(tabId);
-        if (targetTab) {
-            targetTab.style.display = 'block';
-        }
-        tabBodies.style.display = 'block';
-        tabBodies.style.visibility = 'visible';
-        tabsContainer.style.height = 'auto';
-        mapElement.style.pointerEvents = 'auto'; // Ensure map remains interactive
-    }
-
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
-    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
-
-    if (tabId === 'tab3') {
-        loadReadme();
-    } else if (tabId === 'tab4') {
-        loadinfo();
-    }
-}
-
 function loadGeoJsonLayerFromState(layer) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
     console.log('Created layer :', layer);
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     fetch(layer.fileName)
         .then(response => response.json())
         .then(data => {
@@ -1028,7 +1534,8 @@ function loadGeoJsonLayerFromState(layer) {
 }
 
 function addGeoJsonLayer(geojsonData, fileNameWithoutExtension) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const uniqueId = generate(); // Generate a unique identifier
     const layerId = `${fileNameWithoutExtension}-${uniqueId}`;
     const sourceId = `${fileNameWithoutExtension}-source-${uniqueId}`; // Ensure unique source ID
@@ -1074,7 +1581,8 @@ function addGeoJsonLayer(geojsonData, fileNameWithoutExtension) {
 }
 
 function handleFileSelect(event) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const file = event.target.files[0];
     if (!file) return;
 
@@ -1106,7 +1614,8 @@ function handleFileSelect(event) {
 }
 
 function applyLayersState(layersState) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     layersState.forEach(layer => {
         if (layer.type === 'marker') {
             layer.markers.forEach(markerData => {
@@ -1123,7 +1632,8 @@ function applyLayersState(layersState) {
 }
 
 function setLayerOpacity(layerId, opacity) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     map.setPaintProperty(layerId, 'fill-opacity', parseFloat(opacity));
     if (layerDefinitions[layerId]) {
         layerDefinitions[layerId].opacity = opacity;
@@ -1135,7 +1645,8 @@ function setLayerOpacity(layerId, opacity) {
 }
 
 function updateLayerUI(layerId) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const layer = layerDefinitions[layerId];
     const colorBox = document.querySelector(`.layer-item[data-layer-id="${layerId}"] .color-box`);
     if (colorBox) {
@@ -1155,7 +1666,8 @@ function updateLayerUI(layerId) {
 }
 
 function animateView(callback) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     setTimeout(() => {
         map.flyTo({
             center: [9.27970, 41.59099],
@@ -1175,9 +1687,9 @@ function animateView(callback) {
     }, 50);
 }
 
-
 function addMouseMoveListener() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     map.on('mousemove', function (e) {
         if (map.getLayer('parcelles-interactive-layer')) {
             const features = map.queryRenderedFeatures(e.point, {
@@ -1195,31 +1707,36 @@ function addMouseMoveListener() {
 }
 
 function hideTabs() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     handleTabClick('tab1');
 }
 
 function toggleLayerVisibility(layerId, icon) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const visibility = map.getLayoutProperty(layerId, 'visibility');
     map.setLayoutProperty(layerId, 'visibility', visibility === 'visible' ? 'none' : 'visible');
     icon.src = visibility === 'visible' ? 'css/images/eyeshow.png' : 'css/images/eye.png';
 }
 
 function moveLayer(layerId, beforeId) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     map.moveLayer(layerId, beforeId);
 }
 
 function getNextLayerType(currentType) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const layerTypes = ['fill', 'line', 'fill-extrusion'];
     const currentIndex = layerTypes.indexOf(currentType);
     return layerTypes[(currentIndex + 1) % layerTypes.length];
 }
 
 function generate() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     let id = () => {
         return Math.floor((1 + Math.random()) * 0x10000)
             .toString(16)
@@ -1229,24 +1746,28 @@ function generate() {
 }
 
 function randomColor() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
 
     const colors = ['#00F6DE', '#2044E8', '#C500ED', '#17F105', '#F6EA00', '#F10C1A'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function getSystemLayers() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     return systemLayers;
 }
 
 function getMapLayer() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     return map.getStyle().layers;
 }
 
 function initializeMap() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
 
     map.on('style.load', () => {
         const layers = getMapLayer();
@@ -1277,7 +1798,8 @@ function initializeMap() {
 }
 
 function updateLayerList() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const layersList = document.getElementById('layers-list');
     if (!layersList) {
         console.error('layers-list element not found');
@@ -1322,23 +1844,12 @@ function updateLayerList() {
 }
 
 
-function addMarkerLayer(layer) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
-    const el = document.createElement('div');
-    el.className = 'marker';
-    el.style.backgroundImage = `url(${customMarkerIcon})`;
-    el.style.width = '200px';
-    el.style.height = '100px';
-    el.style.backgroundSize = '400%';
-	new mapboxgl.Marker(el)
-        .setLngLat(layer.coordinates)
-        .addTo(map);
-}
-
 function addPointLayer(geojsonData, layerId, sourceId, color, opacity) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const markers = [];
     geojsonData.features.forEach(feature => {
+		
         const el = document.createElement('div');
         el.className = 'custom-marker';
         el.style.backgroundImage = `url(${customMarkerIcon})`;
@@ -1353,7 +1864,8 @@ function addPointLayer(geojsonData, layerId, sourceId, color, opacity) {
 }
 
 function moveLayerByIndex(oldIndex, newIndex) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     if (oldIndex === newIndex) return;
     const layers = getMapLayer();
     console.log('Layers before move:', layers);
@@ -1368,7 +1880,8 @@ function moveLayerByIndex(oldIndex, newIndex) {
 }
 
 function reorderLayerList() {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const layersList = document.getElementById('layers-list');
     const items = Array.from(layersList.children);
     const sortedItems = items.sort((a, b) => {
@@ -1385,7 +1898,8 @@ function reorderLayerList() {
 }
 
 function initializeMarkers(geojson) {
-    if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
+	
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     const markers = [];
     geojson.features.forEach((feature) => {
         const el = document.createElement('div');
@@ -1405,95 +1919,10 @@ function initializeMarkers(geojson) {
 }
 
 function OnOff() {
-    // return false; 
-    return true;
+	
+    return false; 
+    // return true;
 }
-
 
 initializeMap();
 addMouseMoveListener();
-
-// function updateLayerListFromMap() {
-    // if (OnOff()) { console.log(arguments.callee.name + '() <= function used'); }
-    // const layersList = document.getElementById('layers-list');
-    // console.log('layersList ', layersList);
-    // if (!layersList) {
-        // console.error('layers-list element not found');
-        // return;
-    // }
-    // layersList.innerHTML = ''; // Clear the existing list
-    // systemLayers.forEach((layerId, index) => {
-        // const layer = map.getLayer(layerId);
-        // if (layer) {
-            // console.log(`Adding system layer: ${layerId}`);
-            // const layerItem = createLayerItem(layer, index);
-            // layersList.appendChild(layerItem);
-        // }
-    // });
-    // Object.values(layerDefinitions).forEach((layer, index) => {
-        // console.log(`Adding user-defined layer: ${layer.id}`);
-        // const layerItem = createLayerItem(layer, index + systemLayers.length);
-        // layersList.appendChild(layerItem);
-    // });
-    // if (!layersList.sortable) {
-        // layersList.sortable = new Sortable(layersList, {
-            // animation: 150,
-            // handle: '.drag-handle',
-            // onEnd: function (evt) {
-                // const oldIndex = evt.oldIndex;
-                // const newIndex = evt.newIndex;
-
-                // if (oldIndex !== newIndex) {
-                    // moveLayerByIndex(oldIndex, newIndex);
-                // }
-            // }
-        // });
-    // } else {
-        // layersList.sortable.option("onEnd", function (evt) {
-            // const oldIndex = evt.oldIndex;
-            // const newIndex = evt.newIndex;
-		// if (oldIndex !== newIndex) {
-                // moveLayerByIndex(oldIndex, newIndex);
-            // }
-        // });
-    // }
-// }
-
-
-
-
-// map.on('zoomend', () => {
-    // const zoom = map.getZoom();
-    // console.log('Zoomend event fired');
-    // console.log('Current Zoom Level:', zoom);
-    // console.log('Layer Definitions:', layerDefinitions);
-
-    // if (layerDefinitions) {
-        // Object.keys(layerDefinitions).forEach(key => {
-            // const layer = layerDefinitions[key];
-            // console.log(`Processing layer: ${layer.id}, type: ${layer.type}`);
-
-            // if (layer.type === 'symbol') {
-                // const visibility = zoom >= 12 && zoom <= 19 ? 'visible' : 'none';
-                // console.log(`Setting symbol layer ${layer.id} visibility to: ${visibility}`);
-                // map.setLayoutProperty(layer.id, 'visibility', visibility);
-            // } else if (layer.type === 'marker' && layer.markers) {
-                // console.log(`Processing marker layer: ${layer.id}`);
-                // layer.markers.forEach(marker => {
-                    // const markerElement = marker.getElement();
-                    // if (markerElement) {
-                        // const display = zoom >= 12 && zoom <= 19 ? 'block' : 'none';
-                        // console.log(`Marker element: ${markerElement}, setting display to: ${display}`);
-                        // markerElement.style.display = display;
-                    // } else {
-                        // console.log(`Marker element not found for marker: ${marker}`);
-                    // }
-                // });
-            // } else {
-                // console.log(`Layer ${layer.id} is not of type 'marker' or does not have 'markers'.`);
-            // }
-        // });
-    // } else {
-        // console.log('layerDefinitions is undefined or empty.');
-    // }
-// });

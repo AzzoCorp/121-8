@@ -1,6 +1,6 @@
 {
-    "recordsTotal": 129,
-    "recordsFiltered": 129,
+    "recordsTotal": 137,
+    "recordsFiltered": 137,
     "data": [
         [
             "27/10/2023",
@@ -33,16 +33,6 @@
             "- Surface plancher créée : 101,31 m²\r\n<br>- Surface plancher démolie : 23,5 m²\r\n<br>"
         ],
         [
-            "13/12/2023",
-            "PC 02A 247 23 R0204",
-            "13/12/2023",
-            "SAS PORETTA CIABRINI",
-            " RUE BIANCARELLI 20137 PORETTA (AK 53)",
-            "4430 m²",
-            "le projet d'un immeuble R+4 de 28 logements,3 locaux commerciaux démolition de bâtiments vétustes",
-            "- Surface plancher créée : 4095,24 m²\r\n<br>- Surface plancher démolie : 741 m²\r\n<br>"
-        ],
-        [
             "22/12/2023",
             "DP 02A 247 23 R0223",
             "22/12/2023",
@@ -73,16 +63,6 @@
             "- Surface plancher créée : 169,04 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
-            "10/01/2024",
-            "DP 02A 247 24 R0004",
-            "10/01/2024",
-            "M MOREAU Jérémy",
-            " Lieu-Dit Mortone 20137  (BY 75)",
-            "750 m²",
-            "la construction d'une piscine",
-            ""
-        ],
-        [
             "12/01/2024",
             "DP 02A 247 23 R0211",
             "13/12/2023",
@@ -111,16 +91,6 @@
             "236 m²",
             "la construction d'une maison individuelle avec piscine",
             "- Surface plancher créée : 133 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
-            "12/02/2024",
-            "PC 02A 247 24 R0028",
-            "12/02/2024",
-            "COMMUNE DE PORTO VECCHIO",
-            " Rue Saint-Vincent 20137 Ecole MT Marcellesi (AE 440, AE 441)",
-            "4695 m²",
-            "la mise en accessibilité de l'école M.T. Marcellesi. ",
-            "- Surface plancher créée : 17 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
             "13/02/2024",
@@ -263,16 +233,6 @@
             "- Surface plancher créée : 22 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
-            "20/03/2024",
-            "PC 02A 247 24 R0060",
-            "20/03/2024",
-            "SCI IMMO SUD-EST",
-            " Route de Porra - ZI Murtone 20137 Bonifazinco-Murtone (G 1302, G 1303)",
-            "6936 m²",
-            "l'extension d'un bâtiment d'activité existant ",
-            "- Surface plancher créée : 1680 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
             "22/03/2024",
             "PC 02A 247 24 R0064",
             "22/03/2024",
@@ -326,7 +286,7 @@
             "28/03/2024",
             "PC 02A 247 24 R0073",
             "28/03/2024",
-            "MANNONI Laetitia",
+            "EURL MANNONI Laetitia",
             " ROUTE DE PORRA 20137 FERME DE PADULA (G 630, G 631)",
             "9840 m²",
             "le réaménagement des enclos et abris, sellerie, bloc sanitaire, pose d'un mobil-home",
@@ -336,7 +296,7 @@
             "28/03/2024",
             "PC 02A 247 24 R0074",
             "28/03/2024",
-            "M Mozziconacci Pierre",
+            "M MOZZICONACCI Pierre",
             " Route de Palombaggia 20137 SUARTO (F 1870)",
             "5888 m²",
             "la construction de quatre maisons d'hôtes avec piscine",
@@ -413,16 +373,6 @@
             "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
-            "13/04/2024",
-            "PC 02A 247 24 R0082",
-            "13/04/2024",
-            "M CASTELLI Florent",
-            " Ceccia 20137 Morteto (BO 148)",
-            "1510 m²",
-            "la construction d'un \" caseddu\"",
-            "- Surface plancher créée : 50 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
             "18/04/2024",
             "PC 02A 247 24 R0084",
             "18/04/2024",
@@ -451,16 +401,6 @@
             "3320 m²",
             "la construction de 20 logements; de 6 garages individuels; démolition d'un local de rangement",
             "- Surface plancher créée : 1609 m²\r\n<br>- Surface plancher démolie : 18 m²\r\n<br>"
-        ],
-        [
-            "22/04/2024",
-            "PC 02A 247 24 R0087",
-            "22/04/2024",
-            "MME CIABRINI Claudette",
-            " Armentajo 20137  (G 890)",
-            "2371 m²",
-            "la construction d'une maison individuelle rez-de-chaussée",
-            "- Surface plancher créée : 112 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
             "22/04/2024",
@@ -586,21 +526,11 @@
             "30/04/2024",
             "DP 02A 247 24 R0107",
             "30/04/2024",
-            "MME CASSE GERALDINE",
+            "MME CASSE Geraldine",
             " LOTISSEMENT SUARTELU 20137  (B 1589, B 1592)",
             "1218 m²",
             "la construction d'une piscine ",
             "- Surface plancher créée : 76 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
-            "02/05/2024",
-            "DP 02A 247 24 R0109",
-            "02/05/2024",
-            "M BARONE Eugène",
-            " Lieu Dit Durabile 20137  (G 1311)",
-            "2000 m²",
-            "la construction d'une piscine",
-            ""
         ],
         [
             "04/05/2024",
@@ -754,36 +684,6 @@
         ],
         [
             "14/05/2024",
-            "PC 02A 247 24 R0112",
-            "14/05/2024",
-            "M Gour Xavier",
-            " Santa Giulia 20137  (BK 145, BK 148)",
-            "4717 m²",
-            "la construction d'une maison individuelle en résidence principale",
-            "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
-            "14/05/2024",
-            "PC 02A 247 24 R0113",
-            "14/05/2024",
-            "M PANDOLFI Jean Paul",
-            " Santa Giulia 20137  (BK 172, BK 107)",
-            "22113 m²",
-            "la construction d'une maison individuelle en résidence principale",
-            "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
-            "14/05/2024",
-            "PC 02A 247 24 R0114",
-            "14/05/2024",
-            "M ALBERTINI Antoine",
-            "Santa Giul Santa Giulia 20137  (BK 144, BK 149)",
-            "3000 m²",
-            "la construction d'une maison individuelle en résidence principale",
-            "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-        ],
-        [
-            "14/05/2024",
             "PC 02A 247 24 R0115",
             "14/05/2024",
             "M FANCELLU HORLAVILLE Jean-Marie",
@@ -826,7 +726,7 @@
             "15/05/2024",
             "PC 02A 247 24 R0117",
             "15/05/2024",
-            "M BOTELLA bernard",
+            "M BOTELLA Bernard",
             " ROUTE DE PALAVESE 20137 SUARTELLU (B 1491)",
             "1770 m²",
             "la construction d'un abris de jardin de 31m2 en bois",
@@ -936,10 +836,10 @@
             "21/05/2024",
             "PC 02A 247 24 R0092",
             "23/04/2024",
-            "Mairie de Porto Vecchio",
+            "COMMUNE DE PORTO VECCHIO",
             " La Marine 20137 Port de plaisance",
             "",
-            "la construction d'un bâtiment technique Nord du nouveau port ",
+            "la construction d'un bâtiment technique",
             "- Surface plancher créée : 243 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ],
         [
@@ -1186,7 +1086,7 @@
             "29/05/2024",
             "PC 02A 247 24 R0119",
             "16/05/2024",
-            "MME PELLEGRINO PIERRE-LOUIS",
+            "MME PELLEGRINO Pierre-Louis",
             " PASCIALELLA DE PRECOJO 20137 CARDICCIA (AT 1061)",
             "2209 m²",
             "la construction d'une maison individuelle comme maison secondaire",
@@ -1236,7 +1136,7 @@
             "31/05/2024",
             "DP 02A 247 24 R0136",
             "31/05/2024",
-            "MME KELEMEN ANNE MARIE",
+            "MME KELEMEN Anne Marie",
             "147 MARINA DI FIORI 20137  (AM 147)",
             "1470 m²",
             "la pose de panneaux solaires",
@@ -1291,6 +1191,186 @@
             "952 m²",
             "la construction d'une piscine et d'une annexe de 42.04 m² ",
             "- Surface plancher créée : 42,04 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "06/06/2024",
+            "PA 02A 247 24 R0006",
+            "06/06/2024",
+            "M QUILICHINI Morgan",
+            " Route de Muratello 20137  (C 2429)",
+            "5406 m²",
+            "l'aménagement de deux terrains de padel sur le parking déjà existant",
+            "- Surface plancher créée : 500 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "06/06/2024",
+            "PC 02A 247 18 R0116 M02",
+            "05/06/2024",
+            "M REAU Christophe",
+            "9499 Lotissement de Cala d'Oro lot n° 54 20137  (AX 19)",
+            "1835 m²",
+            "la modification des emmarchements de la plage de la piscine sans modification de niveau",
+            "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "06/06/2024",
+            "PC 02A 247 24 R0132",
+            "05/06/2024",
+            "M GIANNI Matthieu",
+            " Bocca del' Oro 20137  (CB 63)",
+            "2295 m²",
+            "la construction d'une masion individuelle avec piscine",
+            "- Surface plancher créée : 200 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "10/06/2024",
+            "PC 02A 247 23 R0054 M01",
+            "10/06/2024",
+            "SARL PORTOVEJO",
+            " Avenue du Général de Boissoudy 20137 MARINA DI FIORI (AM 115)",
+            "1805 m²",
+            "la création d'une pergola et d'une passerelle reliant la maison existante",
+            "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "10/06/2024",
+            "PC 02A 247 24 R0133",
+            "10/06/2024",
+            "MME BIANCARELLI Marie-Pierre",
+            "9190 Lieu-Dit Forcone 20137  (A 1384)",
+            "8610 m²",
+            "l'extension d'une maison existante",
+            "- Surface plancher créée : 80 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "10/06/2024",
+            "PC 02A 247 24 R0134",
+            "10/06/2024",
+            "M JEGOU Christophe",
+            " Avenue du Boissauddy 20137 Marina di fiori (AM 112)",
+            "1270 m²",
+            "des modifications diverses",
+            "- Surface plancher créée : 33,8 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "11/06/2024",
+            "DP 02A 247 24 R0140",
+            "11/06/2024",
+            "ZELIE",
+            " Corniche San Giorgi 20137 Marina Di Fiori (AM 216)",
+            "960 m²",
+            "la rénovation extérieure et intérieure d'une maison individuelle",
+            "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "11/06/2024",
+            "DP 02A 247 24 R0141",
+            "11/06/2024",
+            "SCI A STRADELLA",
+            " Cala Rossa 20137  (AP 318)",
+            "29015 m²",
+            "la pose de panneaux solaires",
+            ""
+        ],
+        [
+            "11/06/2024",
+            "PC 02A 247 20 R0017 M03",
+            "11/06/2024",
+            "SCI LSP CASA DI LUME",
+            "9516 Quartier Palombaja 20137  (BV 72)",
+            "24204 m²",
+            "la création de 2 fenêtres mur de la façade en côté Est, trottoir en bois le long des façades",
+            "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "12/06/2024",
+            "DP 02A 247 24 R0142",
+            "12/06/2024",
+            "NMD ENERGIES",
+            "348 Lotissement Marina Di Fiori 20137  (AM 239)",
+            "1200 m²",
+            "la pose de panneaux solaires",
+            ""
+        ],
+        [
+            "12/06/2024",
+            "DP 02A 247 24 R0143",
+            "11/06/2024",
+            "M AUFFRET Emmanuel",
+            " Route de Porra 20137  (BX 187)",
+            "2150 m²",
+            "la rénovation des façades",
+            ""
+        ],
+        [
+            "12/06/2024",
+            "PC 02A 247 24 R0135",
+            "12/06/2024",
+            "M RAGUIDEAU François",
+            " N°3 casetta bianca  20137 aja del forno (BP 183, BP 185)",
+            "2615 m²",
+            "l'extension d'une maison existante",
+            "- Surface plancher créée : 56,36 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "13/06/2024",
+            "DP 02A 247 24 R0144",
+            "13/06/2024",
+            "SARL DONAT",
+            "56 Route De Bastia 20137  (AK 352)",
+            "1419 m²",
+            "la construction de deux murets en béton ",
+            ""
+        ],
+        [
+            "13/06/2024",
+            "PC 02A 247 24 R0136",
+            "13/06/2024",
+            "HOLDING TAFANI",
+            " rue du stazzale 20137  (AD 231)",
+            "212 m²",
+            "la rénovation d'un bâtiment de logements collectifs et l'ajout d'un niveau supplémentaire",
+            "- Surface plancher créée : 82 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "13/06/2024",
+            "PC 02A 247 24 R0137",
+            "13/06/2024",
+            "SCI ROCCO",
+            " Lotissement Punta d’Oro II 20137  (CA 72, CA 73)",
+            "15627 m²",
+            "l'extension d'une maison existante",
+            "- Surface plancher créée : 14,5 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+        ],
+        [
+            "13/06/2024",
+            "PC 02A 247 24 R0138",
+            "13/06/2024",
+            "SCI MAMSOL",
+            " LOTISSEMENT FIOR DI MELU 20137 CATARICCIO (BV 79)",
+            "5265 m²",
+            "la création d'une piscine de 49,80m2 et d'une terrasse en bois",
+            ""
+        ],
+        [
+            "14/06/2024",
+            "DP 02A 247 24 R0145",
+            "14/06/2024",
+            "M TAFANI Lucas",
+            " Quai De Syracuse 20137  (AI 87)",
+            "1268 m²",
+            "la construction d'un local à usage de garage indépendant de 18 m²",
+            ""
+        ],
+        [
+            "14/06/2024",
+            "PC 02A 247 24 R0139",
+            "14/06/2024",
+            "SAS GOLFO",
+            "6 U Stagnolu 20137  (AP 192)",
+            "1997 m²",
+            "la rénovation et l'extension d'une maison existante",
+            "- Surface plancher créée : 136,03 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
         ]
     ]
 }

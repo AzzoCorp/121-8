@@ -1,7 +1,0 @@
-{
-  "code": "EPSG:2154",
-  "validityDomain": "POLYGON((60000 6010000,60000 7130000,1270000 7130000,1270000 6010000,60000 6010000))",
-  "title": "RGF93 / Lambert-93 (EPSG)",
-  "uri": "http://www.opengis.net/def/crs/EPSG/0/2154",
-  "codeGeotool": null
-}

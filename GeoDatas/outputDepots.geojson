@@ -678,7 +678,7 @@
                         "30/04/2024",
                         "DP 02A 247 24 R0107",
                         "30/04/2024",
-                        "MME CASSE GERALDINE",
+                        "MME CASSE Geraldine",
                         " LOTISSEMENT SUARTELU 20137  (B 1589, B 1592)",
                         "1218 m²",
                         "la construction d'une piscine ",
@@ -744,7 +744,7 @@
                         "30/04/2024",
                         "DP 02A 247 24 R0107",
                         "30/04/2024",
-                        "MME CASSE GERALDINE",
+                        "MME CASSE Geraldine",
                         " LOTISSEMENT SUARTELU 20137  (B 1589, B 1592)",
                         "1218 m²",
                         "la construction d'une piscine ",
@@ -1926,7 +1926,7 @@
                         "15/05/2024",
                         "PC 02A 247 24 R0117",
                         "15/05/2024",
-                        "M BOTELLA bernard",
+                        "M BOTELLA Bernard",
                         " ROUTE DE PALAVESE 20137 SUARTELLU (B 1491)",
                         "1770 m²",
                         "la construction d'un abris de jardin de 31m2 en bois",
@@ -2793,6 +2793,88 @@
                         "24812 m²",
                         "la construction d'une maison individuelle",
                         "- Surface plancher créée : 211 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000C2429",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2640197,
+                            41.5980703
+                        ],
+                        [
+                            9.2643039,
+                            41.5978584
+                        ],
+                        [
+                            9.2644865,
+                            41.5979022
+                        ],
+                        [
+                            9.2647576,
+                            41.5979253
+                        ],
+                        [
+                            9.2650388,
+                            41.5979268
+                        ],
+                        [
+                            9.2653213,
+                            41.5979243
+                        ],
+                        [
+                            9.2643411,
+                            41.5986427
+                        ],
+                        [
+                            9.2643073,
+                            41.5986793
+                        ],
+                        [
+                            9.2641391,
+                            41.5985555
+                        ],
+                        [
+                            9.2638667,
+                            41.5982042
+                        ],
+                        [
+                            9.2638694,
+                            41.5982032
+                        ],
+                        [
+                            9.2640197,
+                            41.5980703
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000C2429",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "C",
+                "numero": "2429",
+                "contenance": 5406,
+                "arpente": true,
+                "created": "2014-11-04",
+                "updated": "2020-09-24",
+                "depots": [
+                    [
+                        "06/06/2024",
+                        "PA 02A 247 24 R0006",
+                        "06/06/2024",
+                        "M QUILICHINI Morgan",
+                        " Route de Muratello 20137  (C 2429)",
+                        "5406 m²",
+                        "l'aménagement de deux terrains de padel sur le parking déjà existant",
+                        "- Surface plancher créée : 500 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
             }
@@ -5356,105 +5438,11 @@
                         "28/03/2024",
                         "PC 02A 247 24 R0074",
                         "28/03/2024",
-                        "M Mozziconacci Pierre",
+                        "M MOZZICONACCI Pierre",
                         " Route de Palombaggia 20137 SUARTO (F 1870)",
                         "5888 m²",
                         "la construction de quatre maisons d'hôtes avec piscine",
                         "- Surface plancher créée : 710,38 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A2470000G1302",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2756523,
-                            41.5680057
-                        ],
-                        [
-                            9.2754767,
-                            41.5678905
-                        ],
-                        [
-                            9.2753795,
-                            41.5678537
-                        ],
-                        [
-                            9.2752152,
-                            41.5679103
-                        ],
-                        [
-                            9.2751341,
-                            41.5679038
-                        ],
-                        [
-                            9.2750006,
-                            41.5679133
-                        ],
-                        [
-                            9.2747192,
-                            41.5679227
-                        ],
-                        [
-                            9.2744962,
-                            41.5678702
-                        ],
-                        [
-                            9.2741435,
-                            41.5678758
-                        ],
-                        [
-                            9.2741245,
-                            41.5676892
-                        ],
-                        [
-                            9.2754186,
-                            41.567507
-                        ],
-                        [
-                            9.2755,
-                            41.5675367
-                        ],
-                        [
-                            9.2756399,
-                            41.5675193
-                        ],
-                        [
-                            9.2756404,
-                            41.5675232
-                        ],
-                        [
-                            9.2756523,
-                            41.5680057
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A2470000G1302",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "G",
-                "numero": "1302",
-                "contenance": 4418,
-                "arpente": true,
-                "created": "2007-11-21",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "20/03/2024",
-                        "PC 02A 247 24 R0060",
-                        "20/03/2024",
-                        "SCI IMMO SUD-EST",
-                        " Route de Porra - ZI Murtone 20137 Bonifazinco-Murtone (G 1302, G 1303)",
-                        "6936 m²",
-                        "l'extension d'un bâtiment d'activité existant ",
-                        "- Surface plancher créée : 1680 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
             }
@@ -5512,7 +5500,7 @@
                         "28/03/2024",
                         "PC 02A 247 24 R0073",
                         "28/03/2024",
-                        "MANNONI Laetitia",
+                        "EURL MANNONI Laetitia",
                         " ROUTE DE PORRA 20137 FERME DE PADULA (G 630, G 631)",
                         "9840 m²",
                         "le réaménagement des enclos et abris, sellerie, bloc sanitaire, pose d'un mobil-home",
@@ -5570,81 +5558,11 @@
                         "28/03/2024",
                         "PC 02A 247 24 R0073",
                         "28/03/2024",
-                        "MANNONI Laetitia",
+                        "EURL MANNONI Laetitia",
                         " ROUTE DE PORRA 20137 FERME DE PADULA (G 630, G 631)",
                         "9840 m²",
                         "le réaménagement des enclos et abris, sellerie, bloc sanitaire, pose d'un mobil-home",
                         "- Surface plancher créée : 230 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>- Camping : 1 emplacements / 3 HLL\r\n"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A2470000G1303",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2761272,
-                            41.5680839
-                        ],
-                        [
-                            9.2757512,
-                            41.5680706
-                        ],
-                        [
-                            9.2756523,
-                            41.5680057
-                        ],
-                        [
-                            9.2756404,
-                            41.5675232
-                        ],
-                        [
-                            9.2756399,
-                            41.5675193
-                        ],
-                        [
-                            9.2757265,
-                            41.5675085
-                        ],
-                        [
-                            9.2757033,
-                            41.5673962
-                        ],
-                        [
-                            9.2759858,
-                            41.5673555
-                        ],
-                        [
-                            9.2761272,
-                            41.5680839
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A2470000G1303",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "G",
-                "numero": "1303",
-                "contenance": 2247,
-                "arpente": true,
-                "created": "2007-11-21",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "20/03/2024",
-                        "PC 02A 247 24 R0060",
-                        "20/03/2024",
-                        "SCI IMMO SUD-EST",
-                        " Route de Porra - ZI Murtone 20137 Bonifazinco-Murtone (G 1302, G 1303)",
-                        "6936 m²",
-                        "l'extension d'un bâtiment d'activité existant ",
-                        "- Surface plancher créée : 1680 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
             }
@@ -5793,138 +5711,6 @@
                         "5962 m²",
                         "la construction d'une maison individuelle en résidence principale et d'un garage",
                         "- Surface plancher créée : 179 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A2470000G0890",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2812616,
-                            41.5416316
-                        ],
-                        [
-                            9.2812561,
-                            41.5415669
-                        ],
-                        [
-                            9.2812261,
-                            41.5414387
-                        ],
-                        [
-                            9.2811883,
-                            41.5413922
-                        ],
-                        [
-                            9.2820514,
-                            41.5409831
-                        ],
-                        [
-                            9.2819412,
-                            41.5413036
-                        ],
-                        [
-                            9.2818937,
-                            41.541447
-                        ],
-                        [
-                            9.2812616,
-                            41.5416316
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A2470000G0890",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "G",
-                "numero": "890",
-                "contenance": 2371,
-                "arpente": true,
-                "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "depots": [
-                    [
-                        "22/04/2024",
-                        "PC 02A 247 24 R0087",
-                        "22/04/2024",
-                        "MME CIABRINI Claudette",
-                        " Armentajo 20137  (G 890)",
-                        "2371 m²",
-                        "la construction d'une maison individuelle rez-de-chaussée",
-                        "- Surface plancher créée : 112 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A2470000G1311",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2598034,
-                            41.5237589
-                        ],
-                        [
-                            9.2592675,
-                            41.5238583
-                        ],
-                        [
-                            9.259163,
-                            41.5235428
-                        ],
-                        [
-                            9.2603653,
-                            41.5232963
-                        ],
-                        [
-                            9.2603705,
-                            41.5233102
-                        ],
-                        [
-                            9.2600015,
-                            41.5233931
-                        ],
-                        [
-                            9.2597001,
-                            41.5234607
-                        ],
-                        [
-                            9.2598034,
-                            41.5237589
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A2470000G1311",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "G",
-                "numero": "1311",
-                "contenance": 2000,
-                "arpente": true,
-                "created": "2008-09-30",
-                "updated": "2020-09-24",
-                "depots": [
-                    [
-                        "02/05/2024",
-                        "DP 02A 247 24 R0109",
-                        "02/05/2024",
-                        "M BARONE Eugène",
-                        " Lieu Dit Durabile 20137  (G 1311)",
-                        "2000 m²",
-                        "la construction d'une piscine",
-                        ""
                     ]
                 ]
             }
@@ -7553,6 +7339,88 @@
         },
         {
             "type": "Feature",
+            "id": "2A247000AD0231",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2773557,
+                            41.5929117
+                        ],
+                        [
+                            9.2773319,
+                            41.592919
+                        ],
+                        [
+                            9.277216,
+                            41.5929557
+                        ],
+                        [
+                            9.2772027,
+                            41.5929597
+                        ],
+                        [
+                            9.2771174,
+                            41.5929867
+                        ],
+                        [
+                            9.2770737,
+                            41.5929017
+                        ],
+                        [
+                            9.2771169,
+                            41.5928884
+                        ],
+                        [
+                            9.2771573,
+                            41.592876
+                        ],
+                        [
+                            9.2772434,
+                            41.5928494
+                        ],
+                        [
+                            9.2772851,
+                            41.5928376
+                        ],
+                        [
+                            9.2773078,
+                            41.5928303
+                        ],
+                        [
+                            9.2773557,
+                            41.5929117
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AD0231",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AD",
+                "numero": "231",
+                "contenance": 212,
+                "arpente": false,
+                "created": "2006-03-14",
+                "updated": "2019-02-21",
+                "depots": [
+                    [
+                        "13/06/2024",
+                        "PC 02A 247 24 R0136",
+                        "13/06/2024",
+                        "HOLDING TAFANI",
+                        " rue du stazzale 20137  (AD 231)",
+                        "212 m²",
+                        "la rénovation d'un bâtiment de logements collectifs et l'ajout d'un niveau supplémentaire",
+                        "- Surface plancher créée : 82 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A247000AD0473",
             "geometry": {
                 "type": "Polygon",
@@ -8265,246 +8133,6 @@
                         "922 m²",
                         "la pose d'une nouvelle enseigne avec peinture de la façade",
                         ""
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000AE0440",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2775467,
-                            41.5890237
-                        ],
-                        [
-                            9.2774797,
-                            41.5888997
-                        ],
-                        [
-                            9.2773497,
-                            41.5886523
-                        ],
-                        [
-                            9.2773214,
-                            41.5885407
-                        ],
-                        [
-                            9.2772893,
-                            41.5883816
-                        ],
-                        [
-                            9.2773265,
-                            41.588259
-                        ],
-                        [
-                            9.2774401,
-                            41.5882278
-                        ],
-                        [
-                            9.2777592,
-                            41.5885362
-                        ],
-                        [
-                            9.2778332,
-                            41.5886062
-                        ],
-                        [
-                            9.2779019,
-                            41.5886717
-                        ],
-                        [
-                            9.2779682,
-                            41.5887349
-                        ],
-                        [
-                            9.278023,
-                            41.5887941
-                        ],
-                        [
-                            9.2780364,
-                            41.5888083
-                        ],
-                        [
-                            9.2780603,
-                            41.588834
-                        ],
-                        [
-                            9.2781011,
-                            41.5888779
-                        ],
-                        [
-                            9.2781093,
-                            41.5888868
-                        ],
-                        [
-                            9.2780924,
-                            41.5888945
-                        ],
-                        [
-                            9.2780531,
-                            41.5889123
-                        ],
-                        [
-                            9.2780309,
-                            41.5888852
-                        ],
-                        [
-                            9.2779317,
-                            41.588914
-                        ],
-                        [
-                            9.2775467,
-                            41.5890237
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000AE0440",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "AE",
-                "numero": "440",
-                "contenance": 2995,
-                "arpente": false,
-                "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "depots": [
-                    [
-                        "12/02/2024",
-                        "PC 02A 247 24 R0028",
-                        "12/02/2024",
-                        "COMMUNE DE PORTO VECCHIO",
-                        " Rue Saint-Vincent 20137 Ecole MT Marcellesi (AE 440, AE 441)",
-                        "4695 m²",
-                        "la mise en accessibilité de l'école M.T. Marcellesi. ",
-                        "- Surface plancher créée : 17 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000AE0441",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2781093,
-                            41.5888868
-                        ],
-                        [
-                            9.2781011,
-                            41.5888779
-                        ],
-                        [
-                            9.2780603,
-                            41.588834
-                        ],
-                        [
-                            9.2780364,
-                            41.5888083
-                        ],
-                        [
-                            9.278023,
-                            41.5887941
-                        ],
-                        [
-                            9.2779682,
-                            41.5887349
-                        ],
-                        [
-                            9.2779019,
-                            41.5886717
-                        ],
-                        [
-                            9.2778332,
-                            41.5886062
-                        ],
-                        [
-                            9.2779313,
-                            41.5885315
-                        ],
-                        [
-                            9.2780314,
-                            41.5884551
-                        ],
-                        [
-                            9.2781043,
-                            41.5883998
-                        ],
-                        [
-                            9.278174,
-                            41.5884353
-                        ],
-                        [
-                            9.2783496,
-                            41.5885134
-                        ],
-                        [
-                            9.2783898,
-                            41.588581
-                        ],
-                        [
-                            9.2784326,
-                            41.5887266
-                        ],
-                        [
-                            9.2784469,
-                            41.5887619
-                        ],
-                        [
-                            9.278389,
-                            41.5887913
-                        ],
-                        [
-                            9.2782024,
-                            41.5888855
-                        ],
-                        [
-                            9.2781615,
-                            41.5889061
-                        ],
-                        [
-                            9.2781492,
-                            41.5889124
-                        ],
-                        [
-                            9.2781383,
-                            41.588918
-                        ],
-                        [
-                            9.2781093,
-                            41.5888868
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000AE0441",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "AE",
-                "numero": "441",
-                "contenance": 1700,
-                "arpente": false,
-                "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "depots": [
-                    [
-                        "12/02/2024",
-                        "PC 02A 247 24 R0028",
-                        "12/02/2024",
-                        "COMMUNE DE PORTO VECCHIO",
-                        " Rue Saint-Vincent 20137 Ecole MT Marcellesi (AE 440, AE 441)",
-                        "4695 m²",
-                        "la mise en accessibilité de l'école M.T. Marcellesi. ",
-                        "- Surface plancher créée : 17 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
             }
@@ -9303,6 +8931,112 @@
         },
         {
             "type": "Feature",
+            "id": "2A247000AI0087",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2875525,
+                            41.5885633
+                        ],
+                        [
+                            9.2874649,
+                            41.5886399
+                        ],
+                        [
+                            9.2874522,
+                            41.588742
+                        ],
+                        [
+                            9.2873598,
+                            41.5888229
+                        ],
+                        [
+                            9.2872226,
+                            41.5888246
+                        ],
+                        [
+                            9.2871675,
+                            41.5888537
+                        ],
+                        [
+                            9.2870908,
+                            41.5887966
+                        ],
+                        [
+                            9.2869225,
+                            41.5887879
+                        ],
+                        [
+                            9.2868309,
+                            41.5887998
+                        ],
+                        [
+                            9.2867994,
+                            41.5888024
+                        ],
+                        [
+                            9.2867584,
+                            41.5888014
+                        ],
+                        [
+                            9.2867421,
+                            41.588797
+                        ],
+                        [
+                            9.2868018,
+                            41.588753
+                        ],
+                        [
+                            9.2868783,
+                            41.5887094
+                        ],
+                        [
+                            9.2871416,
+                            41.588608
+                        ],
+                        [
+                            9.28732,
+                            41.5885421
+                        ],
+                        [
+                            9.2874996,
+                            41.5884787
+                        ],
+                        [
+                            9.2875525,
+                            41.5885633
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AI0087",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AI",
+                "numero": "87",
+                "contenance": 1268,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2019-10-08",
+                "depots": [
+                    [
+                        "14/06/2024",
+                        "DP 02A 247 24 R0145",
+                        "14/06/2024",
+                        "M TAFANI Lucas",
+                        " Quai De Syracuse 20137  (AI 87)",
+                        "1268 m²",
+                        "la construction d'un local à usage de garage indépendant de 18 m²",
+                        ""
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A247000AI0088",
             "geometry": {
                 "type": "Polygon",
@@ -9595,110 +9329,82 @@
         },
         {
             "type": "Feature",
-            "id": "2A247000AK0053",
+            "id": "2A247000AK0352",
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
                     [
                         [
-                            9.2765838,
-                            41.6028294
+                            9.2762167,
+                            41.5985199
                         ],
                         [
-                            9.2765198,
-                            41.602911
+                            9.2759881,
+                            41.598556
                         ],
                         [
-                            9.2757688,
-                            41.6031933
+                            9.2759865,
+                            41.5985509
                         ],
                         [
-                            9.2757138,
-                            41.6031931
+                            9.2759575,
+                            41.5984615
                         ],
                         [
-                            9.2756018,
-                            41.6031
+                            9.2759463,
+                            41.598427
                         ],
                         [
-                            9.2753107,
-                            41.6031819
+                            9.2759449,
+                            41.5982812
                         ],
                         [
-                            9.2752603,
-                            41.6031586
+                            9.2758789,
+                            41.5980314
                         ],
                         [
-                            9.2751854,
-                            41.6030116
+                            9.2762514,
+                            41.5981465
                         ],
                         [
-                            9.2751226,
-                            41.602888
+                            9.2763004,
+                            41.5983302
                         ],
                         [
-                            9.2751135,
-                            41.60287
+                            9.2763386,
+                            41.5984741
                         ],
                         [
-                            9.2751622,
-                            41.6028618
+                            9.276346,
+                            41.598502
                         ],
                         [
-                            9.2751854,
-                            41.6028578
-                        ],
-                        [
-                            9.2753193,
-                            41.6028352
-                        ],
-                        [
-                            9.2755024,
-                            41.6028044
-                        ],
-                        [
-                            9.2756219,
-                            41.6027841
-                        ],
-                        [
-                            9.2760301,
-                            41.6027152
-                        ],
-                        [
-                            9.2760533,
-                            41.6027114
-                        ],
-                        [
-                            9.2765295,
-                            41.6026309
-                        ],
-                        [
-                            9.2765838,
-                            41.6028294
+                            9.2762167,
+                            41.5985199
                         ]
                     ]
                 ]
             },
             "properties": {
-                "id": "2A247000AK0053",
+                "id": "2A247000AK0352",
                 "commune": "2A247",
                 "prefixe": "000",
                 "section": "AK",
-                "numero": "53",
-                "contenance": 4430,
+                "numero": "352",
+                "contenance": 1419,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-23",
+                "updated": "2019-02-21",
                 "depots": [
                     [
-                        "13/12/2023",
-                        "PC 02A 247 23 R0204",
-                        "13/12/2023",
-                        "SAS PORETTA CIABRINI",
-                        " RUE BIANCARELLI 20137 PORETTA (AK 53)",
-                        "4430 m²",
-                        "le projet d'un immeuble R+4 de 28 logements,3 locaux commerciaux démolition de bâtiments vétustes",
-                        "- Surface plancher créée : 4095,24 m²\r\n<br>- Surface plancher démolie : 741 m²\r\n<br>"
+                        "13/06/2024",
+                        "DP 02A 247 24 R0144",
+                        "13/06/2024",
+                        "SARL DONAT",
+                        "56 Route De Bastia 20137  (AK 352)",
+                        "1419 m²",
+                        "la construction de deux murets en béton ",
+                        ""
                     ]
                 ]
             }
@@ -9830,6 +9536,208 @@
                         " Quartier Poretta 20137  (AK 162, AK 587)",
                         "865 m²",
                         "la pose d'un container de 13m²",
+                        ""
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AM0112",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2947785,
+                            41.6124618
+                        ],
+                        [
+                            9.2946487,
+                            41.6124695
+                        ],
+                        [
+                            9.2944245,
+                            41.6124878
+                        ],
+                        [
+                            9.2943779,
+                            41.6120985
+                        ],
+                        [
+                            9.2947153,
+                            41.6121117
+                        ],
+                        [
+                            9.2947785,
+                            41.6124618
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AM0112",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AM",
+                "numero": "112",
+                "contenance": 1200,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2019-02-21",
+                "depots": [
+                    [
+                        "10/06/2024",
+                        "PC 02A 247 24 R0134",
+                        "10/06/2024",
+                        "M JEGOU Christophe",
+                        " Avenue du Boissauddy 20137 Marina di fiori (AM 112)",
+                        "1270 m²",
+                        "des modifications diverses",
+                        "- Surface plancher créée : 33,8 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AM0115",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2933665,
+                            41.6121059
+                        ],
+                        [
+                            9.293664,
+                            41.6120843
+                        ],
+                        [
+                            9.2937611,
+                            41.6126892
+                        ],
+                        [
+                            9.2935863,
+                            41.612741
+                        ],
+                        [
+                            9.2935232,
+                            41.6127222
+                        ],
+                        [
+                            9.293445,
+                            41.6127003
+                        ],
+                        [
+                            9.2934414,
+                            41.6126516
+                        ],
+                        [
+                            9.2933665,
+                            41.6121059
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AM0115",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AM",
+                "numero": "115",
+                "contenance": 1805,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2019-02-21",
+                "depots": [
+                    [
+                        "10/06/2024",
+                        "PC 02A 247 23 R0054 M01",
+                        "10/06/2024",
+                        "SARL PORTOVEJO",
+                        " Avenue du Général de Boissoudy 20137 MARINA DI FIORI (AM 115)",
+                        "1805 m²",
+                        "la création d'une pergola et d'une passerelle reliant la maison existante",
+                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AM0239",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2956832,
+                            41.6108217
+                        ],
+                        [
+                            9.295662,
+                            41.6109144
+                        ],
+                        [
+                            9.2956528,
+                            41.6109501
+                        ],
+                        [
+                            9.2956446,
+                            41.6109864
+                        ],
+                        [
+                            9.2956392,
+                            41.6110161
+                        ],
+                        [
+                            9.2955934,
+                            41.6112017
+                        ],
+                        [
+                            9.2953569,
+                            41.6111628
+                        ],
+                        [
+                            9.295342,
+                            41.6111461
+                        ],
+                        [
+                            9.2953094,
+                            41.6111332
+                        ],
+                        [
+                            9.2953903,
+                            41.6107829
+                        ],
+                        [
+                            9.2956832,
+                            41.6108217
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AM0239",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AM",
+                "numero": "239",
+                "contenance": 1200,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2019-02-21",
+                "depots": [
+                    [
+                        "12/06/2024",
+                        "DP 02A 247 24 R0142",
+                        "12/06/2024",
+                        "NMD ENERGIES",
+                        "348 Lotissement Marina Di Fiori 20137  (AM 239)",
+                        "1200 m²",
+                        "la pose de panneaux solaires",
                         ""
                     ]
                 ]
@@ -10054,10 +9962,68 @@
                         "31/05/2024",
                         "DP 02A 247 24 R0136",
                         "31/05/2024",
-                        "MME KELEMEN ANNE MARIE",
+                        "MME KELEMEN Anne Marie",
                         "147 MARINA DI FIORI 20137  (AM 147)",
                         "1470 m²",
                         "la pose de panneaux solaires",
+                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AM0216",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2894594,
+                            41.617262
+                        ],
+                        [
+                            9.2895798,
+                            41.6170705
+                        ],
+                        [
+                            9.289678,
+                            41.6169252
+                        ],
+                        [
+                            9.2900297,
+                            41.6171337
+                        ],
+                        [
+                            9.2898508,
+                            41.6175041
+                        ],
+                        [
+                            9.2894594,
+                            41.617262
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AM0216",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AM",
+                "numero": "216",
+                "contenance": 1640,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2019-02-21",
+                "depots": [
+                    [
+                        "11/06/2024",
+                        "DP 02A 247 24 R0140",
+                        "11/06/2024",
+                        "ZELIE",
+                        " Corniche San Giorgi 20137 Marina Di Fiori (AM 216)",
+                        "960 m²",
+                        "la rénovation extérieure et intérieure d'une maison individuelle",
                         "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
@@ -11141,6 +11107,224 @@
         },
         {
             "type": "Feature",
+            "id": "2A247000AP0318",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3047702,
+                            41.6273857
+                        ],
+                        [
+                            9.3046361,
+                            41.6276869
+                        ],
+                        [
+                            9.3046072,
+                            41.6276776
+                        ],
+                        [
+                            9.3044656,
+                            41.6276242
+                        ],
+                        [
+                            9.3043346,
+                            41.6275414
+                        ],
+                        [
+                            9.3041134,
+                            41.6273936
+                        ],
+                        [
+                            9.303943,
+                            41.6272652
+                        ],
+                        [
+                            9.3036631,
+                            41.6270297
+                        ],
+                        [
+                            9.3033873,
+                            41.6267813
+                        ],
+                        [
+                            9.3031362,
+                            41.626526
+                        ],
+                        [
+                            9.302942,
+                            41.6263188
+                        ],
+                        [
+                            9.3028317,
+                            41.6262089
+                        ],
+                        [
+                            9.3027629,
+                            41.626141
+                        ],
+                        [
+                            9.3025378,
+                            41.6259513
+                        ],
+                        [
+                            9.3022477,
+                            41.62575
+                        ],
+                        [
+                            9.3018357,
+                            41.6254842
+                        ],
+                        [
+                            9.3015579,
+                            41.6253201
+                        ],
+                        [
+                            9.3013838,
+                            41.6252364
+                        ],
+                        [
+                            9.3010227,
+                            41.6250932
+                        ],
+                        [
+                            9.3007244,
+                            41.6249651
+                        ],
+                        [
+                            9.3003512,
+                            41.6248072
+                        ],
+                        [
+                            9.3002433,
+                            41.6247562
+                        ],
+                        [
+                            9.3001791,
+                            41.6246989
+                        ],
+                        [
+                            9.3001506,
+                            41.6246251
+                        ],
+                        [
+                            9.3001532,
+                            41.6245581
+                        ],
+                        [
+                            9.3001621,
+                            41.6245427
+                        ],
+                        [
+                            9.300255,
+                            41.6245372
+                        ],
+                        [
+                            9.3002522,
+                            41.6244591
+                        ],
+                        [
+                            9.3003148,
+                            41.6244386
+                        ],
+                        [
+                            9.3003391,
+                            41.6243904
+                        ],
+                        [
+                            9.3006442,
+                            41.6244102
+                        ],
+                        [
+                            9.3011232,
+                            41.6245161
+                        ],
+                        [
+                            9.3014483,
+                            41.6245668
+                        ],
+                        [
+                            9.3017654,
+                            41.62467
+                        ],
+                        [
+                            9.3022694,
+                            41.6248435
+                        ],
+                        [
+                            9.3024269,
+                            41.6248877
+                        ],
+                        [
+                            9.3026371,
+                            41.6250949
+                        ],
+                        [
+                            9.3030677,
+                            41.6255275
+                        ],
+                        [
+                            9.3032976,
+                            41.6258125
+                        ],
+                        [
+                            9.3038031,
+                            41.6264652
+                        ],
+                        [
+                            9.3038855,
+                            41.6266147
+                        ],
+                        [
+                            9.3041655,
+                            41.6269022
+                        ],
+                        [
+                            9.3043368,
+                            41.6271304
+                        ],
+                        [
+                            9.3044322,
+                            41.6272108
+                        ],
+                        [
+                            9.304712,
+                            41.6273329
+                        ],
+                        [
+                            9.3047702,
+                            41.6273857
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AP0318",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AP",
+                "numero": "318",
+                "contenance": 29015,
+                "arpente": false,
+                "created": "2011-10-14",
+                "updated": "2020-09-24",
+                "depots": [
+                    [
+                        "11/06/2024",
+                        "DP 02A 247 24 R0141",
+                        "11/06/2024",
+                        "SCI A STRADELLA",
+                        " Cala Rossa 20137  (AP 318)",
+                        "29015 m²",
+                        "la pose de panneaux solaires",
+                        ""
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A247000AP0304",
             "geometry": {
                 "type": "Polygon",
@@ -11323,6 +11507,64 @@
                         "601 m²",
                         "la construction d'une piscine",
                         ""
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AP0192",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.31078,
+                            41.6306145
+                        ],
+                        [
+                            9.3109772,
+                            41.6301941
+                        ],
+                        [
+                            9.3111804,
+                            41.6302363
+                        ],
+                        [
+                            9.3113869,
+                            41.6302574
+                        ],
+                        [
+                            9.3112331,
+                            41.6307334
+                        ],
+                        [
+                            9.31078,
+                            41.6306145
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AP0192",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AP",
+                "numero": "192",
+                "contenance": 1997,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2020-09-24",
+                "depots": [
+                    [
+                        "14/06/2024",
+                        "PC 02A 247 24 R0139",
+                        "14/06/2024",
+                        "SAS GOLFO",
+                        "6 U Stagnolu 20137  (AP 192)",
+                        "1997 m²",
+                        "la rénovation et l'extension d'une maison existante",
+                        "- Surface plancher créée : 136,03 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
             }
@@ -11592,7 +11834,7 @@
                         "29/05/2024",
                         "PC 02A 247 24 R0119",
                         "16/05/2024",
-                        "MME PELLEGRINO PIERRE-LOUIS",
+                        "MME PELLEGRINO Pierre-Louis",
                         " PASCIALELLA DE PRECOJO 20137 CARDICCIA (AT 1061)",
                         "2209 m²",
                         "la construction d'une maison individuelle comme maison secondaire",
@@ -12243,6 +12485,104 @@
         },
         {
             "type": "Feature",
+            "id": "2A247000AX0019",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.285807,
+                            41.5336245
+                        ],
+                        [
+                            9.2862216,
+                            41.53366
+                        ],
+                        [
+                            9.2863334,
+                            41.5336847
+                        ],
+                        [
+                            9.2864377,
+                            41.533708
+                        ],
+                        [
+                            9.2865172,
+                            41.5337255
+                        ],
+                        [
+                            9.2865906,
+                            41.533742
+                        ],
+                        [
+                            9.286667,
+                            41.5337588
+                        ],
+                        [
+                            9.2865166,
+                            41.5338648
+                        ],
+                        [
+                            9.286414,
+                            41.5339511
+                        ],
+                        [
+                            9.2863842,
+                            41.5340048
+                        ],
+                        [
+                            9.2863372,
+                            41.5339964
+                        ],
+                        [
+                            9.2862592,
+                            41.5339824
+                        ],
+                        [
+                            9.2861316,
+                            41.5339596
+                        ],
+                        [
+                            9.2859432,
+                            41.5339257
+                        ],
+                        [
+                            9.2859399,
+                            41.5339105
+                        ],
+                        [
+                            9.285807,
+                            41.5336245
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AX0019",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AX",
+                "numero": "19",
+                "contenance": 1835,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2020-09-24",
+                "depots": [
+                    [
+                        "06/06/2024",
+                        "PC 02A 247 18 R0116 M02",
+                        "05/06/2024",
+                        "M REAU Christophe",
+                        "9499 Lotissement de Cala d'Oro lot n° 54 20137  (AX 19)",
+                        "1835 m²",
+                        "la modification des emmarchements de la plage de la piscine sans modification de niveau",
+                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "id": "2A247000AZ0084",
             "geometry": {
                 "type": "Polygon",
@@ -12577,870 +12917,6 @@
         },
         {
             "type": "Feature",
-            "id": "2A247000BK0172",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2742809,
-                            41.5314914
-                        ],
-                        [
-                            9.2743168,
-                            41.5315056
-                        ],
-                        [
-                            9.2745148,
-                            41.5315847
-                        ],
-                        [
-                            9.2747388,
-                            41.531656
-                        ],
-                        [
-                            9.2749539,
-                            41.5317191
-                        ],
-                        [
-                            9.275224,
-                            41.5317911
-                        ],
-                        [
-                            9.2751303,
-                            41.5325383
-                        ],
-                        [
-                            9.2749805,
-                            41.5326248
-                        ],
-                        [
-                            9.2751062,
-                            41.5329422
-                        ],
-                        [
-                            9.2750908,
-                            41.533194
-                        ],
-                        [
-                            9.2750751,
-                            41.5334609
-                        ],
-                        [
-                            9.2751101,
-                            41.5334791
-                        ],
-                        [
-                            9.2750886,
-                            41.5335
-                        ],
-                        [
-                            9.2750733,
-                            41.5334917
-                        ],
-                        [
-                            9.2750702,
-                            41.5335457
-                        ],
-                        [
-                            9.2749507,
-                            41.5335414
-                        ],
-                        [
-                            9.2749095,
-                            41.53354
-                        ],
-                        [
-                            9.2748336,
-                            41.5335373
-                        ],
-                        [
-                            9.2747933,
-                            41.5335359
-                        ],
-                        [
-                            9.2746098,
-                            41.5335295
-                        ],
-                        [
-                            9.2745742,
-                            41.5335282
-                        ],
-                        [
-                            9.2744962,
-                            41.5335255
-                        ],
-                        [
-                            9.2744822,
-                            41.5335174
-                        ],
-                        [
-                            9.274477,
-                            41.5335243
-                        ],
-                        [
-                            9.2741077,
-                            41.5335113
-                        ],
-                        [
-                            9.274121,
-                            41.53326
-                        ],
-                        [
-                            9.2741266,
-                            41.5331382
-                        ],
-                        [
-                            9.2741279,
-                            41.5331089
-                        ],
-                        [
-                            9.2741299,
-                            41.5330642
-                        ],
-                        [
-                            9.2741332,
-                            41.5329891
-                        ],
-                        [
-                            9.274134,
-                            41.5329722
-                        ],
-                        [
-                            9.2741384,
-                            41.5328756
-                        ],
-                        [
-                            9.2740006,
-                            41.5328691
-                        ],
-                        [
-                            9.2738422,
-                            41.5328883
-                        ],
-                        [
-                            9.2738424,
-                            41.5328829
-                        ],
-                        [
-                            9.2738507,
-                            41.5325715
-                        ],
-                        [
-                            9.2735741,
-                            41.5323376
-                        ],
-                        [
-                            9.2728374,
-                            41.5328092
-                        ],
-                        [
-                            9.2721431,
-                            41.5326045
-                        ],
-                        [
-                            9.2721892,
-                            41.5325562
-                        ],
-                        [
-                            9.2728299,
-                            41.5327497
-                        ],
-                        [
-                            9.2739949,
-                            41.532002
-                        ],
-                        [
-                            9.274,
-                            41.5319927
-                        ],
-                        [
-                            9.274056,
-                            41.531891
-                        ],
-                        [
-                            9.2740717,
-                            41.5318624
-                        ],
-                        [
-                            9.2740781,
-                            41.5318676
-                        ],
-                        [
-                            9.2742041,
-                            41.5316256
-                        ],
-                        [
-                            9.2742311,
-                            41.5315736
-                        ],
-                        [
-                            9.2742809,
-                            41.5314914
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BK0172",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BK",
-                "numero": "172",
-                "contenance": 21593,
-                "arpente": false,
-                "created": "2012-10-22",
-                "updated": "2020-03-16",
-                "depots": [
-                    [
-                        "14/05/2024",
-                        "PC 02A 247 24 R0113",
-                        "14/05/2024",
-                        "M PANDOLFI Jean Paul",
-                        " Santa Giulia 20137  (BK 172, BK 107)",
-                        "22113 m²",
-                        "la construction d'une maison individuelle en résidence principale",
-                        "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000BK0107",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2750702,
-                            41.5335457
-                        ],
-                        [
-                            9.2750733,
-                            41.5334917
-                        ],
-                        [
-                            9.2750886,
-                            41.5335
-                        ],
-                        [
-                            9.2751101,
-                            41.5334791
-                        ],
-                        [
-                            9.2750751,
-                            41.5334609
-                        ],
-                        [
-                            9.2750908,
-                            41.533194
-                        ],
-                        [
-                            9.2751062,
-                            41.5329422
-                        ],
-                        [
-                            9.2751404,
-                            41.5330285
-                        ],
-                        [
-                            9.2751461,
-                            41.5330428
-                        ],
-                        [
-                            9.2751686,
-                            41.5331212
-                        ],
-                        [
-                            9.2751837,
-                            41.5332347
-                        ],
-                        [
-                            9.2752009,
-                            41.5333528
-                        ],
-                        [
-                            9.2752065,
-                            41.5334054
-                        ],
-                        [
-                            9.2752086,
-                            41.5334244
-                        ],
-                        [
-                            9.2752219,
-                            41.5335511
-                        ],
-                        [
-                            9.2751065,
-                            41.5335571
-                        ],
-                        [
-                            9.2750694,
-                            41.5335591
-                        ],
-                        [
-                            9.2750702,
-                            41.5335457
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BK0107",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BK",
-                "numero": "107",
-                "contenance": 520,
-                "arpente": false,
-                "created": "2011-11-07",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "14/05/2024",
-                        "PC 02A 247 24 R0113",
-                        "14/05/2024",
-                        "M PANDOLFI Jean Paul",
-                        " Santa Giulia 20137  (BK 172, BK 107)",
-                        "22113 m²",
-                        "la construction d'une maison individuelle en résidence principale",
-                        "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000BK0145",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2741077,
-                            41.5335113
-                        ],
-                        [
-                            9.274477,
-                            41.5335243
-                        ],
-                        [
-                            9.2744822,
-                            41.5335174
-                        ],
-                        [
-                            9.2744962,
-                            41.5335255
-                        ],
-                        [
-                            9.2745742,
-                            41.5335282
-                        ],
-                        [
-                            9.2746098,
-                            41.5335295
-                        ],
-                        [
-                            9.2747933,
-                            41.5335359
-                        ],
-                        [
-                            9.2748336,
-                            41.5335373
-                        ],
-                        [
-                            9.2749095,
-                            41.53354
-                        ],
-                        [
-                            9.2749507,
-                            41.5335414
-                        ],
-                        [
-                            9.2750702,
-                            41.5335457
-                        ],
-                        [
-                            9.2750694,
-                            41.5335591
-                        ],
-                        [
-                            9.2751065,
-                            41.5335571
-                        ],
-                        [
-                            9.2751812,
-                            41.5339342
-                        ],
-                        [
-                            9.2750571,
-                            41.5339344
-                        ],
-                        [
-                            9.2748583,
-                            41.5339351
-                        ],
-                        [
-                            9.2748172,
-                            41.5339353
-                        ],
-                        [
-                            9.2747964,
-                            41.5339353
-                        ],
-                        [
-                            9.2747209,
-                            41.5339456
-                        ],
-                        [
-                            9.2746988,
-                            41.5339405
-                        ],
-                        [
-                            9.2746936,
-                            41.5339633
-                        ],
-                        [
-                            9.2746742,
-                            41.5339771
-                        ],
-                        [
-                            9.2746551,
-                            41.5339751
-                        ],
-                        [
-                            9.2744216,
-                            41.5340193
-                        ],
-                        [
-                            9.2743798,
-                            41.5340291
-                        ],
-                        [
-                            9.2743215,
-                            41.5340423
-                        ],
-                        [
-                            9.2742637,
-                            41.5340553
-                        ],
-                        [
-                            9.2742603,
-                            41.5340561
-                        ],
-                        [
-                            9.274256,
-                            41.5340573
-                        ],
-                        [
-                            9.2742032,
-                            41.5340698
-                        ],
-                        [
-                            9.274191,
-                            41.5341226
-                        ],
-                        [
-                            9.2741814,
-                            41.5341696
-                        ],
-                        [
-                            9.2741668,
-                            41.5342366
-                        ],
-                        [
-                            9.274157,
-                            41.5342813
-                        ],
-                        [
-                            9.2741532,
-                            41.5343035
-                        ],
-                        [
-                            9.274166,
-                            41.5343204
-                        ],
-                        [
-                            9.2741756,
-                            41.5343332
-                        ],
-                        [
-                            9.2740736,
-                            41.5344079
-                        ],
-                        [
-                            9.2740693,
-                            41.53442
-                        ],
-                        [
-                            9.2740578,
-                            41.5344229
-                        ],
-                        [
-                            9.2740706,
-                            41.5341896
-                        ],
-                        [
-                            9.2740765,
-                            41.5341373
-                        ],
-                        [
-                            9.2740791,
-                            41.5341071
-                        ],
-                        [
-                            9.2740819,
-                            41.5340803
-                        ],
-                        [
-                            9.2740959,
-                            41.534054
-                        ],
-                        [
-                            9.2741263,
-                            41.5339988
-                        ],
-                        [
-                            9.2741553,
-                            41.5339458
-                        ],
-                        [
-                            9.2741884,
-                            41.5338853
-                        ],
-                        [
-                            9.2742023,
-                            41.5338594
-                        ],
-                        [
-                            9.27422,
-                            41.5338272
-                        ],
-                        [
-                            9.2742174,
-                            41.533814
-                        ],
-                        [
-                            9.2742131,
-                            41.5337971
-                        ],
-                        [
-                            9.2742072,
-                            41.5337738
-                        ],
-                        [
-                            9.2741962,
-                            41.5337468
-                        ],
-                        [
-                            9.2741837,
-                            41.5337176
-                        ],
-                        [
-                            9.2741578,
-                            41.5336614
-                        ],
-                        [
-                            9.2741322,
-                            41.5336046
-                        ],
-                        [
-                            9.2741058,
-                            41.5335473
-                        ],
-                        [
-                            9.2741077,
-                            41.5335113
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BK0145",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BK",
-                "numero": "145",
-                "contenance": 4390,
-                "arpente": true,
-                "created": "2011-11-04",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "14/05/2024",
-                        "PC 02A 247 24 R0112",
-                        "14/05/2024",
-                        "M Gour Xavier",
-                        " Santa Giulia 20137  (BK 145, BK 148)",
-                        "4717 m²",
-                        "la construction d'une maison individuelle en résidence principale",
-                        "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000BK0149",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2759418,
-                            41.5339388
-                        ],
-                        [
-                            9.2759419,
-                            41.5339404
-                        ],
-                        [
-                            9.2757255,
-                            41.5339571
-                        ],
-                        [
-                            9.2754023,
-                            41.5339828
-                        ],
-                        [
-                            9.2753309,
-                            41.5339886
-                        ],
-                        [
-                            9.2753184,
-                            41.5339896
-                        ],
-                        [
-                            9.2751943,
-                            41.5340002
-                        ],
-                        [
-                            9.2751812,
-                            41.5339342
-                        ],
-                        [
-                            9.2757357,
-                            41.5339332
-                        ],
-                        [
-                            9.2757727,
-                            41.5339466
-                        ],
-                        [
-                            9.2757829,
-                            41.5339329
-                        ],
-                        [
-                            9.2759418,
-                            41.5339388
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BK0149",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BK",
-                "numero": "149",
-                "contenance": 235,
-                "arpente": true,
-                "created": "2011-11-04",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "14/05/2024",
-                        "PC 02A 247 24 R0114",
-                        "14/05/2024",
-                        "M ALBERTINI Antoine",
-                        "Santa Giul Santa Giulia 20137  (BK 144, BK 149)",
-                        "3000 m²",
-                        "la construction d'une maison individuelle en résidence principale",
-                        "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000BK0144",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2758959,
-                            41.5335606
-                        ],
-                        [
-                            9.2759102,
-                            41.5336741
-                        ],
-                        [
-                            9.2759418,
-                            41.5339388
-                        ],
-                        [
-                            9.2757829,
-                            41.5339329
-                        ],
-                        [
-                            9.2757727,
-                            41.5339466
-                        ],
-                        [
-                            9.2757357,
-                            41.5339332
-                        ],
-                        [
-                            9.2751812,
-                            41.5339342
-                        ],
-                        [
-                            9.2751065,
-                            41.5335571
-                        ],
-                        [
-                            9.2752219,
-                            41.5335511
-                        ],
-                        [
-                            9.2752261,
-                            41.5335908
-                        ],
-                        [
-                            9.2758959,
-                            41.5335606
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BK0144",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BK",
-                "numero": "144",
-                "contenance": 2765,
-                "arpente": true,
-                "created": "2011-11-04",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "14/05/2024",
-                        "PC 02A 247 24 R0114",
-                        "14/05/2024",
-                        "M ALBERTINI Antoine",
-                        "Santa Giul Santa Giulia 20137  (BK 144, BK 149)",
-                        "3000 m²",
-                        "la construction d'une maison individuelle en résidence principale",
-                        "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000BK0148",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2751943,
-                            41.5340002
-                        ],
-                        [
-                            9.275101,
-                            41.5340082
-                        ],
-                        [
-                            9.2750423,
-                            41.5340136
-                        ],
-                        [
-                            9.2749644,
-                            41.5340208
-                        ],
-                        [
-                            9.2749522,
-                            41.5340219
-                        ],
-                        [
-                            9.2747839,
-                            41.5339888
-                        ],
-                        [
-                            9.2746742,
-                            41.5339771
-                        ],
-                        [
-                            9.2746936,
-                            41.5339633
-                        ],
-                        [
-                            9.2746988,
-                            41.5339405
-                        ],
-                        [
-                            9.2747209,
-                            41.5339456
-                        ],
-                        [
-                            9.2747964,
-                            41.5339353
-                        ],
-                        [
-                            9.2748172,
-                            41.5339353
-                        ],
-                        [
-                            9.2748583,
-                            41.5339351
-                        ],
-                        [
-                            9.2750571,
-                            41.5339344
-                        ],
-                        [
-                            9.2751812,
-                            41.5339342
-                        ],
-                        [
-                            9.2751943,
-                            41.5340002
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BK0148",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BK",
-                "numero": "148",
-                "contenance": 327,
-                "arpente": true,
-                "created": "2011-11-04",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "14/05/2024",
-                        "PC 02A 247 24 R0112",
-                        "14/05/2024",
-                        "M Gour Xavier",
-                        " Santa Giulia 20137  (BK 145, BK 148)",
-                        "4717 m²",
-                        "la construction d'une maison individuelle en résidence principale",
-                        "- Surface plancher créée : 170 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
             "id": "2A247000BL0039",
             "geometry": {
                 "type": "Polygon",
@@ -13493,72 +12969,6 @@
                         "4450 m²",
                         "Aire de stationnement de 36 places ",
                         ""
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000BO0148",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2404247,
-                            41.5553842
-                        ],
-                        [
-                            9.2405824,
-                            41.554759
-                        ],
-                        [
-                            9.2406718,
-                            41.5547325
-                        ],
-                        [
-                            9.2409559,
-                            41.5551594
-                        ],
-                        [
-                            9.2409243,
-                            41.5551774
-                        ],
-                        [
-                            9.2407982,
-                            41.5552321
-                        ],
-                        [
-                            9.2407347,
-                            41.5552451
-                        ],
-                        [
-                            9.2404247,
-                            41.5553842
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BO0148",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BO",
-                "numero": "148",
-                "contenance": 1510,
-                "arpente": true,
-                "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "depots": [
-                    [
-                        "13/04/2024",
-                        "PC 02A 247 24 R0082",
-                        "13/04/2024",
-                        "M CASTELLI Florent",
-                        " Ceccia 20137 Morteto (BO 148)",
-                        "1510 m²",
-                        "la construction d'un \" caseddu\"",
-                        "- Surface plancher créée : 50 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
             }
@@ -13675,6 +13085,348 @@
                         "1834 m²",
                         "une division en vue d'une construction",
                         ""
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BP0185",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.306103,
+                            41.5848821
+                        ],
+                        [
+                            9.3060927,
+                            41.5848753
+                        ],
+                        [
+                            9.3060622,
+                            41.5848551
+                        ],
+                        [
+                            9.3060232,
+                            41.5848345
+                        ],
+                        [
+                            9.3059704,
+                            41.5848172
+                        ],
+                        [
+                            9.3059297,
+                            41.5848137
+                        ],
+                        [
+                            9.3058938,
+                            41.584815
+                        ],
+                        [
+                            9.3058397,
+                            41.5848187
+                        ],
+                        [
+                            9.3058194,
+                            41.5848267
+                        ],
+                        [
+                            9.3060069,
+                            41.5842966
+                        ],
+                        [
+                            9.3060076,
+                            41.5842951
+                        ],
+                        [
+                            9.3065656,
+                            41.5845853
+                        ],
+                        [
+                            9.3063589,
+                            41.584718
+                        ],
+                        [
+                            9.3062562,
+                            41.5847838
+                        ],
+                        [
+                            9.306103,
+                            41.5848821
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BP0185",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BP",
+                "numero": "185",
+                "contenance": 2067,
+                "arpente": true,
+                "created": "2018-02-12",
+                "updated": "2020-11-18",
+                "depots": [
+                    [
+                        "12/06/2024",
+                        "PC 02A 247 24 R0135",
+                        "12/06/2024",
+                        "M RAGUIDEAU François",
+                        " N°3 casetta bianca  20137 aja del forno (BP 183, BP 185)",
+                        "2615 m²",
+                        "l'extension d'une maison existante",
+                        "- Surface plancher créée : 56,36 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BP0183",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3062044,
+                            41.5849606
+                        ],
+                        [
+                            9.3061138,
+                            41.5848894
+                        ],
+                        [
+                            9.306103,
+                            41.5848821
+                        ],
+                        [
+                            9.3062562,
+                            41.5847838
+                        ],
+                        [
+                            9.3063589,
+                            41.584718
+                        ],
+                        [
+                            9.3065656,
+                            41.5845853
+                        ],
+                        [
+                            9.3066585,
+                            41.5846335
+                        ],
+                        [
+                            9.3062044,
+                            41.5849606
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BP0183",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BP",
+                "numero": "183",
+                "contenance": 548,
+                "arpente": true,
+                "created": "2018-02-12",
+                "updated": "2020-11-18",
+                "depots": [
+                    [
+                        "12/06/2024",
+                        "PC 02A 247 24 R0135",
+                        "12/06/2024",
+                        "M RAGUIDEAU François",
+                        " N°3 casetta bianca  20137 aja del forno (BP 183, BP 185)",
+                        "2615 m²",
+                        "l'extension d'une maison existante",
+                        "- Surface plancher créée : 56,36 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BV0072",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3242856,
+                            41.5603139
+                        ],
+                        [
+                            9.3242626,
+                            41.5602973
+                        ],
+                        [
+                            9.3242483,
+                            41.5602842
+                        ],
+                        [
+                            9.3238911,
+                            41.5600146
+                        ],
+                        [
+                            9.3237001,
+                            41.5598744
+                        ],
+                        [
+                            9.3237469,
+                            41.5597589
+                        ],
+                        [
+                            9.323773,
+                            41.5596917
+                        ],
+                        [
+                            9.3237887,
+                            41.5596627
+                        ],
+                        [
+                            9.3238381,
+                            41.5595857
+                        ],
+                        [
+                            9.3238938,
+                            41.5595051
+                        ],
+                        [
+                            9.3239616,
+                            41.559404
+                        ],
+                        [
+                            9.3240306,
+                            41.559305
+                        ],
+                        [
+                            9.3241791,
+                            41.5590966
+                        ],
+                        [
+                            9.3242733,
+                            41.558964
+                        ],
+                        [
+                            9.3243672,
+                            41.5588602
+                        ],
+                        [
+                            9.3246118,
+                            41.558733
+                        ],
+                        [
+                            9.3247514,
+                            41.5586569
+                        ],
+                        [
+                            9.324845,
+                            41.5586023
+                        ],
+                        [
+                            9.3249976,
+                            41.5584791
+                        ],
+                        [
+                            9.3250654,
+                            41.5584271
+                        ],
+                        [
+                            9.3251326,
+                            41.5583749
+                        ],
+                        [
+                            9.325171,
+                            41.5583576
+                        ],
+                        [
+                            9.3252398,
+                            41.5583396
+                        ],
+                        [
+                            9.3253076,
+                            41.5583235
+                        ],
+                        [
+                            9.3255291,
+                            41.5582582
+                        ],
+                        [
+                            9.3255668,
+                            41.5582354
+                        ],
+                        [
+                            9.3256024,
+                            41.5582044
+                        ],
+                        [
+                            9.3258686,
+                            41.5583352
+                        ],
+                        [
+                            9.3260347,
+                            41.5584213
+                        ],
+                        [
+                            9.3263451,
+                            41.5585402
+                        ],
+                        [
+                            9.3265311,
+                            41.5586109
+                        ],
+                        [
+                            9.3254537,
+                            41.5594322
+                        ],
+                        [
+                            9.3250627,
+                            41.5597274
+                        ],
+                        [
+                            9.3249146,
+                            41.5598365
+                        ],
+                        [
+                            9.3248143,
+                            41.5599135
+                        ],
+                        [
+                            9.3243226,
+                            41.5602845
+                        ],
+                        [
+                            9.3242856,
+                            41.5603139
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BV0072",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BV",
+                "numero": "72",
+                "contenance": 24204,
+                "arpente": false,
+                "created": "2015-10-12",
+                "updated": "2017-02-17",
+                "depots": [
+                    [
+                        "11/06/2024",
+                        "PC 02A 247 20 R0017 M03",
+                        "11/06/2024",
+                        "SCI LSP CASA DI LUME",
+                        "9516 Quartier Palombaja 20137  (BV 72)",
+                        "24204 m²",
+                        "la création de 2 fenêtres mur de la façade en côté Est, trottoir en bois le long des façades",
+                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
                     ]
                 ]
             }
@@ -13817,6 +13569,164 @@
                         "3411 m²",
                         "l'extension d'une maison",
                         "- Surface plancher créée : 22 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BV0079",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3227039,
+                            41.5606277
+                        ],
+                        [
+                            9.3226945,
+                            41.5606286
+                        ],
+                        [
+                            9.3226732,
+                            41.5606306
+                        ],
+                        [
+                            9.3226526,
+                            41.5606331
+                        ],
+                        [
+                            9.3226326,
+                            41.5606362
+                        ],
+                        [
+                            9.3226202,
+                            41.5606387
+                        ],
+                        [
+                            9.3225902,
+                            41.5606457
+                        ],
+                        [
+                            9.3225747,
+                            41.5606499
+                        ],
+                        [
+                            9.322556,
+                            41.5606564
+                        ],
+                        [
+                            9.3225327,
+                            41.560666
+                        ],
+                        [
+                            9.3225174,
+                            41.5606733
+                        ],
+                        [
+                            9.3224933,
+                            41.5606877
+                        ],
+                        [
+                            9.3224832,
+                            41.5606943
+                        ],
+                        [
+                            9.3224698,
+                            41.5607043
+                        ],
+                        [
+                            9.3224525,
+                            41.5607174
+                        ],
+                        [
+                            9.3224329,
+                            41.560733
+                        ],
+                        [
+                            9.322415,
+                            41.5607473
+                        ],
+                        [
+                            9.3223962,
+                            41.5607618
+                        ],
+                        [
+                            9.32238,
+                            41.560773
+                        ],
+                        [
+                            9.3223565,
+                            41.5607862
+                        ],
+                        [
+                            9.3223435,
+                            41.5607935
+                        ],
+                        [
+                            9.3223103,
+                            41.5608094
+                        ],
+                        [
+                            9.3222634,
+                            41.5608347
+                        ],
+                        [
+                            9.3221771,
+                            41.5608864
+                        ],
+                        [
+                            9.3218096,
+                            41.5604898
+                        ],
+                        [
+                            9.3216848,
+                            41.5602547
+                        ],
+                        [
+                            9.3216868,
+                            41.5601498
+                        ],
+                        [
+                            9.3221886,
+                            41.5599796
+                        ],
+                        [
+                            9.322446,
+                            41.5601303
+                        ],
+                        [
+                            9.3227307,
+                            41.5604733
+                        ],
+                        [
+                            9.3227039,
+                            41.5606277
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BV0079",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BV",
+                "numero": "79",
+                "contenance": 5265,
+                "arpente": false,
+                "created": "2015-10-12",
+                "updated": "2017-02-17",
+                "depots": [
+                    [
+                        "13/06/2024",
+                        "PC 02A 247 24 R0138",
+                        "13/06/2024",
+                        "SCI MAMSOL",
+                        " LOTISSEMENT FIOR DI MELU 20137 CATARICCIO (BV 79)",
+                        "5265 m²",
+                        "la création d'une piscine de 49,80m2 et d'une terrasse en bois",
+                        ""
                     ]
                 ]
             }

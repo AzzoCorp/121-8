@@ -16,13 +16,11 @@
         <div class="tab-registers">
             <button class="tab-button" data-tab="tab1">X</button>
             <button class="tab-button" data-tab="tab2">Calques</button>
-			<button class="tab-button" data-tab="tab3">Rechercher</button>
-			<button class="tab-button" data-tab="tab4">Demandes</button>
-			<button class="tab-button" data-tab="tab5">Décisions</button>
-			<button class="tab-button" data-tab="tab6">Lisezmoi</button>
+            <button class="tab-button" data-tab="tab3">Rechercher</button>
+            <button class="tab-button" data-tab="tab4">Demandes</button>
+            <button class="tab-button" data-tab="tab5">Décisions</button>
+            <button class="tab-button" data-tab="tab6">Lisezmoi</button>
             <button class="tab-button" data-tab="tab7">i</button>
-     
-			
         </div>
         <div class="tab-bodies" style="display:none;">
             <div id="tab1" class="tab-content" style="display:none;"></div>
@@ -30,35 +28,33 @@
                 <div id="menu">
                     <div id="layer-buttons">
                         <button id="reset-btn">Reset</button>
-						<button id="load-btn">Load</button>
+                        <button id="load-btn">Load</button>
                         <button id="save-btn">Save</button>
-						<br>
+                        <br>
                         <button id="add-btn">+</button>
                     </div>
-					<br>
+                    <br>
                     <div id="layers-list"></div>
                 </div>
             </div>
-			<div id="tab3" class="tab-content" style="display:none;">
+            <div id="tab3" class="tab-content" style="display:none;">
                 <div id="menu">    
                     <div id="search">
-					<input type="text" id="search-input" placeholder="Search parcels">
-						<button id="search-btn">Rechercher</button>
-
-					</div>
+                        <input type="text" id="search-input" placeholder="Search parcels">
+                        <button id="search-btn">Rechercher</button>
+                    </div>
                 </div>
             </div>
-         <div id="tab4" class="tab-content" style="display:none;">
+            <div id="tab4" class="tab-content" style="display:none;">
                 <div id="menu">    
-                    <div id="Demandes"></div>
+                    <div id="Demandes" class="scrollable-container"></div>
                 </div>
-            </div>         <div id="tab5" class="tab-content" style="display:none;">
+            </div>
+            <div id="tab5" class="tab-content" style="display:none;">
                 <div id="menu">    
-                    <div id="Décisions"></div>
+                    <div id="Décisions" class="scrollable-container"></div>
                 </div>
-            </div>			
-			
-			
+            </div>
             <div id="tab6" class="tab-content" style="display:none;">
                 <div id="menu">
                     <div id="lisezmoi"></div>
@@ -69,12 +65,9 @@
                     <div id="informations"></div>
                 </div>
             </div>
-
         </div>
     </div>
     <div id="map"></div>
     <script src="js/initmap.js"></script>
-    <!-- <script src="js/initmap - Copie (17)lineok.js"></script> -->
-    <!-- <script src="js/functions.js"></script> -->
 </body>
 </html>
