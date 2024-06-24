@@ -9,34 +9,35 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.3/commonmark.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.13.0/Sortable.min.js"></script>
+	<script src="https://kit.fontawesome.com/404f8630c5.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"
+></script>
 </head>
 <body>
     <div class="tabs" style="transition: height 0.3s;">
         <div class="tab-registers">
-            <button class="tab-button" data-tab="tab1">X</button>
-            <button class="tab-button" data-tab="tab2">Calques</button>
-            <button class="tab-button" data-tab="tab3">Rechercher</button>
-            <button class="tab-button" data-tab="tab4">Demandes</button>
-            <button class="tab-button" data-tab="tab5">Décisions</button>
-            <button class="tab-button" data-tab="tab6">Lisezmoi</button>
-            <button class="tab-button" data-tab="tab7">i</button>
+            <button class="tab-button" data-tab="tab1"><i class="fa-solid fa-xmark"></i></button>
+            <button class="tab-button" data-tab="tab2"><i class="fa-solid fa-layer-group"></i></button>
+            <button class="tab-button" data-tab="tab3"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="tab-button" data-tab="tab4"><i class="fa-solid fa-paper-plane" style="color: #FF00FF;"></i></button>
+            <button class="tab-button" data-tab="tab5"><i class="fa-solid fa-check" style="color: #00FFFF;"></i></button>
+            <button class="tab-button" data-tab="tab6"><i class="fa-brands fa-readme"></i></button>
+            <button class="tab-button" data-tab="tab7"><i class="fa-solid fa-info"></i></button>
         </div>
         <div class="tab-bodies" style="display:none;">
             <div id="tab1" class="tab-content" style="display:none;"></div>
-            <div id="tab2" class="tab-content" style="display:none;">
-                <div id="menu">
-                    <div id="layer-buttons">
-                        <button id="reset-btn">Reset</button>
-                        <button id="load-btn">Load</button>
-                        <button id="save-btn">Save</button>
-                        <br>
-                        <button id="add-btn">+</button>
-                    </div>
-                    <br>
-                    <div id="layers-list"></div>
-                </div>
-            </div>
+			<div id="tab2" class="tab-content" style="display:none;">
+				<div id="layer-buttons">
+					<button id="reset-btn">Reset</button>
+					<button id="load-btn">Load</button>
+					<button id="save-btn">Save</button>
+					<button id="add-btn">+</button>
+				</div>
+				<div id="layers-container">
+					<div id="layers-list"></div>
+				</div>
+			</div>
+
             <div id="tab3" class="tab-content" style="display:none;">
                 <div id="menu">    
                     <div id="search">

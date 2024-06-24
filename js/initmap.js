@@ -15,7 +15,6 @@ let map = new mapboxgl.Map({
     zoom: 0
 });
 
-
 map.on('load', function () {
     console.log('Loading GeoJSON data for cadastre-parcelles...');
     fetch('GeoDatas/cadastre-2A247-parcelles.json')
@@ -183,7 +182,7 @@ map.on('load', function () {
     if (!map.getSource(depotsSource)) {
         map.addSource(depotsSource, {
             type: 'geojson',
-            data: 'GeoDatas/outputdepots.geojson',
+            data: './GeoDatas/outputdepots.geojson',
         });
 
         map.addLayer({
@@ -449,6 +448,15 @@ map.on('load', () => {
     });
 });
 
+map.once('idle', () => {
+    updateLayerList();
+	adjustLayerNameWidths();
+});
+/* map.on('idle', () => {
+	adjustLayerNameWidths();
+});
+ */
+
 
 document.getElementById('search-btn').addEventListener('click', function() {
     if (!isDataLoaded) {
@@ -513,9 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInput.addEventListener('change', handleFileSelect);
     document.body.appendChild(fileInput);
 
-    map.on('style.load', () => {
-		// updateLayerList()
-    });
+ 
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -535,16 +541,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 async function populateDepotsList() {
     if (OnOff()) {
-        console.log('>>>> ' + arguments.callee.name + '() <= function used');
+        console.log('>>>> ' + arguments.callee.name + '() <= fonction utilisée');
     }
     const depotsContainer = document.getElementById('Demandes');
     if (!depotsContainer) {
-        console.error('Element with ID "Demandes" not found.');
+        console.error('Élément avec ID "Demandes" non trouvé.');
         return;
     }
-    depotsContainer.innerHTML = ''; // Clear existing content
+    depotsContainer.innerHTML = ''; // Effacer le contenu existant
 
     const depotsSource = map.getSource('depots-parcelles');
     if (depotsSource) {
@@ -552,9 +559,12 @@ async function populateDepotsList() {
             const depotsData = await fetch('GeoDatas/outputdepots.geojson').then(response => response.json());
             const features = depotsData.features;
 
+            console.log(`Total des entités : ${features.length}`);
+
+            let elementsInclus = 0;
             const groupedItems = {};
-            const headParcels = new Set();
-            const childParcels = new Set();
+            const groupingLog = [];
+            const depotCounts = {};
 
             features.forEach(feature => {
                 const properties = feature.properties;
@@ -563,96 +573,198 @@ async function populateDepotsList() {
                     try {
                         properties.depots = JSON.parse(properties.depots);
                     } catch (error) {
-                        console.error('Failed to parse depots:', properties.depots, error);
+                        console.error('Échec de l\'analyse des dépôts:', properties.depots, error);
                     }
                 }
 
                 if (Array.isArray(properties.depots) && properties.depots.length > 0) {
                     properties.depots.forEach(depot => {
                         if (Array.isArray(depot)) {
-                            const squareMeters = extractSquareMeters(depot[7]);
-                            const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
-                            const recu = depot[0];
+                            elementsInclus++;
                             const groupItems = extractGroupItems(depot[4]);
-                            const headParcel = groupItems[0];
+                            const headParcel = groupItems[0]; // La première parcelle est considérée comme la principale
+                            const depotId = depot[1]; // Utiliser le numéro de dépôt comme identifiant
 
-                            if (!(difference === '0.00' && squareMeters[0] === 0 && squareMeters[1] === 0)) {
-                                const parcelInfo = getParcelInfo(groupItems, features);
-                                const listItem = `
-                                    <div class="depot-data">
-                                        <strong>${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]}</strong><br>
-                                        <button class="locate-btn" data-section="${properties.section}" data-numero="${properties.numero}">Trouver</button><div class="nomdeposant">${depot[3]}</div>
-                                        <strong>${depot[1]}</strong><i> reçue le </i><strong>${recu}</strong><br>
-                                        ${parcelInfo}
-                                        <br><strong>Adresse </strong>${depot[4]}<br>
-                                        <div class="desc"><strong>DESCRIPTION</strong></div>${depot[6]}<br>
-                                        ${depot[7]}
-                                    </div>
-                                    <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
-                                    <br>arpenté <strong>${properties.arpente}</strong>
-                                    créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
-                                `;
+                            depotCounts[depotId] = (depotCounts[depotId] || 0) + 1;
 
-                                headParcels.add(headParcel);
-                                groupItems.forEach(item => {
-                                    if (item !== headParcel) {
-                                        childParcels.add(item);
-                                    }
-                                });
-
-                                if (!groupedItems[headParcel]) {
-                                    groupedItems[headParcel] = {
-                                        groupItems: groupItems,
-                                        depots: []
-                                    };
-                                }
-                                groupedItems[headParcel].depots.push({ difference: parseFloat(difference), html: listItem });
+                            if (!groupedItems[headParcel]) {
+                                groupedItems[headParcel] = {
+                                    properties: properties,
+                                    depot: depot,
+                                    groupItems: groupItems
+                                };
+                                groupingLog.push(`Nouveau groupe créé : ${headParcel} (Dépôt: ${depotId})`);
+                            } else {
+                                groupingLog.push(`Élément ajouté au groupe existant : ${headParcel} (Dépôt: ${depotId})`);
                             }
                         }
                     });
                 }
             });
 
-            const finalGroupItems = new Set([...headParcels].filter(item => !childParcels.has(item)));
+            console.log("Log de regroupement :");
+            console.log(groupingLog.join('\n'));
+
+            const duplicateDepots = Object.entries(depotCounts).filter(([_, count]) => count > 1);
+            console.log("Dépôts apparaissant dans plusieurs parcelles :", duplicateDepots);
 
             const listItems = [];
-            for (const headParcel of finalGroupItems) {
-                if (groupedItems.hasOwnProperty(headParcel)) {
-                    const group = groupedItems[headParcel];
-                    const mergedDepots = group.depots[0].html; // Only take the first depot which is the head
-                    const totalDifference = group.depots[0].difference; // Only take the first depot's difference
 
-                    const listItem = `
-                        <div class="depot-group">
-                            ${mergedDepots}
+            for (const headParcel in groupedItems) {
+                const group = groupedItems[headParcel];
+                const properties = group.properties;
+                const depot = group.depot;
+                const groupItems = group.groupItems;
+
+                const squareMeters = extractSquareMeters(depot[7]);
+                const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
+                const parcelInfo = getParcelInfo(groupItems, features, headParcel);
+
+                const listItem = `
+                    <div class="depot-group">
+                        <div class="depot-data">
+                            <strong>[${listItems.length + 1}] | ${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
+                            <button class="locate-btn" data-section="${properties.section}" data-numero="${properties.numero}" data-group-items="${groupItems.join(' ')}">Trouver</button><div class="nomdeposant">${depot[3]}</div>
+                            <strong>${depot[1]}</strong><i> reçue le </i><strong>${depot[0]}</strong><br>
+                            ${parcelInfo}
+                            <br><strong>Adresse </strong>${depot[4]}<br>
+                            <div class="desc"><strong>DESCRIPTION</strong></div>${depot[6]}<br>
+                            ${depot[7]}
                         </div>
-                    `;
-                    listItems.push({ difference: totalDifference, html: listItem });
-                }
+                        <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
+                        <br>arpenté <strong>${properties.arpente}</strong>
+                        créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
+                    </div>
+                `;
+                listItems.push({ difference: parseFloat(difference), html: listItem });
             }
 
-            // Sort by difference in descending order
+            // Trier par différence en ordre décroissant
             listItems.sort((a, b) => b.difference - a.difference);
 
-            listItems.forEach(item => {
+            listItems.forEach((item, index) => {
                 const listItemElement = document.createElement('div');
                 listItemElement.className = 'list-item';
-                listItemElement.innerHTML = item.html;
+                listItemElement.innerHTML = item.html.replace(/$$$(\d+)$$$/, `[${listItems.length - index}]`);
                 depotsContainer.appendChild(listItemElement);
             });
 
+            // Fetch and count orphaned items
+            let orphanedCount = 0;
+            let orphanedData = { data: [] };
+            try {
+                const response = await fetch('./GeoDatas/outputdepotsorphan.json');
+                if (response.ok) {
+                    orphanedData = await response.json();
+                    orphanedCount = orphanedData.recordsTotal;
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des données orphelines:', error);
+            }
+
+            const totalTraite = elementsInclus + orphanedCount;
+
             const itemCountElement = document.createElement('div');
             itemCountElement.innerHTML = `
-                <strong>Demandes totales :</strong> ${finalGroupItems.size}<br><br>
+                <strong>Total des éléments traités :</strong> ${totalTraite}<br>
+                <strong>Éléments inclus :</strong> ${elementsInclus}<br>
+                <strong>Demandes sans parcelles renseignées :</strong> <a href="#" id="show-orphaned-items" class="orphaned-link" style="color: var(--nomdeposant-color);">${orphanedCount}</a><br>
+                <strong>Nombre de groupes final :</strong> ${Object.keys(groupedItems).length}<br>
             `;
             depotsContainer.insertBefore(itemCountElement, depotsContainer.firstChild);
+
+            // Add event listener for showing orphaned items
+            document.getElementById('show-orphaned-items').addEventListener('click', (e) => {
+                e.preventDefault();
+                showOrphanedItemsPopup(orphanedData.data, "Demandes");
+            });
+
+            // Add event listeners for locate buttons
+            depotsContainer.querySelectorAll('.locate-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    const numero = this.getAttribute('data-numero');
+                    const groupItems = this.getAttribute('data-group-items').split(' ');
+                    locateParcel(section, numero, groupItems);
+                });
+            });
+
+            console.log(`Éléments affichés : ${depotsContainer.querySelectorAll('.list-item').length}`);
         } catch (error) {
-            console.error('Error loading depot data:', error);
+            console.error('Erreur lors du chargement des données de dépôt:', error);
         }
     } else {
-        console.error('Depots source not found.');
+        console.error('Source de dépôts non trouvée.');
     }
 }
+
+function getParcelInfo(groupItems, features, headParcel) {
+    let totalArea = 0;
+    let parcelInfo = 'Parcelle ';
+    
+    // Add head parcel first
+    const headFeature = features.find(f => `${f.properties.section} ${f.properties.numero}` === headParcel);
+    if (headFeature) {
+        const area = headFeature.properties.contenance || 0;
+        parcelInfo += `<strong>${headParcel}</strong> (${area} m²)`;
+        totalArea += area;
+    }
+    
+    // Add other parcels
+    groupItems.forEach(item => {
+        if (item !== headParcel) {
+            const feature = features.find(f => `${f.properties.section} ${f.properties.numero}` === item);
+            if (feature) {
+                const area = feature.properties.contenance || 0;
+                parcelInfo += ` + ${item} (${area} m²)`;
+                totalArea += area;
+            }
+        }
+    });
+    
+    parcelInfo += ` = ${totalArea} m²`;
+    return parcelInfo;
+}
+
+function extractGroupItems(address) {
+    const match = address.match(/$$(.*?)$$/);
+    if (match) {
+        return match[1].split(', ');
+    }
+    return [];
+}
+
+
+
+function showOrphanedItemsPopup(orphanedData, type) {
+    const popup = document.createElement('div');
+    popup.className = 'orphaned-items-popup';
+    popup.innerHTML = `
+        <div class="popup-header">
+            <h2>${type} sans parcelles renseignées (${orphanedData.length})</h2>
+            <button id="close-popup" class="close-button">&times;</button>
+        </div>
+        <ul>
+            ${orphanedData.map(item => `
+                <li>
+                    <strong>${item[1]}</strong> - ${item[3]}<br>
+                    Date de décision: ${item[0]}<br>
+                    Adresse: ${item[4]}<br>
+                    Description: ${item[6]}<br>
+                    Surface: ${item[5]} m²
+                </li>
+            `).join('')}
+        </ul>
+    `;
+    document.body.appendChild(popup);
+
+    document.getElementById('close-popup').addEventListener('click', () => {
+        document.body.removeChild(popup);
+    });
+}
+
+
+
 
 function handleTabClick(tabId) {
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
@@ -674,7 +786,7 @@ function handleTabClick(tabId) {
         if (targetTab) {
             targetTab.style.display = 'block';
         }
-        tabBodies.style.display = 'block';
+        tabBodies.style.display = 'flex';
         tabBodies.style.visibility = 'visible';
         tabsContainer.style.height = 'auto';
         // Remove this line to keep map interactions enabled
@@ -688,9 +800,9 @@ function handleTabClick(tabId) {
 
     // Load specific content based on the tab
     if (tabId === 'tab6') {
-        loadReadme();
+        //loadReadme();
     } else if (tabId === 'tab7') {
-        loadinfo();
+        //loadinfo();
     } else if (tabId === 'tab5') {
         populateFavorablesList();
     } else if (tabId === 'tab4') {
@@ -728,16 +840,20 @@ function getParcelInfo(groupItems, features) {
     return `Parcelle ${headParcel} (${headParcelArea} m²)${aussiSur}${totalAreaInfo}`;
 }
 
+
+
+
+
 async function populateFavorablesList() {
     if (OnOff()) {
-        console.log('>>>> ' + arguments.callee.name + '() <= function used');
+        console.log('>>>> ' + arguments.callee.name + '() <= fonction utilisée');
     }
     const favorablesContainer = document.getElementById('Décisions');
     if (!favorablesContainer) {
-        console.error('Element with ID "Décisions" not found.');
+        console.error('Élément avec ID "Décisions" non trouvé.');
         return;
     }
-    favorablesContainer.innerHTML = ''; // Clear existing content
+    favorablesContainer.innerHTML = ''; // Effacer le contenu existant
 
     const favorablesSource = map.getSource('favorables-parcelles');
     if (favorablesSource) {
@@ -745,38 +861,43 @@ async function populateFavorablesList() {
             const favorablesData = await fetch('GeoDatas/outputfavorables.geojson').then(response => response.json());
             const features = favorablesData.features;
 
+            console.log(`Total des entités : ${features.length}`);
+
+            let totalTraite = 0;
+            let elementsInclus = 0;
+
             const groupedItems = {};
             const headParcels = new Set();
             const childParcels = new Set();
 
             features.forEach(feature => {
                 const properties = feature.properties;
+                totalTraite++;
 
                 if (typeof properties.decisions === 'string') {
                     try {
                         properties.decisions = JSON.parse(properties.decisions);
                     } catch (error) {
-                        console.error('Failed to parse decisions:', properties.decisions, error);
+                        console.error('Échec de l\'analyse des décisions:', properties.decisions, error);
                     }
                 }
 
                 if (Array.isArray(properties.decisions) && properties.decisions.length > 0) {
                     properties.decisions.forEach(decision => {
                         if (Array.isArray(decision)) {
+                            elementsInclus++;
                             const squareMeters = extractSquareMeters(decision[7]);
                             const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
-                            const decisionDate = decision[0];
                             const groupItems = extractGroupItems(decision[4]);
                             const headParcel = groupItems[0];
 
-                            if (!(difference === '0.00' && squareMeters[0] === 0 && squareMeters[1] === 0)) {
-                                const parcelInfo = getParcelInfo(groupItems, features);
-                                const listItem = `
+                            const listItem = `
+                                <div class="decision-group">
                                     <div class="decision-data">
-                                        <strong>${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
-                                        <button class="locate-btnF" data-section="${properties.section}" data-numero="${properties.numero}">Trouver</button><div class="nomdeposantF">${decision[3]}</div>
-                                        <strong>${decision[1]}</strong><i> reçue le </i><strong>${decisionDate}</strong><br>
-                                        ${parcelInfo}
+                                        <strong>[${elementsInclus}] | ${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
+                                        <button class="locate-btnF" data-section="${properties.section}" data-numero="${properties.numero}" data-group-items="${groupItems.join(' ')}">Trouver</button><div class="nomdeposantF">${decision[3]}</div>
+                                        <strong>${decision[1]}</strong><i> reçue le </i><strong>${decision[0]}</strong><br>
+                                        ${getParcelInfo(groupItems, features)}
                                         <br><strong>Adresse </strong>${decision[4]}<br>
                                         <div class="desc"><strong>DESCRIPTION</strong></div>${decision[6]}<br>
                                         ${decision[7]}
@@ -784,23 +905,20 @@ async function populateFavorablesList() {
                                     <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
                                     <br>arpenté <strong>${properties.arpente}</strong>
                                     créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
-                                `;
+                                </div>
+                            `;
 
-                                headParcels.add(headParcel);
-                                groupItems.forEach(item => {
-                                    if (item !== headParcel) {
-                                        childParcels.add(item);
-                                    }
-                                });
-
-                                if (!groupedItems[headParcel]) {
-                                    groupedItems[headParcel] = {
-                                        groupItems: groupItems,
-                                        decisions: []
-                                    };
+                            headParcels.add(headParcel);
+                            groupItems.forEach(item => {
+                                if (item !== headParcel) {
+                                    childParcels.add(item);
                                 }
-                                groupedItems[headParcel].decisions.push({ difference: parseFloat(difference), html: listItem });
+                            });
+
+                            if (!groupedItems[headParcel]) {
+                                groupedItems[headParcel] = [];
                             }
+                            groupedItems[headParcel].push({ difference: parseFloat(difference), html: listItem });
                         }
                     });
                 }
@@ -808,44 +926,70 @@ async function populateFavorablesList() {
 
             const finalGroupItems = new Set([...headParcels].filter(item => !childParcels.has(item)));
 
+            console.log(`Total des éléments groupés : ${Object.keys(groupedItems).length}`);
+            console.log(`Éléments de groupe final : ${finalGroupItems.size}`);
+
             const listItems = [];
             for (const headParcel of finalGroupItems) {
                 if (groupedItems.hasOwnProperty(headParcel)) {
                     const group = groupedItems[headParcel];
-                    const mergedDecisions = group.decisions[0].html; // Only take the first decision which is the head
-                    const totalDifference = group.decisions[0].difference; // Only take the first decision's difference
-
-                    const listItem = `
-                        <div class="decision-group">
-                            ${mergedDecisions}
-                        </div>
-                    `;
-                    listItems.push({ difference: totalDifference, html: listItem });
+                    group.sort((a, b) => b.difference - a.difference);
+                    listItems.push(group[0]);
                 }
             }
 
-            // Sort by difference in descending order
+            console.log(`Total des éléments de liste : ${listItems.length}`);
+
+            // Trier par différence en ordre décroissant
             listItems.sort((a, b) => b.difference - a.difference);
 
-            listItems.forEach(item => {
+            listItems.forEach((item, index) => {
                 const listItemElement = document.createElement('div');
                 listItemElement.className = 'list-item';
-                listItemElement.innerHTML = item.html;
+                listItemElement.innerHTML = item.html.replace(/$$$(\d+)$$$/, `[${listItems.length - index}]`);
                 favorablesContainer.appendChild(listItemElement);
             });
 
+            // Fetch and count orphaned items
+            let orphanedCount = 0;
+            let orphanedData = { data: [] };
+            try {
+                const response = await fetch('./GeoDatas/outputfavorablesorphan.json');
+                if (response.ok) {
+                    orphanedData = await response.json();
+                    orphanedCount = orphanedData.recordsTotal;
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des données orphelines:', error);
+            }
+
             const itemCountElement = document.createElement('div');
             itemCountElement.innerHTML = `
-                <strong>Décisions totales :</strong> ${finalGroupItems.size}<br><br>
+                <strong>Total des éléments traités :</strong> ${totalTraite}<br>
+                <strong>Éléments inclus :</strong> ${elementsInclus}<br>
+                <strong>Décisions sans parcelles renseignées :</strong> <a href="#" id="show-orphaned-items-favorables" class="orphaned-link" style="color: var(--nomdeposantF-color);">${orphanedCount}</a><br>
+                <strong>Nombre de groupes final :</strong> ${finalGroupItems.size}<br>
             `;
             favorablesContainer.insertBefore(itemCountElement, favorablesContainer.firstChild);
+
+            // Add event listener for showing orphaned items
+            document.getElementById('show-orphaned-items-favorables').addEventListener('click', (e) => {
+                e.preventDefault();
+                showOrphanedItemsPopup(orphanedData.data, "Décisions");
+            });
+
+            console.log(`Éléments affichés : ${favorablesContainer.querySelectorAll('.list-item').length}`);
         } catch (error) {
-            console.error('Error loading favorable data:', error);
+            console.error('Erreur lors du chargement des données favorables:', error);
         }
     } else {
-        console.error('Favorables source not found.');
+        console.error('Source des favorables non trouvée.');
     }
 }
+
+
+
+
 
 function extractSquareMeters(data) {
     const regex = /(\d+,\d+|\d+)\s*m²/g;
@@ -913,15 +1057,6 @@ function zoomOutToCenterCommune(callback) {
     }
 }
 
-function createFilters(parcels) {
-    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
-    const filters = ['any'];
-    parcels.forEach(parcel => {
-        const [section, numero] = parcel.trim().split(/\s+/);
-        filters.push(['all', ['==', ['get', 'section'], section], ['==', ['get', 'numero'], numero]]);
-    });
-    return filters;
-}
 
 function extendBounds(features, bounds) {
     if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
@@ -945,41 +1080,6 @@ function identifyNotFoundParcels(parcels, features, notFoundParcels) {
     console.log('Identified not found parcels:', notFoundParcels);
 }
 
-function addHighlightLayers(filters) {
-    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
-    if (!map.getLayer('highlighted-parcel-fill')) {
-        map.addLayer({
-            id: 'highlighted-parcel-fill',
-            type: 'fill',
-            source: 'cadastre-parcelles',
-            layout: {},
-            paint: {
-                'fill-color': '#ff0000',
-                'fill-opacity': 0.5
-            },
-            filter: filters
-        });
-    } else {
-        map.setFilter('highlighted-parcel-fill', filters);
-    }
-
-    if (!map.getLayer('highlighted-parcel-line')) {
-        map.addLayer({
-            id: 'highlighted-parcel-line',
-            type: 'line',
-            source: 'cadastre-parcelles',
-            layout: {},
-            paint: {
-                'line-color': '#FFA500',
-                'line-width': 4
-            },
-            filter: filters
-        });
-    } else {
-        map.setFilter('highlighted-parcel-line', filters);
-    }
-    console.log('Highlight layers added/updated with filters:', filters);
-}
 
 function highlightParcels(parcels) {
     if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
@@ -1018,6 +1118,16 @@ function highlightParcels(parcels) {
     }
 }
 
+function createFilters(parcels) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    const filters = ['any'];
+    parcels.forEach(parcel => {
+        const [section, numero] = parcel.trim().split(/\s+/);
+        filters.push(['all', ['==', ['get', 'section'], section], ['==', ['get', 'numero'], numero]]);
+    });
+    return filters;
+}
+
 function zoomToSelectedParcels(bounds, filters, notFoundParcels) {
     if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
     console.log('Zooming to selected parcels with bounds:', bounds);
@@ -1052,6 +1162,63 @@ function zoomToSelectedParcels(bounds, filters, notFoundParcels) {
         console.log(`The following parcel references were not found: ${notFoundParcels.join(', ')}`);
     }
 }
+
+function addHighlightLayers(filters) {
+    if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
+    if (!map.getLayer('highlighted-parcel-fill')) {
+        map.addLayer({
+            id: 'highlighted-parcel-fill',
+            type: 'fill',
+            source: 'cadastre-parcelles',
+            layout: {},
+            paint: {
+                'fill-color': '#ff0000',
+                'fill-opacity': 0.5
+            },
+            filter: filters
+        });
+    } else {
+        map.setFilter('highlighted-parcel-fill', filters);
+    }
+
+    if (!map.getLayer('highlighted-parcel-line')) {
+        map.addLayer({
+            id: 'highlighted-parcel-line',
+            type: 'line',
+            source: 'cadastre-parcelles',
+            layout: {},
+            paint: {
+                'line-color': '#FFA500',
+                'line-width': 4
+            },
+            filter: filters
+        });
+    } else {
+        map.setFilter('highlighted-parcel-line', filters);
+    }
+    console.log('Highlight layers added/updated with filters:', filters);
+}
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('locate-btn') || event.target.classList.contains('locate-btnF')) {
+        if (!isDataLoaded) {
+            console.error('Data is not fully loaded. Please wait and try again.');
+            return;
+        }
+        const section = event.target.getAttribute('data-section');
+        const numero = event.target.getAttribute('data-numero');
+        const groupItems = event.target.getAttribute('data-group-items');
+        const searchInput = groupItems ? groupItems : `${section}${numero}`;
+
+        document.getElementById('search-input').value = searchInput;
+       
+        zoomOutToCenterCommune(() => {
+            highlightParcels(parseSearchInput(searchInput));
+        });
+    }
+});
+
+
 
 function zoomOutAndRetry(filters, parcels, bounds) {
     if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
@@ -1240,148 +1407,40 @@ function addMarkerToLayerDefinitions(marker, layerId) {
 }
 
 function createLayerItem(layer, index) {
-    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
     const layerItem = document.createElement('div');
     layerItem.className = 'layer-item';
-    layerItem.dataset.layerId = layer.id;
+    layerItem.setAttribute('data-layer-id', layer.id);
 
-    const dragIcon = document.createElement('img');
-    dragIcon.src = 'css/images/drag.png';
-    dragIcon.className = 'icon drag-handle';
+    layerItem.innerHTML = `
+        <span class="drag-handle">&#9776;</span>
+        <input type="checkbox" class="visibility-toggle" ${map.getLayoutProperty(layer.id, 'visibility') !== 'none' ? 'checked' : ''}>
+        <span class="layer-name">${layer.id}</span>
+        <div class="layer-controls"></div>
+    `;
 
-    const visibilityIcon = document.createElement('img');
-    visibilityIcon.className = 'icon';
-    visibilityIcon.alt = 'Visibility';
-    const initialVisibility = layer.type === 'marker' ? 'visible' : (map.getLayoutProperty(layer.id, 'visibility') || 'visible');
-    visibilityIcon.src = initialVisibility === 'none' ? 'css/images/eyeshow.png' : 'css/images/eye.png';
+    const visibilityToggle = layerItem.querySelector('.visibility-toggle');
+    visibilityToggle.addEventListener('change', () => toggleLayerVisibility(layer.id));
 
-    visibilityIcon.onclick = () => {
-        const currentVisibility = map.getLayoutProperty(layer.id, 'visibility');
-        if (currentVisibility === 'visible') {
-            map.setLayoutProperty(layer.id, 'visibility', 'none');
-            visibilityIcon.src = 'css/images/eyeshow.png';
-        } else {
-            map.setLayoutProperty(layer.id, 'visibility', 'visible');
-            visibilityIcon.src = 'css/images/eye.png';
-        }
-    };
+    const controlsContainer = layerItem.querySelector('.layer-controls');
 
-    const indexText = document.createElement('span');
-    indexText.className = 'layer-index';
-    indexText.textContent = `${index}`;
-    indexText.style.marginRight = '10px';
-
-    const idText = document.createElement('span');
-    const baseFileName = layer.fileName ? layer.fileName.split('/').pop() : layer.id;
-    idText.textContent = layer.id;
-    idText.style.marginRight = '10px';
-
-    const colorBox = document.createElement('div');
-    colorBox.className = 'color-box';
-    colorBox.style.backgroundColor = layer.color;
-    colorBox.style.opacity = layer.opacity || 1;
-
+    // Add controls based on layer type and whether it's a system layer
     const isSystemLayer = systemLayers.includes(layer.id);
+    if (!isSystemLayer && (layer.type === 'fill' || layer.type === 'line')) {
+        addColorControl(controlsContainer, layer);
+        addOpacityControl(controlsContainer, layer);
+        addTypeControl(controlsContainer, layer);
+        if (layer.type === 'line') {
+            addLineWidthControl(controlsContainer, layer);
+        }
+    }
+
     if (!isSystemLayer) {
-        colorBox.onclick = () => {
-            const colorPicker = document.createElement('input');
-            colorPicker.type = 'color';
-            colorPicker.value = layer.color;
-
-            colorPicker.addEventListener('input', (event) => {
-                const newColor = event.target.value;
-                updateLayerProperties(layer.id, { color: newColor });
-            });
-
-            colorPicker.addEventListener('change', (event) => {
-                const newColor = event.target.value;
-                updateLayerProperties(layer.id, { color: newColor });
-            });
-
-            colorPicker.click();
-        };
-    } else {
-        colorBox.style.backgroundImage = 'url(css/images/empty.png)';
-        colorBox.style.width = '15px';
-        colorBox.style.height = '15px';
-        colorBox.onclick = null;
-    }
-
-    const opacitySlider = document.createElement('input');
-    opacitySlider.type = 'range';
-    opacitySlider.min = '0';
-    opacitySlider.max = '1';
-    opacitySlider.step = '0.01';
-    opacitySlider.value = layer.opacity || 1;
-    opacitySlider.className = layer.type === 'line' ? 'line-opacity-slider' : 'opacity-slider';
-    if (isSystemLayer) {
-        opacitySlider.disabled = true;
-    } else {
-        opacitySlider.addEventListener('input', function () {
-            updateLayerProperties(layer.id, { opacity: this.value });
-        });
-    }
-
-    layerItem.appendChild(dragIcon);
-    layerItem.appendChild(visibilityIcon);
-    layerItem.appendChild(indexText);
-    layerItem.appendChild(idText);
-    layerItem.appendChild(colorBox);
-    layerItem.appendChild(opacitySlider);
-
-    if (layer.type === 'line') {
-        const weightSlider = document.createElement('input');
-        weightSlider.type = 'range';
-        weightSlider.min = '0';
-        weightSlider.max = '10';
-        weightSlider.step = '0.1';
-        weightSlider.value = layer.weight || 1;
-        weightSlider.className = 'weight-slider';
-
-        if (isSystemLayer) {
-            weightSlider.disabled = true;
-        } else {
-            weightSlider.addEventListener('input', function () {
-                updateLayerProperties(layer.id, { weight: this.value });
-            });
-        }
-
-        layerItem.appendChild(weightSlider);
-    }
-
-    const typeToggleIcon = document.createElement('img');
-    typeToggleIcon.src = `css/images/${layer.type}.png`;
-    typeToggleIcon.className = 'icon';
-    typeToggleIcon.alt = 'Toggle Type';
-    typeToggleIcon.onclick = () => {
-        toggleLayerType(layer.id);
-    };
-
-    const deleteIcon = document.createElement('span');
-    deleteIcon.textContent = 'X';
-    deleteIcon.className = 'icon';
-    deleteIcon.style.cursor = 'pointer';
-    deleteIcon.onclick = () => {
-        document.getElementById('layers-list').removeChild(layerItem);
-        if (layer.type !== 'marker') {
-            map.removeLayer(layer.id);
-            map.removeSource(layer.source);
-        } else {
-            layer.markers.forEach(marker => marker.remove());
-        }
-        delete layerDefinitions[layer.id];
-    };
-
-    layerItem.appendChild(typeToggleIcon);
-    layerItem.appendChild(deleteIcon);
-
-    if (isSystemLayer) {
-        layerItem.classList.add('system-layer');
-        deleteIcon.style.display = 'none';
+        addDeleteButton(controlsContainer, layer);
     }
 
     return layerItem;
 }
+
 
 async function loadMarkdownFile(filePath, elementId, additionalContent) {
 	if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
@@ -1578,6 +1637,7 @@ function addGeoJsonLayer(geojsonData, fileNameWithoutExtension) {
         }
     }
     updateLayerList();
+	adjustLayerNameWidths();
 }
 
 function handleFileSelect(event) {
@@ -1611,6 +1671,7 @@ function handleFileSelect(event) {
 
     reader.readAsText(file);
     event.target.value = null;
+	adjustLayerNameWidths();
 }
 
 function applyLayersState(layersState) {
@@ -1629,6 +1690,7 @@ function applyLayersState(layersState) {
         }
     });
     updateLayerList();
+	adjustLayerNameWidths();
 }
 
 function setLayerOpacity(layerId, opacity) {
@@ -1644,26 +1706,46 @@ function setLayerOpacity(layerId, opacity) {
     }
 }
 
+
 function updateLayerUI(layerId) {
-	
-    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
-    const layer = layerDefinitions[layerId];
-    const colorBox = document.querySelector(`.layer-item[data-layer-id="${layerId}"] .color-box`);
-    if (colorBox) {
-        colorBox.style.backgroundColor = layer.color;
-        colorBox.style.opacity = layer.opacity;
+    const layer = map.getLayer(layerId);
+    if (!layer) {
+        console.warn(`Layer ${layerId} not found. Skipping UI update.`);
+        return;
     }
-    const opacitySlider = document.querySelector(`.layer-item[data-layer-id="${layerId}"] .opacity-slider`);
-    if (opacitySlider) {
-        opacitySlider.value = layer.opacity;
+
+    const layerItem = document.querySelector(`.layer-item[data-layer-id="${layerId}"]`);
+    if (!layerItem) {
+        console.warn(`UI element for layer ${layerId} not found. Skipping UI update.`);
+        return;
     }
-    if (layer.type === 'line') {
-        const weightSlider = document.querySelector(`.layer-item[data-layer-id="${layerId}"] .weight-slider`);
-        if (weightSlider) {
-            weightSlider.value = layer.weight;
-        }
+
+    // Update color control
+    const colorControl = layerItem.querySelector('input[type="color"]');
+    if (colorControl) {
+        colorControl.value = getLayerColor(layerId);
+    }
+
+    // Update opacity control
+    const opacityControl = layerItem.querySelector('input[type="range"][min="0"][max="1"]');
+    if (opacityControl) {
+        opacityControl.value = getLayerOpacity(layerId);
+    }
+
+    // Update line width control
+    const lineWidthControl = layerItem.querySelector('input[type="range"][min="1"][max="10"]');
+    if (lineWidthControl) {
+        lineWidthControl.disabled = layer.type !== 'line';
+        lineWidthControl.value = getLayerLineWidth(layerId);
+    }
+
+    // Update type selector
+    const typeSelector = layerItem.querySelector('select');
+    if (typeSelector) {
+        typeSelector.value = layer.type;
     }
 }
+
 
 function animateView(callback) {
 	
@@ -1712,13 +1794,6 @@ function hideTabs() {
     handleTabClick('tab1');
 }
 
-function toggleLayerVisibility(layerId, icon) {
-	
-    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
-    const visibility = map.getLayoutProperty(layerId, 'visibility');
-    map.setLayoutProperty(layerId, 'visibility', visibility === 'visible' ? 'none' : 'visible');
-    icon.src = visibility === 'visible' ? 'css/images/eyeshow.png' : 'css/images/eye.png';
-}
 
 function moveLayer(layerId, beforeId) {
 	
@@ -1766,14 +1841,14 @@ function getMapLayer() {
 }
 
 function initializeMap() {
-	
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
-
+	loadMarkdownFile('README.md', 'lisezmoi', "<br><p>Depuis le fichier readme.md du github du projet.</p>");
+    loadMarkdownFile('INFORMATIONS.md', 'informations', "<br><p>Depuis le fichier INFORMATIONS.md du github du projet.</p>");
     map.on('style.load', () => {
         const layers = getMapLayer();
         console.log('getMapLayer :' + layers);
         const layersList = document.getElementById('layers-list');
-
+		console.log('layersList :' + layersList);
         // Stocker les calques système
         layers.forEach(layer => {
             if (!systemLayers.includes(layer.id)) {
@@ -1793,55 +1868,61 @@ function initializeMap() {
             map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
         }
         animateView();
-        updateLayerList(); // Mettre à jour la liste des calques après le chargement du style
+        updateLayerList(); // Appeler updateLayerList() ici
     });
-}
-
-function updateLayerList() {
 	
-    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
-    const layersList = document.getElementById('layers-list');
-    if (!layersList) {
-        console.error('layers-list element not found');
-        return;
-    }
-    layersList.innerHTML = ''; // Clear the existing list
-    systemLayers.forEach((layerId, index) => {
-        const layer = map.getLayer(layerId);
-        if (layer) {
-            console.log(`Adding system layer: ${layerId}`);
-            const layerItem = createLayerItem(layer, index);
-            layersList.appendChild(layerItem);
-        }
-    });
-    Object.values(layerDefinitions).forEach((layer, index) => {
-        console.log(`Adding user-defined layer: ${layer.id}`);
-        const layerItem = createLayerItem(layer, index + systemLayers.length);
-        layersList.appendChild(layerItem);
-    });
-    if (!layersList.sortable) {
-        layersList.sortable = new Sortable(layersList, {
-            animation: 150,
-            handle: '.drag-handle',
-            onEnd: function (evt) {
-                const oldIndex = evt.oldIndex;
-                const newIndex = evt.newIndex;
-                if (oldIndex !== newIndex) {
-                    moveLayerByIndex(oldIndex, newIndex);
-                }
-            }
-        });
-    } else {
-        layersList.sortable.option("onEnd", function (evt) {
-            const oldIndex = evt.oldIndex;
-            const newIndex = evt.newIndex;
-
-            if (oldIndex !== newIndex) {
-                moveLayerByIndex(oldIndex, newIndex);
-            }
-        });
-    }
 }
+
+
+function adjustLayerNameWidths() {
+    const layerNames = document.querySelectorAll('.layer-item .nom');
+    if (layerNames.length === 0) return null; // No elements found
+
+    let maxWidth = 100; // Minimum width
+
+    // Find the widest name
+    layerNames.forEach(name => {
+        // Create a temporary span to measure the text width
+        const tempSpan = document.createElement('span');
+        tempSpan.style.visibility = 'hidden';
+        tempSpan.style.position = 'absolute';
+        tempSpan.style.whiteSpace = 'nowrap'; // Prevent wrapping
+        tempSpan.textContent = name.textContent;
+        document.body.appendChild(tempSpan);
+
+        const width = tempSpan.offsetWidth;
+        if (width > maxWidth) {
+            maxWidth = width;
+        }
+
+        document.body.removeChild(tempSpan);
+    });
+
+    // Set the width for all layer names
+    layerNames.forEach(name => {
+        name.style.width = `${maxWidth + 10}px`; // Add some padding
+        name.style.whiteSpace = 'nowrap'; // Prevent wrapping
+        name.style.overflow = 'hidden'; // Hide overflow
+        name.style.textOverflow = 'ellipsis'; // Add ellipsis for overflowing text
+    });
+
+    console.log(`Adjusted layer name widths to ${maxWidth + 10}px`);
+    return maxWidth + 10; // Return the width that was set
+}
+
+
+
+function addColorControl(layerItem, layer) {
+    const colorPicker = document.createElement('input');
+    colorPicker.type = 'color';
+    colorPicker.value = getLayerColor(layer.id);
+    colorPicker.addEventListener('input', (e) => {
+        updateLayerColor(layer.id, e.target.value);
+    });
+    layerItem.appendChild(colorPicker);
+	adjustLayerNameWidths();
+}
+
 
 
 function addPointLayer(geojsonData, layerId, sourceId, color, opacity) {
@@ -1864,20 +1945,63 @@ function addPointLayer(geojsonData, layerId, sourceId, color, opacity) {
 }
 
 function moveLayerByIndex(oldIndex, newIndex) {
-	
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     if (oldIndex === newIndex) return;
-    const layers = getMapLayer();
-    console.log('Layers before move:', layers);
-    const movedLayer = layers.splice(oldIndex, 1)[0];
-    console.log('Moved Layer:', movedLayer);
-    layers.splice(newIndex, 0, movedLayer);
-    console.log('Layers after move:', layers);
-    const nextLayerId = layers[newIndex + 1] ? layers[newIndex + 1].id : undefined;
-    console.log('Next Layer ID:', nextLayerId);
-    map.moveLayer(movedLayer.id, nextLayerId);
-    reorderLayerList();
+    
+    const layers = map.getStyle().layers;
+    const movedLayer = layers[oldIndex];
+    
+    if (oldIndex < newIndex) {
+        // Moving down
+        if (newIndex < layers.length - 1) {
+            map.moveLayer(movedLayer.id, layers[newIndex + 1].id);
+        } else {
+            map.moveLayer(movedLayer.id);
+        }
+    } else {
+        // Moving up
+        map.moveLayer(movedLayer.id, layers[newIndex].id);
+    }
+
+    console.log(`Moved layer ${movedLayer.id} from index ${oldIndex} to ${newIndex}`);
+
+    updateLayerList();
+    adjustLayerNameWidths();
 }
+
+
+
+function toggleLayerVisibility(layerId) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
+    
+    const visibility = map.getLayoutProperty(layerId, 'visibility');
+    const newVisibility = visibility === 'visible' ? 'none' : 'visible';
+    map.setLayoutProperty(layerId, 'visibility', newVisibility);
+    
+    // Update the checkbox state
+    const checkbox = document.querySelector(`.layer-item[data-layer-id="${layerId}"] input[type="checkbox"]`);
+    if (checkbox) {
+        checkbox.checked = newVisibility === 'visible';
+    }
+    
+    console.log(`Layer ${layerId} visibility set to ${newVisibility}`);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function reorderLayerList() {
 	
@@ -1918,11 +2042,391 @@ function initializeMarkers(geojson) {
     return markers;
 }
 
+
+
+function getLayerColor(layerId) {
+    const layer = map.getLayer(layerId);
+    if (layer) {
+        if (layer.type === 'fill') {
+            return map.getPaintProperty(layerId, 'fill-color') || '#000000';
+        } else if (layer.type === 'line') {
+            return map.getPaintProperty(layerId, 'line-color') || '#000000';
+        }
+    }
+    return '#000000'; // Couleur par défaut
+}
+
+function getLayerOpacity(layerId) {
+    const layer = map.getLayer(layerId);
+    if (layer) {
+        if (layer.type === 'fill') {
+            return map.getPaintProperty(layerId, 'fill-opacity') || 1;
+        } else if (layer.type === 'line') {
+            return map.getPaintProperty(layerId, 'line-opacity') || 1;
+        }
+    }
+    return 1; // Opacité par défaut
+}
+
+function getLayerLineWidth(layerId) {
+    const layer = map.getLayer(layerId);
+    if (layer && layer.type === 'line') {
+        return map.getPaintProperty(layerId, 'line-width') || 1;
+    }
+    return 1; // Largeur de ligne par défaut
+}
+
+function updateLayerColor(layerId, color) {
+    const layer = map.getLayer(layerId);
+    if (layer) {
+        if (layer.type === 'fill') {
+            map.setPaintProperty(layerId, 'fill-color', color);
+        } else if (layer.type === 'line') {
+            map.setPaintProperty(layerId, 'line-color', color);
+        }
+    }
+}
+
+
+function updateLayerOpacity(layerId, opacity) {
+    const layer = map.getLayer(layerId);
+    if (layer) {
+        if (layer.type === 'fill') {
+            map.setPaintProperty(layerId, 'fill-opacity', parseFloat(opacity));
+        } else if (layer.type === 'line') {
+            map.setPaintProperty(layerId, 'line-opacity', parseFloat(opacity));
+        }
+    }
+}
+
+
+
+
+function updateLayerType(layerId, newType) {
+    const layer = map.getLayer(layerId);
+    if (layer && !systemLayers.includes(layerId)) {
+        const currentPaint = map.getPaintProperty(layerId, `${layer.type}-color`);
+        const currentOpacity = map.getPaintProperty(layerId, `${layer.type}-opacity`);
+
+        // Get the current layer index
+        const layers = map.getStyle().layers;
+        const currentIndex = layers.findIndex(l => l.id === layerId);
+        const nextLayerId = layers[currentIndex + 1] ? layers[currentIndex + 1].id : undefined;
+
+        map.removeLayer(layerId);
+
+        const newLayer = {
+            id: layerId,
+            type: newType,
+            source: layer.source,
+            paint: {
+                [`${newType}-color`]: currentPaint,
+                [`${newType}-opacity`]: currentOpacity
+            }
+        };
+
+        if (newType === 'line') {
+            newLayer.paint['line-width'] = 0.01; // Set default line width to 0.01
+        }
+
+        // Add the layer back at its original position
+        map.addLayer(newLayer, nextLayerId);
+
+        // Update layerDefinitions
+        if (layerDefinitions[layerId]) {
+            layerDefinitions[layerId].type = newType;
+            if (newType === 'line') {
+                layerDefinitions[layerId].weight = 0.01; // Set default line width to 0.01
+            }
+        }
+
+        // Update UI
+        updateLayerUI(layerId);
+    }
+}
+
+
+function adjustLayerNameWidths() {
+    const layerNames = document.querySelectorAll('.layer-item .nom');
+    if (layerNames.length === 0) return null; // No elements found
+
+    let maxWidth = 100; // Minimum width
+
+    // Find the widest name
+    layerNames.forEach(name => {
+        const width = name.scrollWidth;
+        if (width > maxWidth) {
+            maxWidth = width;
+        }
+    });
+
+    // Set the width for all layer names
+    layerNames.forEach(name => {
+        name.style.width = `${maxWidth}px`;
+    });
+
+    console.log(`Adjusted layer name widths to ${maxWidth}px`);
+    return maxWidth; // Return the width that was set
+}
+
+function updateLayerLineWidth(layerId, width) {
+    const layer = map.getLayer(layerId);
+    if (layer && layer.type === 'line') {
+        map.setPaintProperty(layerId, 'line-width', parseFloat(width));
+        if (layerDefinitions[layerId]) {
+            layerDefinitions[layerId].weight = parseFloat(width);
+        }
+    }
+}
+
+
+
+
+function updateLayerList() {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
+    const layersList = document.getElementById('layers-list');
+    const layersContainer = document.getElementById('layers-container');
+ 
+    if (!layersList) {
+        console.error('layers-list element not found');
+        return;
+    }
+    layersList.innerHTML = ''; // Clear the existing list
+
+    const allLayers = map.getStyle().layers;
+    console.log('All layers detected:', allLayers.map(layer => layer.id));
+    allLayers.forEach((layer, index) => {
+        const layerItem = document.createElement('div');
+        layerItem.className = 'layer-item';
+        layerItem.setAttribute('data-layer-id', layer.id);
+
+        addLayerControls(layerItem, layer);
+        
+        // Set the initial state of the visibility checkbox
+        const visibilityCheckbox = layerItem.querySelector('input[type="checkbox"]');
+        if (visibilityCheckbox) {
+            visibilityCheckbox.checked = map.getLayoutProperty(layer.id, 'visibility') !== 'none';
+        }
+
+        layersList.appendChild(layerItem);
+    });
+
+
+
+
+    // Adjust the container height
+    layersContainer.style.maxHeight = `calc(100vh - 200px)`; // Adjust this value as needed
+
+    // Initialize or update Sortable
+    if (layersList.sortable) {
+        layersList.sortable.destroy();
+    }
+    layersList.sortable = new Sortable(layersList, {
+        animation: 150,
+        handle: '.drag-handle',
+        onEnd: function (evt) {
+            const oldIndex = evt.oldIndex;
+            const newIndex = evt.newIndex;
+            if (oldIndex !== newIndex) {
+                moveLayerByIndex(oldIndex, newIndex);
+            }
+        }
+    });
+
+    console.log(`Total layers in list: ${layersList.children.length}`);
+    
+    // Call adjustLayerNameWidths after a short delay to ensure DOM is updated
+    setTimeout(adjustLayerNameWidths, 0);
+}
+
+
+
+
+function addLayerControls(layerItem, layer) {
+    const isSystemLayer = systemLayers.includes(layer.id);
+    const isHoverLayer = layer.id === 'cadastre-parcelles-hover';
+    const isSpecialLayer = isSystemLayer || isHoverLayer || layer.id === 'cadastre-parcelles-labels' || layer.id === 'highlighted-parcel';
+
+    // Créer un conteneur flex pour les contrôles
+    const controlsContainer = document.createElement('div');
+    controlsContainer.className = 'layer-controls';
+    controlsContainer.style.display = 'flex';
+    controlsContainer.style.alignItems = 'center';
+    controlsContainer.style.gap = '5px';
+
+    // Ajouter tous les contrôles, mais les désactiver si nécessaire
+	
+    addControl(controlsContainer, 'drag', layer, isSpecialLayer);
+    addControl(controlsContainer, 'level', layer, isSpecialLayer);
+
+    addControl(controlsContainer, 'visibility', layer, false); // La visibilité est toujours active	
+    addControl(controlsContainer, 'name', layer, true); // Le nom est toujours en lecture seule  
+	addControl(controlsContainer, 'type', layer, isSpecialLayer);
+
+    addControl(controlsContainer, 'color', layer, isSystemLayer && !isHoverLayer);
+    addControl(controlsContainer, 'opacity', layer, isSpecialLayer);
+    addControl(controlsContainer, 'lineWidth', layer, isSpecialLayer || layer.type !== 'line');
+  
+    addDeleteButton(controlsContainer, layer, );//isSpecialLayer || isHoverLayer || isSystemLayer
+
+    layerItem.appendChild(controlsContainer);
+
+    // Indicateurs spéciaux
+    if (isHoverLayer) {
+        //addSpecialIndicator(layerItem, '*', 'Calque de survol - Seule la couleur est modifiable');
+    } else if (isSpecialLayer) {
+        // addSpecialIndicator(layerItem, '🔒', 'Ce calque est verrouillé');
+    }
+}
+
+
+function addControl(container, type, layer, isDisabled) {
+    let control;
+    switch (type) {
+        case 'drag':
+            control = document.createElement('span');
+            control.className = 'drag-handle';
+            control.innerHTML = '&#9776;';
+            control.style.cursor = 'move';
+            break;
+        
+        case 'level':
+            control = document.createElement('span');
+            control.className = 'level';
+            control.textContent = getLayerLevel(layer.id);
+            break;
+
+        case 'visibility':
+            control = document.createElement('input');
+            control.type = 'checkbox';
+            control.checked = map.getLayoutProperty(layer.id, 'visibility') !== 'none';
+            control.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleLayerVisibility(layer.id);
+            });
+            break;
+
+        case 'name':
+            control = document.createElement('span');
+            control.className = 'nom';
+            control.textContent = layer.id;
+            break;
+
+        case 'color':
+            control = document.createElement('input');
+            control.type = 'color';
+            control.value = getLayerColor(layer.id);
+            control.addEventListener('input', (e) => updateLayerColor(layer.id, e.target.value));
+            break;
+
+        case 'opacity':
+            control = document.createElement('input');
+            control.type = 'range';
+            control.min = '0';
+            control.max = '1';
+            control.step = '0.1';
+            control.value = getLayerOpacity(layer.id);
+            control.addEventListener('input', (e) => updateLayerOpacity(layer.id, e.target.value));
+            control.style.width = '50px'; // Reduce width by 50%
+            break;
+
+        case 'lineWidth':
+            control = document.createElement('input');
+            control.type = 'range';
+            control.min = '0.01';
+            control.max = '10';
+            control.step = '0.01';
+            control.value = getLayerLineWidth(layer.id);
+            control.addEventListener('input', (e) => updateLayerLineWidth(layer.id, e.target.value));
+            control.disabled = layer.type !== 'line';
+            control.style.width = '50px'; // Reduce width by 50%
+            break;
+
+        case 'type':
+            control = document.createElement('select');
+            control.innerHTML = '<option value="fill">Fill</option><option value="line">Line</option>';
+            control.value = layer.type;
+            control.addEventListener('change', (e) => {
+                updateLayerType(layer.id, e.target.value);
+                const lineWidthSlider = container.querySelector('input[type="range"][min="0.01"][max="10"]');
+                if (lineWidthSlider) {
+                    lineWidthSlider.disabled = e.target.value !== 'line';
+                }
+            });
+            break;
+    }
+    
+    if (control) {
+        control.disabled = isDisabled;
+        container.appendChild(control);
+    }
+}
+
+
+function removeLayer(layerId) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
+    
+    if (map.getLayer(layerId)) {
+        // Remove the layer from the map
+        map.removeLayer(layerId);
+        
+        // If the layer has a source, remove it as well
+        if (map.getSource(layerId)) {
+            map.removeSource(layerId);
+        }
+        
+        // Remove the layer from the layers list in the UI
+        const layerElement = document.getElementById(layerId);
+        if (layerElement) {
+            layerElement.remove();
+        }
+        
+        // Update the layer list in the UI
+        updateLayerList();
+        
+        console.log(`Layer ${layerId} removed successfully`);
+    } else {
+        console.warn(`Layer ${layerId} not found on the map`);
+    }
+}
+
+
+
+function addDeleteButton(container, layer, isDisabled) {
+    if (!isDisabled) {
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'x';
+        deleteButton.addEventListener('click', () => {
+            if (confirm(`Êtes-vous sûr de vouloir supprimer le calque "${layer.id}" ?`)) {
+                removeLayer(layer.id);
+                updateLayerList();
+            }
+        });
+        container.appendChild(deleteButton);
+    }
+}
+
+function addSpecialIndicator(layerItem, symbol, title) {
+    const indicator = document.createElement('span');
+    indicator.textContent = ` ${symbol}`;
+    indicator.title = title;
+    indicator.style.fontStyle = 'italic';
+    indicator.style.color = '#888';
+    layerItem.appendChild(indicator);
+}
+
+function getLayerLevel(layerId) {
+    const layers = map.getStyle().layers;
+    return layers.findIndex(layer => layer.id === layerId);
+}
+
 function OnOff() {
 	
     return false; 
     // return true;
 }
+
+
 
 initializeMap();
 addMouseMoveListener();

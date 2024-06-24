@@ -1,0 +1,67 @@
+{
+  "eglises": [
+    {
+      "coordonnees": {
+        "longitude": 9.279256,
+        "latitude": 41.590903
+      },
+      "nom": "Église saint Jean-Baptiste",
+      "hameaux": "Porto-vecchio",
+      "icon": "egliseO.png"
+    },
+    {
+      "coordonnees": {
+        "longitude": 9.341663,
+        "latitude": 41.582270
+      },
+      "nom": "Chapelle de Piccovaggia",
+      "hameaux": "Piccovaggia",
+      "icon": "egliseO.png"
+    },
+    {
+      "coordonnees": {
+        "longitude": 9.291122,
+        "latitude": 41.626622
+      },
+      "nom": "Chapelle de trinité",
+      "hameaux": "Trinité de Porto-vecchio",
+      "icon": "egliseO.png"
+    },
+    {
+      "coordonnees": {
+        "longitude": 9.207984,
+        "latitude": 41.590025
+      },
+      "nom": "Eglise Saint Joseph",
+      "hameaux": "Muratello",
+      "icon": "egliseO.png"
+    },
+    {
+      "coordonnees": {
+        "longitude": 9.233851,
+        "latitude": 41.510498
+      },
+      "nom": "Chapelle de Petralonga Salvini",
+      "hameaux": "Petralonga Salvini",
+      "icon": "egliseO.png"
+    },
+    {
+      "coordonnees": {
+        "longitude": 9.240633,
+        "latitude": 41.561905
+      },
+      "nom": "Eglise de Ceccia",
+      "hameaux": "Ceccia",
+      "icon": "egliseO.png"
+    },
+    {
+      "coordonnees": {
+        "longitude": 9.194524,
+        "latitude": 41.650670
+      },
+      "nom": "Chapelle de L'Ospedale",
+      "hameaux": "Ospedale",
+      "icon": "egliseO.png"
+    }
+  ]
+}

@@ -124,18 +124,19 @@
                 "contenance": 4128,
                 "arpente": false,
                 "created": "2019-02-18",
-                "updated": "2020-08-26",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0096",
                         "10/04/2024",
                         "MME SIMONI michèle",
-                        " Renajolo palavesa 20137 Giorgio (B 1818, B 889, B 1819)",
+                        "Renajolo palavesa 20137 Giorgio (B 1818, B 889, B 1819)",
                         "9773 m²",
                         "la création d'une piscine",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "B 1818, B 889, B 1819"
                     ]
                 ]
             }
@@ -255,18 +256,19 @@
                 "contenance": 5184,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-08-26",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0096",
                         "10/04/2024",
                         "MME SIMONI michèle",
-                        " Renajolo palavesa 20137 Giorgio (B 1818, B 889, B 1819)",
+                        "Renajolo palavesa 20137 Giorgio (B 1818, B 889, B 1819)",
                         "9773 m²",
                         "la création d'une piscine",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "B 1818, B 889, B 1819"
                     ]
                 ]
             }
@@ -362,18 +364,19 @@
                 "contenance": 461,
                 "arpente": true,
                 "created": "2019-02-18",
-                "updated": "2020-08-26",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0096",
                         "10/04/2024",
                         "MME SIMONI michèle",
-                        " Renajolo palavesa 20137 Giorgio (B 1818, B 889, B 1819)",
+                        "Renajolo palavesa 20137 Giorgio (B 1818, B 889, B 1819)",
                         "9773 m²",
                         "la création d'une piscine",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "B 1818, B 889, B 1819"
                     ]
                 ]
             }
@@ -421,18 +424,19 @@
                 "contenance": 823,
                 "arpente": true,
                 "created": "2011-10-07",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0093",
                         "29/03/2024",
                         "M LANINI JOSEPH",
-                        "5 Quartier Renajolo 20137  (B 1588)",
+                        "5 Quartier Renajolo 20137 (B 1588)",
                         "823 m²",
                         "la pose de panneau solaire",
                         "",
-                        "Favorable le 06/05/2024"
+                        "Favorable le 06/05/2024",
+                        "B 1588"
                     ]
                 ]
             }
@@ -696,18 +700,19 @@
                 "contenance": 18011,
                 "arpente": false,
                 "created": "2011-10-20",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0091",
                         "05/04/2024",
                         "M CESARI Etienne",
-                        " Pardini 20137  (B 1553, B 439)",
+                        "Pardini 20137 (B 1553, B 439)",
                         "19411 m²",
                         "la construction d'un mur",
                         "",
-                        "Favorable le 06/05/2024"
+                        "Favorable le 06/05/2024",
+                        "B 1553, B 439"
                     ]
                 ]
             }
@@ -763,18 +768,19 @@
                 "contenance": 480,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0094",
                         "02/04/2024",
                         "M Thomas Thierry",
-                        "6541 Quartier Nivalella 20137  (B 508)",
+                        "6541 Quartier Nivalella 20137 (B 508)",
                         "480 m²",
                         "la pose de panneaux solaires",
                         "",
-                        "Favorable le 06/05/2024"
+                        "Favorable le 06/05/2024",
+                        "B 508"
                     ]
                 ]
             }
@@ -858,18 +864,19 @@
                 "contenance": 1400,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0091",
                         "05/04/2024",
                         "M CESARI Etienne",
-                        " Pardini 20137  (B 1553, B 439)",
+                        "Pardini 20137 (B 1553, B 439)",
                         "19411 m²",
                         "la construction d'un mur",
                         "",
-                        "Favorable le 06/05/2024"
+                        "Favorable le 06/05/2024",
+                        "B 1553, B 439"
                     ]
                 ]
             }
@@ -933,18 +940,19 @@
                 "contenance": 410,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "04/06/2024",
                         "PC 02A 247 24 R0095",
                         "24/04/2024",
                         "M BRANCA Marc",
-                        " Route de Palavese 20137 Palavese (B 356, B 1439)",
+                        "Route de Palavese 20137 Palavese (B 356, B 1439)",
                         "1935 m²",
                         "la rénovation de l'habitation existante et surélévation de la toiture",
-                        "- Surface plancher créée : 18 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 04/06/2024"
+                        "- Surface plancher créée : 18 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 04/06/2024",
+                        "B 356, B 1439"
                     ]
                 ]
             }
@@ -1008,18 +1016,19 @@
                 "contenance": 1525,
                 "arpente": false,
                 "created": "2007-09-28",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "04/06/2024",
                         "PC 02A 247 24 R0095",
                         "24/04/2024",
                         "M BRANCA Marc",
-                        " Route de Palavese 20137 Palavese (B 356, B 1439)",
+                        "Route de Palavese 20137 Palavese (B 356, B 1439)",
                         "1935 m²",
                         "la rénovation de l'habitation existante et surélévation de la toiture",
-                        "- Surface plancher créée : 18 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 04/06/2024"
+                        "- Surface plancher créée : 18 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 04/06/2024",
+                        "B 356, B 1439"
                     ]
                 ]
             }
@@ -1083,18 +1092,151 @@
                 "contenance": 1190,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "27/05/2024",
                         "PC 02A 247 24 R0069",
                         "27/03/2024",
                         "M WACH Benoit",
-                        "  Route de benciugnu 20137 Lieu dit Pietra Nera (C 323)",
+                        "Route de benciugnu 20137 Lieu dit Pietra Nera (C 323)",
                         "1190 m²",
                         "la rénovation et l'extension d'une maison, création d'une piscine, garage, pool house",
-                        "- Surface plancher créée : 35 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 27/05/2024"
+                        "- Surface plancher créée : 35 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 27/05/2024",
+                        "C 323"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000C2450",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2851469,
+                            41.6303072
+                        ],
+                        [
+                            9.2852743,
+                            41.6304071
+                        ],
+                        [
+                            9.2856294,
+                            41.63015
+                        ],
+                        [
+                            9.2856844,
+                            41.6301234
+                        ],
+                        [
+                            9.2857016,
+                            41.6301491
+                        ],
+                        [
+                            9.2855183,
+                            41.6302788
+                        ],
+                        [
+                            9.2850984,
+                            41.6305802
+                        ],
+                        [
+                            9.2849957,
+                            41.6305457
+                        ],
+                        [
+                            9.2848252,
+                            41.6304846
+                        ],
+                        [
+                            9.2851469,
+                            41.6303072
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000C2450",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "C",
+                "numero": "2450",
+                "contenance": 774,
+                "arpente": true,
+                "created": "2016-01-14",
+                "updated": "2022-09-13",
+                "favorables": [
+                    [
+                        "21/05/2024",
+                        "PC 02A 247 24 R0065",
+                        "22/03/2024",
+                        "M CLEMENTE Aurélien",
+                        "La Trinite 20137 Pietranera (C 2450, C 2447)",
+                        "1360 m²",
+                        "la construction d'une véranda",
+                        "- Surface plancher créée : 35 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 21/05/2024",
+                        "C 2450, C 2447"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000C2447",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2850151,
+                            41.630204
+                        ],
+                        [
+                            9.2851469,
+                            41.6303072
+                        ],
+                        [
+                            9.2848252,
+                            41.6304846
+                        ],
+                        [
+                            9.2846482,
+                            41.630392
+                        ],
+                        [
+                            9.2850151,
+                            41.630204
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000C2447",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "C",
+                "numero": "2447",
+                "contenance": 586,
+                "arpente": true,
+                "created": "2016-01-14",
+                "updated": "2022-09-13",
+                "favorables": [
+                    [
+                        "21/05/2024",
+                        "PC 02A 247 24 R0065",
+                        "22/03/2024",
+                        "M CLEMENTE Aurélien",
+                        "La Trinite 20137 Pietranera (C 2450, C 2447)",
+                        "1360 m²",
+                        "la construction d'une véranda",
+                        "- Surface plancher créée : 35 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 21/05/2024",
+                        "C 2450, C 2447"
                     ]
                 ]
             }
@@ -1150,8 +1292,8 @@
                 "contenance": 912,
                 "arpente": false,
                 "created": "2013-07-26",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 24 R0042",
@@ -1159,9 +1301,10 @@
                         "M EUSEBIO GOMES Antonio",
                         "5 LOT LES PRAIRIES LOT 5 20137 ZAPAVONE (C 2358)",
                         "912 m²",
-                        "la construction d'une piscine,  local technique, terrasse , carport,  atelier et abri de jardin",
-                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "la construction d'une piscine, local technique, terrasse , carport, atelier et abri de jardin",
+                        "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 25/04/2024",
+                        "C 2358"
                     ]
                 ]
             }
@@ -1205,18 +1348,19 @@
                 "contenance": 614,
                 "arpente": true,
                 "created": "2009-12-18",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0080",
                         "28/03/2024",
                         "M MILAZZO Giovani",
-                        " Ortibarzo 20137  (C 2151)",
+                        "Ortibarzo 20137 (C 2151)",
                         "614 m²",
                         "la pose de panneaux photovoltaique",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "C 2151"
                     ]
                 ]
             }
@@ -1292,18 +1436,19 @@
                 "contenance": 1307,
                 "arpente": false,
                 "created": "2012-09-12",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-10-27",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0071",
                         "20/03/2024",
                         "M MULTINEDDU MICKAEL",
-                        " ROUTE DE NOTA 20137 BISCOVAGGIO (C 2313)",
+                        "ROUTE DE NOTA 20137 BISCOVAGGIO (C 2313)",
                         "1423 m²",
                         "la construction d'une piscine",
-                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 25/04/2024",
+                        "C 2313"
                     ]
                 ]
             }
@@ -1347,141 +1492,19 @@
                 "contenance": 700,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2022-01-03",
+                "favorables": [
                     [
                         "30/05/2024",
                         "PC 02A 247 24 R0077",
                         "03/04/2024",
                         "M BERROYER Thomas",
-                        " Lieu-Dit Zicchilene 20137  (D 1235)",
+                        "Lieu-Dit Zicchilene 20137 (D 1235)",
                         "700 m²",
                         "la construction d'une maison individuelle avec une piscine",
-                        "- Surface plancher créée : 105 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 30/05/2024"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A2470000D1719",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2705282,
-                            41.5942041
-                        ],
-                        [
-                            9.2709032,
-                            41.5940213
-                        ],
-                        [
-                            9.2712065,
-                            41.5938734
-                        ],
-                        [
-                            9.2716306,
-                            41.5936666
-                        ],
-                        [
-                            9.2716676,
-                            41.5936787
-                        ],
-                        [
-                            9.2717856,
-                            41.5937509
-                        ],
-                        [
-                            9.2720256,
-                            41.5939157
-                        ],
-                        [
-                            9.272419,
-                            41.5942255
-                        ],
-                        [
-                            9.2728373,
-                            41.5945601
-                        ],
-                        [
-                            9.2725232,
-                            41.5948392
-                        ],
-                        [
-                            9.2722427,
-                            41.5950974
-                        ],
-                        [
-                            9.2719824,
-                            41.5953133
-                        ],
-                        [
-                            9.2718979,
-                            41.5953897
-                        ],
-                        [
-                            9.2717095,
-                            41.5955599
-                        ],
-                        [
-                            9.2714386,
-                            41.5957712
-                        ],
-                        [
-                            9.2712811,
-                            41.5958805
-                        ],
-                        [
-                            9.2712481,
-                            41.5958297
-                        ],
-                        [
-                            9.2710394,
-                            41.5953605
-                        ],
-                        [
-                            9.2707925,
-                            41.5947905
-                        ],
-                        [
-                            9.2706826,
-                            41.594551
-                        ],
-                        [
-                            9.2705774,
-                            41.594314
-                        ],
-                        [
-                            9.2705282,
-                            41.5942041
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A2470000D1719",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "D",
-                "numero": "1719",
-                "contenance": 24670,
-                "arpente": false,
-                "created": "2007-03-28",
-                "updated": "2020-09-24",
-                "decisions": [
-                    [
-                        "07/05/2024",
-                        "PC 02A 247 24 R0049",
-                        "08/03/2024",
-                        "M BARTOLI Pascal",
-                        " Lotissement \"Fiori di Macchia\" (lot n°22) 20137  LOT 22 Fiori di macchia (D 2072, D 1719)",
-                        "25276 m²",
-                        "la construction d'une maison individuelle avec garage",
-                        "- Surface plancher créée : 75 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : 105 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 30/05/2024",
+                        "D 1235"
                     ]
                 ]
             }
@@ -1545,18 +1568,79 @@
                 "contenance": 1546,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "21/05/2024",
                         "DP 02A 247 24 R0104",
                         "23/04/2024",
                         "M GIUDICELLI Alexandre",
-                        " Lieu-dit Prunello 20137  (D 942)",
+                        "Lieu-dit Prunello 20137 (D 942)",
                         "1546 m²",
                         "la pose de panneaux photovoltaïques",
                         "",
-                        "Favorable le 21/05/2024"
+                        "Favorable le 21/05/2024",
+                        "D 942"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000D2072",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2711011,
+                            41.5944995
+                        ],
+                        [
+                            9.2713266,
+                            41.5944371
+                        ],
+                        [
+                            9.2714508,
+                            41.5946922
+                        ],
+                        [
+                            9.2712193,
+                            41.5947509
+                        ],
+                        [
+                            9.2711072,
+                            41.5945119
+                        ],
+                        [
+                            9.2711011,
+                            41.5944995
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000D2072",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "D",
+                "numero": "2072",
+                "contenance": 606,
+                "arpente": true,
+                "created": "2021-03-11",
+                "updated": "2023-08-29",
+                "favorables": [
+                    [
+                        "07/05/2024",
+                        "PC 02A 247 24 R0049",
+                        "08/03/2024",
+                        "M BARTOLI Pascal",
+                        "Lotissement \"Fiori di Macchia\" (lot n°22) 20137 LOT 22 Fiori di macchia (D 2072, D 1719)",
+                        "25276 m²",
+                        "la construction d'une maison individuelle avec garage",
+                        "- Surface plancher créée : 75 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 07/05/2024",
+                        "D 2072, D 1719"
                     ]
                 ]
             }
@@ -1912,18 +1996,19 @@
                 "contenance": 21623,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "14/06/2024",
                         "DP 02A 247 21 R0092",
                         "18/06/2021",
-                        " SARL CORSICA SOLE 35 ",
-                        " Quartier Campicicoli 20137  (D 1475)",
+                        "SARL CORSICA SOLE 35",
+                        "Quartier Campicicoli 20137 (D 1475)",
                         "21623 m²",
                         "Installation de panneaux photovoltaïques en toiture",
                         "",
-                        "Favorable le 14/06/2024"
+                        "Favorable le 14/06/2024",
+                        "D 1475"
                     ]
                 ]
             }
@@ -1995,18 +2080,19 @@
                 "contenance": 8760,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "17/06/2024",
                         "PC 02A 247 24 R0039",
                         "23/02/2024",
                         "SCI DANIEL PIERRE",
-                        " ROUTE D'ARCA 20137  (D 801, D 802, D 803, D 804, D 1550)",
+                        "ROUTE D'ARCA 20137 (D 801, D 802, D 803, D 804, D 1550)",
                         "24322 m²",
                         "la construction de 3 suites de l'hôtel existant",
-                        "- Surface plancher créée : 168,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 17/06/2024"
+                        "- Surface plancher créée : 168,3 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 17/06/2024",
+                        "D 801, D 802, D 803, D 804, D 1550"
                     ]
                 ]
             }
@@ -2078,18 +2164,19 @@
                 "contenance": 6605,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "17/06/2024",
                         "PC 02A 247 24 R0039",
                         "23/02/2024",
                         "SCI DANIEL PIERRE",
-                        " ROUTE D'ARCA 20137  (D 801, D 802, D 803, D 804, D 1550)",
+                        "ROUTE D'ARCA 20137 (D 801, D 802, D 803, D 804, D 1550)",
                         "24322 m²",
                         "la construction de 3 suites de l'hôtel existant",
-                        "- Surface plancher créée : 168,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 17/06/2024"
+                        "- Surface plancher créée : 168,3 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 17/06/2024",
+                        "D 801, D 802, D 803, D 804, D 1550"
                     ]
                 ]
             }
@@ -2189,18 +2276,19 @@
                 "contenance": 5317,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "17/06/2024",
                         "PC 02A 247 24 R0039",
                         "23/02/2024",
                         "SCI DANIEL PIERRE",
-                        " ROUTE D'ARCA 20137  (D 801, D 802, D 803, D 804, D 1550)",
+                        "ROUTE D'ARCA 20137 (D 801, D 802, D 803, D 804, D 1550)",
                         "24322 m²",
                         "la construction de 3 suites de l'hôtel existant",
-                        "- Surface plancher créée : 168,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 17/06/2024"
+                        "- Surface plancher créée : 168,3 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 17/06/2024",
+                        "D 801, D 802, D 803, D 804, D 1550"
                     ]
                 ]
             }
@@ -2284,18 +2372,19 @@
                 "contenance": 2890,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "17/06/2024",
                         "PC 02A 247 24 R0039",
                         "23/02/2024",
                         "SCI DANIEL PIERRE",
-                        " ROUTE D'ARCA 20137  (D 801, D 802, D 803, D 804, D 1550)",
+                        "ROUTE D'ARCA 20137 (D 801, D 802, D 803, D 804, D 1550)",
                         "24322 m²",
                         "la construction de 3 suites de l'hôtel existant",
-                        "- Surface plancher créée : 168,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 17/06/2024"
+                        "- Surface plancher créée : 168,3 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 17/06/2024",
+                        "D 801, D 802, D 803, D 804, D 1550"
                     ]
                 ]
             }
@@ -2387,18 +2476,19 @@
                 "contenance": 584,
                 "arpente": true,
                 "created": "2009-04-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "05/06/2024",
                         "PC 02A 247 24 R0021",
                         "02/02/2024",
                         "MME AMALVY Cathy",
-                        " ROUTE D'ARCA 20137 SAGGHIMU (D 1761, D 1767)",
+                        "ROUTE D'ARCA 20137 SAGGHIMU (D 1761, D 1767)",
                         "1004 m²",
                         "la construction d'un pool-house et d'un mur de clôture",
-                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 05/06/2024",
+                        "D 1761, D 1767"
                     ]
                 ]
             }
@@ -2446,18 +2536,19 @@
                 "contenance": 420,
                 "arpente": true,
                 "created": "2009-04-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "05/06/2024",
                         "PC 02A 247 24 R0021",
                         "02/02/2024",
                         "MME AMALVY Cathy",
-                        " ROUTE D'ARCA 20137 SAGGHIMU (D 1761, D 1767)",
+                        "ROUTE D'ARCA 20137 SAGGHIMU (D 1761, D 1767)",
                         "1004 m²",
                         "la construction d'un pool-house et d'un mur de clôture",
-                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 05/06/2024",
+                        "D 1761, D 1767"
                     ]
                 ]
             }
@@ -2513,8 +2604,8 @@
                 "contenance": 2184,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0088",
@@ -2524,7 +2615,8 @@
                         "2184 m²",
                         "la pose de panneaux solaires",
                         "",
-                        "Favorable le 06/05/2024"
+                        "Favorable le 06/05/2024",
+                        "D 1589"
                     ]
                 ]
             }
@@ -2576,18 +2668,19 @@
                 "contenance": 750,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "17/06/2024",
                         "PC 02A 247 24 R0039",
                         "23/02/2024",
                         "SCI DANIEL PIERRE",
-                        " ROUTE D'ARCA 20137  (D 801, D 802, D 803, D 804, D 1550)",
+                        "ROUTE D'ARCA 20137 (D 801, D 802, D 803, D 804, D 1550)",
                         "24322 m²",
                         "la construction de 3 suites de l'hôtel existant",
-                        "- Surface plancher créée : 168,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 17/06/2024"
+                        "- Surface plancher créée : 168,3 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 17/06/2024",
+                        "D 801, D 802, D 803, D 804, D 1550"
                     ]
                 ]
             }
@@ -2631,18 +2724,19 @@
                 "contenance": 2020,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0069",
                         "18/03/2024",
                         "M ETTORI Jean Marc",
-                        " Saggimo 20137  (D 785, D 603)",
+                        "Saggimo 20137 (D 785, D 603)",
                         "4520 m²",
                         "la division en 3 lots",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "D 785, D 603"
                     ]
                 ]
             }
@@ -2702,18 +2796,19 @@
                 "contenance": 2500,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0069",
                         "18/03/2024",
                         "M ETTORI Jean Marc",
-                        " Saggimo 20137  (D 785, D 603)",
+                        "Saggimo 20137 (D 785, D 603)",
                         "4520 m²",
                         "la division en 3 lots",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "D 785, D 603"
                     ]
                 ]
             }
@@ -2821,18 +2916,19 @@
                 "contenance": 1070,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-12-31",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0078",
                         "26/03/2024",
                         "MME TANCHOU Sabrine",
-                        " hameau de piccovaggia 20137 piccovaggia (F 244)",
+                        "hameau de piccovaggia 20137 piccovaggia (F 244)",
                         "1070 m²",
                         "la pose de panneaux photovoltaiques",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "F 244"
                     ]
                 ]
             }
@@ -2984,18 +3080,19 @@
                 "contenance": 1542,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "17/06/2024",
                         "PC 02A 247 24 R0045",
                         "29/02/2024",
                         "SCI ATIPIK",
-                        " CHEMIN DE LA CHIAPPA 20137 U LINARI PICOVAGGIA (F 151)",
+                        "CHEMIN DE LA CHIAPPA 20137 U LINARI PICOVAGGIA (F 151)",
                         "1542 m²",
                         "la réalisation d'une piscine et d'un abri de jardin type \"Caseddu\"",
-                        "- Surface plancher créée : 22 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 17/06/2024"
+                        "- Surface plancher créée : 22 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 17/06/2024",
+                        "F 151"
                     ]
                 ]
             }
@@ -3039,18 +3136,19 @@
                 "contenance": 2629,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0102",
                         "15/04/2024",
                         "MINISTERE DES ARMEES",
-                        " Lieu-Dit La Chiappa 20137  (F 109)",
+                        "Lieu-Dit La Chiappa 20137 (F 109)",
                         "2629 m²",
                         "les travaux de remplacement de menuiseries",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "F 109"
                     ]
                 ]
             }
@@ -3062,18 +3160,6 @@
                 "type": "Polygon",
                 "coordinates": [
                     [
-                        [
-                            9.3346468,
-                            41.5664319
-                        ],
-                        [
-                            9.3345694,
-                            41.5664171
-                        ],
-                        [
-                            9.3341646,
-                            41.5664554
-                        ],
                         [
                             9.3341266,
                             41.566378
@@ -3133,6 +3219,18 @@
                         [
                             9.3346468,
                             41.5664319
+                        ],
+                        [
+                            9.3345694,
+                            41.5664171
+                        ],
+                        [
+                            9.3341646,
+                            41.5664554
+                        ],
+                        [
+                            9.3341266,
+                            41.566378
                         ]
                     ]
                 ]
@@ -3146,18 +3244,19 @@
                 "contenance": 2526,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0025",
                         "24/01/2024",
                         "HOTEL PALOMBAGGIA",
-                        "9511 Pini 20137  (F 2095)",
+                        "9511 Pini 20137 (F 2095)",
                         "2526 m²",
                         "la création d'une clôture",
                         "",
-                        "Favorable le 06/05/2024"
+                        "Favorable le 06/05/2024",
+                        "F 2095"
                     ]
                 ]
             }
@@ -3217,93 +3316,19 @@
                 "contenance": 1031,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0084",
                         "29/03/2024",
                         "M SELVES Jean-Louis",
-                        " SUARTO 20137 SUARTO (F 2083)",
+                        "SUARTO 20137 SUARTO (F 2083)",
                         "1031 m²",
                         "la surélévation de la maison existante",
-                        "- Surface plancher créée : 12,55 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 15/05/2024"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A2470000F1236",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2838707,
-                            41.5614037
-                        ],
-                        [
-                            9.2839076,
-                            41.5615472
-                        ],
-                        [
-                            9.2837878,
-                            41.562105
-                        ],
-                        [
-                            9.2837231,
-                            41.5622729
-                        ],
-                        [
-                            9.2835827,
-                            41.5623404
-                        ],
-                        [
-                            9.2833261,
-                            41.5624193
-                        ],
-                        [
-                            9.282926,
-                            41.5620369
-                        ],
-                        [
-                            9.2828966,
-                            41.5620014
-                        ],
-                        [
-                            9.2833941,
-                            41.5616946
-                        ],
-                        [
-                            9.2838707,
-                            41.5614037
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A2470000F1236",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "F",
-                "numero": "1236",
-                "contenance": 5000,
-                "arpente": false,
-                "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
-                    [
-                        "05/06/2024",
-                        "PC 02A 247 21 R0110 T01",
-                        "29/03/2024",
-                        "SCI LM IMMOBILIER",
-                        " Lieu-dit Mortone 20137  (F 1236, BY 48)",
-                        "9891 m²",
-                        "le tranfert d'un hangar de stockage",
-                        "- Surface plancher créée : 232,68 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 12,55 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 15/05/2024",
+                        "F 2083"
                     ]
                 ]
             }
@@ -3375,18 +3400,19 @@
                 "contenance": 2074,
                 "arpente": false,
                 "created": "2010-06-04",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2022-03-22",
+                "favorables": [
                     [
                         "05/06/2024",
                         "PC 02A 247 24 R0030",
                         "13/02/2024",
                         "MME PINNA Frédérique",
-                        " Route de PORAPO 20137 ARATAGGIO (G 1410)",
+                        "Route de PORAPO 20137 ARATAGGIO (G 1410)",
                         "2074 m²",
                         "la construction d'une maison individuelle",
-                        "- Surface plancher créée : 85 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 85 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 05/06/2024",
+                        "G 1410"
                     ]
                 ]
             }
@@ -3398,6 +3424,10 @@
                 "type": "Polygon",
                 "coordinates": [
                     [
+                        [
+                            9.2753624,
+                            41.5655982
+                        ],
                         [
                             9.2757957,
                             41.5652078
@@ -3421,10 +3451,6 @@
                         [
                             9.2753624,
                             41.5655982
-                        ],
-                        [
-                            9.2757957,
-                            41.5652078
                         ]
                     ]
                 ]
@@ -3438,121 +3464,19 @@
                 "contenance": 1320,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 24 R0011",
                         "18/01/2024",
                         "MME GIORGI Vanessa",
-                        " Arataggiu 20137  (G 467)",
+                        "Arataggiu 20137 (G 467)",
                         "1320 m²",
                         "la construction de 3 logements comprenant une piscine",
-                        "- Surface plancher créée : 146 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 07/05/2024"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A2470000G1329",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2562835,
-                            41.5393646
-                        ],
-                        [
-                            9.2567905,
-                            41.5388745
-                        ],
-                        [
-                            9.2569298,
-                            41.5389188
-                        ],
-                        [
-                            9.2571007,
-                            41.5389396
-                        ],
-                        [
-                            9.2573355,
-                            41.5389356
-                        ],
-                        [
-                            9.2573591,
-                            41.5389352
-                        ],
-                        [
-                            9.2577396,
-                            41.5388436
-                        ],
-                        [
-                            9.258014,
-                            41.5387741
-                        ],
-                        [
-                            9.258381,
-                            41.5386749
-                        ],
-                        [
-                            9.258881,
-                            41.5388413
-                        ],
-                        [
-                            9.2588901,
-                            41.5389022
-                        ],
-                        [
-                            9.2585432,
-                            41.5390998
-                        ],
-                        [
-                            9.2584205,
-                            41.5390831
-                        ],
-                        [
-                            9.2583029,
-                            41.539067
-                        ],
-                        [
-                            9.2580458,
-                            41.5390319
-                        ],
-                        [
-                            9.2572025,
-                            41.5394778
-                        ],
-                        [
-                            9.2562835,
-                            41.5393646
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A2470000G1329",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "G",
-                "numero": "1329",
-                "contenance": 8566,
-                "arpente": true,
-                "created": "2011-02-28",
-                "updated": "2020-09-24",
-                "decisions": [
-                    [
-                        "05/06/2024",
-                        "PC 02A 247 21 R0144 M01",
-                        "02/04/2024",
-                        "M MME CIABRINI et CASTELLANI Caroline et Jonathan",
-                        " Canniccia 20137  (G 682, G 1644, G 1639, G 1329)",
-                        "15032 m²",
-                        "la réduction des surfaces, suppression de la piscine, de la terrasse et la modification des façades",
-                        "- Surface plancher créée : 143,64 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 146 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 07/05/2024",
+                        "G 467"
                     ]
                 ]
             }
@@ -3652,25 +3576,26 @@
                 "contenance": 4629,
                 "arpente": true,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 23 R0181",
                         "17/11/2023",
                         "M FILIPPI Jérémy",
-                        " ONDELLA 20137 ONDELLA (G 1221)",
+                        "ONDELLA 20137 ONDELLA (G 1221)",
                         "4629 m²",
                         "permis de construire valant division parcellaire : création de 3 lots et construction de 2 caseddi",
-                        "- Surface plancher créée : 199,6 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : 199,6 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 07/05/2024",
+                        "G 1221"
                     ]
                 ]
             }
         },
         {
             "type": "Feature",
-            "id": "2A2470000G0682",
+            "id": "2A2470000G1639",
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
@@ -3711,26 +3636,99 @@
                 ]
             },
             "properties": {
-                "id": "2A2470000G0682",
+                "id": "2A2470000G1639",
                 "commune": "2A247",
                 "prefixe": "000",
                 "section": "G",
-                "numero": "682",
-                "contenance": 3000,
-                "arpente": false,
-                "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "numero": "1639",
+                "contenance": 2871,
+                "arpente": true,
+                "created": "2018-10-19",
+                "updated": "2023-11-30",
+                "favorables": [
                     [
                         "05/06/2024",
                         "PC 02A 247 21 R0144 M01",
                         "02/04/2024",
                         "M MME CIABRINI et CASTELLANI Caroline et Jonathan",
-                        " Canniccia 20137  (G 682, G 1644, G 1639, G 1329)",
+                        "Canniccia 20137 (G 682, G 1644, G 1639, G 1329)",
                         "15032 m²",
                         "la réduction des surfaces, suppression de la piscine, de la terrasse et la modification des façades",
-                        "- Surface plancher créée : 143,64 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 143,64 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 05/06/2024",
+                        "G 682, G 1644, G 1639, G 1329"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A2470000G1644",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2576962,
+                            41.5395813
+                        ],
+                        [
+                            9.2585432,
+                            41.5390998
+                        ],
+                        [
+                            9.2585881,
+                            41.5390743
+                        ],
+                        [
+                            9.2586436,
+                            41.5391044
+                        ],
+                        [
+                            9.2587002,
+                            41.5391605
+                        ],
+                        [
+                            9.2586454,
+                            41.5391841
+                        ],
+                        [
+                            9.2580514,
+                            41.5394394
+                        ],
+                        [
+                            9.2577626,
+                            41.5395635
+                        ],
+                        [
+                            9.2576962,
+                            41.5395813
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A2470000G1644",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "G",
+                "numero": "1644",
+                "contenance": 595,
+                "arpente": true,
+                "created": "2018-10-22",
+                "updated": "2023-11-30",
+                "favorables": [
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 21 R0144 M01",
+                        "02/04/2024",
+                        "M MME CIABRINI et CASTELLANI Caroline et Jonathan",
+                        "Canniccia 20137 (G 682, G 1644, G 1639, G 1329)",
+                        "15032 m²",
+                        "la réduction des surfaces, suppression de la piscine, de la terrasse et la modification des façades",
+                        "- Surface plancher créée : 143,64 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 05/06/2024",
+                        "G 682, G 1644, G 1639, G 1329"
                     ]
                 ]
             }
@@ -3786,18 +3784,19 @@
                 "contenance": 2371,
                 "arpente": true,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "14/06/2024",
                         "PC 02A 247 24 R0087",
                         "22/04/2024",
                         "MME CIABRINI Claudette",
-                        " Armentajo 20137  (G 890)",
+                        "Armentajo 20137 (G 890)",
                         "2371 m²",
                         "la construction d'une maison individuelle rez-de-chaussée",
-                        "- Surface plancher créée : 112 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 14/06/2024"
+                        "- Surface plancher créée : 112 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 14/06/2024",
+                        "G 890"
                     ]
                 ]
             }
@@ -3841,18 +3840,19 @@
                 "contenance": 716,
                 "arpente": true,
                 "created": "2010-09-28",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0077",
                         "26/03/2024",
                         "MME MALVOISIN CIABRINI Stéphanie",
-                        " Armentajo 20137  (G 1412, G 1413)",
+                        "Armentajo 20137 (G 1412, G 1413)",
                         "2000 m²",
                         "la création d'un lot à bâtir de 2000m²",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "G 1412, G 1413"
                     ]
                 ]
             }
@@ -3904,18 +3904,19 @@
                 "contenance": 1284,
                 "arpente": true,
                 "created": "2010-09-28",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0077",
                         "26/03/2024",
                         "MME MALVOISIN CIABRINI Stéphanie",
-                        " Armentajo 20137  (G 1412, G 1413)",
+                        "Armentajo 20137 (G 1412, G 1413)",
                         "2000 m²",
                         "la création d'un lot à bâtir de 2000m²",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "G 1412, G 1413"
                     ]
                 ]
             }
@@ -3971,18 +3972,19 @@
                 "contenance": 2000,
                 "arpente": true,
                 "created": "2008-09-30",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "14/06/2024",
                         "DP 02A 247 24 R0109",
                         "02/05/2024",
                         "M BARONE Eugène",
-                        " Lieu Dit Durabile 20137  (G 1311)",
+                        "Lieu Dit Durabile 20137 (G 1311)",
                         "2000 m²",
                         "la construction d'une piscine",
                         "",
-                        "Favorable le 14/06/2024"
+                        "Favorable le 14/06/2024",
+                        "G 1311"
                     ]
                 ]
             }
@@ -4050,18 +4052,19 @@
                 "contenance": 1270,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 12 R0114 T01",
                         "08/03/2024",
                         "MME HERBILLON MILANINI Catherine",
-                        " QRT SALVACINTOGGIO 20137  (I 1288, I 1289)",
+                        "QRT SALVACINTOGGIO 20137 (I 1288, I 1289)",
                         "2535 m²",
                         "le transfert de deux maisons individuelles destinées à la location estivale",
-                        "- Surface plancher créée :  m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : m²\n",
+                        "Favorable le 07/05/2024",
+                        "I 1288, I 1289"
                     ]
                 ]
             }
@@ -4117,18 +4120,19 @@
                 "contenance": 1265,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 12 R0114 T01",
                         "08/03/2024",
                         "MME HERBILLON MILANINI Catherine",
-                        " QRT SALVACINTOGGIO 20137  (I 1288, I 1289)",
+                        "QRT SALVACINTOGGIO 20137 (I 1288, I 1289)",
                         "2535 m²",
                         "le transfert de deux maisons individuelles destinées à la location estivale",
-                        "- Surface plancher créée :  m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : m²\n",
+                        "Favorable le 07/05/2024",
+                        "I 1288, I 1289"
                     ]
                 ]
             }
@@ -4180,18 +4184,19 @@
                 "contenance": 2420,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 24 R0016",
                         "26/01/2024",
                         "MME ALETTI Marie-Josée",
-                        " Quartier Salvacintoggio 20137  (I 1866)",
+                        "Quartier Salvacintoggio 20137 (I 1866)",
                         "2420 m²",
                         "la construction d'une maison individuelle",
-                        "- Surface plancher créée : 120 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : 120 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 07/05/2024",
+                        "I 1866"
                     ]
                 ]
             }
@@ -4263,18 +4268,19 @@
                 "contenance": 963,
                 "arpente": false,
                 "created": "2013-07-26",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0079",
                         "26/03/2024",
                         "M QUETTE Gwenael",
-                        " Muratello 20137  (I 2488)",
+                        "Muratello 20137 (I 2488)",
                         "963 m²",
                         "la pose de panneaux photovoltaïques",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "I 2488"
                     ]
                 ]
             }
@@ -4342,18 +4348,19 @@
                 "contenance": 1505,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "21/05/2024",
                         "DP 02A 247 24 R0111",
                         "30/04/2024",
                         "ASSULANA ENERGIE",
-                        "9561 Quartier Nallaccia 20137  (I 1627)",
+                        "9561 Quartier Nallaccia 20137 (I 1627)",
                         "1505 m²",
                         "la pose de panneaux solaires",
                         "",
-                        "Favorable le 21/05/2024"
+                        "Favorable le 21/05/2024",
+                        "I 1627"
                     ]
                 ]
             }
@@ -4417,164 +4424,19 @@
                 "contenance": 460,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0095",
                         "08/04/2024",
                         "FRANCE RENOVE HABITAT",
-                        " Route de Muratello 20137  (I 1682)",
+                        "Route de Muratello 20137 (I 1682)",
                         "460 m²",
                         "la pose de panneaux solaires",
                         "",
-                        "Favorable le 15/05/2024"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000AB0200",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.193492,
-                            41.6511344
-                        ],
-                        [
-                            9.1936172,
-                            41.6511623
-                        ],
-                        [
-                            9.1936229,
-                            41.6511875
-                        ],
-                        [
-                            9.1936193,
-                            41.6512066
-                        ],
-                        [
-                            9.1935967,
-                            41.651253
-                        ],
-                        [
-                            9.1935806,
-                            41.6512862
-                        ],
-                        [
-                            9.1935696,
-                            41.6513086
-                        ],
-                        [
-                            9.1934269,
-                            41.6512722
-                        ],
-                        [
-                            9.1933625,
-                            41.651262
-                        ],
-                        [
-                            9.193492,
-                            41.6511344
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000AB0200",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "AB",
-                "numero": "200",
-                "contenance": 253,
-                "arpente": false,
-                "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
-                    [
-                        "19/04/2024",
-                        "PC 02A 247 24 R0026",
-                        "09/02/2024",
-                        "MME FENEROL-ALESSANDRI Marie-José",
-                        " RD 368 20137 L'Ospedale (AB 200, AB 201)",
-                        "393 m²",
-                        "la construction d'un auvent, l'extension du salon,créatIon d'une piscine, modification des murs",
-                        "- Surface plancher créée : 32 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 19/04/2024"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000AB0201",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.1934935,
-                            41.6510219
-                        ],
-                        [
-                            9.1935619,
-                            41.6509875
-                        ],
-                        [
-                            9.1936304,
-                            41.6510393
-                        ],
-                        [
-                            9.193639,
-                            41.651046
-                        ],
-                        [
-                            9.1936076,
-                            41.6511192
-                        ],
-                        [
-                            9.1936172,
-                            41.6511623
-                        ],
-                        [
-                            9.193492,
-                            41.6511344
-                        ],
-                        [
-                            9.193552,
-                            41.6510752
-                        ],
-                        [
-                            9.1934935,
-                            41.6510219
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000AB0201",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "AB",
-                "numero": "201",
-                "contenance": 140,
-                "arpente": false,
-                "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
-                    [
-                        "19/04/2024",
-                        "PC 02A 247 24 R0026",
-                        "09/02/2024",
-                        "MME FENEROL-ALESSANDRI Marie-José",
-                        " RD 368 20137 L'Ospedale (AB 200, AB 201)",
-                        "393 m²",
-                        "la construction d'un auvent, l'extension du salon,créatIon d'une piscine, modification des murs",
-                        "- Surface plancher créée : 32 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 19/04/2024"
+                        "Favorable le 15/05/2024",
+                        "I 1682"
                     ]
                 ]
             }
@@ -4634,18 +4496,123 @@
                 "contenance": 1150,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0099",
                         "15/04/2024",
                         "M LESY PHILIPPE",
-                        " Rue du 9 Septembre 20137 Villa Sainte Catherine (AC 107)",
+                        "Rue du 9 Septembre 20137 Villa Sainte Catherine (AC 107)",
                         "1150 m²",
                         "la construction d'un carport de 19.90m²",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "AC 107"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AC0192",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2809972,
+                            41.5855759
+                        ],
+                        [
+                            9.2809218,
+                            41.5856597
+                        ],
+                        [
+                            9.2808798,
+                            41.5857063
+                        ],
+                        [
+                            9.2808243,
+                            41.5857681
+                        ],
+                        [
+                            9.2808044,
+                            41.5857901
+                        ],
+                        [
+                            9.2807642,
+                            41.5857708
+                        ],
+                        [
+                            9.2806961,
+                            41.5857379
+                        ],
+                        [
+                            9.2806731,
+                            41.5857345
+                        ],
+                        [
+                            9.2806425,
+                            41.5857301
+                        ],
+                        [
+                            9.280623,
+                            41.5857272
+                        ],
+                        [
+                            9.2804109,
+                            41.5856109
+                        ],
+                        [
+                            9.2803877,
+                            41.585583
+                        ],
+                        [
+                            9.2804264,
+                            41.5855626
+                        ],
+                        [
+                            9.2805872,
+                            41.5854792
+                        ],
+                        [
+                            9.2807181,
+                            41.5854112
+                        ],
+                        [
+                            9.2807586,
+                            41.5854352
+                        ],
+                        [
+                            9.2809972,
+                            41.5855759
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AC0192",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AC",
+                "numero": "192",
+                "contenance": 1172,
+                "arpente": true,
+                "created": "2006-02-15",
+                "updated": "2022-08-09",
+                "favorables": [
+                    [
+                        "20/06/2024",
+                        "DP 02A 247 24 R0133",
+                        "28/05/2024",
+                        "M AZAHAF Abdeslam",
+                        "17 Voie Romaine 20137 (AC 192, AC 242)",
+                        "1797 m²",
+                        "le remplacement de la toiture à l'identique",
+                        "",
+                        "Favorable le 20/06/2024",
+                        "AC 192, AC 242"
                     ]
                 ]
             }
@@ -4721,18 +4688,19 @@
                 "contenance": 210,
                 "arpente": false,
                 "created": "2006-03-14",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0054",
                         "21/02/2024",
                         "FRANCE RENOVE HABITAT",
-                        " RUE DU STAZZALE  20137 IMPASSE MULINU A VENT (AD 232)",
+                        "RUE DU STAZZALE 20137 IMPASSE MULINU A VENT (AD 232)",
                         "210 m²",
                         "la pose de panneaux photovoltaïques",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "AD 232"
                     ]
                 ]
             }
@@ -4836,18 +4804,19 @@
                 "contenance": 3233,
                 "arpente": true,
                 "created": "2016-06-30",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "05/06/2024",
                         "PC 02A 247 22 R0082 T01",
                         "26/04/2024",
                         "SASU FELICESCA",
-                        "5504 F Chemin De Covasina 20137  (AD 504, AD 506)",
+                        "5504 F Chemin De Covasina 20137 (AD 504, AD 506)",
                         "3373 m²",
                         "Construction de locaux commerciaux , locaux tertiaires et logements, division parcellaire, démolitio",
-                        "- Surface plancher créée : 1070 m²\r\n<br>- Surface plancher démolie : 170 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 1070 m²\n- Surface plancher démolie : 170 m²\n",
+                        "Favorable le 05/06/2024",
+                        "AD 504, AD 506"
                     ]
                 ]
             }
@@ -4891,18 +4860,19 @@
                 "contenance": 140,
                 "arpente": true,
                 "created": "2016-06-30",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "05/06/2024",
                         "PC 02A 247 22 R0082 T01",
                         "26/04/2024",
                         "SASU FELICESCA",
-                        "5504 F Chemin De Covasina 20137  (AD 504, AD 506)",
+                        "5504 F Chemin De Covasina 20137 (AD 504, AD 506)",
                         "3373 m²",
                         "Construction de locaux commerciaux , locaux tertiaires et logements, division parcellaire, démolitio",
-                        "- Surface plancher créée : 1070 m²\r\n<br>- Surface plancher démolie : 170 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 1070 m²\n- Surface plancher démolie : 170 m²\n",
+                        "Favorable le 05/06/2024",
+                        "AD 504, AD 506"
                     ]
                 ]
             }
@@ -5010,18 +4980,19 @@
                 "contenance": 2995,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "14/06/2024",
                         "PC 02A 247 24 R0028",
                         "12/02/2024",
                         "COMMUNE DE PORTO VECCHIO",
-                        " Rue Saint-Vincent 20137 Ecole MT Marcellesi (AE 440, AE 441)",
+                        "Rue Saint-Vincent 20137 Ecole MT Marcellesi (AE 440, AE 441)",
                         "4695 m²",
-                        "la mise en accessibilité de l'école M.T. Marcellesi. ",
-                        "- Surface plancher créée : 17 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 14/06/2024"
+                        "la mise en accessibilité de l'école M.T. Marcellesi.",
+                        "- Surface plancher créée : 17 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 14/06/2024",
+                        "AE 440, AE 441"
                     ]
                 ]
             }
@@ -5133,18 +5104,99 @@
                 "contenance": 1700,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "14/06/2024",
                         "PC 02A 247 24 R0028",
                         "12/02/2024",
                         "COMMUNE DE PORTO VECCHIO",
-                        " Rue Saint-Vincent 20137 Ecole MT Marcellesi (AE 440, AE 441)",
+                        "Rue Saint-Vincent 20137 Ecole MT Marcellesi (AE 440, AE 441)",
                         "4695 m²",
-                        "la mise en accessibilité de l'école M.T. Marcellesi. ",
-                        "- Surface plancher créée : 17 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 14/06/2024"
+                        "la mise en accessibilité de l'école M.T. Marcellesi.",
+                        "- Surface plancher créée : 17 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 14/06/2024",
+                        "AE 440, AE 441"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AE0099",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2776256,
+                            41.5908544
+                        ],
+                        [
+                            9.2776055,
+                            41.5907893
+                        ],
+                        [
+                            9.2775969,
+                            41.5907573
+                        ],
+                        [
+                            9.2776201,
+                            41.5907523
+                        ],
+                        [
+                            9.2776214,
+                            41.590752
+                        ],
+                        [
+                            9.2776455,
+                            41.5907468
+                        ],
+                        [
+                            9.2777677,
+                            41.5907205
+                        ],
+                        [
+                            9.2778047,
+                            41.5908139
+                        ],
+                        [
+                            9.277781,
+                            41.5908192
+                        ],
+                        [
+                            9.2776584,
+                            41.5908469
+                        ],
+                        [
+                            9.2776256,
+                            41.5908544
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AE0099",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AE",
+                "numero": "99",
+                "contenance": 164,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "20/06/2024",
+                        "DP 02A 247 24 R0043",
+                        "13/02/2024",
+                        "CALA DI SOLE",
+                        "9021 Rue Du General Leclerc 20137 (AE 99)",
+                        "164 m²",
+                        "le changement d'enseigne et peinture de la façade",
+                        "",
+                        "Favorable le 20/06/2024",
+                        "AE 99"
                     ]
                 ]
             }
@@ -5196,18 +5248,19 @@
                 "contenance": 72,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "28/05/2024",
                         "PC 02A 247 24 R0031",
                         "14/02/2024",
                         "M FADDA Julien",
-                        " TRAVERSE SANS ISSUE SUR LA RUE DANIELLE CASANOVA 20137  (AE 146)",
+                        "TRAVERSE SANS ISSUE SUR LA RUE DANIELLE CASANOVA 20137 (AE 146)",
                         "72 m²",
-                        "le réaménagement d'un appartement existant, surélévation des combles avec  création d'un appartement",
-                        "- Surface plancher créée : 81,06 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 27/05/2024"
+                        "le réaménagement d'un appartement existant, surélévation des combles avec création d'un appartement",
+                        "- Surface plancher créée : 81,06 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 27/05/2024",
+                        "AE 146"
                     ]
                 ]
             }
@@ -5275,18 +5328,99 @@
                 "contenance": 153,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "03/06/2024",
                         "DP 02A 247 24 R0064",
                         "07/03/2024",
                         "M EMERY-PIETRI Pierre",
-                        "6 Rue Jerome Leandri 20137  (AE 207)",
+                        "6 Rue Jerome Leandri 20137 (AE 207)",
                         "153 m²",
                         "la réfection de la toiture",
                         "",
-                        "Favorable le 03/06/2024"
+                        "Favorable le 03/06/2024",
+                        "AE 207"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AE0115",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.278175,
+                            41.5913914
+                        ],
+                        [
+                            9.278412,
+                            41.5913396
+                        ],
+                        [
+                            9.2784231,
+                            41.5913377
+                        ],
+                        [
+                            9.2784291,
+                            41.5913367
+                        ],
+                        [
+                            9.2783837,
+                            41.5914553
+                        ],
+                        [
+                            9.2783343,
+                            41.5915647
+                        ],
+                        [
+                            9.2783064,
+                            41.5915906
+                        ],
+                        [
+                            9.2782866,
+                            41.591596
+                        ],
+                        [
+                            9.2782617,
+                            41.5915913
+                        ],
+                        [
+                            9.2782419,
+                            41.591564
+                        ],
+                        [
+                            9.278175,
+                            41.5913914
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AE0115",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AE",
+                "numero": "115",
+                "contenance": 350,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "20/06/2024",
+                        "DP 02A 247 24 R0134",
+                        "31/05/2024",
+                        "SARL CSIR SUD CORSE",
+                        "3 Rue Fred Scamaroni 20137 (AE 115)",
+                        "350 m²",
+                        "la modification du parement existant d'une façade",
+                        "",
+                        "Favorable le 20/06/2024",
+                        "AE 115"
                     ]
                 ]
             }
@@ -5338,18 +5472,19 @@
                 "contenance": 265,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0076",
                         "25/03/2024",
                         "SAS PLAQUE",
-                        "1 rue Borgo 20137  (AE 567)",
+                        "1 rue Borgo 20137 (AE 567)",
                         "265 m²",
                         "la création d'un aménagement extérieur pour un snack",
-                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 06/05/2024"
+                        "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 06/05/2024",
+                        "AE 567"
                     ]
                 ]
             }
@@ -5453,18 +5588,19 @@
                 "contenance": 1325,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-10-08",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "21/05/2024",
                         "PC 02A 247 24 R0033",
                         "14/02/2024",
                         "MME BALESI Andrea",
-                        " quartier vigna dello stagno 20137  (AI 64)",
+                        "quartier vigna dello stagno 20137 (AI 64)",
                         "1325 m²",
                         "la surélévation d'une maison existante, création d'un étage",
-                        "- Surface plancher créée : 112 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 21/05/2024"
+                        "- Surface plancher créée : 112 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 21/05/2024",
+                        "AI 64"
                     ]
                 ]
             }
@@ -5564,29 +5700,31 @@
                 "contenance": 4430,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-23",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "13/05/2024",
                         "PC 02A 247 23 R0180",
                         "15/11/2023",
                         "SAS PORETTA CIABRINI",
-                        " rue rene biancarelli  poretta 20137  (AK 53)",
+                        "rue rene biancarelli poretta 20137 (AK 53)",
                         "4430 m²",
                         "",
-                        "- Surface plancher créée : 1074,68 m²\r\n<br>- Surface plancher démolie : 741 m²\r\n<br>",
-                        "Sursis à statuer le 10/05/2024"
+                        "- Surface plancher créée : 1074,68 m²\n- Surface plancher démolie : 741 m²\n",
+                        "Sursis à statuer le 10/05/2024",
+                        "AK 53"
                     ],
                     [
                         "14/06/2024",
                         "PC 02A 247 23 R0204",
                         "13/12/2023",
                         "SAS PORETTA CIABRINI",
-                        " RUE BIANCARELLI 20137 PORETTA (AK 53)",
+                        "RUE BIANCARELLI 20137 PORETTA (AK 53)",
                         "4430 m²",
                         "le projet d'un immeuble R+4 de 28 logements,3 locaux commerciaux démolition de bâtiments vétustes",
-                        "- Surface plancher créée : 4095,24 m²\r\n<br>- Surface plancher démolie : 741 m²\r\n<br>",
-                        "Favorable le 14/06/2024"
+                        "- Surface plancher créée : 4095,24 m²\n- Surface plancher démolie : 741 m²\n",
+                        "Favorable le 14/06/2024",
+                        "AK 53"
                     ]
                 ]
             }
@@ -5662,18 +5800,19 @@
                 "contenance": 1620,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "14/06/2024",
                         "DP 02A 247 24 R0049",
                         "19/02/2024",
-                        "MME Simon  Valerie",
-                        "264 Route de salvati  20137  (AL 120)",
+                        "MME Simon Valerie",
+                        "264 Route de salvati 20137 (AL 120)",
                         "1620 m²",
                         "la construction d'un mur de clôture",
                         "",
-                        "Favorable le 14/06/2024"
+                        "Favorable le 14/06/2024",
+                        "AL 120"
                     ]
                 ]
             }
@@ -5733,18 +5872,79 @@
                 "contenance": 1550,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "27/05/2024",
                         "PC 02A 247 24 R0046",
                         "04/03/2024",
                         "M BILY Patrick",
-                        " route de Salvati - lot 263 20137 Marina di Fiori (AL 121)",
+                        "route de Salvati - lot 263 20137 Marina di Fiori (AL 121)",
                         "1550 m²",
                         "l'extension de la maison existante",
-                        "- Surface plancher créée : 24,6 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 27/05/2024"
+                        "- Surface plancher créée : 24,6 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 27/05/2024",
+                        "AL 121"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AM0063",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.296653,
+                            41.6130676
+                        ],
+                        [
+                            9.2966294,
+                            41.6131126
+                        ],
+                        [
+                            9.2964455,
+                            41.6133289
+                        ],
+                        [
+                            9.2960114,
+                            41.6131039
+                        ],
+                        [
+                            9.2962571,
+                            41.6128455
+                        ],
+                        [
+                            9.296653,
+                            41.6130676
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AM0063",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AM",
+                "numero": "63",
+                "contenance": 1520,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "20/06/2024",
+                        "DP 02A 247 24 R0122",
+                        "22/05/2024",
+                        "M BOUIX Thierry",
+                        "16 Corniche San Giorgio 20137 MARINA DI FIORI (AM 63)",
+                        "1520 m²",
+                        "la réhausse d'un mur de soutènement",
+                        "",
+                        "Favorable le 20/06/2024",
+                        "AM 63"
                     ]
                 ]
             }
@@ -5800,18 +6000,19 @@
                 "contenance": 1355,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 21 R0092 M01",
                         "19/03/2024",
                         "M COUERBE Didier",
-                        "9354 Résidence Marina Di Fiori 20137  (AM 59)",
+                        "9354 Résidence Marina Di Fiori 20137 (AM 59)",
                         "1355 m²",
                         "la modification des façades; la transformation du garage en chambre",
-                        "- Surface plancher créée : 61 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 22/04/2024"
+                        "- Surface plancher créée : 61 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 22/04/2024",
+                        "AM 59"
                     ]
                 ]
             }
@@ -5859,18 +6060,19 @@
                 "contenance": 1418,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "30/05/2024",
                         "PC 02A 247 20 R0009 M01",
                         "18/04/2024",
                         "SCI CCYM",
-                        "9338 Résidence Marina Di Fiori 20137  (AM 34)",
+                        "9338 Résidence Marina Di Fiori 20137 (AM 34)",
                         "1418 m²",
                         "la modification des façades du pool house et la création d'une surface de plancher",
-                        "- Surface plancher créée : 4,7 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 30/05/2024"
+                        "- Surface plancher créée : 4,7 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 30/05/2024",
+                        "AM 34"
                     ]
                 ]
             }
@@ -5930,18 +6132,19 @@
                 "contenance": 1362,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 24 R0058",
                         "19/03/2024",
                         "M DELSAUT Alan",
-                        " Lotissement à Trinita 20137  (AN 278)",
+                        "Lotissement à Trinita 20137 (AN 278)",
                         "1400 m²",
                         "l'aménagement du rez de jardin en habitation; d'un rez de chaussée habitable",
-                        "- Surface plancher créée : 167,88 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 167,88 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 25/04/2024",
+                        "AN 278"
                     ]
                 ]
             }
@@ -5993,18 +6196,19 @@
                 "contenance": 213,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0085",
                         "29/03/2024",
                         "M BABY Yves",
-                        "241 Foce di Termini, La Trinité 20137  (AO 241)",
+                        "241 Foce di Termini, La Trinité 20137 (AO 241)",
                         "213 m²",
                         "la pose de panneaux photovoltaïques",
                         "",
-                        "Favorable le 06/05/2024"
+                        "Favorable le 06/05/2024",
+                        "AO 241"
                     ]
                 ]
             }
@@ -6128,18 +6332,19 @@
                 "contenance": 2727,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2023-03-30",
+                "favorables": [
                     [
                         "21/05/2024",
                         "PC 02A 247 21 R0072 T01",
                         "15/03/2024",
                         "M BRANCA Michel",
-                        " Quartier Trinite 20137  (AO 138)",
+                        "Quartier Trinite 20137 (AO 138)",
                         "2727 m²",
                         "le transfert d'une maison individuelle en résidence principale comprenant un garage",
-                        "- Surface plancher créée : 104 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 21/05/2024"
+                        "- Surface plancher créée : 104 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 21/05/2024",
+                        "AO 138"
                     ]
                 ]
             }
@@ -6187,18 +6392,19 @@
                 "contenance": 356,
                 "arpente": true,
                 "created": "2014-12-23",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "04/06/2024",
                         "PC 02A 247 24 R0003",
                         "10/01/2024",
                         "SAS VETTA",
-                        " La Vetta 20137 VETTA (AO 327, AP 392)",
+                        "La Vetta 20137 VETTA (AO 327, AP 392)",
                         "3607 m²",
                         "la construction de 2 bâtiments de 36 logements collectifs",
-                        "- Surface plancher créée : 2397 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 04/06/2024"
+                        "- Surface plancher créée : 2397 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 04/06/2024",
+                        "AO 327, AP 392"
                     ]
                 ]
             }
@@ -6338,18 +6544,19 @@
                 "contenance": 3251,
                 "arpente": true,
                 "created": "2014-12-23",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-10-21",
+                "favorables": [
                     [
                         "04/06/2024",
                         "PC 02A 247 24 R0003",
                         "10/01/2024",
                         "SAS VETTA",
-                        " La Vetta 20137 VETTA (AO 327, AP 392)",
+                        "La Vetta 20137 VETTA (AO 327, AP 392)",
                         "3607 m²",
                         "la construction de 2 bâtiments de 36 logements collectifs",
-                        "- Surface plancher créée : 2397 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 04/06/2024"
+                        "- Surface plancher créée : 2397 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 04/06/2024",
+                        "AO 327, AP 392"
                     ]
                 ]
             }
@@ -6413,8 +6620,8 @@
                 "contenance": 1610,
                 "arpente": false,
                 "created": "2014-08-01",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "04/06/2024",
                         "PC 02A 247 24 R0097",
@@ -6423,8 +6630,9 @@
                         "6432 CAPPARONU 20137 PRECOJO (AT 1097)",
                         "1610 m²",
                         "l'extension d'une maison existante",
-                        "- Surface plancher créée : 32,3 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 04/06/2024"
+                        "- Surface plancher créée : 32,3 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 04/06/2024",
+                        "AT 1097"
                     ]
                 ]
             }
@@ -6508,97 +6716,19 @@
                 "contenance": 1710,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 23 R0190",
                         "28/11/2023",
                         "SCI REJU",
-                        " pianelli 20137  (AT 148, AT 230, AT 232, AT 231, AT 229)",
+                        "pianelli 20137 (AT 148, AT 230, AT 232, AT 231, AT 229)",
                         "3850 m²",
                         "la construction d'une résidence de tourisme comprenant 3 maisons et une piscine avec un pool house",
-                        "- Surface plancher créée : 433 m²\r\n<br>- Surface plancher démolie : 56 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000AT0229",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2659874,
-                            41.5459303
-                        ],
-                        [
-                            9.2659857,
-                            41.5460411
-                        ],
-                        [
-                            9.2658892,
-                            41.5460575
-                        ],
-                        [
-                            9.2656764,
-                            41.5461347
-                        ],
-                        [
-                            9.265613,
-                            41.5461735
-                        ],
-                        [
-                            9.2655684,
-                            41.5462009
-                        ],
-                        [
-                            9.2655315,
-                            41.5461777
-                        ],
-                        [
-                            9.265424,
-                            41.5460716
-                        ],
-                        [
-                            9.2655208,
-                            41.5460514
-                        ],
-                        [
-                            9.2655465,
-                            41.5460328
-                        ],
-                        [
-                            9.2659874,
-                            41.5459303
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000AT0229",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "AT",
-                "numero": "229",
-                "contenance": 620,
-                "arpente": false,
-                "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
-                    [
-                        "25/04/2024",
-                        "PC 02A 247 23 R0190",
-                        "28/11/2023",
-                        "SCI REJU",
-                        " pianelli 20137  (AT 148, AT 230, AT 232, AT 231, AT 229)",
-                        "3850 m²",
-                        "la construction d'une résidence de tourisme comprenant 3 maisons et une piscine avec un pool house",
-                        "- Surface plancher créée : 433 m²\r\n<br>- Surface plancher démolie : 56 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 433 m²\n- Surface plancher démolie : 56 m²\n",
+                        "Favorable le 25/04/2024",
+                        "AT 148, AT 230, AT 232, AT 231, AT 229"
                     ]
                 ]
             }
@@ -6617,6 +6747,10 @@
                         [
                             9.2659874,
                             41.5459303
+                        ],
+                        [
+                            9.2657647,
+                            41.5459821
                         ],
                         [
                             9.2655465,
@@ -6642,18 +6776,19 @@
                 "contenance": 560,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2023-12-12",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 23 R0190",
                         "28/11/2023",
                         "SCI REJU",
-                        " pianelli 20137  (AT 148, AT 230, AT 232, AT 231, AT 229)",
+                        "pianelli 20137 (AT 148, AT 230, AT 232, AT 231, AT 229)",
                         "3850 m²",
                         "la construction d'une résidence de tourisme comprenant 3 maisons et une piscine avec un pool house",
-                        "- Surface plancher créée : 433 m²\r\n<br>- Surface plancher démolie : 56 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 433 m²\n- Surface plancher démolie : 56 m²\n",
+                        "Favorable le 25/04/2024",
+                        "AT 148, AT 230, AT 232, AT 231, AT 229"
                     ]
                 ]
             }
@@ -6697,18 +6832,19 @@
                 "contenance": 535,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 23 R0190",
                         "28/11/2023",
                         "SCI REJU",
-                        " pianelli 20137  (AT 148, AT 230, AT 232, AT 231, AT 229)",
+                        "pianelli 20137 (AT 148, AT 230, AT 232, AT 231, AT 229)",
                         "3850 m²",
                         "la construction d'une résidence de tourisme comprenant 3 maisons et une piscine avec un pool house",
-                        "- Surface plancher créée : 433 m²\r\n<br>- Surface plancher démolie : 56 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 433 m²\n- Surface plancher démolie : 56 m²\n",
+                        "Favorable le 25/04/2024",
+                        "AT 148, AT 230, AT 232, AT 231, AT 229"
                     ]
                 ]
             }
@@ -6796,18 +6932,19 @@
                 "contenance": 425,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 23 R0190",
                         "28/11/2023",
                         "SCI REJU",
-                        " pianelli 20137  (AT 148, AT 230, AT 232, AT 231, AT 229)",
+                        "pianelli 20137 (AT 148, AT 230, AT 232, AT 231, AT 229)",
                         "3850 m²",
                         "la construction d'une résidence de tourisme comprenant 3 maisons et une piscine avec un pool house",
-                        "- Surface plancher créée : 433 m²\r\n<br>- Surface plancher démolie : 56 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 433 m²\n- Surface plancher démolie : 56 m²\n",
+                        "Favorable le 25/04/2024",
+                        "AT 148, AT 230, AT 232, AT 231, AT 229"
                     ]
                 ]
             }
@@ -6895,18 +7032,171 @@
                 "contenance": 2380,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0092",
                         "05/04/2024",
                         "M CIABRINI Michaël",
-                        " Cardiccia 20137  (AT 302)",
+                        "Cardiccia 20137 (AT 302)",
                         "2380 m²",
                         "la création d'un lot à bâtir",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "AT 302"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AT0337",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2596062,
+                            41.5558252
+                        ],
+                        [
+                            9.2596464,
+                            41.5559355
+                        ],
+                        [
+                            9.259698,
+                            41.5560393
+                        ],
+                        [
+                            9.2597119,
+                            41.5561103
+                        ],
+                        [
+                            9.2596682,
+                            41.5561383
+                        ],
+                        [
+                            9.2595837,
+                            41.5561697
+                        ],
+                        [
+                            9.2595045,
+                            41.5561824
+                        ],
+                        [
+                            9.2594655,
+                            41.5561727
+                        ],
+                        [
+                            9.2594167,
+                            41.5561415
+                        ],
+                        [
+                            9.2593373,
+                            41.5560576
+                        ],
+                        [
+                            9.2592422,
+                            41.5559273
+                        ],
+                        [
+                            9.2591779,
+                            41.5557582
+                        ],
+                        [
+                            9.2591869,
+                            41.5557212
+                        ],
+                        [
+                            9.2593446,
+                            41.5555382
+                        ],
+                        [
+                            9.2592903,
+                            41.5554954
+                        ],
+                        [
+                            9.2593216,
+                            41.555469
+                        ],
+                        [
+                            9.2593051,
+                            41.5554571
+                        ],
+                        [
+                            9.2593256,
+                            41.555441
+                        ],
+                        [
+                            9.2593177,
+                            41.5554365
+                        ],
+                        [
+                            9.259339,
+                            41.5554195
+                        ],
+                        [
+                            9.2593615,
+                            41.5554393
+                        ],
+                        [
+                            9.259371,
+                            41.5554318
+                        ],
+                        [
+                            9.2594278,
+                            41.5554746
+                        ],
+                        [
+                            9.2595112,
+                            41.5553892
+                        ],
+                        [
+                            9.259593,
+                            41.5555538
+                        ],
+                        [
+                            9.259602,
+                            41.5555719
+                        ],
+                        [
+                            9.2596247,
+                            41.5556177
+                        ],
+                        [
+                            9.25954,
+                            41.5556441
+                        ],
+                        [
+                            9.2596062,
+                            41.5558252
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AT0337",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AT",
+                "numero": "337",
+                "contenance": 2235,
+                "arpente": false,
+                "created": "2006-02-15",
+                "updated": "2023-06-05",
+                "favorables": [
+                    [
+                        "20/06/2024",
+                        "PC 02A 247 23 R0172",
+                        "02/11/2023",
+                        "M GABRYSZEWSKI Anthony",
+                        "Quartier Pascialella 20137 (AT 337)",
+                        "2235 m²",
+                        "la construction d'une maison individuelle",
+                        "- Surface plancher créée : 140,69 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable tacite le 20/06/2024",
+                        "AT 337"
                     ]
                 ]
             }
@@ -6966,18 +7256,19 @@
                 "contenance": 1052,
                 "arpente": true,
                 "created": "2012-07-23",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 24 R0018",
                         "30/01/2024",
                         "M SIMON Fabien",
-                        " quartier Pascialella, Precojo 20137 PRECOJO / PASCIALELLA (AT 1064, AT 1068)",
+                        "quartier Pascialella, Precojo 20137 PRECOJO / PASCIALELLA (AT 1064, AT 1068)",
                         "1969 m²",
                         "la construction d'une maison individuelle avec garage et piscine",
-                        "- Surface plancher créée : 162 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : 162 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 07/05/2024",
+                        "AT 1064, AT 1068"
                     ]
                 ]
             }
@@ -7037,18 +7328,107 @@
                 "contenance": 917,
                 "arpente": true,
                 "created": "2012-07-23",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 24 R0018",
                         "30/01/2024",
                         "M SIMON Fabien",
-                        " quartier Pascialella, Precojo 20137 PRECOJO / PASCIALELLA (AT 1064, AT 1068)",
+                        "quartier Pascialella, Precojo 20137 PRECOJO / PASCIALELLA (AT 1064, AT 1068)",
                         "1969 m²",
                         "la construction d'une maison individuelle avec garage et piscine",
-                        "- Surface plancher créée : 162 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : 162 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 07/05/2024",
+                        "AT 1064, AT 1068"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000AW0167",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2070523,
+                            41.5893357
+                        ],
+                        [
+                            9.2071097,
+                            41.5893622
+                        ],
+                        [
+                            9.2070694,
+                            41.5894081
+                        ],
+                        [
+                            9.2070101,
+                            41.5894756
+                        ],
+                        [
+                            9.2069879,
+                            41.5895009
+                        ],
+                        [
+                            9.2069688,
+                            41.5894916
+                        ],
+                        [
+                            9.206942,
+                            41.5895355
+                        ],
+                        [
+                            9.2068955,
+                            41.5895179
+                        ],
+                        [
+                            9.2068917,
+                            41.5895165
+                        ],
+                        [
+                            9.2069189,
+                            41.5894681
+                        ],
+                        [
+                            9.2069461,
+                            41.5894199
+                        ],
+                        [
+                            9.2069918,
+                            41.5893462
+                        ],
+                        [
+                            9.2070523,
+                            41.5893357
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000AW0167",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "AW",
+                "numero": "167",
+                "contenance": 163,
+                "arpente": false,
+                "created": "2006-02-16",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "20/06/2024",
+                        "DP 02A 247 24 R0121",
+                        "21/05/2024",
+                        "M LENCI Ange",
+                        "59 Muratello 20137 (AW 167)",
+                        "163 m²",
+                        "la rénovation et la restructuration intérieure d'une bâtisse",
+                        "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 20/06/2024",
+                        "AW 167"
                     ]
                 ]
             }
@@ -7132,8 +7512,8 @@
                 "contenance": 648,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 24 R0041",
@@ -7142,8 +7522,9 @@
                         "19 Muratello 20137 Quartier Muratello (AW 100, AW 101)",
                         "680 m²",
                         "l'extension d'une maison existante",
-                        "- Surface plancher créée : 48,49 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 48,49 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 25/04/2024",
+                        "AW 100, AW 101"
                     ]
                 ]
             }
@@ -7195,8 +7576,8 @@
                 "contenance": 33,
                 "arpente": false,
                 "created": "2006-02-16",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "PC 02A 247 24 R0041",
@@ -7205,8 +7586,9 @@
                         "19 Muratello 20137 Quartier Muratello (AW 100, AW 101)",
                         "680 m²",
                         "l'extension d'une maison existante",
-                        "- Surface plancher créée : 48,49 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 25/04/2024"
+                        "- Surface plancher créée : 48,49 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 25/04/2024",
+                        "AW 100, AW 101"
                     ]
                 ]
             }
@@ -7648,40 +8030,43 @@
                 "contenance": 56060,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0082",
                         "28/03/2024",
                         "M ANGELI Romain",
-                        " les hameaux de pietraggione 20137 Les Hameaux de Pietraggione (AX 5)",
+                        "les hameaux de pietraggione 20137 Les Hameaux de Pietraggione (AX 5)",
                         "56060 m²",
                         "la création d'une chambre et d'une salle d'eau",
-                        "- Surface plancher créée : 17 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 06/05/2024"
+                        "- Surface plancher créée : 17 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 06/05/2024",
+                        "AX 5"
                     ],
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0051",
                         "20/02/2024",
                         "M VAN BUTSEL Philippe",
-                        "15 Hameaux de Pietragione 20137  (AX 5)",
+                        "15 Hameaux de Pietragione 20137 (AX 5)",
                         "56060 m²",
                         "la construction d'une pergola",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "AX 5"
                     ],
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0098",
                         "12/04/2024",
                         "MME COCQUEREL Catherine",
-                        " Route de Santa Giulia 20137  (AX 5)",
+                        "Route de Santa Giulia 20137 (AX 5)",
                         "56060 m²",
                         "la fermeture d'une terrasse couverte et la pose d'un velux",
-                        "- Surface plancher créée : 0 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 15/05/2024"
+                        "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 15/05/2024",
+                        "AX 5"
                     ]
                 ]
             }
@@ -7733,18 +8118,19 @@
                 "contenance": 5192,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "17/06/2024",
                         "PC 02A 247 24 R0017",
                         "29/01/2024",
                         "MME DELPECH-POLI Sylvie",
-                        " Résidence Hôtelière \"Domaine de la Punta\" 20137 Padule d'Asciajo (AZ 84)",
+                        "Résidence Hôtelière \"Domaine de la Punta\" 20137 Padule d'Asciajo (AZ 84)",
                         "5192 m²",
                         "la construction d'un espace d'attente et de locaux de rangement",
-                        "- Surface plancher créée : 29 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 17/06/2024"
+                        "- Surface plancher créée : 29 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 17/06/2024",
+                        "AZ 84"
                     ]
                 ]
             }
@@ -7920,18 +8306,19 @@
                 "contenance": 5150,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-28",
+                "favorables": [
                     [
                         "07/05/2024",
                         "PC 02A 247 24 R0009",
                         "17/01/2024",
                         "M FERRACCI Jean-Baptiste",
-                        " quartier pianelli 20137  (BD 23)",
+                        "quartier pianelli 20137 (BD 23)",
                         "5150 m²",
                         "la construction d'une maison individuelle",
-                        "- Surface plancher créée : 112 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 07/05/2024"
+                        "- Surface plancher créée : 112 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 07/05/2024",
+                        "BD 23"
                     ]
                 ]
             }
@@ -8035,18 +8422,91 @@
                 "contenance": 6805,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "30/05/2024",
                         "PC 02A 247 24 R0075",
                         "29/03/2024",
                         "M MORAGLIA Jean-Jacques",
-                        " ROUTE DE SOTTA 20137 taglio rosso (BH 132)",
+                        "ROUTE DE SOTTA 20137 taglio rosso (BH 132)",
                         "18800 m²",
                         "la contruction d'une maison individuelle avec piscine et garage",
-                        "- Surface plancher créée : 196 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 30/05/2024"
+                        "- Surface plancher créée : 196 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 30/05/2024",
+                        "BH 132"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BH0382",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.2618753,
+                            41.5651791
+                        ],
+                        [
+                            9.2624713,
+                            41.5650544
+                        ],
+                        [
+                            9.2626439,
+                            41.5649863
+                        ],
+                        [
+                            9.262887,
+                            41.5648945
+                        ],
+                        [
+                            9.2630623,
+                            41.5651889
+                        ],
+                        [
+                            9.2616448,
+                            41.5654497
+                        ],
+                        [
+                            9.2616571,
+                            41.5652259
+                        ],
+                        [
+                            9.2618032,
+                            41.5651917
+                        ],
+                        [
+                            9.2618753,
+                            41.5651791
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BH0382",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BH",
+                "numero": "382",
+                "contenance": 3026,
+                "arpente": true,
+                "created": "2020-11-06",
+                "updated": "2022-03-22",
+                "favorables": [
+                    [
+                        "25/04/2024",
+                        "PC 02A 247 24 R0025",
+                        "08/02/2024",
+                        "MME BERTRAND Christelle",
+                        "TAGLIO ROSSO 20137 HAMEAU DE TAGLIO ROSSO (BH 382)",
+                        "3026 m²",
+                        "la construction d'une maison individuelle",
+                        "- Surface plancher créée : 125 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 22/04/2024",
+                        "BH 382"
                     ]
                 ]
             }
@@ -8226,18 +8686,19 @@
                 "contenance": 14717,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "06/05/2024",
                         "DP 02A 247 24 R0087",
                         "02/04/2024",
                         "M CORONA Fabrice",
-                        " Paesolu N° 41 20137  (BK 10)",
+                        "Paesolu N° 41 20137 (BK 10)",
                         "14480 m²",
                         "la création d'une chambre et d'un cabinet de toilette",
-                        "- Surface plancher créée : 15,96 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 06/05/2024"
+                        "- Surface plancher créée : 15,96 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 06/05/2024",
+                        "BK 10"
                     ]
                 ]
             }
@@ -8461,117 +8922,19 @@
                 "contenance": 77340,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0100",
                         "16/04/2024",
                         "MME FERRACCI Corinne",
-                        " Chemin de Ceccia à Pascialella 20137 Morteto (BO 99)",
+                        "Chemin de Ceccia à Pascialella 20137 Morteto (BO 99)",
                         "77340 m²",
                         "une division en vue de construire",
                         "",
-                        "Favorable le 15/05/2024"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "2A247000BO0040",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.2328825,
-                            41.5580086
-                        ],
-                        [
-                            9.232956,
-                            41.5579688
-                        ],
-                        [
-                            9.2331807,
-                            41.5580706
-                        ],
-                        [
-                            9.2334094,
-                            41.5581697
-                        ],
-                        [
-                            9.2334731,
-                            41.5582211
-                        ],
-                        [
-                            9.2325969,
-                            41.558655
-                        ],
-                        [
-                            9.2325881,
-                            41.5586442
-                        ],
-                        [
-                            9.2325515,
-                            41.5586605
-                        ],
-                        [
-                            9.2325649,
-                            41.5586731
-                        ],
-                        [
-                            9.2322803,
-                            41.5588099
-                        ],
-                        [
-                            9.2320088,
-                            41.5589403
-                        ],
-                        [
-                            9.2319474,
-                            41.5589696
-                        ],
-                        [
-                            9.2317376,
-                            41.5586924
-                        ],
-                        [
-                            9.2322133,
-                            41.5584151
-                        ],
-                        [
-                            9.2325097,
-                            41.5582422
-                        ],
-                        [
-                            9.2328825,
-                            41.5580086
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "2A247000BO0040",
-                "commune": "2A247",
-                "prefixe": "000",
-                "section": "BO",
-                "numero": "40",
-                "contenance": 5885,
-                "arpente": false,
-                "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
-                    [
-                        "03/06/2024",
-                        "DP 02A 247 24 R0112",
-                        "07/05/2024",
-                        "SOLECO",
-                        " D 859 - ROUTE DE SOTTA 20137  (BO 40, BO 41)",
-                        "12065 m²",
-                        "la pose de panneaux photovoltaïques",
-                        "",
-                        "Favorable le 03/06/2024"
+                        "Favorable le 15/05/2024",
+                        "BO 99"
                     ]
                 ]
             }
@@ -8583,6 +8946,34 @@
                 "type": "Polygon",
                 "coordinates": [
                     [
+                        [
+                            9.2319474,
+                            41.5589696
+                        ],
+                        [
+                            9.2320088,
+                            41.5589403
+                        ],
+                        [
+                            9.2322803,
+                            41.5588099
+                        ],
+                        [
+                            9.2325649,
+                            41.5586731
+                        ],
+                        [
+                            9.2325515,
+                            41.5586605
+                        ],
+                        [
+                            9.2325881,
+                            41.5586442
+                        ],
+                        [
+                            9.2325969,
+                            41.558655
+                        ],
                         [
                             9.2334731,
                             41.5582211
@@ -8614,34 +9005,6 @@
                         [
                             9.2319474,
                             41.5589696
-                        ],
-                        [
-                            9.2320088,
-                            41.5589403
-                        ],
-                        [
-                            9.2322803,
-                            41.5588099
-                        ],
-                        [
-                            9.2325649,
-                            41.5586731
-                        ],
-                        [
-                            9.2325515,
-                            41.5586605
-                        ],
-                        [
-                            9.2325881,
-                            41.5586442
-                        ],
-                        [
-                            9.2325969,
-                            41.558655
-                        ],
-                        [
-                            9.2334731,
-                            41.5582211
                         ]
                     ]
                 ]
@@ -8655,18 +9018,19 @@
                 "contenance": 6180,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "03/06/2024",
                         "DP 02A 247 24 R0112",
                         "07/05/2024",
                         "SOLECO",
-                        " D 859 - ROUTE DE SOTTA 20137  (BO 40, BO 41)",
+                        "D 859 - ROUTE DE SOTTA 20137 (BO 40, BO 41)",
                         "12065 m²",
                         "la pose de panneaux photovoltaïques",
                         "",
-                        "Favorable le 03/06/2024"
+                        "Favorable le 03/06/2024",
+                        "BO 40, BO 41"
                     ]
                 ]
             }
@@ -8722,18 +9086,19 @@
                 "contenance": 1510,
                 "arpente": true,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "14/06/2024",
                         "PC 02A 247 24 R0082",
                         "13/04/2024",
                         "M CASTELLI Florent",
-                        " Ceccia 20137 Morteto (BO 148)",
+                        "Ceccia 20137 Morteto (BO 148)",
                         "1510 m²",
                         "la construction d'un \" caseddu\"",
-                        "- Surface plancher créée : 50 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 13/06/2024"
+                        "- Surface plancher créée : 50 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 13/06/2024",
+                        "BO 148"
                     ]
                 ]
             }
@@ -8777,18 +9142,19 @@
                 "contenance": 1435,
                 "arpente": false,
                 "created": "2006-02-15",
-                "updated": "2019-02-21",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0089",
                         "04/04/2024",
                         "MME ZANZI Cora-Lisa",
-                        "6212 Quartier Ceccia 20137  (BO 116)",
+                        "6212 Quartier Ceccia 20137 (BO 116)",
                         "1435 m²",
                         "la construction d'une piscine",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "BO 116"
                     ]
                 ]
             }
@@ -8924,18 +9290,19 @@
                 "contenance": 8578,
                 "arpente": false,
                 "created": "2015-11-30",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "05/06/2024",
                         "PC 02A 247 24 R0098",
                         "29/04/2024",
                         "CAL'AZZURRA",
-                        " Route de Piccovaggia 20137 AJA FORNO (BP 20)",
+                        "Route de Piccovaggia 20137 AJA FORNO (BP 20)",
                         "8578 m²",
                         "l'extension d'une maison existante",
-                        "- Surface plancher créée : 44,4 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 05/06/2024"
+                        "- Surface plancher créée : 44,4 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 05/06/2024",
+                        "BP 20"
                     ]
                 ]
             }
@@ -9039,29 +9406,106 @@
                 "contenance": 8868,
                 "arpente": false,
                 "created": "2015-11-30",
-                "updated": "2020-09-24",
-                "decisions": [
+                "updated": "2021-07-09",
+                "favorables": [
                     [
                         "25/04/2024",
                         "DP 02A 247 24 R0024",
                         "24/01/2024",
                         "SCI WM",
-                        "9003 Lieu-Dit Aja Del Forno 20137  (BP 17)",
+                        "9003 Lieu-Dit Aja Del Forno 20137 (BP 17)",
                         "8868 m²",
-                        "la réfection de la toiture de deux structures , construction d'une clôture  et pose d'un portail",
+                        "la réfection de la toiture de deux structures , construction d'une clôture et pose d'un portail",
                         "",
-                        "Favorable le 25/04/2024"
+                        "Favorable le 25/04/2024",
+                        "BP 17"
                     ]
                 ]
             }
         },
         {
             "type": "Feature",
-            "id": "2A247000BP0054",
+            "id": "2A247000BP0169",
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
                     [
+                        [
+                            9.3084794,
+                            41.5894807
+                        ],
+                        [
+                            9.3082268,
+                            41.5892489
+                        ],
+                        [
+                            9.3081233,
+                            41.589154
+                        ],
+                        [
+                            9.3081628,
+                            41.5890943
+                        ],
+                        [
+                            9.3084292,
+                            41.5892095
+                        ],
+                        [
+                            9.3082808,
+                            41.5890111
+                        ],
+                        [
+                            9.3082684,
+                            41.5889862
+                        ],
+                        [
+                            9.3082721,
+                            41.5889522
+                        ],
+                        [
+                            9.30829,
+                            41.588927
+                        ],
+                        [
+                            9.3083143,
+                            41.5889119
+                        ],
+                        [
+                            9.3083602,
+                            41.5889019
+                        ],
+                        [
+                            9.3084008,
+                            41.5889077
+                        ],
+                        [
+                            9.3084486,
+                            41.5889205
+                        ],
+                        [
+                            9.3084932,
+                            41.5889206
+                        ],
+                        [
+                            9.3085401,
+                            41.5889082
+                        ],
+                        [
+                            9.3085805,
+                            41.5888826
+                        ],
+                        [
+                            9.3086072,
+                            41.5888419
+                        ],
+                        [
+                            9.3086089,
+                            41.5887968
+                        ],
+                        [
+                            9.3084854,
+                            41.5886067
+                        ],
                         [
                             9.3089105,
                             41.5879646
@@ -9075,68 +9519,49 @@
                             41.5894657
                         ],
                         [
-                            9.3085615,
-                            41.5896129
-                        ],
-                        [
-                            9.308484,
-                            41.5898907
-                        ],
-                        [
-                            9.3084768,
-                            41.5899166
-                        ],
-                        [
-                            9.3084364,
-                            41.5899066
-                        ],
-                        [
-                            9.3083196,
-                            41.5898802
+                            9.3085786,
+                            41.5895487
                         ],
                         [
                             9.3084819,
                             41.5894824
                         ],
                         [
-                            9.3080865,
-                            41.5892095
-                        ],
-                        [
-                            9.3089105,
-                            41.5879646
+                            9.3084794,
+                            41.5894807
                         ]
                     ]
                 ]
             },
             "properties": {
-                "id": "2A247000BP0054",
+                "id": "2A247000BP0169",
                 "commune": "2A247",
                 "prefixe": "000",
                 "section": "BP",
-                "numero": "54",
-                "contenance": 5321,
-                "arpente": false,
-                "created": "2015-11-30",
-                "updated": "2020-09-24",
-                "decisions": [
+                "numero": "169",
+                "contenance": 3892,
+                "arpente": true,
+                "created": "2016-04-08",
+                "updated": "2023-03-14",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0005",
                         "10/01/2024",
                         "M TESTE Olivier",
-                        " Route De Piccovaggia 20137  (BP 54, BP 169, BP 168, BP 164, BP 171)",
+                        "Route De Piccovaggia 20137 (BP 54, BP 169, BP 168, BP 164, BP 171)",
                         "10627 m²",
                         "la création d'un lot à bâtir",
                         "",
-                        "Favorable le 15/05/2024"
+                        "Favorable le 15/05/2024",
+                        "BP 54, BP 169, BP 168, BP 164, BP 171"
                     ]
                 ]
             }
         },
         {
             "type": "Feature",
-            "id": "2A247000BP0147",
+            "id": "2A247000BP0198",
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
@@ -9206,12 +9631,16 @@
                             41.587341
                         ],
                         [
-                            9.3044565,
-                            41.5873266
+                            9.3044584,
+                            41.5873288
                         ],
                         [
-                            9.3045421,
-                            41.5872822
+                            9.3045254,
+                            41.5872982
+                        ],
+                        [
+                            9.304586,
+                            41.5872752
                         ],
                         [
                             9.3047365,
@@ -9225,26 +9654,803 @@
                 ]
             },
             "properties": {
-                "id": "2A247000BP0147",
+                "id": "2A247000BP0198",
                 "commune": "2A247",
                 "prefixe": "000",
                 "section": "BP",
-                "numero": "147",
-                "contenance": 708,
+                "numero": "198",
+                "contenance": 705,
                 "arpente": false,
-                "created": "2015-11-30",
-                "updated": "2020-09-24",
-                "decisions": [
+                "created": "2021-07-21",
+                "updated": "2023-04-18",
+                "favorables": [
                     [
                         "15/05/2024",
                         "DP 02A 247 24 R0103",
                         "18/04/2024",
                         "MME MORISSEAU Nadège",
-                        "2 Lieu-Dit Aja Del Forno 20137  (BP 147, BP 198)",
+                        "2 Lieu-Dit Aja Del Forno 20137 (BP 147, BP 198)",
                         "1413 m²",
                         "la construction d'un garage auto",
-                        "- Surface plancher créée : 16,5 m²\r\n<br>- Surface plancher démolie : 0 m²\r\n<br>",
-                        "Favorable le 15/05/2024"
+                        "- Surface plancher créée : 16,5 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 15/05/2024",
+                        "BP 147, BP 198"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BP0168",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3084819,
+                            41.5894824
+                        ],
+                        [
+                            9.3085786,
+                            41.5895487
+                        ],
+                        [
+                            9.3085615,
+                            41.5896129
+                        ],
+                        [
+                            9.308484,
+                            41.5898907
+                        ],
+                        [
+                            9.3084768,
+                            41.5899166
+                        ],
+                        [
+                            9.3084364,
+                            41.5899066
+                        ],
+                        [
+                            9.3083196,
+                            41.5898802
+                        ],
+                        [
+                            9.3083701,
+                            41.5897563
+                        ],
+                        [
+                            9.3084819,
+                            41.5894824
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BP0168",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BP",
+                "numero": "168",
+                "contenance": 518,
+                "arpente": true,
+                "created": "2016-04-08",
+                "updated": "2023-03-14",
+                "favorables": [
+                    [
+                        "15/05/2024",
+                        "DP 02A 247 24 R0005",
+                        "10/01/2024",
+                        "M TESTE Olivier",
+                        "Route De Piccovaggia 20137 (BP 54, BP 169, BP 168, BP 164, BP 171)",
+                        "10627 m²",
+                        "la création d'un lot à bâtir",
+                        "",
+                        "Favorable le 15/05/2024",
+                        "BP 54, BP 169, BP 168, BP 164, BP 171"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BP0164",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3083701,
+                            41.5897563
+                        ],
+                        [
+                            9.3083196,
+                            41.5898802
+                        ],
+                        [
+                            9.3082127,
+                            41.5898579
+                        ],
+                        [
+                            9.3081723,
+                            41.5898471
+                        ],
+                        [
+                            9.3080493,
+                            41.5898109
+                        ],
+                        [
+                            9.3079591,
+                            41.589782
+                        ],
+                        [
+                            9.3078835,
+                            41.589752
+                        ],
+                        [
+                            9.3077923,
+                            41.5897106
+                        ],
+                        [
+                            9.3077699,
+                            41.5896987
+                        ],
+                        [
+                            9.3078415,
+                            41.5895882
+                        ],
+                        [
+                            9.3078535,
+                            41.5896039
+                        ],
+                        [
+                            9.3078637,
+                            41.5896194
+                        ],
+                        [
+                            9.3078727,
+                            41.5896358
+                        ],
+                        [
+                            9.307881,
+                            41.5896485
+                        ],
+                        [
+                            9.3078901,
+                            41.5896574
+                        ],
+                        [
+                            9.3079004,
+                            41.5896642
+                        ],
+                        [
+                            9.3079184,
+                            41.5896722
+                        ],
+                        [
+                            9.3079572,
+                            41.5896821
+                        ],
+                        [
+                            9.3079921,
+                            41.5896911
+                        ],
+                        [
+                            9.308035,
+                            41.589703
+                        ],
+                        [
+                            9.3080785,
+                            41.5897146
+                        ],
+                        [
+                            9.3081145,
+                            41.5897231
+                        ],
+                        [
+                            9.3081691,
+                            41.5897355
+                        ],
+                        [
+                            9.3082264,
+                            41.5897479
+                        ],
+                        [
+                            9.3082554,
+                            41.5897531
+                        ],
+                        [
+                            9.30827,
+                            41.5897551
+                        ],
+                        [
+                            9.308307,
+                            41.5897592
+                        ],
+                        [
+                            9.3083444,
+                            41.5897623
+                        ],
+                        [
+                            9.3083621,
+                            41.5897589
+                        ],
+                        [
+                            9.3083701,
+                            41.5897563
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BP0164",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BP",
+                "numero": "164",
+                "contenance": 554,
+                "arpente": true,
+                "created": "2016-04-07",
+                "updated": "2023-03-14",
+                "favorables": [
+                    [
+                        "15/05/2024",
+                        "DP 02A 247 24 R0005",
+                        "10/01/2024",
+                        "M TESTE Olivier",
+                        "Route De Piccovaggia 20137 (BP 54, BP 169, BP 168, BP 164, BP 171)",
+                        "10627 m²",
+                        "la création d'un lot à bâtir",
+                        "",
+                        "Favorable le 15/05/2024",
+                        "BP 54, BP 169, BP 168, BP 164, BP 171"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BP0171",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3078415,
+                            41.5895882
+                        ],
+                        [
+                            9.3077699,
+                            41.5896987
+                        ],
+                        [
+                            9.3077313,
+                            41.5896784
+                        ],
+                        [
+                            9.3076829,
+                            41.5896479
+                        ],
+                        [
+                            9.3076114,
+                            41.5896071
+                        ],
+                        [
+                            9.307502,
+                            41.5895243
+                        ],
+                        [
+                            9.3075042,
+                            41.5895226
+                        ],
+                        [
+                            9.3075808,
+                            41.5895284
+                        ],
+                        [
+                            9.3075846,
+                            41.5895291
+                        ],
+                        [
+                            9.3075954,
+                            41.5895308
+                        ],
+                        [
+                            9.3076079,
+                            41.5895325
+                        ],
+                        [
+                            9.307624,
+                            41.5895353
+                        ],
+                        [
+                            9.30778,
+                            41.5893971
+                        ],
+                        [
+                            9.3078321,
+                            41.5893512
+                        ],
+                        [
+                            9.3078578,
+                            41.5893679
+                        ],
+                        [
+                            9.3078624,
+                            41.5893708
+                        ],
+                        [
+                            9.3078354,
+                            41.5893941
+                        ],
+                        [
+                            9.3078185,
+                            41.5893833
+                        ],
+                        [
+                            9.3077012,
+                            41.5894863
+                        ],
+                        [
+                            9.3078279,
+                            41.5895719
+                        ],
+                        [
+                            9.3078415,
+                            41.5895882
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BP0171",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BP",
+                "numero": "171",
+                "contenance": 341,
+                "arpente": true,
+                "created": "2023-06-08",
+                "updated": "2023-06-08",
+                "favorables": [
+                    [
+                        "15/05/2024",
+                        "DP 02A 247 24 R0005",
+                        "10/01/2024",
+                        "M TESTE Olivier",
+                        "Route De Piccovaggia 20137 (BP 54, BP 169, BP 168, BP 164, BP 171)",
+                        "10627 m²",
+                        "la création d'un lot à bâtir",
+                        "",
+                        "Favorable le 15/05/2024",
+                        "BP 54, BP 169, BP 168, BP 164, BP 171"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BX0116",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3018939,
+                            41.557464
+                        ],
+                        [
+                            9.302249,
+                            41.5577086
+                        ],
+                        [
+                            9.3021782,
+                            41.5577904
+                        ],
+                        [
+                            9.3021355,
+                            41.5578396
+                        ],
+                        [
+                            9.3020912,
+                            41.5578217
+                        ],
+                        [
+                            9.3020099,
+                            41.5579184
+                        ],
+                        [
+                            9.3018473,
+                            41.5579189
+                        ],
+                        [
+                            9.301633,
+                            41.5578506
+                        ],
+                        [
+                            9.301633,
+                            41.5578493
+                        ],
+                        [
+                            9.301624,
+                            41.5578269
+                        ],
+                        [
+                            9.3016062,
+                            41.5577854
+                        ],
+                        [
+                            9.3015786,
+                            41.557767
+                        ],
+                        [
+                            9.3016061,
+                            41.5576924
+                        ],
+                        [
+                            9.3016671,
+                            41.55764
+                        ],
+                        [
+                            9.3017059,
+                            41.5576059
+                        ],
+                        [
+                            9.3017575,
+                            41.5575605
+                        ],
+                        [
+                            9.3018187,
+                            41.557506
+                        ],
+                        [
+                            9.3018351,
+                            41.5574955
+                        ],
+                        [
+                            9.3018574,
+                            41.5574834
+                        ],
+                        [
+                            9.3018868,
+                            41.5574675
+                        ],
+                        [
+                            9.3018939,
+                            41.557464
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BX0116",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BX",
+                "numero": "116",
+                "contenance": 1718,
+                "arpente": false,
+                "created": "2021-07-02",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "21/05/2024",
+                        "PC 02A 247 24 R0053",
+                        "15/03/2024",
+                        "M TCHEUREKJEAN Gilles",
+                        "Porra 20137 LARGIA (BX 116, BX 204)",
+                        "1811 m²",
+                        "la réhabilitation et l'extension d'une maison individuelle",
+                        "- Surface plancher créée : 47 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 21/05/2024",
+                        "BX 116, BX 204"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BX0204",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.3022822,
+                            41.5577315
+                        ],
+                        [
+                            9.3022286,
+                            41.5578745
+                        ],
+                        [
+                            9.3021355,
+                            41.5578396
+                        ],
+                        [
+                            9.3021782,
+                            41.5577904
+                        ],
+                        [
+                            9.302249,
+                            41.5577086
+                        ],
+                        [
+                            9.3022822,
+                            41.5577315
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BX0204",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BX",
+                "numero": "204",
+                "contenance": 93,
+                "arpente": false,
+                "created": "2021-07-02",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "21/05/2024",
+                        "PC 02A 247 24 R0053",
+                        "15/03/2024",
+                        "M TCHEUREKJEAN Gilles",
+                        "Porra 20137 LARGIA (BX 116, BX 204)",
+                        "1811 m²",
+                        "la réhabilitation et l'extension d'une maison individuelle",
+                        "- Surface plancher créée : 47 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 21/05/2024",
+                        "BX 116, BX 204"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000BY0048",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.283831,
+                            41.561493
+                        ],
+                        [
+                            9.2838359,
+                            41.5615098
+                        ],
+                        [
+                            9.2838409,
+                            41.5615245
+                        ],
+                        [
+                            9.2838452,
+                            41.5615393
+                        ],
+                        [
+                            9.2838491,
+                            41.5615543
+                        ],
+                        [
+                            9.2838525,
+                            41.5615693
+                        ],
+                        [
+                            9.2838552,
+                            41.5615844
+                        ],
+                        [
+                            9.2838574,
+                            41.5615996
+                        ],
+                        [
+                            9.2838588,
+                            41.5616147
+                        ],
+                        [
+                            9.2838592,
+                            41.5616279
+                        ],
+                        [
+                            9.2838592,
+                            41.5616413
+                        ],
+                        [
+                            9.2838588,
+                            41.5616545
+                        ],
+                        [
+                            9.283858,
+                            41.5616677
+                        ],
+                        [
+                            9.283857,
+                            41.561681
+                        ],
+                        [
+                            9.2838559,
+                            41.5616942
+                        ],
+                        [
+                            9.2838546,
+                            41.5617074
+                        ],
+                        [
+                            9.2838532,
+                            41.5617206
+                        ],
+                        [
+                            9.2838049,
+                            41.5619818
+                        ],
+                        [
+                            9.2837531,
+                            41.5622564
+                        ],
+                        [
+                            9.2837487,
+                            41.5622751
+                        ],
+                        [
+                            9.2837423,
+                            41.5622941
+                        ],
+                        [
+                            9.2837336,
+                            41.5623125
+                        ],
+                        [
+                            9.2837231,
+                            41.5623304
+                        ],
+                        [
+                            9.2837104,
+                            41.5623476
+                        ],
+                        [
+                            9.283696,
+                            41.5623638
+                        ],
+                        [
+                            9.2836798,
+                            41.5623791
+                        ],
+                        [
+                            9.2836627,
+                            41.5623934
+                        ],
+                        [
+                            9.2836396,
+                            41.5624082
+                        ],
+                        [
+                            9.2833131,
+                            41.5624956
+                        ],
+                        [
+                            9.2828895,
+                            41.5621101
+                        ],
+                        [
+                            9.2828686,
+                            41.562091
+                        ],
+                        [
+                            9.282987,
+                            41.5620184
+                        ],
+                        [
+                            9.2833646,
+                            41.5617833
+                        ],
+                        [
+                            9.283831,
+                            41.561493
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000BY0048",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "BY",
+                "numero": "48",
+                "contenance": 4891,
+                "arpente": false,
+                "created": "2021-07-02",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "21/05/2024",
+                        "DP 02A 247 24 R0110",
+                        "06/05/2024",
+                        "SOLECO",
+                        "ZAC de Mortone 20137 (BY 48)",
+                        "4891 m²",
+                        "l'installation photovoltaïque en toiture de deux bâtiments existants",
+                        "",
+                        "Favorable le 21/05/2024",
+                        "BY 48"
+                    ],
+                    [
+                        "05/06/2024",
+                        "PC 02A 247 21 R0110 T01",
+                        "29/03/2024",
+                        "SCI LM IMMOBILIER",
+                        "Lieu-dit Mortone 20137 (F 1236, BY 48)",
+                        "9891 m²",
+                        "le tranfert d'un hangar de stockage",
+                        "- Surface plancher créée : 232,68 m²\n- Surface plancher démolie : 0 m²\n",
+                        "Favorable le 05/06/2024",
+                        "F 1236, BY 48"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "2A247000CA0111",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.290579,
+                            41.5398214
+                        ],
+                        [
+                            9.2906202,
+                            41.5402246
+                        ],
+                        [
+                            9.2899651,
+                            41.5403661
+                        ],
+                        [
+                            9.2898988,
+                            41.5402263
+                        ],
+                        [
+                            9.2896152,
+                            41.5396661
+                        ],
+                        [
+                            9.2901023,
+                            41.5397444
+                        ],
+                        [
+                            9.290579,
+                            41.5398214
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "2A247000CA0111",
+                "commune": "2A247",
+                "prefixe": "000",
+                "section": "CA",
+                "numero": "111",
+                "contenance": 4114,
+                "arpente": false,
+                "created": "2021-07-02",
+                "updated": "2021-07-09",
+                "favorables": [
+                    [
+                        "15/05/2024",
+                        "DP 02A 247 24 R0101",
+                        "17/04/2024",
+                        "FRANCE RENOV HABITAT",
+                        "6 LOT TAGLIO D'ORO 20137 (CA 111)",
+                        "4114 m²",
+                        "la pose de 24 panneaux photovotaïques",
+                        "",
+                        "Favorable le 15/05/2024",
+                        "CA 111"
                     ]
                 ]
             }

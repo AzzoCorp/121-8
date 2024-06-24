@@ -1,375 +1,391 @@
+/* Base styles */
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    height: 100%;
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Lucida Sans', sans-serif;
+}
+
 #map {
     position: absolute;
     top: 0;
-    bottom: 0;
+    left: 0;
     width: 100%;
-    background-color: #000; /* Dark background for map */
+    height: 100vh;
 }
 
-body { 
-    margin: 0; 
-    padding: 0; 
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text color */
-}
-
-html, body, #map { 
-    height: 100%; 
-}
-
-#menu {
-    top: 32px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Darker shadow */
-    z-index: 1;
-    background: #1e1e1e; /* Dark background */
-    color: #e0e0e0; /* Light text color */
-    font-family: 'Open Sans', sans-serif;
-}
-
+/* Tabs structure */
 .tabs {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-size: 15px;
+    width: auto;
+   
+    max-width: 50%;
+    max-height: calc(100vh - 20px);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    font-family: 'Lucida Sans', sans-serif;
-    font-size: 15px;
-    max-width: 50%; /* Limit maximum width */
-    z-index: 100;
-    overflow: hidden; /* Hide overflow */
-    background-color: #1e1e1e; /* Dark background for tabs */
-    color: #e0e0e0; /* Light text color */
-    max-height: fit-content; /* Adapt height to content */
 }
 
 .tab-registers {
-    display: flex;
-    flex-wrap: nowrap; /* Prevent buttons from wrapping to multiple lines */
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .tab-registers button {
-    padding: 0.5em;
-    background-color: #333; /* Dark button background */
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
     border: none;
-    font: inherit;
-    flex: 0 0 auto; /* Prevent buttons from stretching to take full width */
+    color: #e0e0e0;
+    cursor: pointer;
     transition: background-color 0.3s ease;
-    color: #e0e0e0; /* Light text color */
 }
 
 .tab-registers button:hover {
-    cursor: pointer;
-    background-color: #444; /* Add hover effect */
-}
-
-.tab-registers button:focus {
-    outline: 2px solid #555; /* Add focus outline for accessibility */
-}
-
-.tab-bodies {
-    background-color: #1e1e1e; /* Dark background for tab bodies */
-    flex-grow: 1;
-    overflow-y: auto; /* Add vertical scrolling */
-    overflow-x: auto; /* Add horizontal scrolling */
-    color: #e0e0e0; /* Light text color */
-    display: flex;
-    flex-direction: column;
-}
-
-.tab-bodies > div {
-    overflow: auto; /* Ensure each tab content can scroll */
+    background-color: #444;
 }
 
 .tab-registers button.active-tab {
-    background-color: #555; /* Active tab background */
+    background-color: #555;
+}
+
+.tab-bodies {
+    overflow-y: auto;
+    background-color: #1e1e1e;
+    flex-grow: 1;
+}
+
+.tab-content {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* Layer controls */
+#layer-buttons {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#layer-buttons button { 
+    padding: 5px 10px;
+    background-color: #333;
+    color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#layers-container {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+#layers-list {
+    padding: 0;
+    width: 100%;
 }
 
 .layer-item {
-    display: flex;
-    align-items: center;
     margin-bottom: 10px;
-    color: #e0e0e0; /* Light text color */
-    cursor: default; /* Default cursor for the entire layer item */
+    padding: 5px;
+    border-bottom: 1px solid #444;
+    color: #e0e0e0;
+    background-color: #333333;
+}
+.layer-item .nom {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+     /*max-width: 150px; Adjust this value as needed */
+    display: inline-block;
 }
 
-.layer-item.dragging {
-    opacity: 0.5; /* Reduce opacity while dragging */
+/* ... (other layer-item styles remain unchanged) ... */
+
+/* Styles for depots and decisions tabs */
+#Demandes, #Décisions {
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
 }
 
-.icon {
-    width: 15px; /* Constrain width to 15 pixels */
-    height: 15px; /* Constrain height to 15 pixels */
-    margin-right: 10px;
-    cursor: pointer;
+.depot-item, .decision-item {
+    background-color: #2a2a2a;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
 }
 
-.layer-item img {
-    width: 20px; /* Set width for icons */
-    height: 20px; /* Set height for icons */
-    margin-right: 10px;
-    cursor: pointer;
+.depot-item h3, .decision-item h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
-.color-box {
-    width: 15px;
-    height: 15px;
-    margin-right: 10px;
-}
-
-.slider {
-    margin-right: 10px;
-}
-
-.layer-item .drag-handle {
-    cursor: move; /* Use the move cursor */
-}
-
-.layer-item .drag-handle:active {
-    cursor: grabbing; /* Grabbing cursor when the handle is active */
-}
-
-.marker {
-  background-image: url('mapbox-icon.png');
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.layer-item .icon {
-    width: 15px;
-    height: 15px;
+.depot-item p, .decision-item p {
+    margin: 5px 0;
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #1e1e1e; /* Darker background for scrollbar track */
+    background: #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333; /* Dark background for scrollbar thumb */
+    background: #555;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #444; /* Slightly lighter on hover */
+    background: #777;
 }
 
-.popup-content {
-  background-color: #222; /* Dark background for popup */
-  color: white;
-  text-align: center;
-  padding: 10px;
-  box-shadow: 0px 0px 10px #000; /* Add shadow to popups */	
-  border-radius: 5px; /* Optional: Add rounded corners */
-  line-height: 1em;
-}
-
+/* Mapbox specific styles */
 .mapboxgl-popup-content {
-	background-color: #000; /* Dark background for popup */
-	border-radius: 10px; /* Optional: Add rounded corners */
-	line-height: 1em;
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    line-height: 1em;
 }
 
 .mapboxgl-popup-close-button {
-	background-color: #FFF; /* Dark background for popup */
-	color: #000;
-	font-size: 1.7em;
-	border-radius: 10px; 
-	box-shadow: 0px 0px 7px #000; /* Add shadow to popups */
+    color: #000;
+    background-color: #FFF;
+    font-size: 1.7em;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px #000;
 }
 
 .mapboxgl-popup-close-button:hover {
-	background-color: #707070; /* Dark background for popup */
-	color: #FFF;
-	font-size: 1.7em;
-	border-radius: 10px; 
-	box-shadow: 0px 0px 10px #FFF; /* Add shadow to popups */
+    background-color: #707070;
+    color: #FFF;
+    box-shadow: 0px 0px 10px #FFF;
 }
 
-.popup-content {
-	line-height: 1em;
-}
-
-.weight-slider {
-    width: 12%; /* Set the width to 12% */
-}
-
-.line-opacity-slider {
-    width: 12%; /* Set the width to 12% */
-}
-
-/* Style for the map container */
-.mapboxgl-canvas {
-    background-color: #1a1a1a; /* Dark background color */
-}
-
-/* Style for the labels */
-.mapboxgl-popup-content {
-    color: #ffffff; /* White text color for popups */
-    background-color: #333333; /* Dark background color for popups */
-    border: 1px solid #444444; /* Border color for popups */
-}
-
-.mapboxgl-popup-tip {
-    border-top-color: #333333; /* Dark background color for popup tip */
-}
-
-/* Style for the label text */
-.mapboxgl-ctrl {
-    color: #ffffff; /* White text color for controls */
-}
-
-.mapboxgl-ctrl-top-left, .mapboxgl-ctrl-top-right, .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
-    background-color: #333333; /* Dark background color for controls */
-    border: 1px solid #444444; /* Border color for controls */
-}
-
-/* Style for the custom marker */
+/* Custom marker */
 .custom-marker {
     background-size: cover;
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px solid #ffffff; /* White border for markers */
 }
 
-/* Style for the layer list */
-.layer-item {
-    background-color: #333333; /* Dark background color for layer items */
-    color: #ffffff; /* White text color for layer items */
-    border: 1px solid #444444; /* Border color for layer items */
-    padding: 5px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.layer-item .icon {
-    margin-right: 10px;
-}
-
-.layer-item .color-box {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border: 1px solid #ffffff; /* White border for color boxes */
-}
-
-.layer-item .opacity-slider, .layer-item .weight-slider {
-    margin-left: auto;
-    width: 100px;
-}
-
-.mapboxgl-canvas {
-    transition: fill-opacity 0.3s ease-in-out;
-}
-
-/* Dark theme styles */
-body {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-.tabs {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-.tab-button {
-    background-color: #333333;
-    color: #ffffff;
+/* Locate buttons */
+.locate-btn, .locate-btnF {
+    padding: 5px 10px;
     border: none;
-    padding: 10px;
     cursor: pointer;
+    float: right;
 }
 
-.tab-button.active-tab {
-    background-color: #555555;
-}
-
-.tab-content {
-    background-color: #1e1e1e;
-    color: #ffffff;
-    padding: 10px;
-    border: 1px solid #333333;
-}
-
-/* Scrollable container styles */
-.scrollable-container {
-    max-height: 400px; /* Adjust the height as needed */
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #333333;
-}
-
-.list-item {
-    border: 1px solid #555555;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #2e2e2e;
+.locate-btn {
+    background-color: #FF00FF;
+    color: #FFFFFF;
 }
 
 .locate-btnF {
-	/* position:relative; */
-    /* margin-top: 0px; */
-	/* margin-right : 0px; */
-    padding: 5px 10px;
- background-color: #00FFFF;
+    background-color: #00FFFF;
     color: #000000;
-    border: none;
-    cursor: pointer;
-	   float:right;
 }
-.locate-btn {
-	/* position:relative; */
-    /* margin-top: 0px; */
-	/* margin-right : 0px; */
-    padding: 5px 10px;
- background-color: #FF00FF;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-	   float:right;
-}
-.locate-btnF:hover {
-    background-color: #38D7FF;
-}
+
 .locate-btn:hover {
     background-color: #C72EFF;
 }
-.nomdeposant{
-	   /* padding: 0px 60px; */
-    color: #FF00FF;
-	font-size: 1.5em;
-	font-weight:bold;                      
-	    margin-bottom: 7px;
-}
-.nomdeposantF{
-	   /* padding: 0px 60px; */
-    color: #00FFFF;
-	font-size: 1.5em;
-	font-weight:bold;                      
-	margin-bottom: 7px;
-}
-.textrmq{
-	   /* padding: 0px 60px; */
-    color: grey;
-	font-size: .9em;
-	margin-top:5px;
-	
-}
-.desc{
-	   /* padding: 0px 60px; */
 
+.locate-btnF:hover {
+    background-color: #38D7FF;
+}
+
+/* Text styles */
+.nomdeposant, .nomdeposantF {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.nomdeposant {
+    color: #007bff;
+}
+
+.nomdeposantF {
+    color: #00FFFF;
+}
+
+.textrmq {
     color: grey;
-	font-size: 1.2em;
-	margin-top:7px;
-	
-		   letter-spacing:0.2em;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.desc {
+    color: grey;
+    font-size: 1.2em;
+    margin-top: 7px;
+    letter-spacing: 0.2em;
+}
+
+/* Additional styles */
+.mapboxgl-canvas {
+    background-color: #1a1a1a;
+    transition: fill-opacity 0.3s ease-in-out;
+}
+
+.mapboxgl-ctrl {
+    color: #ffffff;
+}
+
+.mapboxgl-ctrl-top-left, .mapboxgl-ctrl-top-right, .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
+    background-color: #333333;
+    border: 1px solid #444444;
+}
+
+/* New styles for better separation and layout */
+.depot-group, .decision-group {
+    background-color: #2a2a2a;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.depot-data, .decision-data {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.depot-data:last-child, .decision-data:last-child {
+    border-bottom: none;
+}
+
+/* Adjust tab content width */
+.tab-content {
+    max-width: 600px; /* Adjust this value as needed */
+    margin: 0 auto;
+}
+
+/* Improve button styles */
+.locate-btn, .locate-btnF {
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+/* Improve text readability */
+.depot-group, .decision-group {
+    line-height: 1.4;
+}
+
+
+.orphaned-items-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.orphaned-items-popup .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.orphaned-items-popup h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+
+
+.orphaned-items-popup ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.orphaned-items-popup li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 3px;
+}
+
+.orphaned-items-popup strong {
+    color: #ffa500;
+}
+
+.orphaned-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.orphaned-items-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.orphaned-items-popup .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+#close-popup {
+    display: block;
+    margin-top: 20px;
+}
+#show-orphaned-items {
+    color: #ffa500; /* Orange color */
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#show-orphaned-items:hover {
+    color: #ffcc00; /* Lighter orange on hover */
 }
