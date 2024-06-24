@@ -28,7 +28,7 @@ body, html {
     font-size: 15px;
     width: auto;
    
-    max-width: 50%;
+    /*max-width: 50%;*/
     max-height: calc(100vh - 20px);
     overflow: hidden;
     display: flex;
@@ -211,6 +211,7 @@ body, html {
     background-color: #C72EFF;
 }
 
+
 .locate-btnF:hover {
     background-color: #38D7FF;
 }
@@ -223,7 +224,7 @@ body, html {
 }
 
 .nomdeposant {
-    color: #007bff;
+    color: #FF00FF;
 }
 
 .nomdeposantF {
