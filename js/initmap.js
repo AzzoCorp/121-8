@@ -845,6 +845,7 @@ function getParcelInfo(groupItems, features) {
 
 
 async function populateFavorablesList() {
+    console.log('Début de populateFavorablesList');
     if (OnOff()) {
         console.log('>>>> ' + arguments.callee.name + '() <= fonction utilisée');
     }
@@ -858,6 +859,7 @@ async function populateFavorablesList() {
     const favorablesSource = map.getSource('favorables-parcelles');
     if (favorablesSource) {
         try {
+            console.log('Chargement des données favorables...');
             const favorablesData = await fetch('GeoDatas/outputfavorables.geojson').then(response => response.json());
             const features = favorablesData.features;
 
@@ -870,43 +872,28 @@ async function populateFavorablesList() {
             const headParcels = new Set();
             const childParcels = new Set();
 
-            features.forEach(feature => {
+            features.forEach((feature, index) => {
                 const properties = feature.properties;
                 totalTraite++;
 
-                if (typeof properties.decisions === 'string') {
-                    try {
-                        properties.decisions = JSON.parse(properties.decisions);
-                    } catch (error) {
-                        console.error('Échec de l\'analyse des décisions:', properties.decisions, error);
-                    }
-                }
+                console.log(`Traitement de la feature ${index + 1}:`, properties);
 
-                if (Array.isArray(properties.decisions) && properties.decisions.length > 0) {
-                    properties.decisions.forEach(decision => {
+                if (Array.isArray(properties.favorables) && properties.favorables.length > 0) {
+                    console.log(`Traitement de ${properties.favorables.length} décisions favorables pour la feature ${index + 1}`);
+                    properties.favorables.forEach((decision, decisionIndex) => {
                         if (Array.isArray(decision)) {
                             elementsInclus++;
-                            const squareMeters = extractSquareMeters(decision[7]);
-                            const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
-                            const groupItems = extractGroupItems(decision[4]);
+                            console.log(`Traitement de la décision ${decisionIndex + 1} pour la feature ${index + 1}:`, decision);
+                            
+                            const [date, numero, dateReception, demandeur, adresse, surface, description, details, statut, parcelles, surfaces] = decision;
+                            
+                            const [constructionArea, demolitionArea] = surfaces || [0, 0];
+                            const difference = (constructionArea - demolitionArea).toFixed(2);
+
+                            const groupItems = parcelles.split(', ');
                             const headParcel = groupItems[0];
 
-                            const listItem = `
-                                <div class="decision-group">
-                                    <div class="decision-data">
-                                        <strong>[${elementsInclus}] | ${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
-                                        <button class="locate-btnF" data-section="${properties.section}" data-numero="${properties.numero}" data-group-items="${groupItems.join(' ')}">Trouver</button><div class="nomdeposantF">${decision[3]}</div>
-                                        <strong>${decision[1]}</strong><i> reçue le </i><strong>${decision[0]}</strong><br>
-                                        ${getParcelInfo(groupItems, features)}
-                                        <br><strong>Adresse </strong>${decision[4]}<br>
-                                        <div class="desc"><strong>DESCRIPTION</strong></div>${decision[6]}<br>
-                                        ${decision[7]}
-                                    </div>
-                                    <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
-                                    <br>arpenté <strong>${properties.arpente}</strong>
-                                    créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
-                                </div>
-                            `;
+                            console.log(`Décision traitée: ${numero}, Parcelle principale: ${headParcel}`);
 
                             headParcels.add(headParcel);
                             groupItems.forEach(item => {
@@ -918,9 +905,32 @@ async function populateFavorablesList() {
                             if (!groupedItems[headParcel]) {
                                 groupedItems[headParcel] = [];
                             }
-                            groupedItems[headParcel].push({ difference: parseFloat(difference), html: listItem });
+                            groupedItems[headParcel].push({
+                                difference: parseFloat(difference),
+                                html: `
+                                    <div class="decision-group">
+                                        <div class="decision-data">
+                                            <strong>[${elementsInclus}] | ${difference} m² = ${constructionArea} m² - ${demolitionArea} m²</strong><br>
+                                            <button class="locate-btnF" data-section="${properties.section}" data-numero="${properties.numero}" data-group-items="${groupItems.join(' ')}">Trouver</button><div class="nomdeposantF">${demandeur}</div>
+                                            <strong>${numero}</strong><i> reçue le </i><strong>${dateReception}</strong><br>
+                                            ${getParcelInfo(groupItems, features)}
+                                            <br><strong>Adresse </strong>${adresse}<br>
+                                            <div class="desc"><strong>DESCRIPTION</strong></div>${description}<br>
+                                            ${details}
+                                        </div>
+                                        <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
+                                        <br>arpenté <strong>${properties.arpente}</strong>
+                                        créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
+                                        </div>
+                                    </div>
+                                `
+                            });
+                        } else {
+                            console.warn(`La décision ${decisionIndex + 1} pour la feature ${index + 1} n'est pas un tableau:`, decision);
                         }
                     });
+                } else {
+                    console.warn(`Aucune décision favorable trouvée pour la feature ${index + 1}`);
                 }
             });
 
@@ -954,10 +964,12 @@ async function populateFavorablesList() {
             let orphanedCount = 0;
             let orphanedData = { data: [] };
             try {
+                console.log('Chargement des données orphelines...');
                 const response = await fetch('./GeoDatas/outputfavorablesorphan.json');
                 if (response.ok) {
                     orphanedData = await response.json();
                     orphanedCount = orphanedData.recordsTotal;
+                    console.log(`Nombre d'éléments orphelins : ${orphanedCount}`);
                 }
             } catch (error) {
                 console.error('Erreur lors du chargement des données orphelines:', error);
@@ -967,7 +979,7 @@ async function populateFavorablesList() {
             itemCountElement.innerHTML = `
                 <strong>Total des éléments traités :</strong> ${totalTraite}<br>
                 <strong>Éléments inclus :</strong> ${elementsInclus}<br>
-                <strong>Décisions sans parcelles renseignées :</strong> <a href="#" id="show-orphaned-items-favorables" class="orphaned-link" style="color: var(--nomdeposantF-color);">${orphanedCount}</a><br>
+                <strong>Décisions sans parcelles renseignées :</strong> <a href="#" id="show-orphaned-items-favorables" class="orphaned-link">${orphanedCount}</a><br>
                 <strong>Nombre de groupes final :</strong> ${finalGroupItems.size}<br>
             `;
             favorablesContainer.insertBefore(itemCountElement, favorablesContainer.firstChild);
@@ -985,6 +997,7 @@ async function populateFavorablesList() {
     } else {
         console.error('Source des favorables non trouvée.');
     }
+    console.log('Fin de populateFavorablesList');
 }
 
 

@@ -11,7 +11,11 @@
             "l'implantation d'un poste de transformation de distribution publique sur le domaine piblic",
             "- Surface plancher créée : 9,6 m²\n- Surface plancher démolie : 0 m²\n",
             "Favorable le 21/05/2024",
-            null
+            null,
+            [
+                9.6,
+                0.0
+            ]
         ]
     ]
 }

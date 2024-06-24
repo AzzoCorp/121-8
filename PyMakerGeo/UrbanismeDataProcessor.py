@@ -1,3 +1,5 @@
+#From file scrapped with scrapper.js to gejson layer of demandes and Décisions
+
 import json
 import re
 
@@ -30,16 +32,46 @@ def extract_areas(details):
     
     return construction_area, demolition_area
 
+# ... (le reste du code reste inchangé)
+
 def process_record(record, is_depot=False):
     reference = extract_reference(record[4])
     details = record[7] if len(record) > 7 else ""
     construction_area, demolition_area = extract_areas(details)
     
     record.append(reference)
-    if is_depot:
-        record.append([construction_area, demolition_area])
+    record.append([construction_area, demolition_area])  # Ajoutez toujours les surfaces
     
     return record, reference
+
+def associer_polygones(parcelles_data, donnees_par_reference, type_donnees):
+    nouveau_geojson = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+    nbpol = 0
+    references_traitees = set()
+
+    for feature in parcelles_data['features']:
+        section = feature['properties'].get('section')
+        numero = feature['properties'].get('numero')
+        ref_parcelle = f"{section} {numero}"
+        if ref_parcelle in donnees_par_reference:
+            nbpol += 1
+            feature['properties'][type_donnees] = []
+            for record in donnees_par_reference[ref_parcelle]:
+                new_record = record[:-1]  # Copie tous les éléments sauf le dernier
+                if len(record) > 9 and isinstance(record[-1], list) and len(record[-1]) == 2:
+                    new_record.append(record[-1])  # Ajoute le tableau [0.0, 0.0] à la fin
+                else:
+                    new_record.append([0.0, 0.0])  # Ajoute [0.0, 0.0] par défaut si les données sont manquantes
+                feature['properties'][type_donnees].append(new_record)
+            nouveau_geojson['features'].append(feature)
+            references_traitees.add(ref_parcelle)
+
+    return nouveau_geojson, nbpol, references_traitees
+
+
 
 def segregate_records(records, is_depot=False):
     records_with_reference = []
@@ -77,25 +109,7 @@ def extraire_references(data, is_depot):
 
     return donnees_par_reference, total_records, total_references, unique_references, records_without_reference
 
-def associer_polygones(parcelles_data, donnees_par_reference, type_donnees):
-    nouveau_geojson = {
-        "type": "FeatureCollection",
-        "features": []
-    }
-    nbpol = 0
-    references_traitees = set()
 
-    for feature in parcelles_data['features']:
-        section = feature['properties'].get('section')
-        numero = feature['properties'].get('numero')
-        ref_parcelle = f"{section} {numero}"
-        if ref_parcelle in donnees_par_reference:
-            nbpol += 1
-            feature['properties'][type_donnees] = donnees_par_reference[ref_parcelle]
-            nouveau_geojson['features'].append(feature)
-            references_traitees.add(ref_parcelle)
-
-    return nouveau_geojson, nbpol, references_traitees
 
 def traiter_references_orphelines(donnees_par_reference, references_traitees, records_without_reference, is_depot):
     references_sans_correspondance = set(donnees_par_reference.keys()) - references_traitees
