@@ -11,6 +11,8 @@ Nouvel version depuis 2015 : https://www.legifrance.gouv.fr/codes/article_lc/LEG
 
 Sachant que la jurisprudence fixe cette continuité à environ 100 mètres, le PADDUC de la Corse établit lui une limite maximum à 80 mètres.
 
+lien vers la documentation complète du PADDUC : https://www.aue.corsica/Le-Padduc-dans-son-integralite_a47.html
+
 Nous codons cette loi afin de situer les centres urbains et de vérifier de manière automatique et mathématique la "continuité" (art. 121-8) des décisions des communes, des préfectures et des juridictrions administratives.
 En entourant les batiments d'une ligne située à 40 mètres, une continuité de maximum 80 mètres apparait, c'est ainsi que nous pouvons délimité mathématiquement les centre urbains de chaque communes littorales.
 
