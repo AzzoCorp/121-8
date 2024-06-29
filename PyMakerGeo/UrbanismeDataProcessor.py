@@ -1,10 +1,8 @@
-#From file scrapped with scrapper.js to gejson layer of demandes and Décisions
-
 import json
 import re
-
-def nettoyer_reference(ref):
-    return ref.replace('247 ', '').strip()
+from datetime import datetime
+import os
+import glob
 
 def charger_json(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -14,10 +12,16 @@ def sauvegarder_json(file_path, data):
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
 
+def nettoyer_reference(ref):
+    return ref.replace('247 ', '').strip()
+
 def extract_reference(address):
-    parts = address.rsplit('(', 1)
-    if len(parts) > 1:
-        return parts[-1].strip(')')
+    if isinstance(address, list):
+        return ', '.join(address)
+    elif isinstance(address, str):
+        parts = address.rsplit('(', 1)
+        if len(parts) > 1:
+            return parts[-1].strip(')')
     return None
 
 def extract_areas(details):
@@ -32,130 +36,151 @@ def extract_areas(details):
     
     return construction_area, demolition_area
 
-# ... (le reste du code reste inchangé)
-
 def process_record(record, is_depot=False):
     reference = extract_reference(record[4])
     details = record[7] if len(record) > 7 else ""
     construction_area, demolition_area = extract_areas(details)
     
-    record.append(reference)
-    record.append([construction_area, demolition_area])  # Ajoutez toujours les surfaces
+    processed_record = record + [""] if is_depot else record
+    processed_record.append(reference)
+    processed_record.append([construction_area, demolition_area])
     
-    return record, reference
+    if len(processed_record) > 8 and processed_record[8].startswith("Favorable le "):
+        date_str = processed_record[8].split("Favorable le ")[1]
+        try:
+            date_obj = datetime.strptime(date_str, "%d/%m/%Y")
+            processed_record[8] = 'Favorable'
+            processed_record.append(date_obj.strftime("%Y-%d-%m"))
+        except ValueError:
+            processed_record[8] = ''
+            processed_record.append('')
+    else:
+        if len(processed_record) <= 8:
+            processed_record.append('')
+        else:
+            processed_record[8] = ''
+        processed_record.append('')
+    
+    return processed_record, reference
 
-def associer_polygones(parcelles_data, donnees_par_reference, type_donnees):
-    nouveau_geojson = {
+def merge_and_process_data(data, is_depot=False):
+    merged_data = []
+    orphans = []
+    total_records = 0
+    total_references = 0
+    unique_references = set()
+    
+    for record in data['data']:
+        total_records += 1
+        processed_record, reference = process_record(record, is_depot)
+        if reference:
+            refs = [nettoyer_reference(ref) for ref in reference.split(',') if ref.strip()]
+            total_references += len(refs)
+            unique_references.update(refs)
+            merged_data.append(processed_record)
+        else:
+            orphans.append(processed_record)
+    
+    return merged_data, orphans, total_records, total_references, len(unique_references)
+
+def associate_polygons(parcels_data, merged_data):
+    geojson = {
         "type": "FeatureCollection",
         "features": []
     }
     nbpol = 0
     references_traitees = set()
+    orphans = []
+    all_references = set()
+    references_without_polygon = set()
 
-    for feature in parcelles_data['features']:
+    for record in merged_data:
+        if record[-3]:  # Changed from -2 to -3 due to new field
+            refs = [nettoyer_reference(ref) for ref in record[-3].split(',') if ref.strip()]
+            all_references.update(refs)
+
+    for feature in parcels_data['features']:
         section = feature['properties'].get('section')
         numero = feature['properties'].get('numero')
-        ref_parcelle = f"{section} {numero}"
-        if ref_parcelle in donnees_par_reference:
+        parcel_ref = f"{section} {numero}"
+
+        associated_records = []
+        for record in merged_data:
+            if record[-3] and parcel_ref in [nettoyer_reference(ref) for ref in record[-3].split(',')]:
+                clean_record = record.copy()
+                clean_record[-3] = ', '.join([nettoyer_reference(ref) for ref in clean_record[-3].split(',')])
+                associated_records.append(clean_record)
+                references_traitees.add(parcel_ref)
+
+        if associated_records:
             nbpol += 1
-            feature['properties'][type_donnees] = []
-            for record in donnees_par_reference[ref_parcelle]:
-                new_record = record[:-1]  # Copie tous les éléments sauf le dernier
-                if len(record) > 9 and isinstance(record[-1], list) and len(record[-1]) == 2:
-                    new_record.append(record[-1])  # Ajoute le tableau [0.0, 0.0] à la fin
-                else:
-                    new_record.append([0.0, 0.0])  # Ajoute [0.0, 0.0] par défaut si les données sont manquantes
-                feature['properties'][type_donnees].append(new_record)
-            nouveau_geojson['features'].append(feature)
-            references_traitees.add(ref_parcelle)
+            feature['properties']['urbanisme'] = associated_records
+            geojson['features'].append(feature)
 
-    return nouveau_geojson, nbpol, references_traitees
+    for record in merged_data:
+        if record[-3]:
+            record_refs = [nettoyer_reference(ref) for ref in record[-3].split(',') if ref.strip()]
+            if not any(ref in references_traitees for ref in record_refs):
+                record.append("NotInCadastre")
+                orphans.append(record)
 
+    references_without_polygon = all_references - references_traitees
 
+    return geojson, nbpol, orphans, references_traitees, references_without_polygon
 
-def segregate_records(records, is_depot=False):
-    records_with_reference = []
-    records_without_reference = []
-    total_references = 0
-    
-    for record in records:
-        processed_record, reference = process_record(record, is_depot)
-        if reference:
-            records_with_reference.append(processed_record)
-            total_references += len(reference.split(','))
-        else:
-            records_without_reference.append(processed_record)
-    
-    return records_with_reference, records_without_reference, total_references
+def get_input_files(input_dir):
+    pattern = os.path.join(input_dir, 'input_*.json')
+    files = sorted(glob.glob(pattern))
+    print(f"Files found in {input_dir}:")
+    for file in files:
+        print(f"  - {os.path.basename(file)}")
+    return files
 
-def extraire_references(data, is_depot):
-    donnees_par_reference = {}
+def process_input_files(depots_files, decisions_files):
+    all_merged_data = []
+    all_orphans = []
     total_records = 0
     total_references = 0
-    unique_references = 0
+    unique_references = set()
 
-    records_with_reference, records_without_reference, total_refs = segregate_records(data['data'], is_depot)
-    total_records = len(records_with_reference) + len(records_without_reference)
-    total_references = total_refs
+    for file_type, files in [("depot", depots_files), ("decision", decisions_files)]:
+        for file in files:
+            print(f"Processing {file_type} file: {file}")
+            data = charger_json(file)
+            merged_data, orphans, records, references, unique = merge_and_process_data(data, file_type == "depot")
+            print(f"Processed {records} records from {file}")
+            print(f"Found {references} references and {unique} unique references")
+            all_merged_data.extend(merged_data)
+            all_orphans.extend(orphans)
+            total_records += records
+            total_references += references
+            unique_references.update(unique)
 
-    index_references = 8 if is_depot else 9
-    for record in records_with_reference:
-        references = [nettoyer_reference(ref) for ref in (record[index_references] or '').split(',') if ref.strip()]
-        for ref in references:
-            if ref not in donnees_par_reference:
-                donnees_par_reference[ref] = []
-                unique_references += 1
-            donnees_par_reference[ref].append(record)
-
-    return donnees_par_reference, total_records, total_references, unique_references, records_without_reference
-
-
-
-def traiter_references_orphelines(donnees_par_reference, references_traitees, records_without_reference, is_depot):
-    references_sans_correspondance = set(donnees_par_reference.keys()) - references_traitees
-    print(f"Références sans correspondance : {list(references_sans_correspondance)}")
-    elements_orphelins = len(records_without_reference)
-
-    index_references = 8 if is_depot else 9
-    for ref in references_sans_correspondance:
-        for record in donnees_par_reference[ref]:
-            references_record = set(nettoyer_reference(r) for r in record[index_references].split(',') if r.strip())
-            if not references_record.intersection(references_traitees):
-                record.append("NotInCadastre")
-                records_without_reference.append(record)
-                elements_orphelins += 1
-
-    return records_without_reference, len(references_sans_correspondance), elements_orphelins
-
-def traiter_donnees(type_donnees, is_depot):
-    donnees_data = charger_json(f'../GeoDatas/input{type_donnees}.json')
-    parcelles_data = charger_json('../GeoDatas/cadastre-2A247-parcelles.json')
-
-    donnees_par_reference, total_records, total_references, unique_references, records_without_reference = extraire_references(donnees_data, is_depot)
-    
-    nouveau_geojson, nbpol, references_traitees = associer_polygones(parcelles_data, donnees_par_reference, type_donnees)
-    
-    records_without_reference, refs_sans_correspondance, elements_orphelins = traiter_references_orphelines(donnees_par_reference, references_traitees, records_without_reference, is_depot)
-
-    sauvegarder_json(f'../GeoDatas/output{type_donnees}orphan.json', {"recordsTotal": len(records_without_reference), "data": records_without_reference})
-    sauvegarder_json(f'../GeoDatas/output{type_donnees}.geojson', nouveau_geojson)
-
-    with open(f'{type_donnees}.js', 'w', encoding='utf-8') as file:
-        file.write(f'var {type_donnees} = ')
-        json.dump(nouveau_geojson, file, ensure_ascii=False, indent=4)
-        file.write(';')
-
-    print(f"Traitement de {type_donnees} terminé:")
-    print(f"  Nombre total d'enregistrements traités: {total_records}")
-    print(f"  Nombre total de références trouvées: {total_references}")
-    print(f"  Nombre de références uniques: {unique_references}")
-    print(f"  Nombre de polygones correspondants: {nbpol}")
-    print(f"  Références sans polygone correspondant: {refs_sans_correspondance}")
-    print(f"  Éléments orphelins: {elements_orphelins}")
+    return all_merged_data, all_orphans, total_records, total_references, len(unique_references)
 
 def main():
-    traiter_donnees('favorables', False)
-    traiter_donnees('depots', True)
+    depots_files = get_input_files('../geodatas/inputdepots')
+    decisions_files = get_input_files('../geodatas/inputdecisions')
+    parcels_data = charger_json('../GeoDatas/cadastre-2A247-parcelles.json')
+
+    print(f"Found {len(depots_files)} depot files and {len(decisions_files)} decision files.")
+
+    merged_data, initial_orphans, total_records, total_references, unique_references = process_input_files(depots_files, decisions_files)
+    output_geojson, nbpol, cadastre_orphans, references_traitees, references_without_polygon = associate_polygons(parcels_data, merged_data)
+
+    all_orphans = initial_orphans + cadastre_orphans
+    
+    sauvegarder_json('../GeoDatas/Output.geojson', output_geojson)
+    sauvegarder_json('../GeoDatas/Orphans.json', {"recordsTotal": len(all_orphans), "data": all_orphans})
+
+    print("Processing complete. Output saved to ../GeoDatas/Output.geojson")
+    print(f"Total records processed: {total_records}")
+    print(f"Total references found: {total_references}")
+    print(f"Unique references: {unique_references}")
+    print(f"Polygons with associated records: {nbpol}")
+    print(f"Orphan records (no reference or not in cadastre): {len(all_orphans)}")
+    print(f"References without corresponding polygon: {len(references_without_polygon)}")
+    print(f"List of references without corresponding polygon: {', '.join(sorted(references_without_polygon))}")
 
 if __name__ == "__main__":
     main()

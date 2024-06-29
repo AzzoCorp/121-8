@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+</head>
+<body>
+    <h1>Inscription</h1>
+    <form id="signupForm">
+        <input type="email" id="email" required placeholder="Votre email">
+        <button type="submit">S'inscrire</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const messageDiv = document.getElementById('message');
+            
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email }),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    messageDiv.textContent = 'Un email de vérification a été envoyé. Veuillez vérifier votre boîte de réception.';
+                    messageDiv.style.color = 'green';
+                } else {
+                    messageDiv.textContent = result.message || 'Une erreur est survenue. Veuillez réessayer.';
+                    messageDiv.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                messageDiv.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+                messageDiv.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>

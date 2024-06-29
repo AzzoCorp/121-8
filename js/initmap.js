@@ -17,7 +17,7 @@ let map = new mapboxgl.Map({
 
 map.on('load', function () {
     console.log('Loading GeoJSON data for cadastre-parcelles...');
-    fetch('GeoDatas/cadastre-2A247-parcelles.json')
+    fetch('datas/geojson/cadastre-2A247-parcelles.json')
         .then(response => response.json())
         .then(data => {
             data.features.forEach((feature, index) => {
@@ -153,7 +153,7 @@ map.on('load', function () {
 
     // Add the commune polygon source and layer
     if (!map.getSource('commune-polygon')) {
-        fetch('GeoDatas/commune.geojson')
+        fetch('datas/geojson/cadastre-2A247-communes.json')
             .then(response => response.json())
             .then(data => {
                 map.addSource('commune-polygon', {
@@ -182,7 +182,7 @@ map.on('load', function () {
     if (!map.getSource(depotsSource)) {
         map.addSource(depotsSource, {
             type: 'geojson',
-            data: './GeoDatas/outputdepots.geojson',
+            data: './datas/urbanism/output_depots.geojson',
         });
 
         map.addLayer({
@@ -197,60 +197,41 @@ map.on('load', function () {
         });
 
         // Popup for the second layer
-        map.on('click', 'depots-layer', function(e) {
-            const properties = e.features[0].properties;
+		map.on('click', 'depots-layer', function(e) {
+			const properties = e.features[0].properties;
+			let content = '<h3>Property Details</h3>';
+			content += `<strong>ID:</strong> ${properties.id}<br>`;
+			content += `<strong>Commune:</strong> ${properties.commune}<br>`;
+			content += `<strong>Section:</strong> ${properties.section}<br>`;
+			content += `<strong>Number:</strong> ${properties.numero}<br>`;
+			content += `<strong>Contenance:</strong> ${properties.contenance} m²<br>`;
 
-            // Create a content string for the popup
-            let content = '<h3>Property Details</h3>';
-            content += `<strong>ID:</strong> ${properties.id}<br>`;
-            content += `<strong>Commune:</strong> ${properties.commune}<br>`;
-            content += `<strong>Prefix:</strong> ${properties.prefixe}<br>`;
-            content += `<strong>Section:</strong> ${properties.section}<br>`;
-            content += `<strong>Number:</strong> ${properties.numero}<br>`;
-            content += `<strong>Contenance:</strong> ${properties.contenance} m²<br>`;
-            content += `<strong>Arpente:</strong> ${properties.arpente}<br>`;
-            content += `<strong>Created:</strong> ${properties.created}<br>`;
-            content += `<strong>Updated:</strong> ${properties.updated}<br>`;
+			if (Array.isArray(properties.depots)) {
+				content += '<h3>Depots:</h3>';
+				properties.depots.forEach(depot => {
+					content += '<div class="depot-item">';
+					content += `<strong>Date Received:</strong> ${depot[0]}<br>`;
+					content += `<strong>Permit Number:</strong> ${depot[1]}<br>`;
+					content += `<strong>Date Issued:</strong> ${depot[2]}<br>`;
+					content += `<strong>Owner:</strong> ${depot[3]}<br>`;
+					content += `<strong>Address:</strong> ${depot[4]}<br>`;
+					content += `<strong>Area:</strong> ${depot[5]}<br>`;
+					content += `<strong>Description:</strong> ${depot[6]}<br>`;
+					content += `<strong>Additional Info:</strong> ${depot[7]}<br>`;
+					content += `<strong>Project:</strong> ${depot[8]}<br>`;
+					content += `<strong>Ref Parcelle:</strong> ${depot[9].join(', ')}<br>`;
+					content += `<strong>Surface net:</strong> ${depot[10].join(', ')}<br>`;
+					content += '</div>';
+				});
+			}
 
-            // Check if depots is a string and parse it
-            let depots = properties.depots;
-            if (typeof depots === 'string') {
-                try {
-                    depots = JSON.parse(depots);
-                } catch (error) {
-                    console.error('Failed to parse depots:', depots, error);
-                }
-            }
+			new mapboxgl.Popup()
+				.setLngLat(e.lngLat)
+				.setHTML(content)
+				.addTo(map);
+		});
 
-            // Check if depots is now an array
-            if (Array.isArray(depots)) {
-                content += '<h3>Depots:</h3><ul>';
-                depots.forEach(depot => {
-                    if (Array.isArray(depot)) {
-                        content += '<li>';
-                        content += `<strong>Date Received:</strong> ${depot[0]}<br>`;
-                        content += `<strong>Permit Number:</strong> ${depot[1]}<br>`;
-                        content += `<strong>Date Issued:</strong> ${depot[2]}<br>`;
-                        content += `<strong>Owner:</strong> ${depot[3]}<br>`;
-                        content += `<strong>Address:</strong> ${depot[4]}<br>`;
-                        content += `<strong>Area:</strong> ${depot[5]}<br>`;
-                        content += `<strong>Description:</strong> ${depot[6]}<br>`;
-                        content += `<strong>Additional Info:</strong> ${depot[7].replace(/\\r\\n/g, '<br>')}<br>`;
-                        content += '</li>';
-                    } else {
-                        console.error('Depot entry is not an array:', depot);
-                    }
-                });
-                                content += '</ul>';
-            } else {
-                console.error('Properties depots is not an array:', depots);
-            }
-
-            new mapboxgl.Popup()
-                .setLngLat(e.lngLat)
-                .setHTML(content)
-                .addTo(map);
-        });
+// Similar changes for 'favorables-layer'
 
         // Change the cursor to pointer when hovering over the second layer
         map.on('mouseenter', 'depots-layer', function() {
@@ -270,7 +251,7 @@ map.on('load', async function() {
     if (!map.getSource(depotsSource)) {
         map.addSource(depotsSource, {
             type: 'geojson',
-            data: 'GeoDatas/outputdepots.geojson',
+            data: 'datas/urbanism/output_depots.geojson',
         });
 
         map.addLayer({
@@ -358,7 +339,7 @@ map.on('load', async function() {
     if (!map.getSource(favorablesSource)) {
         map.addSource(favorablesSource, {
             type: 'geojson',
-            data: 'GeoDatas/outputfavorables.geojson',
+            data: 'datas/urbanism/output_decisions.geojson',
         });
 
         map.addLayer({
@@ -404,15 +385,27 @@ map.on('load', async function() {
                 decisions.forEach(decision => {
                     if (Array.isArray(decision)) {
                         content += '<li>';
-                        content += `<strong>Date Decision:</strong> ${decision[0]}<br>`;
-                        content += `<strong>Permit Number:</strong> ${decision[1]}<br>`;
-                        content += `<strong>Date Issued:</strong> ${decision[2]}<br>`;
-                        content += `<strong>Owner:</strong> ${decision[3]}<br>`;
-                        content += `<strong>Address:</strong> ${decision[4]}<br>`;
-                        content += `<strong>Area:</strong> ${decision[5]}<br>`;
-                        content += `<strong>Description:</strong> ${decision[6]}<br>`;
-                        content += `<strong>Additional Info:</strong> ${decision[7].replace(/\\r\\n/g, '<br>')}<br>`;
-                        content += `<strong>Status:</strong> ${decision[8]}<br>`;
+                        content += `<strong>Affichage:</strong> ${decision[0]}<br>`;
+                        content += `<strong>ID Autorisation:</strong> ${decision[1]}<br>`;
+                        content += `<strong>Dépot:</strong> ${decision[2]}<br>`;
+                        content += `<strong>Demandeur:</strong> ${decision[3]}<br>`;
+                        content += `<strong>Lieu:</strong> ${decision[4]}<br>`;
+                        content += `<strong>Surface:</strong> ${decision[5]}<br>`;
+                        content += `<strong>Travaux:</strong> ${decision[6]}<br>`;
+                        content += `<strong>Projet:</strong> ${decision[7]}<br>`;
+                        content += `<strong>Decision Cplt:</strong> ${decision[8]}<br>`;
+                        content += `<strong>Ref Parcelle:</strong> ${JSON.stringify(decision[9])}<br>`;
+                        content += `<strong>Surface net:</strong> ${JSON.stringify(decision[10])}<br>`;
+                        content += `<strong>Lotissement:</strong> ${decision[11]}<br>`;
+                        content += `<strong>Decision:</strong> ${decision[12]}<br>`;
+                        content += `<strong>IsIntrue:</strong> ${decision[13]}<br>`;
+                        content += `<strong>Status:</strong> ${decision[14]}<br>`;
+                        content += `<strong>Last Seen Date:</strong> ${decision[15]}<br>`;
+                        content += `<strong>Decision Date:</strong> ${decision[16]}<br>`;
+                        content += `<strong>Expiry Date:</strong> ${decision[17]}<br>`;
+                        content += `<strong>Orphan:</strong> ${decision[18]}<br>`;
+                        content += `<strong>Util1:</strong> ${decision[19]}<br>`;
+                        content += `<strong>Util2:</strong> ${decision[20]}<br>`;
                         content += '</li>';
                     } else {
                         console.error('Decision entry is not an array:', decision);
@@ -440,6 +433,7 @@ map.on('load', async function() {
         });
     }
 });
+
 
 map.on('load', () => {
     map.loadImage('css/images/egliseO.png', (error, image) => {
@@ -475,24 +469,6 @@ document.getElementById('search-btn').addEventListener('click', function() {
         });
     } else {
         console.error('Invalid search input. Please enter valid parcel references.');
-    }
-});
-
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('locate-btn')||event.target.classList.contains('locate-btnF')) {
-        if (!isDataLoaded) {
-            console.error('Data is not fully loaded. Please wait and try again.');
-            return;
-        }
-        const section = event.target.getAttribute('data-section');
-        const numero = event.target.getAttribute('data-numero');
-        const searchInput = `${section}${numero}`;
-
-        document.getElementById('search-input').value = searchInput;
-       
-		zoomOutToCenterCommune(() => {
-			document.getElementById('search-btn').click();
-		}); 
     }
 });
 
@@ -540,7 +516,178 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(fileInput);
 });
 
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('locate-btn') || event.target.classList.contains('locate-btnF')) {
+        if (!isDataLoaded) {
+            console.error('Data is not fully loaded. Please wait and try again.');
+            return;
+        }
+        const section = event.target.getAttribute('data-section');
+        const numero = event.target.getAttribute('data-numero');
+        const groupItems = event.target.getAttribute('data-group-items');
+        const searchInput = groupItems ? groupItems : `${section}${numero}`;
 
+        document.getElementById('search-input').value = searchInput;
+       
+        zoomOutToCenterCommune(() => {
+            highlightParcels(parseSearchInput(searchInput));
+        });
+    }
+});
+
+
+
+function getParcelInfo(groupItems, features, headParcel) {
+    let totalArea = 0;
+    let parcelInfo = 'Parcelle ';
+    
+    // Add head parcel first
+    const headFeature = features.find(f => `${f.properties.section} ${f.properties.numero}` === headParcel);
+    if (headFeature) {
+        const area = headFeature.properties.contenance || 0;
+        parcelInfo += `<strong>${headParcel}</strong> (${area} m²)`;
+        totalArea += area;
+    }
+    
+    // Add other parcels
+    groupItems.forEach(item => {
+        if (item !== headParcel) {
+            const feature = features.find(f => `${f.properties.section} ${f.properties.numero}` === item);
+            if (feature) {
+                const area = feature.properties.contenance || 0;
+                parcelInfo += ` + ${item} (${area} m²)`;
+                totalArea += area;
+            }
+        }
+    });
+    
+    parcelInfo += ` = ${totalArea} m²`;
+    return parcelInfo;
+}
+
+function extractGroupItems(address) {
+    const match = address.match(/$$(.*?)$$/);
+    if (match) {
+        return match[1].split(', ');
+    }
+    return [];
+}
+
+function showOrphanedItemsPopup(orphanedData, type) {
+    // Remove any existing popup
+    const existingPopup = document.querySelector('.orphaned-items-popup, .orphaned-itemsD-popup');
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    const popup = document.createElement('div');
+    popup.className = type === 'Décisions' ? 'orphaned-itemsD-popup' : 'orphaned-items-popup';
+
+    popup.innerHTML = `
+        <div class="popup-header">
+            <h2>${type} sans parcelles renseignées (${orphanedData.length})</h2>
+            <button id="close-popup" class="close-button">&times;</button>
+        </div>
+        <p class="popup-subheader">ou, parcelles erronées,<br>ou, nouvelle division parcellaire non encore màj dans le cadastre.</p>
+        <ul>
+            ${orphanedData.map(item => `
+                <li>
+                    <strong>${item['id Autorisation']}</strong> - ${item['Demandeur']}<br>
+                    Date de décision: ${item['Affichage']}<br>
+                    Adresse: ${item['Lieu']}<br>
+                    Description: ${item['Travaux']}<br>
+                    Surface: ${item['Surface']}<br>
+                    ${item['Ref Parcelle'] && item['Ref Parcelle'].length > 0 
+                        ? `Parcelles: ${item['Ref Parcelle'].join(', ')}<br>` 
+                        : ''}
+                </li>
+            `).join('')}
+        </ul>
+    `;
+
+    document.body.appendChild(popup);
+
+    document.getElementById('close-popup').addEventListener('click', () => {
+        popup.remove();
+    });
+}
+
+
+
+
+
+function handleTabClick(tabId) {
+    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
+    const tabContents = document.querySelectorAll('.tab-content');
+    const tabBodies = document.querySelector('.tab-bodies');
+    const mapElement = document.getElementById('map');
+    const tabsContainer = document.querySelector('.tabs');
+
+    // Hide all tab contents and reset styles
+    tabContents.forEach(content => content.style.display = 'none');
+    tabBodies.style.display = 'none';
+    tabBodies.style.visibility = 'hidden';
+    tabsContainer.style.height = '30px';
+    mapElement.style.pointerEvents = 'auto';
+
+    // Show the selected tab content
+    if (tabId !== 'tab1') {
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) {
+            targetTab.style.display = 'block';
+        }
+        tabBodies.style.display = 'flex';
+        tabBodies.style.visibility = 'visible';
+        tabsContainer.style.height = 'auto';
+        // Remove this line to keep map interactions enabled
+        // mapElement.style.pointerEvents = 'none'; // Disable map interactions when a tab is open
+    }
+
+    // Highlight the active tab button
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
+    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
+
+    // Load specific content based on the tab
+    if (tabId === 'tab6') {
+        //loadReadme();
+    } else if (tabId === 'tab7') {
+        //loadinfo();
+    } else if (tabId === 'tab5') {
+        populateFavorablesList();
+    } else if (tabId === 'tab4') {
+        populateDepotsList();
+    }
+}
+
+function getParcelInfo(groupItems, features) {
+    const parcelData = {};
+
+    // Collect the contenance for each parcel in the group
+    features.forEach(feature => {
+        const properties = feature.properties;
+        const parcelId = `${properties.section} ${properties.numero}`;
+        parcelData[parcelId] = properties.contenance || 0;
+    });
+
+    let totalArea = 0;
+    const headParcel = groupItems[0];
+    const headParcelArea = parcelData[headParcel] || 0;
+    totalArea += headParcelArea;
+
+    const parcelDescriptions = groupItems.filter(parcel => parcel !== headParcel).map(parcel => {
+        const area = parcelData[parcel] || 0;
+        totalArea += area;
+        return `${parcel} (${area} m²)`;
+    });
+
+    const aussiSur = parcelDescriptions.length > 0 ? ` + ${parcelDescriptions.join(' + ')}` : '';
+    
+    // Conditionally append total area information only if there are child parcels
+    const totalAreaInfo = parcelDescriptions.length > 0 ? ` = ${totalArea} m²` : '';
+
+    return `Parcelle ${headParcel} (${headParcelArea} m²)${aussiSur}${totalAreaInfo}`;
+}
 
 async function populateDepotsList() {
     if (OnOff()) {
@@ -556,7 +703,7 @@ async function populateDepotsList() {
     const depotsSource = map.getSource('depots-parcelles');
     if (depotsSource) {
         try {
-            const depotsData = await fetch('GeoDatas/outputdepots.geojson').then(response => response.json());
+            const depotsData = await fetch('datas/urbanism/output_depots.geojson').then(response => response.json());
             const features = depotsData.features;
 
             console.log(`Total des entités : ${features.length}`);
@@ -568,14 +715,6 @@ async function populateDepotsList() {
 
             features.forEach(feature => {
                 const properties = feature.properties;
-
-                if (typeof properties.depots === 'string') {
-                    try {
-                        properties.depots = JSON.parse(properties.depots);
-                    } catch (error) {
-                        console.error('Échec de l\'analyse des dépôts:', properties.depots, error);
-                    }
-                }
 
                 if (Array.isArray(properties.depots) && properties.depots.length > 0) {
                     properties.depots.forEach(depot => {
@@ -651,12 +790,12 @@ async function populateDepotsList() {
 
             // Fetch and count orphaned items
             let orphanedCount = 0;
-            let orphanedData = { data: [] };
+            let orphanedData = [];
             try {
-                const response = await fetch('./GeoDatas/outputdepotsorphan.json');
+                const response = await fetch('./datas/urbanism/output_depots_orphans.json');
                 if (response.ok) {
                     orphanedData = await response.json();
-                    orphanedCount = orphanedData.recordsTotal;
+                    orphanedCount = orphanedData.length;
                 }
             } catch (error) {
                 console.error('Erreur lors du chargement des données orphelines:', error);
@@ -676,7 +815,7 @@ async function populateDepotsList() {
             // Add event listener for showing orphaned items
             document.getElementById('show-orphaned-items').addEventListener('click', (e) => {
                 e.preventDefault();
-                showOrphanedItemsPopup(orphanedData.data, "Demandes");
+                showOrphanedItemsPopup(orphanedData, "Demandes");
             });
 
             // Add event listeners for locate buttons
@@ -698,152 +837,6 @@ async function populateDepotsList() {
     }
 }
 
-function getParcelInfo(groupItems, features, headParcel) {
-    let totalArea = 0;
-    let parcelInfo = 'Parcelle ';
-    
-    // Add head parcel first
-    const headFeature = features.find(f => `${f.properties.section} ${f.properties.numero}` === headParcel);
-    if (headFeature) {
-        const area = headFeature.properties.contenance || 0;
-        parcelInfo += `<strong>${headParcel}</strong> (${area} m²)`;
-        totalArea += area;
-    }
-    
-    // Add other parcels
-    groupItems.forEach(item => {
-        if (item !== headParcel) {
-            const feature = features.find(f => `${f.properties.section} ${f.properties.numero}` === item);
-            if (feature) {
-                const area = feature.properties.contenance || 0;
-                parcelInfo += ` + ${item} (${area} m²)`;
-                totalArea += area;
-            }
-        }
-    });
-    
-    parcelInfo += ` = ${totalArea} m²`;
-    return parcelInfo;
-}
-
-function extractGroupItems(address) {
-    const match = address.match(/$$(.*?)$$/);
-    if (match) {
-        return match[1].split(', ');
-    }
-    return [];
-}
-
-
-
-function showOrphanedItemsPopup(orphanedData, type) {
-    const popup = document.createElement('div');
-    popup.className = 'orphaned-items-popup';
-    popup.innerHTML = `
-        <div class="popup-header">
-            <h2>${type} sans parcelles renseignées (${orphanedData.length})</h2>
-            <button id="close-popup" class="close-button">&times;</button>
-        </div>
-        <ul>
-            ${orphanedData.map(item => `
-                <li>
-                    <strong>${item[1]}</strong> - ${item[3]}<br>
-                    Date de décision: ${item[0]}<br>
-                    Adresse: ${item[4]}<br>
-                    Description: ${item[6]}<br>
-                    Surface: ${item[5]} m²
-                </li>
-            `).join('')}
-        </ul>
-    `;
-    document.body.appendChild(popup);
-
-    document.getElementById('close-popup').addEventListener('click', () => {
-        document.body.removeChild(popup);
-    });
-}
-
-
-
-
-function handleTabClick(tabId) {
-    if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }	
-    const tabContents = document.querySelectorAll('.tab-content');
-    const tabBodies = document.querySelector('.tab-bodies');
-    const mapElement = document.getElementById('map');
-    const tabsContainer = document.querySelector('.tabs');
-
-    // Hide all tab contents and reset styles
-    tabContents.forEach(content => content.style.display = 'none');
-    tabBodies.style.display = 'none';
-    tabBodies.style.visibility = 'hidden';
-    tabsContainer.style.height = '30px';
-    mapElement.style.pointerEvents = 'auto';
-
-    // Show the selected tab content
-    if (tabId !== 'tab1') {
-        const targetTab = document.getElementById(tabId);
-        if (targetTab) {
-            targetTab.style.display = 'block';
-        }
-        tabBodies.style.display = 'flex';
-        tabBodies.style.visibility = 'visible';
-        tabsContainer.style.height = 'auto';
-        // Remove this line to keep map interactions enabled
-        // mapElement.style.pointerEvents = 'none'; // Disable map interactions when a tab is open
-    }
-
-    // Highlight the active tab button
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
-    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
-
-    // Load specific content based on the tab
-    if (tabId === 'tab6') {
-        //loadReadme();
-    } else if (tabId === 'tab7') {
-        //loadinfo();
-    } else if (tabId === 'tab5') {
-        populateFavorablesList();
-    } else if (tabId === 'tab4') {
-        populateDepotsList();
-    }
-}
-
-
-function getParcelInfo(groupItems, features) {
-    const parcelData = {};
-
-    // Collect the contenance for each parcel in the group
-    features.forEach(feature => {
-        const properties = feature.properties;
-        const parcelId = `${properties.section} ${properties.numero}`;
-        parcelData[parcelId] = properties.contenance || 0;
-    });
-
-    let totalArea = 0;
-    const headParcel = groupItems[0];
-    const headParcelArea = parcelData[headParcel] || 0;
-    totalArea += headParcelArea;
-
-    const parcelDescriptions = groupItems.filter(parcel => parcel !== headParcel).map(parcel => {
-        const area = parcelData[parcel] || 0;
-        totalArea += area;
-        return `${parcel} (${area} m²)`;
-    });
-
-    const aussiSur = parcelDescriptions.length > 0 ? ` + ${parcelDescriptions.join(' + ')}` : '';
-    
-    // Conditionally append total area information only if there are child parcels
-    const totalAreaInfo = parcelDescriptions.length > 0 ? ` = ${totalArea} m²` : '';
-
-    return `Parcelle ${headParcel} (${headParcelArea} m²)${aussiSur}${totalAreaInfo}`;
-}
-
-
-
-
-
 async function populateFavorablesList() {
     console.log('Début de populateFavorablesList');
     if (OnOff()) {
@@ -860,95 +853,80 @@ async function populateFavorablesList() {
     if (favorablesSource) {
         try {
             console.log('Chargement des données favorables...');
-            const favorablesData = await fetch('GeoDatas/outputfavorables.geojson').then(response => response.json());
+            const favorablesData = await fetch('datas/urbanism/output_decisions.geojson').then(response => response.json());
             const features = favorablesData.features;
 
             console.log(`Total des entités : ${features.length}`);
 
-            let totalTraite = 0;
             let elementsInclus = 0;
-
             const groupedItems = {};
-            const headParcels = new Set();
-            const childParcels = new Set();
+            const groupingLog = [];
+            const decisionCounts = {};
 
-            features.forEach((feature, index) => {
+            features.forEach(feature => {
                 const properties = feature.properties;
-                totalTraite++;
 
-                console.log(`Traitement de la feature ${index + 1}:`, properties);
-
-                if (Array.isArray(properties.favorables) && properties.favorables.length > 0) {
-                    console.log(`Traitement de ${properties.favorables.length} décisions favorables pour la feature ${index + 1}`);
-                    properties.favorables.forEach((decision, decisionIndex) => {
+                if (Array.isArray(properties.decisions) && properties.decisions.length > 0) {
+                    properties.decisions.forEach(decision => {
                         if (Array.isArray(decision)) {
                             elementsInclus++;
-                            console.log(`Traitement de la décision ${decisionIndex + 1} pour la feature ${index + 1}:`, decision);
-                            
-                            const [date, numero, dateReception, demandeur, adresse, surface, description, details, statut, parcelles, surfaces] = decision;
-                            
-                            const [constructionArea, demolitionArea] = surfaces || [0, 0];
-                            const difference = (constructionArea - demolitionArea).toFixed(2);
+                            const groupItems = extractGroupItems(decision[4]);
+                            const headParcel = groupItems[0]; // La première parcelle est considérée comme la principale
+                            const decisionId = decision[1]; // Utiliser le numéro de décision comme identifiant
 
-                            const groupItems = parcelles.split(', ');
-                            const headParcel = groupItems[0];
-
-                            console.log(`Décision traitée: ${numero}, Parcelle principale: ${headParcel}`);
-
-                            headParcels.add(headParcel);
-                            groupItems.forEach(item => {
-                                if (item !== headParcel) {
-                                    childParcels.add(item);
-                                }
-                            });
+                            decisionCounts[decisionId] = (decisionCounts[decisionId] || 0) + 1;
 
                             if (!groupedItems[headParcel]) {
-                                groupedItems[headParcel] = [];
+                                groupedItems[headParcel] = {
+                                    properties: properties,
+                                    decision: decision,
+                                    groupItems: groupItems
+                                };
+                                groupingLog.push(`Nouveau groupe créé : ${headParcel} (Décision: ${decisionId})`);
+                            } else {
+                                groupingLog.push(`Élément ajouté au groupe existant : ${headParcel} (Décision: ${decisionId})`);
                             }
-                            groupedItems[headParcel].push({
-                                difference: parseFloat(difference),
-                                html: `
-                                    <div class="decision-group">
-                                        <div class="decision-data">
-                                            <strong>[${elementsInclus}] | ${difference} m² = ${constructionArea} m² - ${demolitionArea} m²</strong><br>
-                                            <button class="locate-btnF" data-section="${properties.section}" data-numero="${properties.numero}" data-group-items="${groupItems.join(' ')}">Trouver</button><div class="nomdeposantF">${demandeur}</div>
-                                            <strong>${numero}</strong><i> reçue le </i><strong>${dateReception}</strong><br>
-                                            ${getParcelInfo(groupItems, features)}
-                                            <br><strong>Adresse </strong>${adresse}<br>
-                                            <div class="desc"><strong>DESCRIPTION</strong></div>${description}<br>
-                                            ${details}
-                                        </div>
-                                        <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
-                                        <br>arpenté <strong>${properties.arpente}</strong>
-                                        créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
-                                        </div>
-                                    </div>
-                                `
-                            });
-                        } else {
-                            console.warn(`La décision ${decisionIndex + 1} pour la feature ${index + 1} n'est pas un tableau:`, decision);
                         }
                     });
-                } else {
-                    console.warn(`Aucune décision favorable trouvée pour la feature ${index + 1}`);
                 }
             });
 
-            const finalGroupItems = new Set([...headParcels].filter(item => !childParcels.has(item)));
+            console.log("Log de regroupement :");
+            console.log(groupingLog.join('\n'));
 
-            console.log(`Total des éléments groupés : ${Object.keys(groupedItems).length}`);
-            console.log(`Éléments de groupe final : ${finalGroupItems.size}`);
+            const duplicateDecisions = Object.entries(decisionCounts).filter(([_, count]) => count > 1);
+            console.log("Décisions apparaissant dans plusieurs parcelles :", duplicateDecisions);
 
             const listItems = [];
-            for (const headParcel of finalGroupItems) {
-                if (groupedItems.hasOwnProperty(headParcel)) {
-                    const group = groupedItems[headParcel];
-                    group.sort((a, b) => b.difference - a.difference);
-                    listItems.push(group[0]);
-                }
-            }
 
-            console.log(`Total des éléments de liste : ${listItems.length}`);
+            for (const headParcel in groupedItems) {
+                const group = groupedItems[headParcel];
+                const properties = group.properties;
+                const decision = group.decision;
+                const groupItems = group.groupItems;
+
+                const squareMeters = extractSquareMeters(decision[10] || [0, 0]);
+                const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
+                const parcelInfo = getParcelInfo(groupItems, features, headParcel);
+
+                const listItem = `
+                    <div class="decision-group">
+                        <div class="decision-data">
+                            <strong>[${listItems.length + 1}] | ${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
+                            <button class="locate-btnF" data-section="${properties.section}" data-numero="${properties.numero}" data-group-items="${groupItems.join(' ')}">Trouver</button><div class="nomdeposantF">${decision[3]}</div>
+                            <strong>${decision[1]}</strong><i> reçue le </i><strong>${decision[2]}</strong><br>
+                            ${parcelInfo}
+                            <br><strong>Adresse </strong>${decision[4]}<br>
+                            <div class="desc"><strong>DESCRIPTION</strong></div>${decision[6]}<br>
+                            ${decision[7]}
+                        </div>
+                        <div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
+                        <br>arpenté <strong>${properties.arpente}</strong>
+                        créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
+                    </div>
+                `;
+                listItems.push({ difference: parseFloat(difference), html: listItem });
+            }
 
             // Trier par différence en ordre décroissant
             listItems.sort((a, b) => b.difference - a.difference);
@@ -962,32 +940,42 @@ async function populateFavorablesList() {
 
             // Fetch and count orphaned items
             let orphanedCount = 0;
-            let orphanedData = { data: [] };
+            let orphanedData = [];
             try {
-                console.log('Chargement des données orphelines...');
-                const response = await fetch('./GeoDatas/outputfavorablesorphan.json');
+                const response = await fetch('./datas/urbanism/output_decisions_orphans.json');
                 if (response.ok) {
                     orphanedData = await response.json();
-                    orphanedCount = orphanedData.recordsTotal;
-                    console.log(`Nombre d'éléments orphelins : ${orphanedCount}`);
+                    orphanedCount = orphanedData.length;
                 }
             } catch (error) {
                 console.error('Erreur lors du chargement des données orphelines:', error);
             }
 
+            const totalTraite = elementsInclus + orphanedCount;
+
             const itemCountElement = document.createElement('div');
             itemCountElement.innerHTML = `
                 <strong>Total des éléments traités :</strong> ${totalTraite}<br>
                 <strong>Éléments inclus :</strong> ${elementsInclus}<br>
-                <strong>Décisions sans parcelles renseignées :</strong> <a href="#" id="show-orphaned-items-favorables" class="orphaned-link">${orphanedCount}</a><br>
-                <strong>Nombre de groupes final :</strong> ${finalGroupItems.size}<br>
+                <strong>Décisions sans parcelles renseignées :</strong> <a href="#" id="show-orphaned-decisions" class="orphaned-link" style="color: var(--nomdeposant-color);">${orphanedCount}</a><br>
+                <strong>Nombre de groupes final :</strong> ${Object.keys(groupedItems).length}<br>
             `;
             favorablesContainer.insertBefore(itemCountElement, favorablesContainer.firstChild);
 
             // Add event listener for showing orphaned items
-            document.getElementById('show-orphaned-items-favorables').addEventListener('click', (e) => {
+            document.getElementById('show-orphaned-decisions').addEventListener('click', (e) => {
                 e.preventDefault();
-                showOrphanedItemsPopup(orphanedData.data, "Décisions");
+                showOrphanedItemsPopup(orphanedData, "Décisions");
+            });
+
+            // Add event listeners for locate buttons
+            favorablesContainer.querySelectorAll('.locate-btnF').forEach(button => {
+                button.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    const numero = this.getAttribute('data-numero');
+                    const groupItems = this.getAttribute('data-group-items').split(' ');
+                    locateParcel(section, numero, groupItems);
+                });
             });
 
             console.log(`Éléments affichés : ${favorablesContainer.querySelectorAll('.list-item').length}`);
@@ -1001,17 +989,13 @@ async function populateFavorablesList() {
 }
 
 
-
-
-
 function extractSquareMeters(data) {
-    const regex = /(\d+,\d+|\d+)\s*m²/g;
-    const matches = data.match(regex);
-    if (matches && matches.length >= 2) {
-        return matches.slice(0, 2).map(match => parseFloat(match.replace(',', '.')));
+    if (Array.isArray(data) && data.length >= 2) {
+        return data.map(value => parseFloat(value) || 0);
     }
     return [0, 0];
 }
+
 
 function extractGroupItems(address) {
     const firstMatch = address.match(/\((.*)/);
@@ -1027,14 +1011,6 @@ function extractGroupItems(address) {
     return [];
 }
 
-function extractSquareMeters(data) {
-    const regex = /(\d+,\d+|\d+)\s*m²/g;
-    const matches = data.match(regex);
-    if (matches && matches.length >= 2) {
-        return matches.slice(0, 2).map(match => parseFloat(match.replace(',', '.')));
-    }
-    return [0, 0];
-}
 
 function zoomOutToCenterCommune(callback) {
     const communeSource = map.getSource('commune-polygon');
@@ -1070,7 +1046,6 @@ function zoomOutToCenterCommune(callback) {
     }
 }
 
-
 function extendBounds(features, bounds) {
     if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
     features.forEach(feature => {
@@ -1092,7 +1067,6 @@ function identifyNotFoundParcels(parcels, features, notFoundParcels) {
     });
     console.log('Identified not found parcels:', notFoundParcels);
 }
-
 
 function highlightParcels(parcels) {
     if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
@@ -1211,27 +1185,6 @@ function addHighlightLayers(filters) {
     }
     console.log('Highlight layers added/updated with filters:', filters);
 }
-
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('locate-btn') || event.target.classList.contains('locate-btnF')) {
-        if (!isDataLoaded) {
-            console.error('Data is not fully loaded. Please wait and try again.');
-            return;
-        }
-        const section = event.target.getAttribute('data-section');
-        const numero = event.target.getAttribute('data-numero');
-        const groupItems = event.target.getAttribute('data-group-items');
-        const searchInput = groupItems ? groupItems : `${section}${numero}`;
-
-        document.getElementById('search-input').value = searchInput;
-       
-        zoomOutToCenterCommune(() => {
-            highlightParcels(parseSearchInput(searchInput));
-        });
-    }
-});
-
-
 
 function zoomOutAndRetry(filters, parcels, bounds) {
     if (OnOff()) { console.log('>>>>  ' + arguments.callee.name + '() <= function used'); }
@@ -1374,8 +1327,8 @@ function loadLayers(event) {
             layersState.forEach(layer => {
                 const baseFileName = layer.fileName.split('.')[0];
                 console.log(baseFileName + ' <= baseFileName ');
-                console.log('GeoDatas/' + baseFileName + ".geojson");
-                layer.fileName = 'GeoDatas/' + baseFileName + ".geojson";
+                console.log('datas/geojson/' + baseFileName + ".geojson");
+                layer.fileName = 'datas/geojson/' + baseFileName + ".geojson";
                 console.log('layer.fileName  ' + layer.fileName);
 
                 layer.id = baseFileName;
@@ -1453,7 +1406,6 @@ function createLayerItem(layer, index) {
 
     return layerItem;
 }
-
 
 async function loadMarkdownFile(filePath, elementId, additionalContent) {
 	if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
@@ -1606,51 +1558,44 @@ function loadGeoJsonLayerFromState(layer) {
 }
 
 function addGeoJsonLayer(geojsonData, fileNameWithoutExtension) {
-	
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
-    const uniqueId = generate(); // Generate a unique identifier
+    const uniqueId = generate();
     const layerId = `${fileNameWithoutExtension}-${uniqueId}`;
-    const sourceId = `${fileNameWithoutExtension}-source-${uniqueId}`; // Ensure unique source ID
-    const isPointLayer = geojsonData.features && geojsonData.features.every(feature => feature.geometry.type === 'Point');
+    const sourceId = `${fileNameWithoutExtension}-source-${uniqueId}`;
     const rdColor = randomColor();
     const initialOpacity = 1;
 
-    if (isPointLayer) {
-        addPointLayer(geojsonData, layerId, sourceId, rdColor, initialOpacity);
-    } else {
-        if (!layerDefinitions[layerId]) {
-            map.addSource(sourceId, {
-                type: 'geojson',
-                data: geojsonData
-            });
+    map.addSource(sourceId, {
+        type: 'geojson',
+        data: geojsonData
+    });
 
-            map.addLayer({
-                id: layerId,
-                type: 'fill',
-                source: sourceId,
-                layout: {},
-                paint: {
-                    'fill-color': rdColor,
-                    'fill-opacity': initialOpacity
-                }
-            });
-
-            layerDefinitions[layerId] = {
-                id: layerId,
-                source: sourceId,
-                baseSource: `${fileNameWithoutExtension}-source`, // Store base source ID
-                type: 'fill',
-                data: geojsonData,
-                fileName: fileNameWithoutExtension,
-                color: rdColor,
-                opacity: initialOpacity,
-                interactive: true,
-                isSystemLayer: false
-            };
+    map.addLayer({
+        id: layerId,
+        type: 'fill',
+        source: sourceId,
+        layout: {},
+        paint: {
+            'fill-color': rdColor,
+            'fill-opacity': initialOpacity
         }
-    }
+    });
+
+    layerDefinitions[layerId] = {
+        id: layerId,
+        source: sourceId,
+        baseSource: `${fileNameWithoutExtension}-source`,
+        type: 'fill',
+        data: geojsonData,
+        fileName: fileNameWithoutExtension,
+        color: rdColor,
+        opacity: initialOpacity,
+        interactive: true,
+        isSystemLayer: false
+    };
+
     updateLayerList();
-	adjustLayerNameWidths();
+    adjustLayerNameWidths();
 }
 
 function handleFileSelect(event) {
@@ -1719,7 +1664,6 @@ function setLayerOpacity(layerId, opacity) {
     }
 }
 
-
 function updateLayerUI(layerId) {
     const layer = map.getLayer(layerId);
     if (!layer) {
@@ -1758,7 +1702,6 @@ function updateLayerUI(layerId) {
         typeSelector.value = layer.type;
     }
 }
-
 
 function animateView(callback) {
 	
@@ -1806,7 +1749,6 @@ function hideTabs() {
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     handleTabClick('tab1');
 }
-
 
 function moveLayer(layerId, beforeId) {
 	
@@ -1886,7 +1828,6 @@ function initializeMap() {
 	
 }
 
-
 function adjustLayerNameWidths() {
     const layerNames = document.querySelectorAll('.layer-item .nom');
     if (layerNames.length === 0) return null; // No elements found
@@ -1923,8 +1864,6 @@ function adjustLayerNameWidths() {
     return maxWidth + 10; // Return the width that was set
 }
 
-
-
 function addColorControl(layerItem, layer) {
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color';
@@ -1935,8 +1874,6 @@ function addColorControl(layerItem, layer) {
     layerItem.appendChild(colorPicker);
 	adjustLayerNameWidths();
 }
-
-
 
 function addPointLayer(geojsonData, layerId, sourceId, color, opacity) {
 	
@@ -1982,8 +1919,6 @@ function moveLayerByIndex(oldIndex, newIndex) {
     adjustLayerNameWidths();
 }
 
-
-
 function toggleLayerVisibility(layerId) {
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     
@@ -1999,22 +1934,6 @@ function toggleLayerVisibility(layerId) {
     
     console.log(`Layer ${layerId} visibility set to ${newVisibility}`);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function reorderLayerList() {
 	
@@ -2054,8 +1973,6 @@ function initializeMarkers(geojson) {
     });
     return markers;
 }
-
-
 
 function getLayerColor(layerId) {
     const layer = map.getLayer(layerId);
@@ -2100,7 +2017,6 @@ function updateLayerColor(layerId, color) {
     }
 }
 
-
 function updateLayerOpacity(layerId, opacity) {
     const layer = map.getLayer(layerId);
     if (layer) {
@@ -2111,9 +2027,6 @@ function updateLayerOpacity(layerId, opacity) {
         }
     }
 }
-
-
-
 
 function updateLayerType(layerId, newType) {
     const layer = map.getLayer(layerId);
@@ -2158,7 +2071,6 @@ function updateLayerType(layerId, newType) {
     }
 }
 
-
 function adjustLayerNameWidths() {
     const layerNames = document.querySelectorAll('.layer-item .nom');
     if (layerNames.length === 0) return null; // No elements found
@@ -2191,9 +2103,6 @@ function updateLayerLineWidth(layerId, width) {
         }
     }
 }
-
-
-
 
 function updateLayerList() {
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
@@ -2252,9 +2161,6 @@ function updateLayerList() {
     setTimeout(adjustLayerNameWidths, 0);
 }
 
-
-
-
 function addLayerControls(layerItem, layer) {
     const isSystemLayer = systemLayers.includes(layer.id);
     const isHoverLayer = layer.id === 'cadastre-parcelles-hover';
@@ -2291,7 +2197,6 @@ function addLayerControls(layerItem, layer) {
         // addSpecialIndicator(layerItem, '🔒', 'Ce calque est verrouillé');
     }
 }
-
 
 function addControl(container, type, layer, isDisabled) {
     let control;
@@ -2375,7 +2280,6 @@ function addControl(container, type, layer, isDisabled) {
     }
 }
 
-
 function removeLayer(layerId) {
     if (OnOff()) { console.log('>>>>  '+arguments.callee.name + '() <= function used'); }
     
@@ -2402,8 +2306,6 @@ function removeLayer(layerId) {
         console.warn(`Layer ${layerId} not found on the map`);
     }
 }
-
-
 
 function addDeleteButton(container, layer, isDisabled) {
     if (!isDisabled) {
@@ -2438,7 +2340,6 @@ function OnOff() {
     return false; 
     // return true;
 }
-
 
 
 initializeMap();

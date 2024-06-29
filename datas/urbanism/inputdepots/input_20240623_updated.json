@@ -1,0 +1,3574 @@
+[
+  {
+    "Affichage": "27/10/2023",
+    "id Autorisation": "DP 02A 247 23 R0179",
+    "Dépot": "26/10/2023",
+    "Demandeur": "M FARIA MOREIRA Henrique",
+    "Lieu": "Quartier Corba 20137 (I 2049)",
+    "Surface": "1822 m²",
+    "Travaux": "la construction d'un garage de 19.95m²",
+    "Projet": "- Surface plancher créée : 19,95 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "I 2049"
+    ],
+    "Surface net": [
+      19.95,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['I 2049', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "30/11/2023",
+    "id Autorisation": "PC 02A 247 23 R0193",
+    "Dépot": "30/11/2023",
+    "Demandeur": "SARL RESIDENCE COSTA MARINA",
+    "Lieu": "PORRA 20137 LARGIA (BX 18)",
+    "Surface": "2642 m²",
+    "Travaux": "l'extension de 2 logements dans une résidence de tourisme avec la dépose d'un bungalow en bois",
+    "Projet": "- Surface plancher créée : 101,31 m²\n- Surface plancher démolie : 23,5 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BX 18"
+    ],
+    "Surface net": [
+      101.31,
+      23.5
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BX 18', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "27/12/2023",
+    "id Autorisation": "PC 02A 247 23 R0214",
+    "Dépot": "27/12/2023",
+    "Demandeur": "M TAFANI Thomas",
+    "Lieu": "Rue Giudice di Cinarca 20137 (AD 392, AD 472, AD 473)",
+    "Surface": "4421 m²",
+    "Travaux": "la construction de trois immeubles pour un total de 45 logements et 3 locaux commerciaux division",
+    "Projet": "- Surface plancher créée : 3337 m²\n- Surface plancher démolie : 200 m²\n- Lotissement : 4 lot (s)\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AD 392",
+      "AD 472",
+      "AD 473"
+    ],
+    "Surface net": [
+      3337.0,
+      200.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AD 392', True], ['AD 472', True], ['AD 473', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "12/01/2024",
+    "id Autorisation": "DP 02A 247 23 R0211",
+    "Dépot": "13/12/2023",
+    "Demandeur": "RAFFALLI TP",
+    "Lieu": "ROUTE DE PALOMBAGGIA 20137 (BY 33)",
+    "Surface": "2300 m²",
+    "Travaux": "",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BY 33"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BY 33', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "07/02/2024",
+    "id Autorisation": "PC 02A 247 24 R0022",
+    "Dépot": "07/02/2024",
+    "Demandeur": "M TAFANI Henri-Patrick",
+    "Lieu": "Quartier Mela 20137 (H 451)",
+    "Surface": "236 m²",
+    "Travaux": "la construction d'une maison individuelle avec piscine",
+    "Projet": "- Surface plancher créée : 133 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "H 451"
+    ],
+    "Surface net": [
+      133.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['H 451', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "05/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0047",
+    "Dépot": "05/03/2024",
+    "Demandeur": "M MATTEI Paul Julien",
+    "Lieu": "ROUTE DE MURATELLO 20137 FURCONE (A 1343)",
+    "Surface": "1663 m²",
+    "Travaux": "la construction d'une maison individuelle avec garage et piscine",
+    "Projet": "- Surface plancher créée : 158,44 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "A 1343"
+    ],
+    "Surface net": [
+      158.44,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['A 1343', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "05/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0048",
+    "Dépot": "05/03/2024",
+    "Demandeur": "SARL Bocca d'Oro",
+    "Lieu": "34 Chemin de Bella Riva 20137 Marina di Fiori (AM 166)",
+    "Surface": "2090 m²",
+    "Travaux": "la démolition de la maison existante et construction d'une villa de 265 m² avec piscine",
+    "Projet": "- Surface plancher créée : 265 m²\n- Surface plancher démolie : 176 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 166"
+    ],
+    "Surface net": [
+      265.0,
+      176.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 166', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "12/03/2024",
+    "id Autorisation": "DP 02A 247 24 R0065",
+    "Dépot": "12/03/2024",
+    "Demandeur": "MME DOUTTEZ Maryvonne",
+    "Lieu": "Chemin D Avreto 20137 (AH 121)",
+    "Surface": "3775 m²",
+    "Travaux": "la transformation d'une loggia en surface habitable",
+    "Projet": "- Surface plancher créée : 7,2 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AH 121"
+    ],
+    "Surface net": [
+      7.2,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AH 121', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "13/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0050",
+    "Dépot": "13/03/2024",
+    "Demandeur": "M PIERGIGLI-PANAZZOLO Freddy et Fiorella",
+    "Lieu": "Lieu-dit FERRUCCIO 20137 FERRUCCIO (B 1270, B 1430)",
+    "Surface": "2999 m²",
+    "Travaux": "la régularisation de constructions existantes",
+    "Projet": "- Surface plancher créée : 87,71 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 1270",
+      "B 1430"
+    ],
+    "Surface net": [
+      87.71,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 1270', True], ['B 1430', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "16/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0055",
+    "Dépot": "16/03/2024",
+    "Demandeur": "LE NORD SUD",
+    "Lieu": "RN 198 20137 MATONARA (AK 252)",
+    "Surface": "980 m²",
+    "Travaux": "l'extension de la brasserie le NORD SUD",
+    "Projet": "- Surface plancher créée : 29 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AK 252"
+    ],
+    "Surface net": [
+      29.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AK 252', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "19/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0059",
+    "Dépot": "19/03/2024",
+    "Demandeur": "M BIANCARELLI Camille",
+    "Lieu": "ROUTE DE PALOMBAGGIA 20137 SUARTO (F 2788)",
+    "Surface": "4404 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 161,5 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "F 2788"
+    ],
+    "Surface net": [
+      161.5,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['F 2788', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "22/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0064",
+    "Dépot": "22/03/2024",
+    "Demandeur": "M CASTELLI Stéphane",
+    "Lieu": "Lieu-Dit Taglio Rosso 20137 (BH 317)",
+    "Surface": "1143 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 126 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BH 317"
+    ],
+    "Surface net": [
+      126.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BH 317', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "24/03/2024",
+    "id Autorisation": "DP 02A 247 24 R0075",
+    "Dépot": "24/03/2024",
+    "Demandeur": "M Sumzer Bruno",
+    "Lieu": "2 Ldt Pietra Lunga Salvini 20137 (G 621)",
+    "Surface": "7937 m²",
+    "Travaux": "la création d'une terrasse en ossature métal et revêtement bois de 19.75m²",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "G 621"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['G 621', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "25/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0038",
+    "Dépot": "22/02/2024",
+    "Demandeur": "M BOUGON MICHEL",
+    "Lieu": "Route de Piccovaggia 20137 Piccovaggia (F 3052, F 3053, F 3054)",
+    "Surface": "12952 m²",
+    "Travaux": "l'agrandissement d'une maison existante pour un garage et pour un logement",
+    "Projet": "- Surface plancher créée : 79,24 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "F 3052",
+      "F 3053",
+      "F 3054"
+    ],
+    "Surface net": [
+      79.24,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['F 3052', True], ['F 3053', True], ['F 3054', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "26/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0068",
+    "Dépot": "26/03/2024",
+    "Demandeur": "M RICHARD David",
+    "Lieu": "Rue De La Gendarmerie 20137 (AH 173)",
+    "Surface": "946 m²",
+    "Travaux": "la construction d'une pergola",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AH 173"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AH 173', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "27/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0072",
+    "Dépot": "25/03/2024",
+    "Demandeur": "M ACQUAVIVA François",
+    "Lieu": "Lieu-Dit Carruccino 20137 (D 1742, D 1740)",
+    "Surface": "1716 m²",
+    "Travaux": "la construction d'une maison individuelle avec garage et piscine",
+    "Projet": "- Surface plancher créée : 149 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "D 1742",
+      "D 1740"
+    ],
+    "Surface net": [
+      149.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['D 1742', True], ['D 1740', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "28/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0073",
+    "Dépot": "28/03/2024",
+    "Demandeur": "EURL MANNONI Laetitia",
+    "Lieu": "ROUTE DE PORRA 20137 FERME DE PADULA (G 630, G 631)",
+    "Surface": "9840 m²",
+    "Travaux": "le réaménagement des enclos et abris, sellerie, bloc sanitaire, pose d'un mobil-home",
+    "Projet": "- Surface plancher créée : 230 m²\n- Surface plancher démolie : 0 m²\n- Camping : 1 emplacements / 3 HLL",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "G 630",
+      "G 631"
+    ],
+    "Surface net": [
+      230.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['G 630', True], ['G 631', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "28/03/2024",
+    "id Autorisation": "PC 02A 247 24 R0074",
+    "Dépot": "28/03/2024",
+    "Demandeur": "M MOZZICONACCI Pierre",
+    "Lieu": "Route de Palombaggia 20137 SUARTO (F 1870)",
+    "Surface": "5888 m²",
+    "Travaux": "la construction de quatre maisons d'hôtes avec piscine",
+    "Projet": "- Surface plancher créée : 710,38 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "F 1870"
+    ],
+    "Surface net": [
+      710.38,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['F 1870', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "02/04/2024",
+    "id Autorisation": "PA 02A 247 24 R0004",
+    "Dépot": "02/04/2024",
+    "Demandeur": "SAS ORTIBARZO",
+    "Lieu": "ORTIBARZO 20137 LIEU DIT ORTIBARZO (C 674, C 713)",
+    "Surface": "24040 m²",
+    "Travaux": "la création d'un lotissement de 10 lots à batir",
+    "Projet": "- Lotissement : 10 lot (s)\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 674",
+      "C 713"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 674', True], ['C 713', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "03/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0078",
+    "Dépot": "03/04/2024",
+    "Demandeur": "M HEMAIN Serge",
+    "Lieu": "ROUTE DE RENAJOLO HAMEAU DE PALAVESE 20137 (B 1207, B 1217)",
+    "Surface": "4234 m²",
+    "Travaux": "l'extension de la maison, construction d'une piscine",
+    "Projet": "- Surface plancher créée : 14,04 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 1207",
+      "B 1217"
+    ],
+    "Surface net": [
+      14.04,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 1207', True], ['B 1217', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "05/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0067",
+    "Dépot": "24/03/2024",
+    "Demandeur": "SAS HOTEL RIVA BEACH",
+    "Lieu": "Route de Palombaggia 20137 (BP 168, BP 164, BP 163, BP 167, BP 178, BP 172)",
+    "Surface": "4169 m²",
+    "Travaux": "la mise en conformité SDIS et PMR, création de surface habitable dans un volume existant",
+    "Projet": "- Surface plancher créée : 23 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BP 168",
+      "BP 164",
+      "BP 163",
+      "BP 167",
+      "BP 178",
+      "BP 172"
+    ],
+    "Surface net": [
+      23.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BP 168', True], ['BP 164', True], ['BP 163', True], ['BP 167', True], ['BP 178', True], ['BP 172', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "08/04/2024",
+    "id Autorisation": "PC 02A 247 23 R0005 M01",
+    "Dépot": "05/04/2024",
+    "Demandeur": "M CESARI Etienne",
+    "Lieu": "Pardini 20137 (B 444, B 440, B 439, B 1553)",
+    "Surface": "141061 m²",
+    "Travaux": "la modification de l'assiette foncière",
+    "Projet": "- Surface plancher créée : 102 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 444",
+      "B 440",
+      "B 439",
+      "B 1553"
+    ],
+    "Surface net": [
+      102.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 444', True], ['B 440', True], ['B 439', True], ['B 1553', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "08/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0040",
+    "Dépot": "23/02/2024",
+    "Demandeur": "M BOUFFARD XAVIER",
+    "Lieu": "NOTA HAUT 20137 LD VIGNOLA (247 C 1718, 247 C 1747)",
+    "Surface": "1579 m²",
+    "Travaux": "la transformation du garage existant de 3 x 5.36 m en pièce supplémentaire de 16.08 m2",
+    "Projet": "- Surface plancher créée : 16 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 1718",
+      "C 1747"
+    ],
+    "Surface net": [
+      16.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 1718', True], ['C 1747', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "10/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0081",
+    "Dépot": "10/04/2024",
+    "Demandeur": "M ROSSI Christian",
+    "Lieu": "Ondella 20137 (G 875)",
+    "Surface": "5558 m²",
+    "Travaux": "la construction d'une maison individuelle avec piscine",
+    "Projet": "- Surface plancher créée : 118 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "G 875"
+    ],
+    "Surface net": [
+      118.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['G 875', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "22/04/2024",
+    "id Autorisation": "PC 02A 247 22 R0145 M02",
+    "Dépot": "22/04/2024",
+    "Demandeur": "SAS NA-MA-SUD",
+    "Lieu": "2245 F Lieu-Dit Cantone 20137 (C 2245, C 2246, C 2679)",
+    "Surface": "5483 m²",
+    "Travaux": "la suppression de 15 places de parking pour création de 11 boxes de garages",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 2245",
+      "C 2246",
+      "C 2679"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 2245', True], ['C 2246', True], ['C 2679', False]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "22/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0083",
+    "Dépot": "15/04/2024",
+    "Demandeur": "SAS LA MAISON DE L'IMMOBILIER",
+    "Lieu": "Ldt Vignola 20137 (AC 14)",
+    "Surface": "3320 m²",
+    "Travaux": "la construction de 20 logements; de 6 garages individuels; démolition d'un local de rangement",
+    "Projet": "- Surface plancher créée : 1609 m²\n- Surface plancher démolie : 18 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AC 14"
+    ],
+    "Surface net": [
+      1609.0,
+      18.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AC 14', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "22/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0088",
+    "Dépot": "22/04/2024",
+    "Demandeur": "M SUSINI Charles",
+    "Lieu": "QUARTIER TRINITE 20137 (AO 274, AO 272, AO 269)",
+    "Surface": "268 m²",
+    "Travaux": "la construction d'une maison individuelle avec un garage",
+    "Projet": "- Surface plancher créée : 123,7 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AO 274",
+      "AO 272",
+      "AO 269"
+    ],
+    "Surface net": [
+      123.7,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AO 274', True], ['AO 272', True], ['AO 269', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/04/2024",
+    "id Autorisation": "DP 02A 247 24 R0081",
+    "Dépot": "28/03/2024",
+    "Demandeur": "M EL FELLAHI Hafid",
+    "Lieu": "Quartier Poretta 20137 (AK 162, AK 587)",
+    "Surface": "865 m²",
+    "Travaux": "la pose d'un container de 13m²",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AK 162",
+      "AK 587"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AK 162', True], ['AK 587', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0085",
+    "Dépot": "18/04/2024",
+    "Demandeur": "Société CRM",
+    "Lieu": "Cataraccio 20137 (BV 98)",
+    "Surface": "3411 m²",
+    "Travaux": "l'extension d'une maison",
+    "Projet": "- Surface plancher créée : 22 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BV 98"
+    ],
+    "Surface net": [
+      22.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BV 98', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0089",
+    "Dépot": "23/04/2024",
+    "Demandeur": "M TAFANI Dominique",
+    "Lieu": "9002 Quartier Palombaja 20137 (BV 47, F 2699)",
+    "Surface": "3587 m²",
+    "Travaux": "l'extension d'une maison existante",
+    "Projet": "- Surface plancher créée : 30 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BV 47",
+      "F 2699"
+    ],
+    "Surface net": [
+      30.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BV 47', True], ['F 2699', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0091",
+    "Dépot": "23/04/2024",
+    "Demandeur": "Mairie de Porto Vecchio",
+    "Lieu": "La Marine 20137 Port de plaisance",
+    "Surface": "",
+    "Travaux": "la création d'un bâtiment d'avitaillement sur le terre plein sud du nouveau port de Porto-Vecchio",
+    "Projet": "- Surface plancher créée : 245 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [],
+    "Surface net": [
+      245.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": true,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0093",
+    "Dépot": "23/04/2024",
+    "Demandeur": "Mairie de Porto Vecchio",
+    "Lieu": "La Marine 20137 Port de plaisance",
+    "Surface": "",
+    "Travaux": "la construction d'un bâtiment regroupant les fonctions de la capitainerie",
+    "Projet": "- Surface plancher créée : 1004 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [],
+    "Surface net": [
+      1004.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": true,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0094",
+    "Dépot": "23/04/2024",
+    "Demandeur": "SASU BOTTI MARINE",
+    "Lieu": "13 ZAC de Mortone 20137 (BY 60)",
+    "Surface": "3961 m²",
+    "Travaux": "la construction de deux auvents photovoltaïques pour un hangar existant",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BY 60"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BY 60', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "25/04/2024",
+    "id Autorisation": "DP 02A 247 24 R0090",
+    "Dépot": "04/04/2024",
+    "Demandeur": "M MUTUEL Laurent",
+    "Lieu": "Route de Cala Rossa 20137 (AP 322)",
+    "Surface": "601 m²",
+    "Travaux": "la construction d'une piscine",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AP 322"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AP 322', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "25/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0066",
+    "Dépot": "23/03/2024",
+    "Demandeur": "MME BOYER Karine",
+    "Lieu": "Chemin Bella Riva 20137 Marina Di Fiori (AM 250)",
+    "Surface": "1140 m²",
+    "Travaux": "la démolition d'une villa existante et la construction d'une maison avec garage et piscine",
+    "Projet": "- Surface plancher créée : 171 m²\n- Surface plancher démolie : 115 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 250"
+    ],
+    "Surface net": [
+      171.0,
+      115.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 250', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "26/04/2024",
+    "id Autorisation": "DP 02A 247 24 R0106",
+    "Dépot": "26/04/2024",
+    "Demandeur": "MME DUHAMEL Laurence",
+    "Lieu": "renajolo 20137 Renajolo (B 1334)",
+    "Surface": "2000 m²",
+    "Travaux": "la modification d'une piscine existante",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 1334"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 1334', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "26/04/2024",
+    "id Autorisation": "PC 02A 247 24 R0096",
+    "Dépot": "26/04/2024",
+    "Demandeur": "M DIAS-MOREIRA Alvaro",
+    "Lieu": "chemin quenza 20137 CARABONA (D 1545, D 1543)",
+    "Surface": "1000 m²",
+    "Travaux": "la régularisation d'une terrasse en surface habitable",
+    "Projet": "- Surface plancher créée : 57,88 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "D 1545",
+      "D 1543"
+    ],
+    "Surface net": [
+      57.88,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['D 1545', True], ['D 1543', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "30/04/2024",
+    "id Autorisation": "DP 02A 247 24 R0107",
+    "Dépot": "30/04/2024",
+    "Demandeur": "MME CASSE Geraldine",
+    "Lieu": "LOTISSEMENT SUARTELU 20137 (B 1589, B 1592)",
+    "Surface": "1218 m²",
+    "Travaux": "la construction d'une piscine",
+    "Projet": "- Surface plancher créée : 76 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 1589",
+      "B 1592"
+    ],
+    "Surface net": [
+      76.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 1589', True], ['B 1592', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "04/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0100",
+    "Dépot": "04/05/2024",
+    "Demandeur": "SARL Foncière CIABRINI",
+    "Lieu": "D468B 20137 Trinité (AN 400)",
+    "Surface": "15231 m²",
+    "Travaux": "la construction de 4 bâtiments de 48 logements et 52 places de stationnement",
+    "Projet": "- Surface plancher créée : 3516 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AN 400"
+    ],
+    "Surface net": [
+      3516.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AN 400', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "06/05/2024",
+    "id Autorisation": "PA 02A 247 24 R0005",
+    "Dépot": "03/05/2024",
+    "Demandeur": "M FERRACCI Jean-Louis",
+    "Lieu": "Lieu-Dit Tamariccio 20137 (BL 39)",
+    "Surface": "4450 m²",
+    "Travaux": "Aire de stationnement de 36 places",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BL 39"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BL 39', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "06/05/2024",
+    "id Autorisation": "PC 02A 247 18 R0134 M04",
+    "Dépot": "03/05/2024",
+    "Demandeur": "SAS AGNARELLA",
+    "Lieu": "LDT TEGHIA 20137 (D 503, D 504)",
+    "Surface": "5464 m²",
+    "Travaux": "Modifications diverses sur le bâtiment A",
+    "Projet": "- Surface plancher créée : 61 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "D 503",
+      "D 504"
+    ],
+    "Surface net": [
+      61.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['D 503', True], ['D 504', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "06/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0101",
+    "Dépot": "06/05/2024",
+    "Demandeur": "M MARCHETTI Christian",
+    "Lieu": "PEZZA CARDO 20137 (AN 356)",
+    "Surface": "1500 m²",
+    "Travaux": "la réalisation d'une résidence principale de plain pied et d'un garage attenant",
+    "Projet": "- Surface plancher créée : 120 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AN 356"
+    ],
+    "Surface net": [
+      120.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AN 356', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "06/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0102",
+    "Dépot": "06/05/2024",
+    "Demandeur": "M BIANCONI Alexandre",
+    "Lieu": "Saltarella 20137 (H 1300, H 1303, H 1304)",
+    "Surface": "7103 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 121,1 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "H 1300",
+      "H 1303",
+      "H 1304"
+    ],
+    "Surface net": [
+      121.1,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['H 1300', True], ['H 1303', True], ['H 1304', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "07/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0103",
+    "Dépot": "06/05/2024",
+    "Demandeur": "SASU AVANTI PROMOTION",
+    "Lieu": "Route De Bastia 20137 (AD 270, AD 459, AD 456)",
+    "Surface": "861 m²",
+    "Travaux": "la construction d'un collectif de 5 logements",
+    "Projet": "- Surface plancher créée : 410 m²\n- Surface plancher démolie : 25 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AD 270",
+      "AD 459",
+      "AD 456"
+    ],
+    "Surface net": [
+      410.0,
+      25.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AD 270', True], ['AD 459', True], ['AD 456', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "09/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0076",
+    "Dépot": "02/04/2024",
+    "Demandeur": "M FAULKNER Olivier",
+    "Lieu": "Qrt Palavese 20137 (B 1550)",
+    "Surface": "1596 m²",
+    "Travaux": "la construction d'un garage",
+    "Projet": "- Surface plancher créée : 33,43 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 1550"
+    ],
+    "Surface net": [
+      33.43,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 1550', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "09/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0106",
+    "Dépot": "09/05/2024",
+    "Demandeur": "M POLI Stéphane",
+    "Lieu": "Qrt Ospedale 20137 (AB 251, AB 372)",
+    "Surface": "172 m²",
+    "Travaux": "modifications diverses : restructuration, extension, construction et démolition",
+    "Projet": "- Surface plancher créée : 42,69 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AB 251",
+      "AB 372"
+    ],
+    "Surface net": [
+      42.69,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AB 251', True], ['AB 372', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "10/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0108",
+    "Dépot": "10/05/2024",
+    "Demandeur": "MME ETTORI Caroline",
+    "Lieu": "saggimo 20137 (D 785, D 603)",
+    "Surface": "4520 m²",
+    "Travaux": "la construction d'une villa individuelle avec piscine",
+    "Projet": "- Surface plancher créée : 141,12 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "D 785",
+      "D 603"
+    ],
+    "Surface net": [
+      141.12,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['D 785', True], ['D 603', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "10/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0109",
+    "Dépot": "10/05/2024",
+    "Demandeur": "M BAREL Julien",
+    "Lieu": "SAGGIMO 20137 (D 785, D 603)",
+    "Surface": "4520 m²",
+    "Travaux": "la construction d'une villa individuelle avec piscine",
+    "Projet": "- Surface plancher créée : 141,12 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "D 785",
+      "D 603"
+    ],
+    "Surface net": [
+      141.12,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['D 785', True], ['D 603', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "10/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0110",
+    "Dépot": "10/05/2024",
+    "Demandeur": "MME ETTORI Kelly",
+    "Lieu": "SAGGIMO 20137 (D 785, D 603)",
+    "Surface": "4520 m²",
+    "Travaux": "la construction d'une villa individuelle avec piscine",
+    "Projet": "- Surface plancher créée : 141,12 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "D 785",
+      "D 603"
+    ],
+    "Surface net": [
+      141.12,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['D 785', True], ['D 603', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "11/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0114",
+    "Dépot": "11/05/2024",
+    "Demandeur": "LA VETTA",
+    "Lieu": "7 rue Dragut 20137 (AE 392)",
+    "Surface": "1650 m²",
+    "Travaux": "la réfection de la couverture",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AE 392"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AE 392', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "13/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0111",
+    "Dépot": "13/05/2024",
+    "Demandeur": "COMMUNE DE PORTO VECCHIO",
+    "Lieu": "Hameau de Ceccia 20137 (AV 152)",
+    "Surface": "958 m²",
+    "Travaux": "la transformation de l'école primaire existante en école maternelle comprenant une extension",
+    "Projet": "- Surface plancher créée : 96 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AV 152"
+    ],
+    "Surface net": [
+      96.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AV 152', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "14/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0115",
+    "Dépot": "14/05/2024",
+    "Demandeur": "M FANCELLU HORLAVILLE Jean-Marie",
+    "Lieu": "ROUTE DE SANTA GIULIA 20137 (G 1579)",
+    "Surface": "5962 m²",
+    "Travaux": "la construction d'une maison individuelle en résidence principale et d'un garage",
+    "Projet": "- Surface plancher créée : 179 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "G 1579"
+    ],
+    "Surface net": [
+      179.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['G 1579', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "15/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0027",
+    "Dépot": "12/02/2024",
+    "Demandeur": "MME VIVIER Christel",
+    "Lieu": "Ortibarzo 20137 (C 2696, C 2111, C 2116)",
+    "Surface": "10165 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 111 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 2696",
+      "C 2111",
+      "C 2116"
+    ],
+    "Surface net": [
+      111.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 2696', True], ['C 2111', False], ['C 2116', False]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "15/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0029",
+    "Dépot": "12/02/2024",
+    "Demandeur": "M MELA Noël",
+    "Lieu": "route de palavesa 20137 ortibarzo (C 2111, C 2116, C 2698, C 2697)",
+    "Surface": "24812 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 211 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 2111",
+      "C 2116",
+      "C 2698",
+      "C 2697"
+    ],
+    "Surface net": [
+      211.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 2111', False], ['C 2116', False], ['C 2698', True], ['C 2697', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "15/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0117",
+    "Dépot": "15/05/2024",
+    "Demandeur": "M BOTELLA Bernard",
+    "Lieu": "ROUTE DE PALAVESE 20137 SUARTELLU (B 1491)",
+    "Surface": "1770 m²",
+    "Travaux": "La régularisation de la construction d'un abris de jardin de 31m2 en bois",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 1491"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 1491', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "15/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0118",
+    "Dépot": "15/05/2024",
+    "Demandeur": "SNC ACHELO",
+    "Lieu": "Pavellone 20137 (AR 75)",
+    "Surface": "5523 m²",
+    "Travaux": "la réfection d'une terrasse couverte et aménagements extérieurs divers",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AR 75"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AR 75', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "16/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0115",
+    "Dépot": "16/05/2024",
+    "Demandeur": "EDF CORSE",
+    "Lieu": "Route de Palombaggia 20137",
+    "Surface": "",
+    "Travaux": "la pose d'un poste de transformation de distribution publique",
+    "Projet": "- Surface plancher créée : 9,6 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [],
+    "Surface net": [
+      9.6,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": true,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "16/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0116",
+    "Dépot": "13/05/2024",
+    "Demandeur": "EARL PRIMA STELLA",
+    "Lieu": "Lieu-Dit Vetta 20137 (AP 304)",
+    "Surface": "11927 m²",
+    "Travaux": "la pose de serres agricoles",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AP 304"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AP 304', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "16/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0117",
+    "Dépot": "16/05/2024",
+    "Demandeur": "M GIRASCHI Michel",
+    "Lieu": "Vardattu - Palombaggia 20137 (BV 133)",
+    "Surface": "6465 m²",
+    "Travaux": "la création de 2 lots",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BV 133"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BV 133', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "16/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0086",
+    "Dépot": "19/04/2024",
+    "Demandeur": "M QUENZA Guillaume",
+    "Lieu": "route de pezza cardo 20137 (AN 150)",
+    "Surface": "3163 m²",
+    "Travaux": "la réalisation d'une terrasse pergola pour la création d'un restaurant extérieur",
+    "Projet": "- Surface plancher créée : 25 m²\n- Surface plancher démolie : 25 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AN 150"
+    ],
+    "Surface net": [
+      25.0,
+      25.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AN 150', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "16/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0120",
+    "Dépot": "16/05/2024",
+    "Demandeur": "MME LORENZETTI Françoise",
+    "Lieu": "20 lotissement ambacu 20137 ambaco (B 1042)",
+    "Surface": "1733 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 155 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "B 1042"
+    ],
+    "Surface net": [
+      155.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['B 1042', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "18/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0118",
+    "Dépot": "18/05/2024",
+    "Demandeur": "M CANDELLA Marcel",
+    "Lieu": "ROUTE DE MURATELLO RN 159 20137 CINQUINI (I 2705, I 2601)",
+    "Surface": "4154 m²",
+    "Travaux": "la création d'un abri de voiture",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "I 2705",
+      "I 2601"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['I 2705', True], ['I 2601', False]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0119",
+    "Dépot": "21/05/2024",
+    "Demandeur": "M PESCHAUD Christophe",
+    "Lieu": "Route de Piccovaggia 20137 PASCIALELLO (BP 204)",
+    "Surface": "5002 m²",
+    "Travaux": "la construction d'une piscine",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BP 204"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BP 204', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0120",
+    "Dépot": "21/05/2024",
+    "Demandeur": "SCI MARY'S",
+    "Lieu": "81 Route de Muratello 20137 (AW 353)",
+    "Surface": "838 m²",
+    "Travaux": "la création d'un carport",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AW 353"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AW 353', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0092",
+    "Dépot": "23/04/2024",
+    "Demandeur": "COMMUNE DE PORTO VECCHIO",
+    "Lieu": "La Marine 20137 Port de plaisance",
+    "Surface": "",
+    "Travaux": "la construction d'un bâtiment technique",
+    "Projet": "- Surface plancher créée : 243 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [],
+    "Surface net": [
+      243.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": true,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0121",
+    "Dépot": "21/05/2024",
+    "Demandeur": "SCI DU DOMAINE DE PUNTA D'ARASO",
+    "Lieu": "Voie Communale Ldt Pezza Cardo 20137 (AN 360)",
+    "Surface": "2305 m²",
+    "Travaux": "la création d'un atelier céramiste et d'un stationnement",
+    "Projet": "- Surface plancher créée : 25 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AN 360"
+    ],
+    "Surface net": [
+      25.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AN 360', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0122",
+    "Dépot": "21/05/2024",
+    "Demandeur": "MME LEANDRI Lydie",
+    "Lieu": "Route de Benciugnu 20137 Suartolo (C 457)",
+    "Surface": "6040 m²",
+    "Travaux": "la construction d'une maison individuelle à usage d'habitation principale",
+    "Projet": "- Surface plancher créée : 166 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 457"
+    ],
+    "Surface net": [
+      166.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 457', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0123",
+    "Dépot": "21/05/2024",
+    "Demandeur": "M BIANCARELLI Jean Luc",
+    "Lieu": "Route de Porra 20137 (BX 129)",
+    "Surface": "22550 m²",
+    "Travaux": "la contruction de 6 suites et espace petits déjeuners",
+    "Projet": "- Surface plancher créée : 174,9 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BX 129"
+    ],
+    "Surface net": [
+      174.9,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BX 129', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0124",
+    "Dépot": "21/05/2024",
+    "Demandeur": "M BIANCARELLI Jean Luc",
+    "Lieu": "Route de Porra 20137 (BX 129)",
+    "Surface": "22550 m²",
+    "Travaux": "la régularisation d'un chalet de 35 m²",
+    "Projet": "- Surface plancher créée : 35 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BX 129"
+    ],
+    "Surface net": [
+      35.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BX 129', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0124",
+    "Dépot": "23/05/2024",
+    "Demandeur": "MME AGOSTINI Caroline",
+    "Lieu": "17 Rue du General Leclerc 20137 (AE 93)",
+    "Surface": "294 m²",
+    "Travaux": "la rénovation de la toiture à l'identique",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AE 93"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AE 93', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "23/05/2024",
+    "id Autorisation": "PC 02A 247 20 R0131 M01",
+    "Dépot": "22/05/2024",
+    "Demandeur": "SCI PAESANU",
+    "Lieu": "9046 Quartier Muratello 20137 (AW 128, AW 285)",
+    "Surface": "1012 m²",
+    "Travaux": "l'ajout d'un pool-house, d'une pergola, implantation des piscines,modification de la façade",
+    "Projet": "- Surface plancher créée : 174,5 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AW 128",
+      "AW 285"
+    ],
+    "Surface net": [
+      174.5,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AW 128', True], ['AW 285', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "24/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0126",
+    "Dépot": "24/05/2024",
+    "Demandeur": "M Olivieri François",
+    "Lieu": "4 Rue Docteur Joseph Balesi 20137 (AE 166)",
+    "Surface": "395 m²",
+    "Travaux": "la transformation d'une cave existante en local commercial",
+    "Projet": "- Surface plancher créée : 50,32 m²\n- Surface plancher démolie : 50,32 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AE 166"
+    ],
+    "Surface net": [
+      50.32,
+      50.32
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AE 166', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "24/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0125",
+    "Dépot": "24/05/2024",
+    "Demandeur": "M ETTORI Jean François",
+    "Lieu": "Qrt Torre 20137 (C 1280)",
+    "Surface": "4000 m²",
+    "Travaux": "l'extension d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 48,54 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 1280"
+    ],
+    "Surface net": [
+      48.54,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 1280', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "27/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0127",
+    "Dépot": "27/05/2024",
+    "Demandeur": "M FERRACCI JOSE",
+    "Lieu": "Route d’Arca 20137 (H 1031)",
+    "Surface": "1800 m²",
+    "Travaux": "la pose de panneaux solaires",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "H 1031"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['H 1031', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "27/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0130",
+    "Dépot": "27/05/2024",
+    "Demandeur": "MME BERGE Christine",
+    "Lieu": "LIEU DIT MORTETO 20137 (BO 214, BO 217)",
+    "Surface": "1834 m²",
+    "Travaux": "une division en vue d'une construction",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BO 214",
+      "BO 217"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BO 214', True], ['BO 217', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "27/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0131",
+    "Dépot": "27/05/2024",
+    "Demandeur": "FRANCE RENOVE HABITAT",
+    "Lieu": "VACCILE DEL MONTE 20137 (I 2211)",
+    "Surface": "1800 m²",
+    "Travaux": "la pose de panneaux solaires",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "I 2211"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['I 2211', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "27/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0126",
+    "Dépot": "27/05/2024",
+    "Demandeur": "MME ETTORI Caroline",
+    "Lieu": "pezza cardu 20137 (AN 249, AN 250)",
+    "Surface": "9028 m²",
+    "Travaux": "la construction d'une maison individuelle avec piscine",
+    "Projet": "- Surface plancher créée : 141,12 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AN 249",
+      "AN 250"
+    ],
+    "Surface net": [
+      141.12,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AN 249', True], ['AN 250', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "27/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0127",
+    "Dépot": "27/05/2024",
+    "Demandeur": "M VOIGNIER Yvan",
+    "Lieu": "Ortibarzo 20137 (C 1988)",
+    "Surface": "1787 m²",
+    "Travaux": "le changement de destination du garage, deux extensions de 9.30 m² et de 10.50 m²",
+    "Projet": "- Surface plancher créée : 38,8 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 1988"
+    ],
+    "Surface net": [
+      38.8,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 1988', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "28/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0070",
+    "Dépot": "19/03/2024",
+    "Demandeur": "M BOURDIOL Rémi",
+    "Lieu": "7 Quartier Palombaja 20137 (BV 43)",
+    "Surface": "4938 m²",
+    "Travaux": "la pose de panneaux photovoltaïque",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BV 43"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BV 43', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "28/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0132",
+    "Dépot": "28/05/2024",
+    "Demandeur": "M MOREAU Jeremy",
+    "Lieu": "lieu dit murtone 20137 (BY 75)",
+    "Surface": "750 m²",
+    "Travaux": "la construction d'une piscine",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BY 75"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BY 75', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "28/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0105",
+    "Dépot": "08/05/2024",
+    "Demandeur": "M BOUDAOUINE Rachid",
+    "Lieu": "Chemin de Chemin de Riacciu 20137 (C 1987)",
+    "Surface": "2834 m²",
+    "Travaux": "l'extension mesurée ainsi que la modification des ouvertures, des menuiseries et de la toiture",
+    "Projet": "- Surface plancher créée : 20 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 1987"
+    ],
+    "Surface net": [
+      20.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 1987', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "28/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0128",
+    "Dépot": "28/05/2024",
+    "Demandeur": "SCI LES OLIVIERS DE CARPALONE",
+    "Lieu": "Voie Communale Ldt Pezza Cardo 20137 (AN 395)",
+    "Surface": "4945 m²",
+    "Travaux": "l'extension d'une terrasse couverte et l'extension d'une piscine existante",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AN 395"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AN 395', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "29/05/2024",
+    "id Autorisation": "PC 02A 247 12 R0266 M02",
+    "Dépot": "29/05/2024",
+    "Demandeur": "SCCV LA VILLA ABITBOL",
+    "Lieu": "22 RUE JEAN JAURES 20137 (AE 493, AE 494)",
+    "Surface": "770 m²",
+    "Travaux": "la modification des hauteurs, l'aspect extérieur,nombre de place de stationnement, surface plancher",
+    "Projet": "- Surface plancher créée : 1472 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AE 493",
+      "AE 494"
+    ],
+    "Surface net": [
+      1472.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AE 493', True], ['AE 494', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "29/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0119",
+    "Dépot": "16/05/2024",
+    "Demandeur": "MME PELLEGRINO Pierre-Louis",
+    "Lieu": "PASCIALELLA DE PRECOJO 20137 CARDICCIA (AT 1061)",
+    "Surface": "2209 m²",
+    "Travaux": "la construction d'une maison individuelle comme maison secondaire",
+    "Projet": "- Surface plancher créée : 125,65 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AT 1061"
+    ],
+    "Surface net": [
+      125.65,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AT 1061', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "29/05/2024",
+    "id Autorisation": "PC 02A 247 24 R0129",
+    "Dépot": "29/05/2024",
+    "Demandeur": "M BORGHI Fabio",
+    "Lieu": "6247 Lieu-Dit Carruccino 20137 (D 1554)",
+    "Surface": "2047 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 86 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "D 1554"
+    ],
+    "Surface net": [
+      86.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['D 1554', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "30/05/2024",
+    "id Autorisation": "PC 02A 247 15 R0118 M02",
+    "Dépot": "30/05/2024",
+    "Demandeur": "SCCV LA VILLA ABITBOL",
+    "Lieu": "RUE JEAN JAURES 20137 (AE 492)",
+    "Surface": "225 m²",
+    "Travaux": "la modification des hauteurs,de l'aspect extérieur, surface de plancher, nombre place stationnement",
+    "Projet": "- Surface plancher créée : 692 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AE 492"
+    ],
+    "Surface net": [
+      692.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AE 492', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "31/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0135",
+    "Dépot": "31/05/2024",
+    "Demandeur": "MME QUERE CLAUDE",
+    "Lieu": "Tenda 20137 BRELINGA (C 1915)",
+    "Surface": "12748 m²",
+    "Travaux": "la construction d'une piscine",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 1915"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 1915', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "31/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0136",
+    "Dépot": "31/05/2024",
+    "Demandeur": "MME KELEMEN Anne Marie",
+    "Lieu": "147 MARINA DI FIORI 20137 (AM 147)",
+    "Surface": "1470 m²",
+    "Travaux": "la pose de panneaux solaires",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 147"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 147', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "02/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0137",
+    "Dépot": "02/06/2024",
+    "Demandeur": "M MILLE PIERRE FRANCOIS",
+    "Lieu": "Ldt Giatone 20137 (C 2443)",
+    "Surface": "815 m²",
+    "Travaux": "l'extension d'une maison existante de 18 m²",
+    "Projet": "- Surface plancher créée : 18 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 2443"
+    ],
+    "Surface net": [
+      18.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 2443', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "03/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0138",
+    "Dépot": "03/06/2024",
+    "Demandeur": "M POZZI Nicolas",
+    "Lieu": "Mezzane 20137 (H 1112)",
+    "Surface": "3300 m²",
+    "Travaux": "la création d'un lot",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "H 1112"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['H 1112', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "03/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0130",
+    "Dépot": "03/06/2024",
+    "Demandeur": "SCI PUNTA",
+    "Lieu": "lotissement Punta d oro 2 20137 taglio di mezzo (CA 49, CA 50)",
+    "Surface": "3895 m²",
+    "Travaux": "l'extension d'une maison avec un garage et un studio accolée à de l'existant",
+    "Projet": "- Surface plancher créée : 34 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "CA 49",
+      "CA 50"
+    ],
+    "Surface net": [
+      34.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['CA 49', True], ['CA 50', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "04/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0139",
+    "Dépot": "04/06/2024",
+    "Demandeur": "Société de Gestion Immobilière",
+    "Lieu": "Rue Vincentellu d’Istria 20137 (AK 286, AK 284)",
+    "Surface": "3338 m²",
+    "Travaux": "la creation de 2 rampes PMR, d'une entrée sur la facade côté rue et le déplacement d'un poteau",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AK 286",
+      "AK 284"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AK 286', True], ['AK 284', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "05/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0131",
+    "Dépot": "05/06/2024",
+    "Demandeur": "M FERREIRA Marco",
+    "Lieu": "344 F Quartier Muratello 20137 (AW 344)",
+    "Surface": "952 m²",
+    "Travaux": "la construction d'une piscine et d'une annexe de 42.04 m²",
+    "Projet": "- Surface plancher créée : 42,04 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AW 344"
+    ],
+    "Surface net": [
+      42.04,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AW 344', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "06/06/2024",
+    "id Autorisation": "PA 02A 247 24 R0006",
+    "Dépot": "06/06/2024",
+    "Demandeur": "M QUILICHINI Morgan",
+    "Lieu": "Route de Muratello 20137 (C 2429)",
+    "Surface": "5406 m²",
+    "Travaux": "l'aménagement de deux terrains de padel sur le parking déjà existant",
+    "Projet": "- Surface plancher créée : 500 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 2429"
+    ],
+    "Surface net": [
+      500.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 2429', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "06/06/2024",
+    "id Autorisation": "PC 02A 247 18 R0116 M02",
+    "Dépot": "05/06/2024",
+    "Demandeur": "M REAU Christophe",
+    "Lieu": "9499 Lotissement de Cala d'Oro lot n° 54 20137 (AX 19)",
+    "Surface": "1835 m²",
+    "Travaux": "la modification des emmarchements de la plage de la piscine sans modification de niveau",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AX 19"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AX 19', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "06/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0132",
+    "Dépot": "05/06/2024",
+    "Demandeur": "M GIANNI Matthieu",
+    "Lieu": "Bocca del' Oro 20137 (CB 63)",
+    "Surface": "2295 m²",
+    "Travaux": "la construction d'une masion individuelle avec piscine",
+    "Projet": "- Surface plancher créée : 200 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "CB 63"
+    ],
+    "Surface net": [
+      200.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['CB 63', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "10/06/2024",
+    "id Autorisation": "PC 02A 247 23 R0054 M01",
+    "Dépot": "10/06/2024",
+    "Demandeur": "SARL PORTOVEJO",
+    "Lieu": "Avenue du Général de Boissoudy 20137 MARINA DI FIORI (AM 115)",
+    "Surface": "1805 m²",
+    "Travaux": "la création d'une pergola et d'une passerelle reliant la maison existante",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 115"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 115', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "10/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0133",
+    "Dépot": "10/06/2024",
+    "Demandeur": "MME BIANCARELLI Marie-Pierre",
+    "Lieu": "9190 Lieu-Dit Forcone 20137 (A 1384)",
+    "Surface": "8610 m²",
+    "Travaux": "l'extension d'une maison existante",
+    "Projet": "- Surface plancher créée : 80 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "A 1384"
+    ],
+    "Surface net": [
+      80.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['A 1384', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "10/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0134",
+    "Dépot": "10/06/2024",
+    "Demandeur": "M JEGOU Christophe",
+    "Lieu": "Avenue du Boissauddy 20137 Marina di fiori (AM 112)",
+    "Surface": "1270 m²",
+    "Travaux": "des modifications diverses",
+    "Projet": "- Surface plancher créée : 33,8 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 112"
+    ],
+    "Surface net": [
+      33.8,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 112', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "11/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0140",
+    "Dépot": "11/06/2024",
+    "Demandeur": "ZELIE",
+    "Lieu": "Corniche San Giorgi 20137 Marina Di Fiori (AM 216)",
+    "Surface": "960 m²",
+    "Travaux": "la rénovation extérieure et intérieure d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 216"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 216', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "11/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0141",
+    "Dépot": "11/06/2024",
+    "Demandeur": "SCI A STRADELLA",
+    "Lieu": "Cala Rossa 20137 (AP 318)",
+    "Surface": "29015 m²",
+    "Travaux": "la pose de panneaux solaires",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AP 318"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AP 318', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "11/06/2024",
+    "id Autorisation": "PC 02A 247 20 R0017 M03",
+    "Dépot": "11/06/2024",
+    "Demandeur": "SCI LSP CASA DI LUME",
+    "Lieu": "9516 Quartier Palombaja 20137 (BV 72)",
+    "Surface": "24204 m²",
+    "Travaux": "la création de 2 fenêtres mur de la façade en côté Est, trottoir en bois le long des façades",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BV 72"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BV 72', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "12/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0142",
+    "Dépot": "12/06/2024",
+    "Demandeur": "NMD ENERGIES",
+    "Lieu": "348 Lotissement Marina Di Fiori 20137 (AM 239)",
+    "Surface": "1200 m²",
+    "Travaux": "la pose de panneaux solaires",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 239"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 239', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "12/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0143",
+    "Dépot": "11/06/2024",
+    "Demandeur": "M AUFFRET Emmanuel",
+    "Lieu": "Route de Porra 20137 (BX 187)",
+    "Surface": "2150 m²",
+    "Travaux": "la rénovation des façades",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BX 187"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BX 187', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "12/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0135",
+    "Dépot": "12/06/2024",
+    "Demandeur": "M RAGUIDEAU François",
+    "Lieu": "N°3 casetta bianca 20137 aja del forno (BP 183, BP 185)",
+    "Surface": "2615 m²",
+    "Travaux": "l'extension d'une maison existante",
+    "Projet": "- Surface plancher créée : 56,36 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BP 183",
+      "BP 185"
+    ],
+    "Surface net": [
+      56.36,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BP 183', True], ['BP 185', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "13/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0144",
+    "Dépot": "13/06/2024",
+    "Demandeur": "SARL DONAT",
+    "Lieu": "56 Route De Bastia 20137 (AK 352)",
+    "Surface": "1419 m²",
+    "Travaux": "la construction de deux murets en béton",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AK 352"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AK 352', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "13/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0136",
+    "Dépot": "13/06/2024",
+    "Demandeur": "HOLDING TAFANI",
+    "Lieu": "rue du stazzale 20137 (AD 231)",
+    "Surface": "212 m²",
+    "Travaux": "la rénovation d'un bâtiment de logements collectifs et l'ajout d'un niveau supplémentaire",
+    "Projet": "- Surface plancher créée : 82 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AD 231"
+    ],
+    "Surface net": [
+      82.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AD 231', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "13/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0137",
+    "Dépot": "13/06/2024",
+    "Demandeur": "SCI ROCCO",
+    "Lieu": "Lotissement Punta d’Oro II 20137 (CA 72, CA 73)",
+    "Surface": "15627 m²",
+    "Travaux": "l'extension d'une maison existante",
+    "Projet": "- Surface plancher créée : 14,5 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "CA 72",
+      "CA 73"
+    ],
+    "Surface net": [
+      14.5,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['CA 72', True], ['CA 73', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "13/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0138",
+    "Dépot": "13/06/2024",
+    "Demandeur": "SCI MAMSOL",
+    "Lieu": "LOTISSEMENT FIOR DI MELU 20137 CATARICCIO (BV 79)",
+    "Surface": "5265 m²",
+    "Travaux": "la création d'une piscine de 49,80m2 et d'une terrasse en bois",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BV 79"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BV 79', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "14/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0145",
+    "Dépot": "14/06/2024",
+    "Demandeur": "M TAFANI Lucas",
+    "Lieu": "Quai De Syracuse 20137 (AI 87)",
+    "Surface": "1268 m²",
+    "Travaux": "la construction d'un local à usage de garage indépendant de 18 m²",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AI 87"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AI 87', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "14/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0139",
+    "Dépot": "14/06/2024",
+    "Demandeur": "SAS GOLFO",
+    "Lieu": "6 U Stagnolu 20137 (AP 192)",
+    "Surface": "1997 m²",
+    "Travaux": "la rénovation et l'extension d'une maison existante",
+    "Projet": "- Surface plancher créée : 136,03 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AP 192"
+    ],
+    "Surface net": [
+      136.03,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AP 192', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "16/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0140",
+    "Dépot": "16/06/2024",
+    "Demandeur": "M COLONNA-CESARI PAUL",
+    "Lieu": "- 20137 MELA (H 1622)",
+    "Surface": "19249 m²",
+    "Travaux": "la construction d'une maison individuelle avec garage",
+    "Projet": "- Surface plancher créée : 149,32 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "H 1622"
+    ],
+    "Surface net": [
+      149.32,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['H 1622', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "17/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0146",
+    "Dépot": "17/06/2024",
+    "Demandeur": "MME BACCI Marie-Jeanne",
+    "Lieu": "5 Avenue Marechal Leclerc 20137 (AD 440)",
+    "Surface": "265 m²",
+    "Travaux": "la division d'un local commercial et modification de façade",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AD 440"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AD 440', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "17/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0147",
+    "Dépot": "17/06/2024",
+    "Demandeur": "M ALONSO Laurent",
+    "Lieu": "Renajolo de Muratello 20137 (I 2632)",
+    "Surface": "499 m²",
+    "Travaux": "la pose de panneaux photovoltaïques",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "I 2632"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['I 2632', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "17/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0141",
+    "Dépot": "17/06/2024",
+    "Demandeur": "M BARONE Nicolas",
+    "Lieu": "5000 Durabile 20137 (G 1311)",
+    "Surface": "2000 m²",
+    "Travaux": "la construction d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 103,36 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "G 1311"
+    ],
+    "Surface net": [
+      103.36,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['G 1311', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "17/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0142",
+    "Dépot": "17/06/2024",
+    "Demandeur": "SCI RICHARDS FAMILY",
+    "Lieu": "8 Rue General Paulin Colanna d’Istria 20137 (AE 517)",
+    "Surface": "677 m²",
+    "Travaux": "la surélévation d'une maison existante",
+    "Projet": "- Surface plancher créée : 68,14 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AE 517"
+    ],
+    "Surface net": [
+      68.14,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AE 517', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "17/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0143",
+    "Dépot": "17/06/2024",
+    "Demandeur": "M IBARRECHE CONRAD",
+    "Lieu": "ROUTE DE PORRA 20137 (BL 114, BL 130)",
+    "Surface": "4905 m²",
+    "Travaux": "l'extension d'une maison et diverses modifications",
+    "Projet": "- Surface plancher créée : 18,71 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BL 114",
+      "BL 130"
+    ],
+    "Surface net": [
+      18.71,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BL 114', True], ['BL 130', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "18/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0148",
+    "Dépot": "18/06/2024",
+    "Demandeur": "M ALONSO Laurent",
+    "Lieu": "Renajolo de Muratello 20137 (I 2627)",
+    "Surface": "729 m²",
+    "Travaux": "la pose de panneaux solaires",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "I 2627"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['I 2627', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "18/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0144",
+    "Dépot": "18/06/2024",
+    "Demandeur": "MME HIAM Catherine",
+    "Lieu": "route de sotta 20137 (BO 39)",
+    "Surface": "8750 m²",
+    "Travaux": "la création d'un garage de 56 m² et d'un poolhouse couvert non clos",
+    "Projet": "- Surface plancher créée : 0 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BO 39"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BO 39', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "19/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0149",
+    "Dépot": "19/06/2024",
+    "Demandeur": "M MOSCONI Sébastien",
+    "Lieu": "6130 Rue Pierre Andreani 20137 (AM 358)",
+    "Surface": "500 m²",
+    "Travaux": "la pose d'un vasistas dans la cave existante",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AM 358"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AM 358', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "19/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0145",
+    "Dépot": "19/06/2024",
+    "Demandeur": "M CUCCHI Anthony",
+    "Lieu": "Hameau de Pianelli 20137 Tinello (H 1627)",
+    "Surface": "2642 m²",
+    "Travaux": "la construction d'une maison individuelle en résidence principale",
+    "Projet": "- Surface plancher créée : 95 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "H 1627"
+    ],
+    "Surface net": [
+      95.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['H 1627', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "20/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0151",
+    "Dépot": "20/06/2024",
+    "Demandeur": "M ALONSO Laurent",
+    "Lieu": "Renajolo de Muratello 20137 (I 754)",
+    "Surface": "450 m²",
+    "Travaux": "la pose de panneaux photovoltaïques",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "I 754"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['I 754', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "20/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0146",
+    "Dépot": "20/06/2024",
+    "Demandeur": "MME PAOLI Sabrina",
+    "Lieu": "Lotissement Casetta Bianca 20137 AJA DEL FORNO (BP 74)",
+    "Surface": "5581 m²",
+    "Travaux": "l'extension d'une maison, création d'un logement",
+    "Projet": "- Surface plancher créée : 76 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "BP 74"
+    ],
+    "Surface net": [
+      76.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['BP 74', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/06/2024",
+    "id Autorisation": "DP 02A 247 24 R0154",
+    "Dépot": "21/06/2024",
+    "Demandeur": "M CORBEL Guillaume",
+    "Lieu": "9005 Lieu-Dit Giatone 20137 (C 1183)",
+    "Surface": "3960 m²",
+    "Travaux": "la création d'un lot à bâtir",
+    "Projet": "",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "C 1183"
+    ],
+    "Surface net": [
+      0.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['C 1183', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/06/2024",
+    "id Autorisation": "PC 02A 247 19 R0199 T02",
+    "Dépot": "21/06/2024",
+    "Demandeur": "M TERRAZZONI Alexandre",
+    "Lieu": "Quartier Piccovaggia 20137 (F 2872)",
+    "Surface": "2092 m²",
+    "Travaux": "transfert total d'une maison individuelle",
+    "Projet": "- Surface plancher créée : 145 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "F 2872"
+    ],
+    "Surface net": [
+      145.0,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['F 2872', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  },
+  {
+    "Affichage": "21/06/2024",
+    "id Autorisation": "PC 02A 247 24 R0147",
+    "Dépot": "21/06/2024",
+    "Demandeur": "Holding Tafani",
+    "Lieu": "9 rue du maréchal juin 20137 (AE 550, AE 711, AE 710)",
+    "Surface": "1434 m²",
+    "Travaux": "",
+    "Projet": "- Surface plancher créée : 1706,49 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "",
+    "Ref Parcelle": [
+      "AE 550",
+      "AE 711",
+      "AE 710"
+    ],
+    "Surface net": [
+      1706.49,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "",
+    "IsIntrue": "[['AE 550', True], ['AE 711', True], ['AE 710', True]]",
+    "status": "Depot",
+    "lastSeenDate": "23/06/2024",
+    "decisionDate": null,
+    "expiryDate": null,
+    "orphan": false,
+    "Util1": "",
+    "Util2": ""
+  }
+]

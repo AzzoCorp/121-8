@@ -41,7 +41,7 @@ async function run() {
     let date = new Date();
     let formattedDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2);
 
-    fs.writeFileSync(`../GeoDatas/inputdepots/input_${formattedDate}.json`, JSON.stringify(jsonData, null, 2));
+    fs.writeFileSync(`../datas/urbanism/inputdepots/input_${formattedDate}.json`, JSON.stringify(jsonData, null, 2));
 
     // Click on the second dropdown menu, type 'Décision' and press Enter
     await page.click('select[id="TypesInformation_OptionSelectionnee"]');
@@ -81,7 +81,7 @@ async function run() {
         data: data
     };
 
-    fs.writeFileSync(`../GeoDatas/inputdecisions/input_${formattedDate}.json`, JSON.stringify(jsonData, null, 2));
+    fs.writeFileSync(`../datas/urbanism/inputdecisions/input_${formattedDate}.json`, JSON.stringify(jsonData, null, 2));
 
     await browser.close();
 }

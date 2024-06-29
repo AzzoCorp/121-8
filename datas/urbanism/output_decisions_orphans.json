@@ -1,0 +1,28 @@
+[
+  {
+    "Affichage": "21/05/2024",
+    "id Autorisation": "DP 02A 247 24 R0083",
+    "Dépot": "29/03/2024",
+    "Demandeur": "EDF",
+    "Lieu": "Avenue Georges Pompidou 20137",
+    "Surface": "",
+    "Travaux": "l'implantation d'un poste de transformation de distribution publique sur le domaine piblic",
+    "Projet": "- Surface plancher créée : 9,6 m²\n- Surface plancher démolie : 0 m²\n",
+    "decisionCplt": "Favorable le 21/05/2024",
+    "Ref Parcelle": [],
+    "Surface net": [
+      9.6,
+      0.0
+    ],
+    "Lotissement": "",
+    "decision": "Favorable",
+    "IsIntrue": "[]",
+    "status": "Approved",
+    "lastSeenDate": "29/06/2024",
+    "decisionDate": "21/05/2024",
+    "expiryDate": null,
+    "orphan": true,
+    "Util1": "",
+    "Util2": ""
+  }
+]
