@@ -26,9 +26,20 @@ https://cadastre.data.gouv.fr/datasets/plan-cadastral-informatise
 Pour les autorisations d'urabnismes nous scrapons les données journalierement à partir de la platforme web dédiée de la commune :
 https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire
 
-Le scraping fonctionne en une vingtaine de secondes, il récupère 2 fichiers Json, l'un pour les dépot, l'autre pour les décsions.
-A Porto-Vecchio, sans complexe la majorité en place, cache les décisions défavorables sur sa platforme.
-N'apparaisent ainsi que les décisions favorables. Nous remédions aussi à cela.
+Le scraping fonctionne en une vingtaine de secondes, il récupère 2 fichiers Json, l'un pour les dépots, l'autre pour les décisions.
+A Porto-Vecchio, sans complexe, la majorité en place, cache les décisions défavorables sur sa platforme. N'apparaisent ainsi que les décisions favorables. Nous remédions aussi à cela.
+
+On assiste à un braquage des terrains réellement constructibles en plein centre urbain et sur leur valeur et sur leur constructibilité et a un mitage méthodique et industriel, où pour ceux qui ont le bras long tout est possible.
+
+La seule assoication de protection de la commune, dirigée par un vieux pecheur dans tous les sens du terme, ferme les yeux afin que son fils, entrepreneur, puisse obtenir de precieux sésame et ainsi rélaiser de monstrueux braquages urbanistiques. Côté moins local mais insulaire, l'association U levante qui ressemble plus à une loge de la trulle est composée de 12 présidents qui sont autant de portes d'entrée pour corrompre toute actions qu'elle devrait mener.
+Ici un article relatant certain de ses exploit et ou justement le maire actuel de Porto-Vecchio est épinglé pour avoir été portégé par u Levante lorque qu'il à planté sur la plage de Palombagiia une paillote en béton armé !
+
+Article archivé du webzine backchich qui avait enqueté serieusement et en avait payé le prix fort !
+https://web.archive.org/web/20100111131700/http://www.bakchich.info:80/Corse-le-chef-du-clan-nationaliste,07318.html
+
+Ainsi cette majorité municipale pratique les passes droits afin de s'enrichir (les élus et leur famille) ou d'enrichir ses meilleurs clients et n'hésite pas à retirer les droits des terrains réelement constructibles de ses opposants, où d'opposants au pouvoir national en place, une véritable corruption se crée ainsi entre la prefecture, sous le controle politique de l'état et la commune. Tu signes mes permis illégaux et je donne avis conforme favorable et vice verasa ainsi tout est possible tant que le déposant n'est pas poursuivi devant la justice adminsitrative par son voisin direct ou par une association ayant pour objet la protection de la nature.
+  
+
 
 Demo > https://manipuliti.github.io/121-8/index.html
 Github du projet > https://github.com/manipuliti/121-8/
