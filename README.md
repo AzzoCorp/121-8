@@ -26,8 +26,8 @@ https://cadastre.data.gouv.fr/datasets/plan-cadastral-informatise
 Pour les autorisations d'urabnismes nous scrapons les données journalierement à partir de la platforme web dédiée de la commune :
 https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire
 
-Le scraping fonctionne il récupère 2 fichier Json, l'un pour les dépot, l'autre pour les décsions.
-A Porto-Vecchio, sans complexe la majorité en place, cache les décisions défavorablessur sa platforme.
+Le scraping fonctionne en une vingtaine de secondes, il récupère 2 fichiers Json, l'un pour les dépot, l'autre pour les décsions.
+A Porto-Vecchio, sans complexe la majorité en place, cache les décisions défavorables sur sa platforme.
 N'apparaisent ainsi que les décisions favorables. Nous remédions aussi à cela.
 
 Demo > https://manipuliti.github.io/121-8/index.html
