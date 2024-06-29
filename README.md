@@ -31,9 +31,13 @@ A Porto-Vecchio, sans complexe, la majorité en place, cache les décisions déf
 
 On assiste à un braquage des terrains réellement constructibles en plein centre urbain et sur leur valeur et sur leur constructibilité et a un mitage méthodique et industriel, où pour ceux qui ont le bras long tout est possible.
 
-La seule assoication de protection de la commune, dirigée par un vieux pecheur dans tous les sens du terme, ferme les yeux afin que son fils, entrepreneur, puisse obtenir de precieux sésame et ainsi rélaiser de monstrueux braquages urbanistiques. Côté moins local mais insulaire, l'association U levante qui ressemble plus à une loge de la trulle est composée de 12 présidents qui sont autant de portes d'entrée pour corrompre toute actions qu'elle devrait mener.
+La seule association de protection de la commune, dirigée par un vieux pecheur dans tous les sens du terme, ferme les yeux afin que son fils, entrepreneur, puisse obtenir de precieux sésame et ainsi rélaiser de monstrueux braquages urbanistiques. Côté moins local mais insulaire, l'association U levante qui ressemble plus à une loge de la trulle est composée de 12 présidents qui sont autant de portes d'entrée pour corrompre toute actions qu'elle devrait mener.
 
 Ici un article relatant certain de ses exploit et ou justement le maire actuel de Porto-Vecchio est épinglé pour avoir été portégé par u Levante lorque qu'il à planté sur la plage de Palombagiia une paillote en béton armé !
+
+Deux affaires, nous révele qu'un permis de construire illegale se n'égocit entre 350 000 et 500 000 euros.
+https://france3-regions.francetvinfo.fr/corse/corse-du-sud/porto-vecchio/porto-vecchio-deux-gerants-d-entreprises-mis-en-examen-pour-tentative-d-extorsion-de-fonds-et-sous-controle-judiciaire-1994710.html
+L'autre nous est révélè par le repenti de la brise de mer Claude chaussat concernant le permis de construire du projet Cita di Sali, où là il fallut au déposant promettre la somme de 350 000 € à la brise de mer pour obtenir le permis.
 
 Article archivé du webzine backchich qui avait enqueté serieusement et en avait payé le prix fort !
 https://web.archive.org/web/20100111131700/http://www.bakchich.info:80/Corse-le-chef-du-clan-nationaliste,07318.html
