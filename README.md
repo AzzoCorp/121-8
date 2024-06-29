@@ -32,6 +32,7 @@ A Porto-Vecchio, sans complexe, la majorité en place, cache les décisions déf
 On assiste à un braquage des terrains réellement constructibles en plein centre urbain et sur leur valeur et sur leur constructibilité et a un mitage méthodique et industriel, où pour ceux qui ont le bras long tout est possible.
 
 La seule assoication de protection de la commune, dirigée par un vieux pecheur dans tous les sens du terme, ferme les yeux afin que son fils, entrepreneur, puisse obtenir de precieux sésame et ainsi rélaiser de monstrueux braquages urbanistiques. Côté moins local mais insulaire, l'association U levante qui ressemble plus à une loge de la trulle est composée de 12 présidents qui sont autant de portes d'entrée pour corrompre toute actions qu'elle devrait mener.
+
 Ici un article relatant certain de ses exploit et ou justement le maire actuel de Porto-Vecchio est épinglé pour avoir été portégé par u Levante lorque qu'il à planté sur la plage de Palombagiia une paillote en béton armé !
 
 Article archivé du webzine backchich qui avait enqueté serieusement et en avait payé le prix fort !
@@ -42,4 +43,5 @@ Ainsi cette majorité municipale pratique les passes droits afin de s'enrichir (
 
 
 Demo > https://manipuliti.github.io/121-8/index.html
+
 Github du projet > https://github.com/manipuliti/121-8/
