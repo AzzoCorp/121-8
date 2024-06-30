@@ -19,16 +19,16 @@ body, html {
 /* Tabs structure */
 .tabs {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 0px;
+    left: 0px;
     z-index: 100;
     background-color: #1e1e1e;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     font-size: 15px;
     width: auto;
-    max-width: 50%;
-    max-height: calc(100vh - 50px);
+    max-width: 75%;
+    max-height: calc(100vh - 40px);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -52,10 +52,12 @@ body, html {
 
 .tab-registers button:hover {
     background-color: #444;
+	box-shadow: 0px 0px 5px white;
 }
 
 .tab-registers button.active-tab {
     background-color: #555;
+	
 }
 
 .tab-bodies {
@@ -121,20 +123,23 @@ body, html {
     max-height: calc(100vh - 150px);
 }
 
-.depot-item, .decision-item {
+.depot-group, .decision-group {
     background-color: #2a2a2a;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    line-height: 1.2;
+}
+
+.depot-data, .decision-data {
     margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
 }
 
-.depot-item h3, .decision-item h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-.depot-item p, .decision-item p {
-    margin: 5px 0;
+.depot-data:last-child, .decision-data:last-child {
+    border-bottom: none;
 }
 
 /* Scrollbar styling */
@@ -163,7 +168,7 @@ body, html {
     border-radius: 4px;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    line-height: 1em;
+    line-height: 1.6;
 }
 
 .mapboxgl-popup-close-button {
@@ -210,17 +215,20 @@ body, html {
 
 .locate-btn:hover {
     background-color: #C72EFF;
+	box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px white;
 }
 
 .locate-btnF:hover {
     background-color: #38D7FF;
+	box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px black;
 }
 
 /* Text styles */
 .nomdeposant, .nomdeposantF {
     font-size: 1.5em;
     font-weight: bold;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .nomdeposant {
@@ -232,15 +240,16 @@ body, html {
 }
 
 .textrmq {
-    color: grey;
+    color: #AAAAAA;
     font-size: 0.9em;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .desc {
-    color: grey;
+    color: #AAAAAA;
     font-size: 1.2em;
-    margin-top: 7px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     letter-spacing: 0.2em;
 }
 
@@ -257,26 +266,6 @@ body, html {
 .mapboxgl-ctrl-top-left, .mapboxgl-ctrl-top-right, .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
     background-color: #333333;
     border: 1px solid #444444;
-}
-
-/* New styles for better separation and layout */
-.depot-group, .decision-group {
-    background-color: #2a2a2a;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    line-height: 1.4;
-}
-
-.depot-data, .decision-data {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #444;
-}
-
-.depot-data:last-child, .decision-data:last-child {
-    border-bottom: none;
 }
 
 /* Orphaned items popup styles */
@@ -359,3 +348,57 @@ body, html {
 #show-orphaned-items:hover {
     color: #ffcc00;
 }
+
+/* Popup content styles */
+.mapboxgl-popup-content .depot-group strong,
+.mapboxgl-popup-content .depot-group .nomdeposant,
+.mapboxgl-popup-content .depot-group .decision-title,
+.mapboxgl-popup-content .depot-group .desc strong {
+    color: #FF00FF;
+}
+
+.mapboxgl-popup-content .decision-group strong,
+.mapboxgl-popup-content .decision-group .nomdeposantF,
+.mapboxgl-popup-content .decision-group .decision-title,
+.mapboxgl-popup-content .decision-group .desc strong {
+    color: #00FFFF;
+}
+
+/* Restore spacing */
+.mapboxgl-popup-content br {
+    display: block;
+    margin: 5px 0;
+    content: "";
+}
+
+/* Popup content styles */
+.mapboxgl-popup-content .depot-group,
+.mapboxgl-popup-content .decision-group {
+    line-height: 1.2;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.mapboxgl-popup-content .depot-data,
+.mapboxgl-popup-content .decision-data {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.mapboxgl-popup-content p {
+    margin: 0 0 5px 0;
+}
+
+.mapboxgl-popup-content br {
+    display: none;
+}
+
+.mapboxgl-popup-content .desc {
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.mapboxgl-popup-content .textrmq {
+    margin-top: 5px;
+}
+

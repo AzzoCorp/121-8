@@ -177,12 +177,12 @@ map.on('load', function () {
             });
     }
 
-    // Adding the second GeoJSON source
+    // Adding the GeoJSON source for depots
     const depotsSource = 'depots-parcelles';
     if (!map.getSource(depotsSource)) {
         map.addSource(depotsSource, {
             type: 'geojson',
-            data: './datas/urbanism/output_depots.geojson',
+            data: 'datas/urbanism/output_depots.geojson',
         });
 
         map.addLayer({
@@ -196,34 +196,56 @@ map.on('load', function () {
             },
         });
 
-        // Popup for the second layer
+        // Popup for the depots layer
 		map.on('click', 'depots-layer', function(e) {
 			const properties = e.features[0].properties;
-			let content = '<h3>Property Details</h3>';
-			content += `<strong>ID:</strong> ${properties.id}<br>`;
-			content += `<strong>Commune:</strong> ${properties.commune}<br>`;
-			content += `<strong>Section:</strong> ${properties.section}<br>`;
-			content += `<strong>Number:</strong> ${properties.numero}<br>`;
-			content += `<strong>Contenance:</strong> ${properties.contenance} m²<br>`;
+			let content = '<div class="popup-content depot-popup">';
+			// ... rest of your content generation
 
-			if (Array.isArray(properties.depots)) {
-				content += '<h3>Depots:</h3>';
-				properties.depots.forEach(depot => {
-					content += '<div class="depot-item">';
-					content += `<strong>Date Received:</strong> ${depot[0]}<br>`;
-					content += `<strong>Permit Number:</strong> ${depot[1]}<br>`;
-					content += `<strong>Date Issued:</strong> ${depot[2]}<br>`;
-					content += `<strong>Owner:</strong> ${depot[3]}<br>`;
-					content += `<strong>Address:</strong> ${depot[4]}<br>`;
-					content += `<strong>Area:</strong> ${depot[5]}<br>`;
-					content += `<strong>Description:</strong> ${depot[6]}<br>`;
-					content += `<strong>Additional Info:</strong> ${depot[7]}<br>`;
-					content += `<strong>Project:</strong> ${depot[8]}<br>`;
-					content += `<strong>Ref Parcelle:</strong> ${depot[9].join(', ')}<br>`;
-					content += `<strong>Surface net:</strong> ${depot[10].join(', ')}<br>`;
-					content += '</div>';
-				});
+			if (properties.depots && properties.depots.length > 0) {
+				let depots = properties.depots;
+				if (typeof depots === 'string') {
+					try {
+						depots = JSON.parse(depots);
+					} catch (error) {
+						console.error('Failed to parse depots:', depots, error);
+					}
+				}
+
+				if (Array.isArray(depots) && depots.length > 0) {
+					depots.forEach(depot => {
+						if (Array.isArray(depot)) {
+							const [dateReceived, permitNumber, dateIssued, owner, address, area, description, additionalInfo] = depot;
+							const squareMeters = extractSquareMeters(additionalInfo);
+							const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
+							const groupItems = extractGroupItems(address);
+							const parcelInfo = getParcelInfo(groupItems, [e.features[0]], groupItems[0]);
+
+							content += `
+								<div class="depot-data">
+									<strong>${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
+									<div class="nomdeposant">${owner}</div>
+									<strong>${permitNumber}</strong><i> reçue le </i><strong>${dateReceived}</strong><br>
+									${parcelInfo}
+									<br><strong>Adresse </strong>${address}<br>
+									<div class="desc"><strong>DESCRIPTION</strong></div>${description}<br>
+									${additionalInfo}
+								</div>
+								<div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
+								<br>arpenté <strong>${properties.arpente}</strong>
+								créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
+								</div>
+							`;
+						}
+					});
+				} else {
+					content += '<p>No valid depot information available.</p>';
+				}
+			} else {
+				content += '<p>No depot information available.</p>';
 			}
+
+			content += '</div>';
 
 			new mapboxgl.Popup()
 				.setLngLat(e.lngLat)
@@ -231,14 +253,13 @@ map.on('load', function () {
 				.addTo(map);
 		});
 
-// Similar changes for 'favorables-layer'
 
-        // Change the cursor to pointer when hovering over the second layer
+        // Change the cursor to pointer when hovering over the depots layer
         map.on('mouseenter', 'depots-layer', function() {
             map.getCanvas().style.cursor = 'pointer';
         });
 
-        // Change it back to default when no longer hovering over the second layer
+        // Change it back to default when no longer hovering over the depots layer
         map.on('mouseleave', 'depots-layer', function() {
             map.getCanvas().style.cursor = '';
         });
@@ -354,73 +375,64 @@ map.on('load', async function() {
         });
 
         // Popup for the favorables layer
-        map.on('click', 'favorables-layer', function(e) {
-            const properties = e.features[0].properties;
+		map.on('click', 'favorables-layer', function(e) {
+			const properties = e.features[0].properties;
+			let content = '<div class="popup-content decision-popup">';
+			// ... rest of your content generation
 
-            // Create a content string for the popup
-            let content = '<h3>Property Details</h3>';
-            content += `<strong>ID:</strong> ${properties.id}<br>`;
-            content += `<strong>Commune:</strong> ${properties.commune}<br>`;
-            content += `<strong>Prefix:</strong> ${properties.prefixe}<br>`;
-            content += `<strong>Section:</strong> ${properties.section}<br>`;
-            content += `<strong>Number:</strong> ${properties.numero}<br>`;
-            content += `<strong>Contenance:</strong> ${properties.contenance} m²<br>`;
-            content += `<strong>Arpente:</strong> ${properties.arpente}<br>`;
-            content += `<strong>Created:</strong> ${properties.created}<br>`;
-            content += `<strong>Updated:</strong> ${properties.updated}<br>`;
 
-            // Check if decisions is a string and parse it
-            let decisions = properties.decisions;
-            if (typeof decisions === 'string') {
-                try {
-                    decisions = JSON.parse(decisions);
-                } catch (error) {
-                    console.error('Failed to parse decisions:', decisions, error);
-                }
-            }
+			if (properties.decisions && properties.decisions.length > 0) {
+				let decisions = properties.decisions;
+				if (typeof decisions === 'string') {
+					try {
+						decisions = JSON.parse(decisions);
+					} catch (error) {
+						console.error('Failed to parse decisions:', decisions, error);
+					}
+				}
 
-            // Check if decisions is now an array
-            if (Array.isArray(decisions)) {
-                content += '<h3>Decisions:</h3><ul>';
-                decisions.forEach(decision => {
-                    if (Array.isArray(decision)) {
-                        content += '<li>';
-                        content += `<strong>Affichage:</strong> ${decision[0]}<br>`;
-                        content += `<strong>ID Autorisation:</strong> ${decision[1]}<br>`;
-                        content += `<strong>Dépot:</strong> ${decision[2]}<br>`;
-                        content += `<strong>Demandeur:</strong> ${decision[3]}<br>`;
-                        content += `<strong>Lieu:</strong> ${decision[4]}<br>`;
-                        content += `<strong>Surface:</strong> ${decision[5]}<br>`;
-                        content += `<strong>Travaux:</strong> ${decision[6]}<br>`;
-                        content += `<strong>Projet:</strong> ${decision[7]}<br>`;
-                        content += `<strong>Decision Cplt:</strong> ${decision[8]}<br>`;
-                        content += `<strong>Ref Parcelle:</strong> ${JSON.stringify(decision[9])}<br>`;
-                        content += `<strong>Surface net:</strong> ${JSON.stringify(decision[10])}<br>`;
-                        content += `<strong>Lotissement:</strong> ${decision[11]}<br>`;
-                        content += `<strong>Decision:</strong> ${decision[12]}<br>`;
-                        content += `<strong>IsIntrue:</strong> ${decision[13]}<br>`;
-                        content += `<strong>Status:</strong> ${decision[14]}<br>`;
-                        content += `<strong>Last Seen Date:</strong> ${decision[15]}<br>`;
-                        content += `<strong>Decision Date:</strong> ${decision[16]}<br>`;
-                        content += `<strong>Expiry Date:</strong> ${decision[17]}<br>`;
-                        content += `<strong>Orphan:</strong> ${decision[18]}<br>`;
-                        content += `<strong>Util1:</strong> ${decision[19]}<br>`;
-                        content += `<strong>Util2:</strong> ${decision[20]}<br>`;
-                        content += '</li>';
-                    } else {
-                        console.error('Decision entry is not an array:', decision);
-                    }
-                });
-                content += '</ul>';
-            } else {
-                console.error('Properties decisions is not an array:', decisions);
-            }
+				if (Array.isArray(decisions) && decisions.length > 0) {
+					decisions.forEach(decision => {
+						if (Array.isArray(decision)) {
+							const [dateDecision, permitNumber, dateIssued, owner, address, area, description, additionalInfo, decisionComplement, refParcelle, surfaceNet] = decision;
+							const squareMeters = extractSquareMeters(surfaceNet);
+							const difference = (squareMeters[0] - squareMeters[1]).toFixed(2);
+							const groupItems = extractGroupItems(address);
+							const parcelInfo = getParcelInfo(groupItems, [e.features[0]], groupItems[0]);
 
-            new mapboxgl.Popup()
-                .setLngLat(e.lngLat)
-                .setHTML(content)
-                .addTo(map);
-        });
+							content += `
+								<div class="decision-data">
+									<strong>${difference} m² = ${squareMeters[0]} m² - ${squareMeters[1]} m²</strong><br>
+									<div class="nomdeposantF">${owner}</div>
+									<strong>${permitNumber}</strong><i> décidée le </i><strong>${dateDecision}</strong><br>
+									${parcelInfo}
+									<br><strong>Adresse </strong>${address}<br>
+									<div class="desc"><strong>DESCRIPTION</strong></div>${description}<br>
+									${additionalInfo}
+									<br><strong>Décision: </strong>${decisionComplement}<br>
+								</div>
+								<div class="textrmq">ID <strong>${properties.id}</strong> commune <strong>${properties.commune}</strong>
+								<br>arpenté <strong>${properties.arpente}</strong>
+								créée <strong>${properties.created}</strong> màj <strong>${properties.updated}</strong><br>
+								</div>
+							`;
+						}
+					});
+				} else {
+					content += '<p>No valid decision information available.</p>';
+				}
+			} else {
+				content += '<p>No decision information available.</p>';
+			}
+
+			content += '</div>';
+
+			new mapboxgl.Popup()
+				.setLngLat(e.lngLat)
+				.setHTML(content)
+				.addTo(map);
+		});
+
 
         // Change the cursor to pointer when hovering over the favorables layer
         map.on('mouseenter', 'favorables-layer', function() {
@@ -627,7 +639,7 @@ function handleTabClick(tabId) {
     tabContents.forEach(content => content.style.display = 'none');
     tabBodies.style.display = 'none';
     tabBodies.style.visibility = 'hidden';
-    tabsContainer.style.height = '30px';
+    //tabsContainer.style.height = '30px';
     mapElement.style.pointerEvents = 'auto';
 
     // Show the selected tab content

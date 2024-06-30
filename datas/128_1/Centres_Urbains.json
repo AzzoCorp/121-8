@@ -1,0 +1,21 @@
+[
+  {
+    "id": "centres_urbains",
+    "level": 0,
+    "fileName": "centres_urbains.geojson",
+    "color": "#17F105",
+    "opacity": 1,
+    "type": "fill",
+    "source": "centres_urbains-source"
+  },
+  {
+    "id": "centres_urbains",
+    "level": 1,
+    "fileName": "centres_urbains.geojson",
+    "color": "#2044E8",
+    "opacity": 1,
+    "type": "line",
+    "weight": 0.01,
+    "source": "centres_urbains-source"
+  }
+]

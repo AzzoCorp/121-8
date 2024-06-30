@@ -6,16 +6,64 @@ import glob
 import subprocess
 import time
 import logging
+import geopandas as gpd
+
+from shapely.geometry import Polygon, MultiPolygon
+from shapely.ops import unary_union
+
+import json
 from datetime import datetime
 from tqdm import tqdm
 from AzJsUrb import JsonOptimization
 import argparse
 import ast
+from typing import Optional
 
+import typer
+from menuAz_lib import create_menu_structure, run_menu, create_submenu
 
 # Set up logging
 logging.basicConfig(filename='geojson_generation.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+
+
+def run_scraper():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    scraper_path = os.path.join(script_dir, '..', 'scrapper', 'scrapper.js')
+    
+    print("Starting scraper...")
+    start_time = time.time()
+    
+    try:
+        # Create a progress bar
+        with tqdm(total=100, desc="Scraping", unit="%") as pbar:
+            process = subprocess.Popen(['node', scraper_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            
+            # Update progress bar every second
+            for i in range(40):  # 40 seconds total
+                time.sleep(1)
+                pbar.update(2.5)  # Increase by 2.5% each second (100% / 40 seconds)
+                
+                # Check if the process has finished
+                if process.poll() is not None:
+                    break
+            
+            # Ensure the progress bar reaches 100%
+            pbar.update(100 - pbar.n)
+        
+        # Check the final status of the scraper
+        returncode = process.wait(timeout=1)
+        if returncode == 0:
+            print("Scraper completed successfully.")
+        else:
+            print(f"Scraper encountered an error. Return code: {returncode}")
+    except subprocess.TimeoutExpired:
+        print("Scraper timed out after 40 seconds.")
+    
+    end_time = time.time()
+    print(f"Scraper execution time: {end_time - start_time:.2f} seconds")
 
 
 def reset_updated_files():
@@ -100,63 +148,6 @@ def create_centralized_output():
 
     print(f"Centralized output created with {len(unique_items)} unique items.")
 
-def run_scraper():
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    scraper_path = os.path.join(script_dir, '..', 'scrapper', 'scrapper.js')
-    
-    print("Starting scraper...")
-    start_time = time.time()
-    
-    try:
-        # Create a progress bar
-        with tqdm(total=100, desc="Scraping", unit="%") as pbar:
-            process = subprocess.Popen(['node', scraper_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            
-            # Update progress bar every second
-            for i in range(40):  # 40 seconds total
-                time.sleep(1)
-                pbar.update(2.5)  # Increase by 2.5% each second (100% / 40 seconds)
-                
-                # Check if the process has finished
-                if process.poll() is not None:
-                    break
-            
-            # Ensure the progress bar reaches 100%
-            pbar.update(100 - pbar.n)
-        
-        # Check the final status of the scraper
-        returncode = process.wait(timeout=1)
-        if returncode == 0:
-            print("Scraper completed successfully.")
-        else:
-            print(f"Scraper encountered an error. Return code: {returncode}")
-    except subprocess.TimeoutExpired:
-        print("Scraper timed out after 40 seconds.")
-    
-    end_time = time.time()
-    print(f"Scraper execution time: {end_time - start_time:.2f} seconds")
-
-def process_scraped_data():
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    force_update = '--force' in sys.argv
-    inputdepots_path = os.path.join(script_dir, '..', 'datas', 'urbanism', 'inputdepots')
-    inputdecisions_path = os.path.join(script_dir, '..', 'datas', 'urbanism', 'inputdecisions')
-
-    total_processed = 0
-    total_skipped = 0
-
-    processed, skipped = process_folder(inputdepots_path, "depots", force_update)
-    total_processed += processed
-    total_skipped += skipped
-
-    processed, skipped = process_folder(inputdecisions_path, "decisions", force_update)
-    total_processed += processed
-    total_skipped += skipped
-
-    print(f"\nSummary:")
-    print(f"Total files processed: {total_processed}")
-    print(f"Total files skipped: {total_skipped}")
-
 def reset_all_files():
     folders = ['../datas/urbanism/inputdepots', '../datas/urbanism/inputdecisions']
     total_deleted = 0
@@ -179,6 +170,98 @@ def reset_all_files():
 
     print(f"Total files deleted: {total_deleted}")
 
+def run_scraper():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    scraper_path = os.path.join(script_dir, '..', 'scrapper', 'scrapper.js')
+    
+    typer.echo(typer.style("Starting scraper...", fg=typer.colors.GREEN))
+    start_time = time.time()
+    
+    try:
+        # Create a progress bar
+        with tqdm(total=100, desc="Scraping", unit="%") as pbar:
+            process = subprocess.Popen(['node', scraper_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            
+            # Update progress bar every second
+            for i in range(40):  # 40 seconds total
+                time.sleep(1)
+                pbar.update(2.5)  # Increase by 2.5% each second (100% / 40 seconds)
+                
+                # Check if the process has finished
+                if process.poll() is not None:
+                    break
+            
+            # Ensure the progress bar reaches 100%
+            pbar.update(100 - pbar.n)
+        
+        # Check the final status of the scraper
+        returncode = process.wait(timeout=1)
+        if returncode == 0:
+            typer.echo(typer.style("Scraper completed successfully.", fg=typer.colors.GREEN))
+        else:
+            typer.echo(typer.style(f"Scraper encountered an error. Return code: {returncode}", fg=typer.colors.RED))
+    except subprocess.TimeoutExpired:
+        typer.echo(typer.style("Scraper timed out after 40 seconds.", fg=typer.colors.YELLOW))
+    
+    end_time = time.time()
+    typer.echo(typer.style(f"Scraper execution time: {end_time - start_time:.2f} seconds", fg=typer.colors.BLUE))
+
+
+def Centres_urbains_maker():
+    print("\nwork only with Python >= 3.12.3\n");
+    from shapely.geometry import Point
+    centres_urbains = gpd.read_file('../datas/geojson/urbanisation_40.geojson')
+    print("File loaded : ../datas/geojson/urbanisation_40.geojson");
+    with open('../datas/json/eglises.json', 'r', encoding='utf-8') as f:
+        eglises_data = json.load(f)
+    print("File loaded : ../datas/json/eglises.json\n");
+    eglises_points = [Point(eglise['coordonnees']['longitude'], eglise['coordonnees']['latitude']) for eglise in eglises_data['eglises']]
+    eglises_gdf = gpd.GeoDataFrame(geometry=eglises_points, crs="EPSG:4326")
+    centres_urbains = centres_urbains.to_crs(epsg=4326)
+    centres_urbains['contient_eglise'] = centres_urbains.geometry.apply(lambda x: any(x.contains(eglise) for eglise in eglises_gdf.geometry))
+    print("Looking for urbanisation onto eglise...");
+    centres_urbains_valides = centres_urbains[centres_urbains['contient_eglise']]
+    print("selecting urbanisation onto eglise...");
+    zones_non_qualifiees = centres_urbains[~centres_urbains['contient_eglise']]
+    print("selecting urbanisation out of eglise...\n");
+    centres_urbains_valides.to_file('../datas/geojson/centres_urbains.geojson', driver='GeoJSON')
+    print("Save qualified polygon urban center : ../datas/geojson/centres_urbains.geojson");
+    zones_non_qualifiees.to_file('../datas/geojson/zones_urbaines.geojson', driver='GeoJSON')
+    print("Save unqualified urban center : ../datas/geojson/zones_urbaines.geojson\n");
+    print("Urban center recognition complete, 100% accuracy");
+    
+def Zones_urbanisée_maker():
+
+    # Charger les polygones à partir du GeoJSON
+    batiments = gpd.read_file('../datas/geojson/cadastre-2A247-batiments.json')
+    print("File loaded : ../datas/geojson/cadastre-2A247-batiments.json");
+    # Vérifier le CRS actuel
+    print("CRS actuel :", batiments.crs)
+
+    # Reprojeter les géométries dans un CRS projeté (par exemple, Lambert 93 pour la France)
+    batiments = batiments.to_crs(epsg=2154)
+
+    # Créer un buffer de 40 mètres autour de chaque polygone
+    batiments['buffered'] = batiments.geometry.buffer(40)
+    #############################################    ####
+    # Fusionner les polygones qui se chevauchent
+    merged_polygons = unary_union(batiments['buffered'])
+
+    # Si merged_polygons est une collection de polygones, il faut les séparer
+    if isinstance(merged_polygons, MultiPolygon):
+        merged_polygons = [poly for poly in merged_polygons.geoms]
+    else:
+        merged_polygons = [merged_polygons]
+
+    # Créer un GeoDataFrame à partir des polygones fusionnés
+    result = gpd.GeoDataFrame(geometry=merged_polygons, crs=batiments.crs)
+    print("calcul des polygon de continuité");
+    # Reprojeter les géométries dans le CRS d'origine (EPSG:4326)
+    result = result.to_crs(epsg=4326)
+
+    # Sauvegarder le résultat en GeoJSON
+    result.to_file('../datas/geojson/urbanisation_40.geojson', driver='GeoJSON')
+    print("Urnanised zone have been defined");
 def perform_action(action):
     if action == 0:
         run_scraper()
@@ -223,8 +306,6 @@ Votre choix : """)
         
         if choice.lower() != 'q' and choice != '':
             input("\nAppuyez sur Entrée pour retourner au menu principal...")
-
-
 
 def parse_parcel_ref(parcel_ref):
     if isinstance(parcel_ref, list):
@@ -398,7 +479,6 @@ def generate_geojson_layers():
     for i, item in enumerate(orphans[:5]):
         print(f"  {i+1}. ID: {item.get('id Autorisation')}, Status: {item.get('status')}, Ref Parcelle: {item.get('Ref Parcelle')}")
 
-
 def display_statistics():
     print("Displaying statistics...")
     
@@ -423,54 +503,91 @@ def display_statistics():
     print(f"Nombre d'éléments dans output.json: {output_items}")
 
 
+def process_scraped_data():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    force_update = '--force' in sys.argv
+    inputdepots_path = os.path.join(script_dir, '..', 'datas', 'urbanism', 'inputdepots')
+    inputdecisions_path = os.path.join(script_dir, '..', 'datas', 'urbanism', 'inputdecisions')
 
-def main():
-    while True:
-        choice = input("""Voulez vous :
-Scraper les données (0) ?
-Traiter les données scrapées (1) ?
-Mettre à jour le fichier central (2) ?
-Effectuer tous les traitements (3) ?
-Raz des fichiers _updated (4) ?
-Raz des fichiers _updated et de centralisation (5) ?
-Scraper & effectuer tous les traitements (6) ?
-Afficher les statistiques (7) ?
-Générer les couches GeoJSON (8) ?
-Quit the tool (q/Q/enter) ?
-Votre choix : """)
+    total_processed = 0
+    total_skipped = 0
 
-        if choice.lower() == 'q' or choice == '':
-            print("Merci d'avoir utilisé l'outil. Au revoir!")
-            break
-        elif choice == '0':
-            run_scraper()
-        elif choice == '1':
-            process_scraped_data()
-        elif choice == '2':
-            create_centralized_output()
-        elif choice == '3':
-            process_scraped_data()
-            create_centralized_output()
-        elif choice == '4':
-            reset_updated_files()
-        elif choice == '5':
-            reset_updated_files()
-            os.remove('../datas/urbanism/output.json')
-            os.remove('../datas/urbanism/output_history.json')
-            print("All _updated files and centralization files have been deleted.")
-        elif choice == '6':
-            run_scraper()
-            process_scraped_data()
-            create_centralized_output()
-        elif choice == '7':
-            display_statistics()
-        elif choice == '8':
-            generate_geojson_layers()
-        else:
-            print("Choix invalide. Veuillez réessayer.")
-        
-        if choice.lower() != 'q' and choice != '':
-            input("\nAppuyez sur Entrée pour retourner au menu principal...")
+    processed, skipped = process_folder(inputdepots_path, "depots", force_update)
+    total_processed += processed
+    total_skipped += skipped
+
+    processed, skipped = process_folder(inputdecisions_path, "decisions", force_update)
+    total_processed += processed
+    total_skipped += skipped
+
+    typer.echo(typer.style("\nSummary:", fg=typer.colors.BLUE))
+    typer.echo(typer.style(f"Total files processed: {total_processed}", fg=typer.colors.GREEN))
+    typer.echo(typer.style(f"Total files skipped: {total_skipped}", fg=typer.colors.YELLOW))
+
+def sub_menu_data_processing():
+    return create_submenu(
+        ["Process scraped data", "Create centralized output", "Process data and centralize"],
+        [
+            process_scraped_data,
+            create_centralized_output,
+            lambda: (process_scraped_data(), create_centralized_output())
+        ],
+        "Data Processing"
+    )
+
+def sub_menu_file_management():
+    return create_submenu(
+        ["Reset updated files", "Reset all files"],
+        [reset_updated_files, reset_all_files],
+        "File Management"
+    )
+
+def sub_menu_geojson():
+    return create_submenu(
+        ["Generate GeoJSON layers", "Display statistics"],
+        [generate_geojson_layers, display_statistics],
+        "GeoJSON and Statistics"
+    )
+
+
+def sub_menu_128_1():
+        return create_submenu(
+        ["Zones urbanisée maker", "Centres urbains maker"],
+        [
+           
+            Zones_urbanisée_maker,
+            Centres_urbains_maker
+            # process_scraped_data,
+            # create_centralized_output,
+            # lambda: (process_scraped_data(), create_centralized_output())
+        ],
+        "Urbain maker"
+    )
+
+
+
+def main(item_path: Optional[str] = typer.Argument(None)):
+    menu_structure = create_menu_structure(
+        ["Run scraper", "Data processing", "File management", "GeoJSON and statistics", "Urbain maker", "Run all processes"],
+        [
+            run_scraper,
+            sub_menu_data_processing(),
+            sub_menu_file_management(),
+            sub_menu_geojson(),
+            sub_menu_128_1(),
+            # lambda: (run_scraper(), process_scraped_data(), create_centralized_output())
+            lambda: (run_scraper(), process_scraped_data(), Zones_urbanisée_maker(), Centres_urbains_maker(), create_centralized_output())
+        ],
+        "Main Menu"
+    )
+    run_menu(menu_structure, item_path)
+
 
 if __name__ == "__main__":
-    main()
+    typer.run(main)
+
+    lambda: (run_scraper(), process_scraped_data(), Zones_urbanisée_maker(), Centres_urbains_maker(), create_centralized_output())
+
+
+
+
