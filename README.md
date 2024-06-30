@@ -11,6 +11,8 @@ Nouvel version depuis 2015 : https://www.legifrance.gouv.fr/codes/article_lc/LEG
 
 Sachant que la jurisprudence fixe cette continuité à environ 100 mètres, le PADDUC de la Corse établit lui une limite maximum à 80 mètres.
 
+lien vers la documentation complète du PADDUC : https://www.aue.corsica/Le-Padduc-dans-son-integralite_a47.html
+
 Nous codons cette loi afin de situer les centres urbains et de vérifier de manière automatique et mathématique la "continuité" (art. 121-8) des décisions des communes, des préfectures et des juridictrions administratives.
 En entourant les batiments d'une ligne située à 40 mètres, une continuité de maximum 80 mètres apparait, c'est ainsi que nous pouvons délimité mathématiquement les centre urbains de chaque communes littorales.
 
@@ -26,9 +28,26 @@ https://cadastre.data.gouv.fr/datasets/plan-cadastral-informatise
 Pour les autorisations d'urabnismes nous scrapons les données journalierement à partir de la platforme web dédiée de la commune :
 https://portovecchio.geosphere.fr/guichet-unique/Login/AffichageReglementaire
 
-Le scraping fonctionne en une vingtaine de secondes, il récupère 2 fichiers Json, l'un pour les dépot, l'autre pour les décsions.
-A Porto-Vecchio, sans complexe la majorité en place, cache les décisions défavorables sur sa platforme.
-N'apparaisent ainsi que les décisions favorables. Nous remédions aussi à cela.
+Le scraping fonctionne en une vingtaine de secondes, il récupère 2 fichiers Json, l'un pour les dépots, l'autre pour les décisions.
+A Porto-Vecchio, sans complexe, la majorité en place, cache les décisions défavorables sur sa platforme. N'apparaisent ainsi que les décisions favorables. Nous remédions aussi à cela.
+
+On assiste à un braquage des terrains réellement constructibles en plein centre urbain et sur leur valeur et sur leur constructibilité et a un mitage méthodique et industriel, où pour ceux qui ont le bras long tout est possible.
+
+La seule association de protection de la commune, dirigée par un vieux pecheur dans tous les sens du terme, ferme les yeux afin que son fils, entrepreneur, puisse obtenir de precieux sésame et ainsi rélaiser de monstrueux braquages urbanistiques. Côté moins local mais insulaire, l'association U levante qui ressemble plus à une loge de la trulle est composée de 12 présidents qui sont autant de portes d'entrée pour corrompre toute actions qu'elle devrait mener.
+
+Ici un article relatant certain de ses exploit et ou justement le maire actuel de Porto-Vecchio est épinglé pour avoir été portégé par u Levante lorque qu'il à planté sur la plage de Palombagiia une paillote en béton armé !
+
+Deux affaires, nous révele qu'un permis de construire illegale se n'égocit entre 350 000 et 500 000 euros.
+https://france3-regions.francetvinfo.fr/corse/corse-du-sud/porto-vecchio/porto-vecchio-deux-gerants-d-entreprises-mis-en-examen-pour-tentative-d-extorsion-de-fonds-et-sous-controle-judiciaire-1994710.html
+L'autre nous est révélè par le repenti de la brise de mer Claude chaussat concernant le permis de construire du projet Cita di Sali, où là il fallut au déposant promettre la somme de 350 000 € à la brise de mer pour obtenir le permis.
+
+Article archivé du webzine backchich qui avait enqueté serieusement et en avait payé le prix fort !
+https://web.archive.org/web/20100111131700/http://www.bakchich.info:80/Corse-le-chef-du-clan-nationaliste,07318.html
+
+Ainsi cette majorité municipale pratique les passes droits afin de s'enrichir (les élus et leur famille) ou d'enrichir ses meilleurs clients et n'hésite pas à retirer les droits des terrains réelement constructibles de ses opposants, où d'opposants au pouvoir national en place, une véritable corruption se crée ainsi entre la prefecture, sous le controle politique de l'état et la commune. Tu signes mes permis illégaux et je donne avis conforme favorable et vice verasa ainsi tout est possible tant que le déposant n'est pas poursuivi devant la justice adminsitrative par son voisin direct ou par une association ayant pour objet la protection de la nature.
+  
+
 
 Demo > https://manipuliti.github.io/121-8/index.html
+
 Github du projet > https://github.com/manipuliti/121-8/
