@@ -3,12 +3,23 @@ Ici la liste des communes littorales françaises :
 https://fr.wikipedia.org/wiki/Liste_des_communes_littorales_de_France
 ---
 
+Page d'information sur les fichiers cadastraux en diverse formats 
+https://cadastre.data.gouv.fr/datasets/cadastre-etalab
 
-Les données cadastrales datent du 01/02/2021 et proviennent de ce lien :
+Les données cadastrales sont maintenant fraîches du 01/04/2024 et proviennent de ce lien :
 
-https://files.data.gouv.fr/cadastre/etalab-cadastre/2021-02-01/geojson/communes/2A/2A247/
+Les communes française
+https://cadastre.data.gouv.fr/data/etalab-cadastre/2024-04-01/geojson/communes/
 
-Catte date est importante car cela implique que les données concerants les batiments qui nous servent à differencier les zones urbaines des centres urbains datent de cet instant et ne prennent donc pas les construction réalisées après ou qui n'étaient pas présente au moment de leur enregistrement.
+La commune de Porto-Vecchio
+https://cadastre.data.gouv.fr/data/etalab-cadastre/2024-04-01/geojson/communes/2A/2A247/
+
+
+
+LA date est importante car elle implique que les données concerants les batiments qui nous servent à differencier les zones urbaines des centres urbains datent de cet instant et ne prennent donc pas les construction réalisées après ou qui n'étaient pas encore présente au moment de la création de cette image. En gors cela implique que nous ne sommes pas connecté en direct au cadastre central de l'état mais nous exploitons la dernière image qu'il nous a mis à disposition.
+Il est par exemple important de scruter cette page
+https://cadastre.data.gouv.fr/datasets/cadastre-etalab pour effectuer le changment d'images des que l'état effectue une màj.
+Nous engloberons donc dans notre process de scraping la surveillance de cette page afin de pouvoir agir au moindre changement.
 ---
 
 
