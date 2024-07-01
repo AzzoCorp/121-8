@@ -1,0 +1,13 @@
+{
+  "checkDate": "20240701",
+  "downloadedFiles": [
+    "cadastre-2A247-communes.json",
+    "cadastre-2A247-parcelles.json",
+    "cadastre-2A247-sections.json",
+    "cadastre-2A247-feuilles.json",
+    "cadastre-2A247-batiments.json",
+    "cadastre-2A247-subdivisions_fiscales.json",
+    "cadastre-2A247-lieux_dits.json",
+    "cadastre-2A247-prefixes_sections.json"
+  ]
+}

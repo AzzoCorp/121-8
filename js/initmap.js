@@ -820,7 +820,7 @@ async function populateDepotsList() {
                 <strong>Total des éléments traités :</strong> ${totalTraite}<br>
                 <strong>Éléments inclus :</strong> ${elementsInclus}<br>
                 <strong>Demandes sans parcelles renseignées :</strong> <a href="#" id="show-orphaned-items" class="orphaned-link" style="color: var(--nomdeposant-color);">${orphanedCount}</a><br>
-                <strong>Nombre de groupes final :</strong> ${Object.keys(groupedItems).length}<br>
+                <strong>Nombre de groupes finaux :</strong> ${Object.keys(groupedItems).length}<br>
             `;
             depotsContainer.insertBefore(itemCountElement, depotsContainer.firstChild);
 

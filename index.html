@@ -18,11 +18,14 @@
         <div class="tab-registers">
             <button class="tab-button" data-tab="tab1"><i class="fa-solid fa-xmark"></i></button>
             <button class="tab-button" data-tab="tab2"><i class="fa-solid fa-layer-group"></i></button>
-            <button class="tab-button" data-tab="tab3"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <button class="tab-button" data-tab="tab4"><i class="fa-solid fa-paper-plane" style="color: #FF00FF;"></i></button>
-            <button class="tab-button" data-tab="tab5"><i class="fa-solid fa-check" style="color: #00FFFF;"></i></button>
-            <button class="tab-button" data-tab="tab6"><i class="fa-brands fa-readme"></i></button>
-            <button class="tab-button" data-tab="tab7"><i class="fa-solid fa-info"></i></button>
+			<button class="tab-button" data-tab="tab3"><i class="fa-solid fa-magnifying-glass"></i></button>
+			<button class="tab-button" data-tab="tab4"><i class="fa-solid fa-brain"></i></button>
+
+
+            <button class="tab-button" data-tab="tab5"><i class="fa-solid fa-paper-plane" style="color: #FF00FF;"></i></button>
+            <button class="tab-button" data-tab="tab6"><i class="fa-solid fa-check" style="color: #00FFFF;"></i></button>
+            <button class="tab-button" data-tab="tab7"><i class="fa-brands fa-readme"></i></button>
+            <button class="tab-button" data-tab="tab8"><i class="fa-solid fa-info"></i></button>
         </div>
         <div class="tab-bodies" style="display:none;">
             <div id="tab1" class="tab-content" style="display:none;"></div>
@@ -37,31 +40,45 @@
 					<div id="layers-list"></div>
 				</div>
 			</div>
-
+            <div id="tab4" class="tab-content" style="display:none;">
+                <div id="menu">    
+                    <div id="Analyse">
+						<h3>Analyse de l'urbanisation, continuité...</h3>
+						<li>projection de 40 mêtres autour des batiments</li>
+						<li>Agglomération des projections de 40 mêtres</li>
+						<li>Affichage des églises</li>
+						<li>Correspondance des agglomérations avec les églises</li>
+						<li>Visualisation des agglomérations constructibles</li>
+						<li>Visualisation des agglomérations non constructibles</li><br>
+                        <input type="text" id="continuite-input" placeholder="40 mêtres" value="40">
+                        <button id="continuite-btn">Réévaluer</button>
+                    </div>
+                </div>
+            </div>
             <div id="tab3" class="tab-content" style="display:none;">
                 <div id="menu">    
                     <div id="search">
-                        <input type="text" id="search-input" placeholder="Search parcels">
+                        <input type="text" id="search-input" placeholder="Recherche de parcelles">
                         <button id="search-btn">Rechercher</button>
                     </div>
                 </div>
             </div>
-            <div id="tab4" class="tab-content" style="display:none;">
+            <div id="tab5" class="tab-content" style="display:none;">
                 <div id="menu">    
                     <div id="Demandes" class="scrollable-container"></div>
                 </div>
             </div>
-            <div id="tab5" class="tab-content" style="display:none;">
+            <div id="tab6" class="tab-content" style="display:none;">
                 <div id="menu">    
                     <div id="Décisions" class="scrollable-container"></div>
                 </div>
             </div>
-            <div id="tab6" class="tab-content" style="display:none;">
+            <div id="tab7" class="tab-content" style="display:none;">
                 <div id="menu">
                     <div id="lisezmoi"></div>
                 </div>
             </div>
-            <div id="tab7" class="tab-content" style="display:none;">
+            <div id="tab8" class="tab-content" style="display:none;">
                 <div id="menu">    
                     <div id="informations"></div>
                 </div>

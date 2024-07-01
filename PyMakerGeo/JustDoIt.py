@@ -7,6 +7,9 @@ import subprocess
 import time
 import logging
 import geopandas as gpd
+import requests
+import gzip
+import shutil
 
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
@@ -25,6 +28,56 @@ from menuAz_lib import create_menu_structure, run_menu, create_submenu
 # Set up logging
 logging.basicConfig(filename='geojson_generation.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+def run_cadastre_scraper():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    scraper_path = os.path.join(script_dir, '..', 'scrapper', 'scraper_maj_cadastre.js')
+    
+    typer.echo(typer.style("Starting Gov cadastre files scraper...", fg=typer.colors.GREEN))
+    start_time = time.time()
+    
+    try:
+        # Create a progress bar
+        with tqdm(total=100, desc="Scraping", unit="%") as pbar:
+            process = subprocess.Popen(['node', scraper_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            
+            # Update progress bar every second
+            for i in range(40):  # 40 seconds total
+                time.sleep(1)
+                pbar.update(2.5)  # Increase by 2.5% each second (100% / 40 seconds)
+                
+                # Check if the process has finished
+                if process.poll() is not None:
+                    break
+            
+            # Ensure the progress bar reaches 100%
+            pbar.update(100 - pbar.n)
+        
+        # Check the final status of the scraper
+        returncode = process.wait(timeout=1)
+        if returncode == 0:
+            typer.echo(typer.style("Gov cadastre files scraper completed successfully.", fg=typer.colors.GREEN))
+        else:
+            typer.echo(typer.style(f"Gov cadastre files scraper encountered an error. Return code: {returncode}", fg=typer.colors.RED))
+    except subprocess.TimeoutExpired:
+        typer.echo(typer.style("Gov cadastre files scraper timed out after 40 seconds.", fg=typer.colors.YELLOW))
+    
+    end_time = time.time()
+    typer.echo(typer.style(f"Gov cadastre files scraper execution time: {end_time - start_time:.2f} seconds", fg=typer.colors.BLUE))
+
+def run_all_scraping():
+    run_scraper()
+    run_cadastre_scraper()
+
+def sub_menu_scraper_tasks():
+    return create_submenu(
+        ["Run authorisation scraping", "Run Gov cadastre files scraping", "Run all scraping"],
+        [run_scraper, run_cadastre_scraper, run_all_scraping],
+        "Scraper Tasks"
+    )
+
+
 
 
 
@@ -64,6 +117,7 @@ def run_scraper():
     
     end_time = time.time()
     print(f"Scraper execution time: {end_time - start_time:.2f} seconds")
+
 
 
 def reset_updated_files():
@@ -565,18 +619,16 @@ def sub_menu_128_1():
     )
 
 
-
 def main(item_path: Optional[str] = typer.Argument(None)):
     menu_structure = create_menu_structure(
-        ["Run scraper", "Data processing", "File management", "GeoJSON and statistics", "Urbain maker", "Run all processes"],
+        ["Scraper tasks", "Data processing", "File management", "GeoJSON and statistics", "Urbain maker", "Run all processes"],
         [
-            run_scraper,
+            sub_menu_scraper_tasks(),
             sub_menu_data_processing(),
             sub_menu_file_management(),
             sub_menu_geojson(),
             sub_menu_128_1(),
-            # lambda: (run_scraper(), process_scraped_data(), create_centralized_output())
-            lambda: (run_scraper(), process_scraped_data(), Zones_urbanisée_maker(), Centres_urbains_maker(), create_centralized_output())
+            lambda: (run_all_scraping(), process_scraped_data(), Zones_urbanisée_maker(), Centres_urbains_maker(), create_centralized_output())
         ],
         "Main Menu"
     )
